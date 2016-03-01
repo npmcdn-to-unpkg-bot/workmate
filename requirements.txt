@@ -1,0 +1,8 @@
+# The app itself
+
+-e .
+
+
+# Runtime dependencies
+
+Django>=1.8,<1.10
