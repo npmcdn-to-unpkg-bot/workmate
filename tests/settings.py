@@ -14,6 +14,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'reversion',
     'workmate',
 
     'tests',
@@ -32,8 +33,8 @@ ROOT_URLCONF = 'tests.urls'
 
 SITE_ID = 1
 
-LOGOUT_URL = '/admin/logout/'
-LOGIN_URL = '/admin/login/'
+LOGOUT_URL = '/logout/'
+LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
 
 
