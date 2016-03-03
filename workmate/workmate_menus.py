@@ -7,10 +7,12 @@ from workmate.menus.menu_pool import menu_pool
 
 class MainMenu(Menu):
 
+    staff_only_attr = {'visible_to_staff_only': True}
+
     def get_nodes(self, request):
         nodes = []
-        n1 = NavigationNode(_('Admin'), '', 1)
-        n2 = NavigationNode(_('Site Administration'), reverse('admin:index'), 2, 1)
+        n1 = NavigationNode(_('Admin'), '', 1, attr=self.staff_only_attr)
+        n2 = NavigationNode(_('Site Administration'), reverse('admin:index'), 2, 1, attr=self.staff_only_attr)
         n3 = NavigationNode(_('Change Password'), reverse('admin:password_change'), 3)
         n4 = NavigationNode(_('Logout'), reverse('admin:logout'), 4)
         nodes.append(n1)

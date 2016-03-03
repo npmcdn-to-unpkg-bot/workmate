@@ -91,14 +91,27 @@ class AuthVisibility(Modifier):
             return nodes
         final = []
         for node in nodes:
+
+            is_allowed_access = False
+
+            # check basic auth
             if (node.attr.get('visible_for_authenticated', True) and
                     request.user.is_authenticated()) or \
                 (node.attr.get('visible_for_anonymous', True) and not
                     request.user.is_authenticated()):
+                is_allowed_access = True
+
+            # check if staff status is required
+            if (node.attr.get('visible_to_staff_only', False) and not
+                    request.user.is_staff):
+                is_allowed_access = False
+
+            if is_allowed_access:
                 final.append(node)
             else:
                 if node.parent and node in node.parent.children:
                     node.parent.children.remove(node)
+
         return final
 
 
