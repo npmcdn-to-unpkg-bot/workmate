@@ -35,6 +35,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
     'example',
+
+    'reversion',
     'workmate',
 )
 

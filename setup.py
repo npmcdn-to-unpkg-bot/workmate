@@ -14,6 +14,7 @@ setup(
     install_requires=[
         'Django>=1.8,<1.10',
         'django-classy-tags>=0.7',
+        'django-reversion>=1.10.0',
     ],
     include_package_data=True,
     keywords = ['workmate', ],

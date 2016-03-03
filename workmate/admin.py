@@ -1,9 +1,11 @@
 from django.contrib import admin
 
+from reversion.admin import VersionAdmin
+
 from workmate.models import Tag
 
 
-class TagAdmin(admin.ModelAdmin):
+class TagAdmin(VersionAdmin):
 
     def get_queryset(self, request):
         queryset = super(TagAdmin, self).get_queryset(request)
