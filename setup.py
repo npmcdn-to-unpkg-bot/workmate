@@ -13,6 +13,7 @@ setup(
     packages=find_packages(exclude=('example', 'tests')),
     install_requires=[
         'Django>=1.8,<1.10',
+        'django-classy-tags>=0.7',
     ],
     include_package_data=True,
     keywords = ['workmate', ],
