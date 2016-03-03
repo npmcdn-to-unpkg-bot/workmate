@@ -21,8 +21,9 @@ INTERNAL_IPS = ('127.0.0.1', )
 # Application definition
 SITE_ID = 1
 
+LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
-LOGIN_URL = '/admin/login/'
+LOGOUT_URL = '/logout/'
 
 INSTALLED_APPS = (
     'django.contrib.admin',
@@ -33,6 +34,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'example',
     'workmate',
 )
 
@@ -92,6 +94,10 @@ STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), '/media')
 MEDIA_URL = '/media/'
+
+
+# Email
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
 # Templates
