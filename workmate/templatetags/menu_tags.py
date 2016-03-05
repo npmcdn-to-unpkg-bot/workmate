@@ -70,12 +70,14 @@ def cut_levels(nodes, from_level, to_level, extra_inactive, extra_active):
             selected = node
         if not node.visible:
             remove(node, removed)
+
     if selected:
         cut_after(selected, extra_active, removed)
     if removed:
         for node in removed:
             if node in final:
                 final.remove(node)
+
     return final
 
 
@@ -112,13 +114,9 @@ class ShowMenu(InclusionTag):
         Argument('next_page', default=None, required=False),
     )
 
-    def get_context(self, context, from_level, to_level, extra_inactive,
-                    extra_active, template, namespace, root_id, next_page):
-        try:
-            # If there's an exception (500), default context_processors may not be called.
-            request = context['request']
-        except KeyError:
-            return {'template': 'workmate/menu/empty.html'}
+    def get_context(self, context, from_level, to_level, extra_inactive, extra_active,
+                    template, namespace, root_id, next_page):
+        request = context['request']
 
         if next_page:
             children = next_page.children

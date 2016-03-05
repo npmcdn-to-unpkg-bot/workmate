@@ -3,7 +3,11 @@ import imp
 import traceback
 from importlib import import_module
 
-from .compat.dj import installed_apps
+from django.apps import apps
+
+
+def installed_apps():
+    return [app.name for app in apps.get_app_configs()]
 
 
 def get_module(app, modname, verbose, failfast):
