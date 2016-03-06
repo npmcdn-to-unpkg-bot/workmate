@@ -2,7 +2,7 @@ from django.conf import settings
 from django.contrib.sites.models import Site
 from django.db import models
 
-from workmate.models.managers import TagManager
+from .managers import TagManager
 
 
 class Tag(models.Model):
