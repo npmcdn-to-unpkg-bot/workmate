@@ -3,6 +3,7 @@
 {% block title %}Workmate | Edit Contact{% endblock %}
 
 {% block title_tag %}Edit Contact{% endblock %}
+{% block title_controls %}{% endblock %}
 
 {% block content %}
     <form class="pure-form pure-form-aligned" method="post" novalidate>
@@ -19,7 +20,8 @@
         </div>
         {% endfor %}
         <div class="pure-controls">
-            <button type="submit" class="pure-button">Submit</button>
+            <a class="pure-button" href="{% url 'contact-delete' object.pk %}"><span class="fa fa-trash"></span></a>
+            <button type="submit" class="pure-button">Save</button>
         </div>
     </form>
 {% endblock %}
