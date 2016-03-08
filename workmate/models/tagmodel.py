@@ -1,15 +1,10 @@
-from django.conf import settings
-from django.contrib.sites.models import Site
 from django.db import models
 
-from .managers import TagManager
+from .abstract import SiteAbstract
 
 
-class Tag(models.Model):
+class Tag(SiteAbstract):
     name = models.CharField(max_length=50)
-    site = models.ForeignKey(Site, default=settings.SITE_ID, editable=False)
-
-    objects = TagManager()
 
     class Meta:
         ordering = ['name']

@@ -1,12 +1,11 @@
 from django.conf import settings
-from django.contrib.admin.sites import AdminSite
+from django.contrib.sites.managers import CurrentSiteManager
 from django.contrib.sites.models import Site
 from django.core.urlresolvers import reverse
+from django.db.models import Manager
 from django.test import TestCase
 
-from .helpers import get_request
 from .mixins import AuthTestMixin
-from workmate.admin import ContactAdmin
 from workmate.models import Contact
 
 
@@ -78,33 +77,25 @@ class ModelTests(TestCase):
 
 class ModelManagerTests(TestCase):
 
+    def test_default_manager(self):
+        self.assertEqual(Contact._default_manager.__class__, CurrentSiteManager)
+
+    def test_objects_manager(self):
+        self.assertEqual(Contact.objects.__class__, Manager)
+
     def test_queryset_all(self):
         another_site = Site.objects.create(
             name='another.com', domain='another.com')
         Contact.objects.create(first_name='Some', last_name='One')
         Contact.objects.create(first_name='Some', last_name='One Else', site=another_site)
-        self.assertEqual(Contact.objects.all().count(), 2)
+        self.assertEqual(Contact.objects.count(), 2)
 
-    def test_queryset_on_site(self):
+    def test_queryset_onsite(self):
         another_site = Site.objects.create(
             name='another.com', domain='another.com')
         Contact.objects.create(first_name='Some', last_name='One')
         Contact.objects.create(first_name='Some', last_name='One Else', site=another_site)
-        self.assertEqual(Contact.objects.on_site().count(), 1)
-
-
-class AdminTests(TestCase):
-
-    def setUp(self):
-        self.request = get_request('en')
-
-    def test_queryset_filters_for_current_site(self):
-        another_site = Site.objects.create(
-            name='another.com', domain='another.com')
-        Contact.objects.create(first_name='Some', last_name='One')
-        Contact.objects.create(first_name='Some', last_name='One Else', site=another_site)
-        contact_admin = ContactAdmin(Contact, AdminSite())
-        self.assertTrue(contact_admin.get_queryset(self.request).count(), 1)
+        self.assertEqual(Contact.onsite.count(), 1)
 
 
 class ListViewTests(AuthTestMixin, TestCase):
