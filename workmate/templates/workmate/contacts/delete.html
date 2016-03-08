@@ -1,0 +1,15 @@
+{% extends 'workmate/base.html' %}
+
+{% block title %}Workmate | Delete Contact{% endblock %}
+
+{% block title_tag %}Delete Contact{% endblock %}
+
+{% block content %}
+    <form class="pure-form pure-form-aligned" method="post" novalidate>
+        {% csrf_token %}
+        <p>Are you sure you want to delete "{{ object }}"?</p>
+        <div class="pure-controls">
+            <button type="submit" class="pure-button">Confirm</button>
+        </div>
+    </form>
+{% endblock %}

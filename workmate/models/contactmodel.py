@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.contrib.sites.models import Site
+from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
@@ -32,3 +33,6 @@ class Contact(models.Model):
     @property
     def name(self):
         return '{} {}'.format(self.first_name, self.last_name)
+
+    def get_absolute_url(self):
+        return reverse('contact-update', kwargs={'pk': self.pk})

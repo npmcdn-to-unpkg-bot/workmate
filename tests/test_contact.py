@@ -1,9 +1,11 @@
 from django.conf import settings
 from django.contrib.admin.sites import AdminSite
 from django.contrib.sites.models import Site
+from django.core.urlresolvers import reverse
 from django.test import TestCase
 
 from .helpers import get_request
+from .mixins import AuthTestMixin
 from workmate.admin import ContactAdmin
 from workmate.models import Contact
 
@@ -69,6 +71,10 @@ class ModelTests(TestCase):
         contact = Contact(first_name='Some', last_name='One')
         self.assertEqual(contact.__str__(), 'Some One')
 
+    def test_get_absolute_url(self):
+        contact = Contact.objects.create(first_name='Mr', last_name='Smith')
+        self.assertEqual(contact.get_absolute_url(), reverse('contact-update', kwargs={'pk': contact.id}))
+
 
 class ModelManagerTests(TestCase):
 
@@ -99,3 +105,29 @@ class AdminTests(TestCase):
         Contact.objects.create(first_name='Some', last_name='One Else', site=another_site)
         contact_admin = ContactAdmin(Contact, AdminSite())
         self.assertTrue(contact_admin.get_queryset(self.request).count(), 1)
+
+
+class ListViewTests(AuthTestMixin, TestCase):
+
+    def get_url(self):
+        return reverse('contact-list')
+
+
+class CreateViewTests(AuthTestMixin, TestCase):
+
+    def get_url(self):
+        return reverse('contact-create')
+
+
+class UpdateViewTests(AuthTestMixin, TestCase):
+
+    def get_url(self):
+        contact = Contact.objects.create(first_name='Mr', last_name='Smith')
+        return reverse('contact-update', kwargs={'pk': contact.id})
+
+
+class DeleteViewTests(AuthTestMixin, TestCase):
+
+    def get_url(self):
+        contact = Contact.objects.create(first_name='Mr', last_name='Smith')
+        return reverse('contact-delete', kwargs={'pk': contact.id})

@@ -1,16 +1,17 @@
 from django.conf import settings
 from django.contrib.auth import get_user_model
-from django.core.urlresolvers import reverse
-from django.test import TestCase
 
 
 UserModel = get_user_model()
 
 
-class MainTests(TestCase):
+class AuthTestMixin(object):
+
+    def get_url(self):
+        raise NotImplementedError
 
     def setUp(self):
-        self.url = reverse('workmate-main')
+        self.url = self.get_url()
         self.user = UserModel.objects.create_user(
             username='uname', email='u@u.com', password='pword')
 

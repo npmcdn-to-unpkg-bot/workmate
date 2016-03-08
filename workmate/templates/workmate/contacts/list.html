@@ -1,0 +1,17 @@
+{% extends 'workmate/base.html' %}
+
+{% block title %}Workmate | Contacts{% endblock %}
+
+{% block title_tag %}Contacts{% endblock %}
+{% block title_controls %}
+    <a class="pure-button" href="{% url 'contact-create' %}">+</a>
+{% endblock %}
+
+
+{% block content %}
+    <ul>
+        {% for contact in object_list %}
+            <li><a href="{{ contact.get_absolute_url }}">{{ contact.name }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'workmate/base.html' %}
+
+{% block title %}Workmate | New Contact{% endblock %}
+
+{% block title_tag %}New Contact{% endblock %}
+
+{% block content %}
+    <form class="pure-form pure-form-aligned" method="post" novalidate>
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        {% for field in form %}
+        <div class="pure-control-group">
+            {{ field.label_tag }}
+            {{ field }}
+            {% if field.help_text %}
+            <small class="help">{{ field.help_text|safe }}</small>
+            {% endif %}
+            {{ field.errors }}
+        </div>
+        {% endfor %}
+        <div class="pure-controls">
+            <button type="submit" class="pure-button">Submit</button>
+        </div>
+    </form>
+{% endblock %}

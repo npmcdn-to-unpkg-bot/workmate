@@ -12,14 +12,16 @@ class MainMenu(Menu):
 
     def get_nodes(self, request):
         nodes = []
-        n1 = NavigationNode(_('Admin'), '', 1, attr=self.staff_only_attr)
-        n2 = NavigationNode(_('Site Administration'), reverse('admin:index'), 2, 1, attr=self.staff_only_attr)
-        n3 = NavigationNode(_('Change Password'), reverse('password_change'), 1)
-        n4 = NavigationNode(_('Logout'), settings.LOGOUT_URL, 2)
+        n1 = NavigationNode(_('Contacts'), reverse('contact-list'), 1)
+        n2 = NavigationNode(_('Admin'), '', 2, attr=self.staff_only_attr)
+        n3 = NavigationNode(_('Site Administration'), reverse('admin:index'), 3, 2, attr=self.staff_only_attr)
+        n4 = NavigationNode(_('Change Password'), reverse('password_change'), 4)
+        n5 = NavigationNode(_('Logout'), settings.LOGOUT_URL, 5)
         nodes.append(n1)
         nodes.append(n2)
         nodes.append(n3)
         nodes.append(n4)
+        nodes.append(n5)
         return nodes
 
 

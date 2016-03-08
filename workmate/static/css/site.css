@@ -1,0 +1,23 @@
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+#layout {
+    padding: 0;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    background: rgb(61, 79, 93);
+    color: #fff;
+}
+
+.content {
+    padding: 2em 3em 0;
+    margin-left: 25%;
+    padding: 2em 1em 0;
+}
