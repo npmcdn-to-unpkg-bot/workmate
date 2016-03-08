@@ -2,7 +2,8 @@ from django.contrib import admin
 
 from reversion.admin import VersionAdmin
 
-from workmate.models import Contact, Tag
+from .forms import ExcludedUniqueForm
+from .models import Contact, Tag
 
 
 class ContactAdmin(VersionAdmin):
@@ -13,5 +14,17 @@ class ContactAdmin(VersionAdmin):
     search_fields = ('first_name', 'last_name', 'email_address')
 
 
+class TagForm(ExcludedUniqueForm):
+
+    class Meta:
+        model = Tag
+        fields = '__all__'
+
+
+class TagAdmin(VersionAdmin):
+
+    form = TagForm
+
+
 admin.site.register(Contact, ContactAdmin)
-admin.site.register(Tag, VersionAdmin)
+admin.site.register(Tag, TagAdmin)

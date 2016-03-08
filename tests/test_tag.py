@@ -4,6 +4,7 @@ from django.contrib.sites.models import Site
 from django.db.models import Manager
 from django.test import TestCase
 
+from workmate.admin import TagAdmin, TagForm
 from workmate.models import Tag
 
 
@@ -46,3 +47,15 @@ class ModelManagerTests(TestCase):
         Tag.objects.create(name='tag')
         Tag.objects.create(name='tag', site=another_site)
         self.assertEqual(Tag.onsite.count(), 1)
+
+
+class AdminTests(TestCase):
+
+    def test_tag_form_validates_excluded_data_in_unique_together(self):
+        Tag.objects.create(name='tag 1')
+        form = TagForm(data={'name': 'tag 1'})
+        self.assertFalse(form.is_valid())
+        self.assertEqual(form.non_field_errors(), ['Tag with this Name and Site already exists.'])
+
+    def test_tag_admin_using_tag_form(self):
+        self.assertEqual(TagAdmin.form, TagForm)
