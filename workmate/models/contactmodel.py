@@ -1,14 +1,14 @@
+# -*- coding: utf-8 -*-
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
 from phonenumber_field.modelfields import PhoneNumberField
 
-from .abstract import SiteAbstract
-from .tagmodel import Tag
+from .abstract import SiteAbstract, TagsAbstract
 
 
-class Contact(SiteAbstract):
+class Contact(SiteAbstract, TagsAbstract):
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
     email_address = models.EmailField(null=True, blank=True)
@@ -16,7 +16,6 @@ class Contact(SiteAbstract):
     mobile_number = PhoneNumberField(null=True, blank=True, help_text=_('eg: +447234567890'))
     work_number = PhoneNumberField(null=True, blank=True, help_text=_('eg: +441234567890'))
     website = models.URLField(null=True, blank=True, help_text=_('eg: http://www.example.com'))
-    tags = models.ManyToManyField(Tag, blank=True, related_name='contacts')
     notes = models.TextField(null=True, blank=True)
 
     class Meta:

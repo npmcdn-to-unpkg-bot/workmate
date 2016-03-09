@@ -14,10 +14,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'reversion',
-    'workmate',
-
     'tests',
+
+    'reversion',
+    'taggit',
+    'taggit_selectize',
+    'workmate',
 ]
 
 
