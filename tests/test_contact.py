@@ -1,3 +1,5 @@
+from mock import patch
+
 from django.conf import settings
 from django.contrib.sites.managers import CurrentSiteManager
 from django.contrib.sites.models import Site
@@ -60,6 +62,13 @@ class ModelTests(TestCase):
         self.assertTrue(field.blank)
         self.assertTrue(field.null)
 
+    def test_color(self):
+        field = Contact._meta.get_field("color")
+        self.assertTrue(field.blank)
+        self.assertTrue(field.null)
+        self.assertFalse(field.editable)
+        self.assertEqual(field.max_length, 10)
+
     def test_site(self):
         field = Contact._meta.get_field("site")
         self.assertFalse(field.null)
@@ -73,6 +82,12 @@ class ModelTests(TestCase):
     def test_get_absolute_url(self):
         contact = Contact.objects.create(first_name='Mr', last_name='Smith')
         self.assertEqual(contact.get_absolute_url(), reverse('contact-update', kwargs={'pk': contact.id}))
+
+    @patch('workmate.models.contactmodel.generate_new_color')
+    def test_save_method_updates_color(self, fn_mock):
+        fn_mock.return_value = '#000000'
+        contact = Contact.objects.create(first_name='Mr', last_name='Smith')
+        self.assertEqual(contact.color, fn_mock.return_value)
 
 
 class ModelManagerTests(TestCase):

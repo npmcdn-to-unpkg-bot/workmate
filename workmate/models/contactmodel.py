@@ -6,6 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 from phonenumber_field.modelfields import PhoneNumberField
 
 from .abstract import SiteAbstract, TagsAbstract
+from ..utils.color_generator import generate_new_color
 
 
 class Contact(SiteAbstract, TagsAbstract):
@@ -17,12 +18,18 @@ class Contact(SiteAbstract, TagsAbstract):
     work_number = PhoneNumberField(null=True, blank=True, help_text=_('eg: +441234567890'))
     website = models.URLField(null=True, blank=True, help_text=_('eg: http://www.example.com'))
     notes = models.TextField(null=True, blank=True)
+    color = models.CharField(null=True, blank=True, max_length=10, editable=False)
 
     class Meta:
         ordering = ('first_name', 'last_name')
 
     def __str__(self):
         return self.name
+
+    def save(self, *args, **kwargs):
+        if not self.color:
+            self.color = generate_new_color()
+        super(Contact, self).save(*args, **kwargs)
 
     @property
     def name(self):
