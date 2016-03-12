@@ -10,7 +10,8 @@
         {% csrf_token %}
         <p>Are you sure you want to delete "{{ object }}"?</p>
         <div class="pure-controls">
-            <button type="submit" class="pure-button">Confirm</button>
+            <a class="pure-button" href="{{ object.get_absolute_url }}"><i class="fa fa-times"></i> Cancel</a>
+            <button type="submit" class="pure-button"><i class="fa fa-check"></i> Confirm</button>
         </div>
     </form>
 {% endblock %}

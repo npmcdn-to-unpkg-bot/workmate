@@ -2,6 +2,7 @@ from django.core.urlresolvers import reverse_lazy
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 
+from ..forms import ContactForm
 from ..models import Contact
 
 try:
@@ -12,7 +13,7 @@ except:
 
 class ContactCreate(LoginRequiredMixin, CreateView):
     model = Contact
-    fields = '__all__'
+    form_class = ContactForm
     template_name = 'workmate/contacts/create.html'
 
 
@@ -29,5 +30,5 @@ class ContactList(LoginRequiredMixin, ListView):
 
 class ContactUpdate(LoginRequiredMixin, UpdateView):
     model = Contact
-    fields = '__all__'
+    form_class = ContactForm
     template_name = 'workmate/contacts/edit.html'

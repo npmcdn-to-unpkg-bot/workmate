@@ -37,6 +37,8 @@ INSTALLED_APPS = (
     'example',
 
     'reversion',
+    'taggit',
+    'taggit_selectize',
     'workmate',
 )
 

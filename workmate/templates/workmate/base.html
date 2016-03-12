@@ -9,6 +9,8 @@
         <link rel="stylesheet" href="{% static 'pure/css/pure-min.css' %}">
         <link rel="stylesheet" href="{% static 'pure/css/grids-responsive-min.css' %}">
         <link rel="stylesheet" href="{% static 'css/site.css' %}">
+        {% block extra_css %}{% endblock %}
+        {% block extra_head %}{% endblock %}
     </head>
     <body>
         <div id="layout" class="pure-g">
@@ -33,5 +35,6 @@
             </div>
         </div>
         <script src="{% static 'pure/js/menus.js' %}"></script>
+        {% block extra_js %}{% endblock %}
     </body>
 </html>

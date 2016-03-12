@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
-from django.conf.urls import url
+from django.conf.urls import include, url
 
 from workmate.views import ContactCreate, ContactDelete, ContactList, ContactUpdate, MainView
 
 
 urlpatterns = [
+
+    url(r'taggit/', include('taggit_selectize.urls')),
 
     url(r'contacts/$', ContactList.as_view(), name='contact-list'),
     url(r'contacts/create/$', ContactCreate.as_view(), name='contact-create'),
