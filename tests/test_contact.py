@@ -89,6 +89,12 @@ class ModelTests(TestCase):
         contact = Contact.objects.create(first_name='Mr', last_name='Smith')
         self.assertEqual(contact.color, fn_mock.return_value)
 
+    @patch('workmate.models.contactmodel.generate_new_color')
+    def test_save_method_does_not_change_existing_color(self, fn_mock):
+        fn_mock.return_value = '#000000'
+        contact = Contact.objects.create(first_name='Mr', last_name='Smith', color='#ffffff')
+        self.assertEqual(contact.color, '#ffffff')
+
 
 class ModelManagerTests(TestCase):
 

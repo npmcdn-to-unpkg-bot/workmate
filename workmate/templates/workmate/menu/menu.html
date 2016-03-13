@@ -5,7 +5,7 @@
 		<li class="pure-menu-item pure-menu-has-children">
 			<a href="#" class="pure-menu-link">{{ child.get_menu_title }}</a>
 			<ul class="pure-menu-children">
-                {% show_menu from_level to_level extra_inactive extra_active template "" "" child %}
+                {% show_menu from_level to_level template "" child %}
 			</ul>
 		</li>
     {% else %}

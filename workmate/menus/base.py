@@ -10,32 +10,29 @@ class Menu(object):
             self.namespace = self.__class__.__name__
 
     def get_nodes(self, request):
-        """
-        should return a list of NavigationNode instances
-        """
         raise NotImplementedError
 
 
 class Modifier(object):
 
-    def modify(self, request, nodes, namespace, root_id, post_cut, breadcrumb):
+    def modify(self, request, nodes, namespace, post_cut):
         pass
 
 
 class NavigationNode(object):
 
-    def __init__(self, title, url, id, parent_id=None, parent_namespace=None,
-                 attr=None, visible=True):
-        self.children = []  # do not touch
-        self.parent = None  # do not touch, code depends on this
-        self.namespace = None  # TODO: Assert why we need this and above
+    def __init__(self, title, url, id, parent_id=None, parent_namespace=None, attr=None, visible=True, sort_order=0):
+        self.children = []
+        self.parent = None
+        self.namespace = None
         self.title = title
         self.url = url
         self.id = id
         self.parent_id = parent_id
         self.parent_namespace = parent_namespace
         self.visible = visible
-        self.attr = attr or {}  # To avoid declaring a dict in defaults...
+        self.sort_order = sort_order
+        self.attr = attr or {}
 
     def __repr__(self):
         return "<Navigation Node: %s>" % smart_str(self.title)
@@ -45,15 +42,3 @@ class NavigationNode(object):
 
     def get_absolute_url(self):
         return self.url
-
-    def get_attribute(self, name):
-        return self.attr.get(name, None)
-
-    def get_descendants(self):
-        return sum(([node] + node.get_descendants() for node in self.children), [])
-
-    def get_ancestors(self):
-        if getattr(self, 'parent', None):
-            return [self.parent] + self.parent.get_ancestors()
-        else:
-            return []
