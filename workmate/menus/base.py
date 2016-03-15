@@ -6,8 +6,7 @@ class Menu(object):
     namespace = None
 
     def __init__(self):
-        if not self.namespace:
-            self.namespace = self.__class__.__name__
+        self.namespace = self.__class__.__name__
 
     def get_nodes(self, request):
         raise NotImplementedError
@@ -16,7 +15,7 @@ class Menu(object):
 class Modifier(object):
 
     def modify(self, request, nodes, namespace, post_cut):
-        pass
+        raise NotImplementedError
 
 
 class NavigationNode(object):

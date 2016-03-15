@@ -1,3 +1,4 @@
+from django.core.urlresolvers import reverse
 from django.template import Template
 from django.template.context import Context
 from django.test import TestCase
@@ -32,6 +33,32 @@ class StaticMenu2(StaticMenu):
         return nodes
 
 
+class StaticExtendedMenu(Menu):
+
+    def get_nodes(self, request):
+        node1 = NavigationNode('C EX', '/C_EX/', 1, 3, parent_namespace='StaticMenu')
+        node2 = NavigationNode('F', '/F/', 1)
+        nodes = [node1, node2]
+        return nodes
+
+
+class ParentNodeFirst(Menu):
+
+    def get_nodes(self, request):
+        node1 = NavigationNode('B', '/B/', 2, 1)
+        node2 = NavigationNode('A', '/A/', 1)
+        nodes = [node1, node2]
+        return nodes
+
+
+class InvalidURLMenu(Menu):
+
+    def get_nodes(self, request):
+        node1 = NavigationNode('invalid', reverse('foo'), 1)
+        nodes = [node1]
+        return nodes
+
+
 class VisibilityMenu(Menu):
 
     def get_nodes(self, request):
@@ -48,6 +75,30 @@ class VisibilityMenu(Menu):
 class InvalidMenuClass(object):
 
     pass
+
+
+class NavigationNodeTests(TestCase):
+
+    def setUp(self):
+        self.node = NavigationNode(
+            title='foo',
+            url='/',
+            id=1,
+            parent_id=2,
+            parent_namespace='AnotherMenu',
+            attr={'foo': True},
+            visible=False,
+            sort_order=1000
+        )
+
+    def test_repr(self):
+        self.assertEqual(str(self.node), '<Navigation Node: foo>')
+
+    def test_get_menu_title(self):
+        self.assertEqual(self.node.get_menu_title(), self.node.title)
+
+    def test_get_absolute_url(self):
+        self.assertEqual(self.node.get_absolute_url(), self.node.url)
 
 
 class MenuDescoveryTests(TestCase):
@@ -165,6 +216,38 @@ class MenuTemplateTagTests(TestCase):
         self.assertEqual(nodes[0].children[0].title, 'B')
         self.assertFalse(nodes[0].children[0].children)
         self.assertEqual(nodes[1].title, 'E')
+
+    def test_invalid_reverse_in_node_renders_empty_menu(self):
+        menu_pool.register_menu(InvalidURLMenu)
+        context = self.get_context()
+        tpl = Template("{% load menu_tags %}{% show_menu %}")
+        tpl.render(context)
+        nodes = context['children']
+        self.assertEqual(len(nodes), 0)
+
+    def test_parent_node_added_before_child(self):
+        menu_pool.register_menu(ParentNodeFirst)
+        context = self.get_context()
+        tpl = Template("{% load menu_tags %}{% show_menu %}")
+        tpl.render(context)
+        nodes = context['children']
+        self.assertEqual(nodes[0].title, 'A')
+        self.assertEqual(nodes[0].children[0].title, 'B')
+
+    def test_appending_nodes_to_existing_namespace(self):
+        menu_pool.register_menu(StaticMenu)
+        menu_pool.register_menu(StaticExtendedMenu)
+        context = self.get_context()
+        tpl = Template("{% load menu_tags %}{% show_menu %}")
+        tpl.render(context)
+        nodes = context['children']
+        self.assertEqual(nodes[0].title, 'A')
+        self.assertEqual(nodes[0].children[0].title, 'B')
+        self.assertEqual(nodes[0].children[0].children[0].title, 'C')
+        self.assertEqual(nodes[0].children[0].children[0].children[0].title, 'C EX')
+        self.assertEqual(nodes[0].children[0].children[1].title, 'D')
+        self.assertEqual(nodes[1].title, 'E')
+        self.assertEqual(nodes[2].title, 'F')
 
     def test_node_visibility(self):
         menu_pool.register_menu(VisibilityMenu)
