@@ -18,6 +18,17 @@ class SiteAbstract(models.Model):
         abstract = True
 
 
+class SiteOneToOneAbstract(models.Model):
+
+    site = models.OneToOneField(Site, default=settings.SITE_ID, editable=False)
+
+    onsite = CurrentSiteManager()
+    objects = models.Manager()
+
+    class Meta:
+        abstract = True
+
+
 class TagsAbstract(models.Model):
 
     tags = TaggableManager(blank=True)
