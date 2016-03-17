@@ -3,10 +3,10 @@ from django.template import Template
 from django.template.context import Context
 from django.test import TestCase
 
-from .helpers import get_request
 from workmate.menus.base import Menu, NavigationNode
 from workmate.menus.menu_pool import menu_pool
 from workmate.menus.exceptions import NamespaceAlreadyRegistered
+from workmate.test_utils.helpers import get_request
 
 
 class StaticMenu(Menu):

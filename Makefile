@@ -1,6 +1,4 @@
-TARGET?=tests
-
-.PHONY: docs test migrations
+.PHONY: docs test
 
 docs:
 	cd docs; make html
@@ -8,13 +6,7 @@ docs:
 
 test:
 	coverage erase
-	DJANGO_SETTINGS_MODULE=tests.settings PYTHONPATH=. \
-		coverage run --branch --source=workmate \
-		`which django-admin.py` test ${TARGET}
+	coverage run --branch --source=workmate `which django-admin.py` test
 	coverage combine
 	coverage html
 	coverage report
-
-migrations:
-	DJANGO_SETTINGS_MODULE=tests.settings PYTHONPATH=. \
-		django-admin.py makemigrations workmate

@@ -6,3 +6,5 @@
 # Runtime dependencies
 
 Django>=1.8,<1.10
+
+-e git://github.com/bigmassa/workmate_plugin.git#egg=workmate_plugin

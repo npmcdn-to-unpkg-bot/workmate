@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'taggit',
     'taggit_selectize',
     'workmate',
+    'workmate_plugin',
 )
 
 MIDDLEWARE_CLASSES = (
