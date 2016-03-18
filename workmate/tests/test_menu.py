@@ -1,12 +1,10 @@
 from django.core.urlresolvers import reverse
 from django.template import Template
-from django.template.context import Context
-from django.test import TestCase
 
 from workmate.menus.base import Menu, NavigationNode
-from workmate.menus.menu_pool import menu_pool
 from workmate.menus.exceptions import NamespaceAlreadyRegistered
-from workmate.test_utils.helpers import get_request
+from workmate.menus.menu_pool import menu_pool
+from workmate.test_utils.test_case import WorkmateTestCase
 
 
 class StaticMenu(Menu):
@@ -77,7 +75,7 @@ class InvalidMenuClass(object):
     pass
 
 
-class NavigationNodeTests(TestCase):
+class NavigationNodeTests(WorkmateTestCase):
 
     def setUp(self):
         self.node = NavigationNode(
@@ -101,7 +99,7 @@ class NavigationNodeTests(TestCase):
         self.assertEqual(self.node.get_absolute_url(), self.node.url)
 
 
-class MenuDescoveryTests(TestCase):
+class MenuDescoveryTests(WorkmateTestCase):
 
     def setUp(self):
         menu_pool.discovered = False
@@ -129,7 +127,7 @@ class MenuDescoveryTests(TestCase):
             menu_pool._expand_menus()
 
 
-class MenuTemplateTagTests(TestCase):
+class MenuTemplateTagTests(WorkmateTestCase):
 
     def setUp(self):
         menu_pool.discovered = False
@@ -140,12 +138,6 @@ class MenuTemplateTagTests(TestCase):
     def tearDown(self):
         menu_pool._expanded = False
         menu_pool.menus = self.old_menu
-
-    def get_context(self, path=None):
-        context = {}
-        request = get_request(path)
-        context['request'] = request
-        return Context(context)
 
     def test_menu_full_level(self):
         menu_pool.register_menu(StaticMenu)

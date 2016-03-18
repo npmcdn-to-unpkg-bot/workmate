@@ -7,7 +7,7 @@ from django.test import RequestFactory
 from workmate.models import SiteSetting
 
 
-def create_default_site_settings():
+def create_site_settings():
     return SiteSetting.onsite.create(
         company_name='Foo Inc.',
         company_email_address='foo@inc.com'
@@ -23,9 +23,9 @@ def get_request(language=None, user=None, path=None):
     return request
 
 
-def get_context(path=None):
+def get_context(path=None, user=None):
     path = path or '/'
     context = {}
-    request = get_request(path=path)
+    request = get_request(user=user, path=path)
     context['request'] = request
     return Context(context)

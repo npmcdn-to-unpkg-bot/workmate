@@ -1,12 +1,12 @@
 from django.conf import settings
 from django.contrib.sites.managers import CurrentSiteManager
-from django.db.models import ForeignKey, Manager, OneToOneField
-from django.test import TestCase
+from django.db.models import ForeignKey, OneToOneField
 
 from workmate.models.abstract import SiteAbstract, SiteOneToOneAbstract
+from workmate.test_utils.test_case import WorkmateTestCase
 
 
-class SiteAbstractModelTests(TestCase):
+class SiteAbstractModelTests(WorkmateTestCase):
 
     def test_site(self):
         field = SiteAbstract._meta.get_field("site")
@@ -16,13 +16,13 @@ class SiteAbstractModelTests(TestCase):
         self.assertEqual(field.default, settings.SITE_ID)
 
 
-class SiteAbstractManagerTests(TestCase):
+class SiteAbstractManagerTests(WorkmateTestCase):
 
     def test_default_manager(self):
         self.assertEqual(SiteAbstract._default_manager.__class__, CurrentSiteManager)
 
 
-class SiteOneToOneAbstractModelTests(TestCase):
+class SiteOneToOneAbstractModelTests(WorkmateTestCase):
 
     def test_site(self):
         field = SiteOneToOneAbstract._meta.get_field("site")
@@ -32,7 +32,7 @@ class SiteOneToOneAbstractModelTests(TestCase):
         self.assertEqual(field.default, settings.SITE_ID)
 
 
-class SiteOneToOneAbstractManagerTests(TestCase):
+class SiteOneToOneAbstractManagerTests(WorkmateTestCase):
 
     def test_default_manager(self):
         self.assertEqual(SiteAbstract._default_manager.__class__, CurrentSiteManager)

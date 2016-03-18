@@ -1,14 +1,14 @@
 from mock import patch
 
 from django.core.urlresolvers import reverse
-from django.test import TestCase
 
-from workmate.tests.mixins import AuthTestMixin
 from workmate.models import Contact
 from workmate.models.abstract import SiteAbstract
+from workmate.test_utils.test_case import WorkmateTestCase
+from workmate.tests.mixins import AuthTestMixin
 
 
-class ModelTests(TestCase):
+class ModelTests(WorkmateTestCase):
 
     def test_base_class_is_site_abstract(self):
         self.assertEqual(Contact.__base__, SiteAbstract)
@@ -90,26 +90,26 @@ class ModelTests(TestCase):
         self.assertEqual(contact.color, '#ffffff')
 
 
-class ListViewTests(AuthTestMixin, TestCase):
+class ListViewTests(AuthTestMixin, WorkmateTestCase):
 
     def get_url(self):
         return reverse('contact-list')
 
 
-class CreateViewTests(AuthTestMixin, TestCase):
+class CreateViewTests(AuthTestMixin, WorkmateTestCase):
 
     def get_url(self):
         return reverse('contact-create')
 
 
-class UpdateViewTests(AuthTestMixin, TestCase):
+class UpdateViewTests(AuthTestMixin, WorkmateTestCase):
 
     def get_url(self):
         contact = Contact.objects.create(first_name='Mr', last_name='Smith')
         return reverse('contact-update', kwargs={'pk': contact.id})
 
 
-class DeleteViewTests(AuthTestMixin, TestCase):
+class DeleteViewTests(AuthTestMixin, WorkmateTestCase):
 
     def get_url(self):
         contact = Contact.objects.create(first_name='Mr', last_name='Smith')

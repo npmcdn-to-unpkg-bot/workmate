@@ -1,12 +1,9 @@
-from django.contrib.auth.models import AnonymousUser, User
 from django.template import Template
-from django.template.context import Context
-from django.test import TestCase
 from django.utils.translation import ugettext_lazy as _
 
 from workmate.menus.base import Menu, NavigationNode
 from workmate.menus.menu_pool import menu_pool
-from workmate.test_utils.helpers import get_request
+from workmate.test_utils.test_case import WorkmateTestCase
 
 
 class StaticMenu(Menu):
@@ -24,25 +21,17 @@ class StaticMenu(Menu):
         return nodes
 
 
-class MenuAuthTests(TestCase):
+class MenuAuthTests(WorkmateTestCase):
 
     def setUp(self):
         menu_pool.discovered = False
         self.old_menu = menu_pool.menus
         menu_pool.menus = {}
         menu_pool.discover_menus()
-        self.user = User.objects._create_user('user', 'user@ex.com', 'password', is_staff=False, is_superuser=False)
-        self.staff = User.objects._create_user('staff', 'staff@ex.com', 'password', is_staff=True, is_superuser=False)
 
     def tearDown(self):
         menu_pool._expanded = False
         menu_pool.menus = self.old_menu
-
-    def get_context(self, user=None):
-        context = {}
-        request = get_request(user=user)
-        context['request'] = request
-        return Context(context)
 
     def test_menu_for_anonymous(self):
         menu_pool.register_menu(StaticMenu)
@@ -57,7 +46,8 @@ class MenuAuthTests(TestCase):
 
     def test_menu_for_authenticated(self):
         menu_pool.register_menu(StaticMenu)
-        context = self.get_context(user=self.user)
+        user = self.create_user()
+        context = self.get_context(user=user)
         tpl = Template("{% load menu_tags %}{% show_menu %}")
         tpl.render(context)
         nodes = context['children']
@@ -68,7 +58,8 @@ class MenuAuthTests(TestCase):
 
     def test_menu_for_staff(self):
         menu_pool.register_menu(StaticMenu)
-        context = self.get_context(user=self.staff)
+        user = self.create_user(is_staff=True)
+        context = self.get_context(user=user)
         tpl = Template("{% load menu_tags %}{% show_menu %}")
         tpl.render(context)
         nodes = context['children']
