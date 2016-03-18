@@ -1,7 +1,10 @@
 [run]
 branch = True
 source = workmate
-omit = */migrations/*
+omit =
+    workmate/migrations/*
+    workmate/tests/*
+    workmate/test_utils/*
 parallel = true
 
 [report]
