@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
+from django import forms
 from django.contrib import admin
-
+from django.contrib.sites.models import Site
 from reversion.admin import VersionAdmin
 
-from .models import Contact
+from .models import Contact, SiteSetting
 
 
 class ContactAdmin(VersionAdmin):
@@ -13,4 +14,17 @@ class ContactAdmin(VersionAdmin):
     search_fields = ('first_name', 'last_name', 'email_address')
 
 
+class SiteInline(admin.StackedInline):
+    model = SiteSetting
+    exclude = ['id']
+    can_delete = False
+
+
+class SiteAdmin(VersionAdmin):
+
+    inlines = (SiteInline,)
+
+
 admin.site.register(Contact, ContactAdmin)
+admin.site.unregister(Site)
+admin.site.register(Site, SiteAdmin)

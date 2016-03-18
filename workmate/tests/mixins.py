@@ -1,6 +1,8 @@
 from django.conf import settings
 from django.contrib.auth import get_user_model
 
+from workmate.test_utils.helpers import create_default_site_settings
+
 
 UserModel = get_user_model()
 
@@ -11,6 +13,7 @@ class AuthTestMixin(object):
         raise NotImplementedError
 
     def setUp(self):
+        create_default_site_settings()
         self.url = self.get_url()
         self.user = UserModel.objects.create_user(
             username='uname', email='u@u.com', password='pword')

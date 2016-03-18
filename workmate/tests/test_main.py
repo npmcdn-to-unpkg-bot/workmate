@@ -1,7 +1,7 @@
 from django.core.urlresolvers import reverse
 from django.test import TestCase
 
-from .mixins import AuthTestMixin
+from workmate.tests.mixins import AuthTestMixin
 
 
 class MainTests(AuthTestMixin, TestCase):

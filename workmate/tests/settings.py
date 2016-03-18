@@ -27,9 +27,10 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'workmate.middleware.sitesetup.SiteSettingMiddleware',
 )
 
-ROOT_URLCONF = 'workmate.test.urls'
+ROOT_URLCONF = 'workmate.tests.urls'
 
 SITE_ID = 1
 
