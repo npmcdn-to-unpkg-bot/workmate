@@ -122,6 +122,7 @@ TEMPLATES = [
                 'django.core.context_processors.request',
                 'django.core.context_processors.media',
                 'django.core.context_processors.static',
+                'workmate.context_processors.workmate_settings',
             ],
         },
     },

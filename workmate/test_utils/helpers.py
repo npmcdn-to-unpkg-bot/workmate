@@ -1,13 +1,14 @@
 # -*- coding: utf-8 -*-
 from django.conf import settings
 from django.contrib.auth.models import AnonymousUser
+from django.template.context import Context
 from django.test import RequestFactory
 
 from workmate.models import SiteSetting
 
 
 def create_default_site_settings():
-    SiteSetting.onsite.create(
+    return SiteSetting.onsite.create(
         company_name='Foo Inc.',
         company_email_address='foo@inc.com'
     )
@@ -20,3 +21,11 @@ def get_request(language=None, user=None, path=None):
     request.LANGUAGE_CODE = language or settings.LANGUAGE_CODE
     request.user = user or AnonymousUser()
     return request
+
+
+def get_context(path=None):
+    path = path or '/'
+    context = {}
+    request = get_request(path=path)
+    context['request'] = request
+    return Context(context)

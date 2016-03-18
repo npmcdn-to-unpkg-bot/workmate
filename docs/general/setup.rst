@@ -14,9 +14,32 @@ Add the following apps to the ``INSTALLED_APPS``::
         ...
     )
 
+Ensure you are using valid auth urls::
+
     LOGIN_URL = '/login/'
     LOGIN_REDIRECT_URL = '/'
     LOGOUT_URL = '/logout/'
+
+Add the middleware::
+
+    MIDDLEWARE_CLASSES = (
+        ...
+        'workmate.middleware.sitesetup.SiteSettingMiddleware',
+    )
+
+Add the context processors::
+
+    TEMPLATES = [
+        {
+            ...
+            'OPTIONS': {
+                'context_processors': [
+                    ...
+                    'workmate.context_processors.workmate_settings',
+                ],
+            },
+        },
+    ]
 
 This project requires all the auth urls, the below is from the example project and uses the admin templates for ease.
 Customize as you feel fit.
