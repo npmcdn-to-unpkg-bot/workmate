@@ -1,23 +1,55 @@
-* {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+.layout {
+    padding: 20px;
 }
 
-#layout {
-    padding: 0;
+.overlay {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background: #333
 }
 
-.sidebar {
+.menu-toggle-label {
+    cursor: pointer;
     position: fixed;
-    top: 0;
-    bottom: 0;
-    background: rgb(61, 79, 93);
-    color: #fff;
+    right: 10px;
+    top: 10px;
+    z-index: 100;
+    cursor: pointer;
 }
 
-.content {
-    padding: 2em 3em 0;
-    margin-left: 25%;
-    padding: 2em 1em 0;
+.menu-toggle-label~.overlay-menu{
+	opacity: 0;
+	visibility: hidden;
+	-webkit-transition: opacity 0.5s, visibility 0s 0.5s;
+	transition: opacity 0.5s, visibility 0s 0.5s;
 }
+
+input#menu-toggle {
+    display: none;
+}
+
+input#menu-toggle:checked~.menu-toggle-label {
+	color: #fff;
+}
+
+input#menu-toggle~.menu-toggle-label .menu-toggle-out,
+input#menu-toggle:checked~.menu-toggle-label .menu-toggle-in {
+	display: inline-block;
+}
+
+input#menu-toggle:checked~.menu-toggle-label .menu-toggle-out,
+input#menu-toggle~.menu-toggle-label .menu-toggle-in {
+	display: none;
+}
+
+input#menu-toggle:checked~.overlay-menu{
+	opacity: 1;
+    z-index: 99;
+	visibility: visible;
+	-webkit-transition: opacity 0.5s;
+	transition: opacity 0.5s;
+}
+

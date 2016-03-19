@@ -5,26 +5,16 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{% block title %}Workmate{% endblock %}</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="{% static 'pure/css/pure-min.css' %}">
         <link rel="stylesheet" href="{% static 'pure/css/grids-responsive-min.css' %}">
+        <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
         <link rel="stylesheet" href="{% static 'css/site.css' %}">
         {% block extra_css %}{% endblock %}
         {% block extra_head %}{% endblock %}
     </head>
     <body>
-        <div id="layout" class="pure-g">
-            <div class="sidebar pure-u-1-4">
-                <div id="menu">
-                    <div class="pure-menu">
-                        <a class="pure-menu-heading" href="/">Workmate</a>
-                        <ul class="pure-menu-list">
-                            {% show_menu %}
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="content pure-u-3-4">
+        <div class="layout pure-g">
+            <div class="content pure-u-1">
                 <div class="subhead">
                     <h1>{% block title_tag %}{% endblock %}</h1>
                     <div class="controls">{% block title_controls %}{% endblock %}</div>
@@ -34,7 +24,25 @@
                 </div>
             </div>
         </div>
+
+        <input type="checkbox" id="menu-toggle">
+        <label class="menu-toggle-label" for="menu-toggle">
+            <span class="menu-toggle-out"><i class="fa fa-bars"></i> MENU</span>
+            <span class="menu-toggle-in"><i class="fa fa-bars"></i> MENU</span>
+        </label>
+        <div class="overlay overlay-menu">
+			<div id="menu" class="pure-u-1-4">
+                <div class="pure-menu">
+                    <a class="pure-menu-heading" href="/">Workmate</a>
+                    <ul class="pure-menu-list">
+                        {% show_menu %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+
         <script src="{% static 'pure/js/menus.js' %}"></script>
         {% block extra_js %}{% endblock %}
+
     </body>
 </html>
