@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
-from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext_lazy as _
 
+from workmate.conf import settings
 from workmate.menus.base import Menu, NavigationNode
 from workmate.menus.menu_pool import menu_pool
 

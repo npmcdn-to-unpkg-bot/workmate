@@ -1,4 +1,4 @@
-from django.conf import settings
+from workmate.conf import settings
 
 
 class AuthTestMixin(object):

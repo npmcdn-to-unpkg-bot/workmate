@@ -1,6 +1,6 @@
-from django.conf import settings
 from django.core.urlresolvers import reverse
 
+from workmate.conf import settings
 from workmate.models import SiteSetting
 from workmate.models.abstract import SiteOneToOneAbstract
 from workmate.test_utils.test_case import WorkmateTestCase

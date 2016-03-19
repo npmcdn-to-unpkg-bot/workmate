@@ -1,8 +1,8 @@
-from django.conf import settings
 from django.contrib import messages
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 
+from workmate.conf import settings
 from workmate.models import SiteSetting
 
 

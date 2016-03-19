@@ -1,7 +1,7 @@
-from django.conf import settings
 from django.contrib.sites.managers import CurrentSiteManager
 from django.db.models import ForeignKey, OneToOneField
 
+from workmate.conf import settings
 from workmate.models.abstract import SiteAbstract, SiteOneToOneAbstract
 from workmate.test_utils.test_case import WorkmateTestCase
 
