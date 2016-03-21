@@ -1,17 +1,24 @@
 {% extends 'workmate/base.html' %}
+{% load i18n %}
 
-{% block title %}Workmate | Delete Contact{% endblock %}
+{% block page_title %}Workmate | Delete Contact{% endblock %}
 
-{% block title_tag %}Delete Contact{% endblock %}
-{% block title_controls %}{% endblock %}
+{% block extra_css %}{% endblock %}
+{% block extra_head %}{% endblock %}
+
+{% block title_extra_content %}{% endblock %}
+{% block title_h1 %}Delete Contact{% endblock %}
+{% block title_sub_header %}{% blocktrans %}Delete {{ object }}.{% endblocktrans %}{% endblock %}
 
 {% block content %}
-    <form class="pure-form pure-form-aligned" method="post" novalidate>
+    <form class="ui form" method="post" novalidate>
         {% csrf_token %}
         <p>Are you sure you want to delete "{{ object }}"?</p>
         <div class="pure-controls">
-            <a class="pure-button" href="{{ object.get_absolute_url }}"><i class="fa fa-times"></i> Cancel</a>
-            <button type="submit" class="pure-button"><i class="fa fa-check"></i> Confirm</button>
+            <a class="ui button" href="{{ object.get_absolute_url }}"><i class="fa fa-times"></i> Cancel</a>
+            <button type="submit" class="ui primary button"><i class="fa fa-check"></i> Confirm</button>
         </div>
     </form>
 {% endblock %}
+
+{% block extra_js %}{% endblock %}

@@ -1,8 +1,12 @@
-<div class="pure-control-group">
+<div class="field {% if field.field.required %}required{% endif %} {% if field.errors %}error{% endif %}">
     {{ field.label_tag }}
     {{ field }}
     {% if field.help_text %}
     <small class="help">{{ field.help_text|safe }}</small>
     {% endif %}
-    {{ field.errors }}
+    {% if field.errors %}
+        <div class="ui basic red pointing prompt label transition visible">
+            {% for error in field.errors %}{{ error }}{% endfor %}
+        </div>
+    {% endif %}
 </div>

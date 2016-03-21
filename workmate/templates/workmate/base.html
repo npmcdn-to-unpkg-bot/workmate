@@ -4,44 +4,55 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{% block title %}Workmate{% endblock %}</title>
-        <link rel="stylesheet" href="{% static 'pure/css/pure-min.css' %}">
-        <link rel="stylesheet" href="{% static 'pure/css/grids-responsive-min.css' %}">
-        <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
-        <link rel="stylesheet" href="{% static 'css/site.css' %}">
+        <title>{% block page_title %}Workmate{% endblock %}</title>
+        <!--<link rel="stylesheet" href="{% static 'semantic-ui/semantic.min.css' %}">-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.min.css">
+        <link rel="stylesheet" href="{% static 'workmate/workmate.css' %}">
         {% block extra_css %}{% endblock %}
         {% block extra_head %}{% endblock %}
     </head>
-    <body>
-        <div class="layout pure-g">
-            <div class="content pure-u-1">
-                <div class="subhead">
-                    <h1>{% block title_tag %}{% endblock %}</h1>
-                    <div class="controls">{% block title_controls %}{% endblock %}</div>
+    <body class="basic minimal pushable">
+
+        <div class="ui vertical inverted sidebar menu left">
+            <div class="item">
+                <div class="header">Menu Name</div>
+                <div class="menu">
+                    {% show_menu %}
                 </div>
-                <div class="body">
+            </div>
+        </div>
+        <div class="ui black big launch right attached fixed button">
+            <i class="content icon"></i>
+            <span class="text">Menu</span>
+        </div>
+        <div class="pusher">
+            <div class="full height">
+                <div class="ui masthead vertical segment">
+                    <div class="ui container">
+                        <h1 class="ui header">
+                            {% block title_h1 %}{% endblock %}
+                            <div class="sub header">
+                                {% block title_sub_header %}{% endblock %}
+                            </div>
+                        </h1>
+                        <div class="ui divider"></div>
+                        {% block title_extra_content %}{% endblock %}
+                        {% include 'workmate/partials/messages.html' %}
+                    </div>
+                </div>
+
+                <div class="ui main container">
                     {% block content %}{% endblock %}
                 </div>
             </div>
         </div>
 
-        <input type="checkbox" id="menu-toggle">
-        <label class="menu-toggle-label" for="menu-toggle">
-            <span class="menu-toggle-out"><i class="fa fa-bars"></i> MENU</span>
-            <span class="menu-toggle-in"><i class="fa fa-bars"></i> MENU</span>
-        </label>
-        <div class="overlay overlay-menu">
-			<div id="menu" class="pure-u-1-4">
-                <div class="pure-menu">
-                    <a class="pure-menu-heading" href="/">Workmate</a>
-                    <ul class="pure-menu-list">
-                        {% show_menu %}
-                    </ul>
-                </div>
-            </div>
-        </div>
+        {% include 'workmate/partials/footer.html' %}
 
-        <script src="{% static 'pure/js/menus.js' %}"></script>
+        <script src="{% static 'jQuery/jquery-2.1.4.min.js' %}"></script>
+        <!--<script src="{% static 'semantic-ui/semantic.min.js' %}"></script>-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.min.js"></script>
+        <script src="{% static 'workmate/workmate.js' %}"></script>
         {% block extra_js %}{% endblock %}
 
     </body>

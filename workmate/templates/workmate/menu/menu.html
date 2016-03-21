@@ -1,16 +1,8 @@
 {% load menu_tags %}
 
 {% for child in children %}
-	{% if child.children %}
-		<li class="pure-menu-item pure-menu-has-children">
-			<a href="#" class="pure-menu-link">{{ child.get_menu_title }}</a>
-			<ul class="pure-menu-children">
-                {% show_menu from_level to_level template "" child %}
-			</ul>
-		</li>
-    {% else %}
-        <li class="pure-menu-item">
-            <a class="pure-menu-link" href="{{ child.attr.redirect_url|default:child.get_absolute_url }}">{{ child.get_menu_title }}</a>
-        </li>
+	<a href="{{ child.get_absolute_url }}" class="item">{{ child.get_menu_title }}</a>
+    {% if child.children %}
+        {% show_menu from_level to_level template "" child %}
     {% endif %}
 {% endfor %}
