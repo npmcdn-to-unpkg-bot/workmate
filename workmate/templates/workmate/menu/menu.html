@@ -1,5 +1,13 @@
 {% load menu_tags %}
 
-{% for node in nodes %}
-	<a href="{{ node.get_absolute_url }}" class="item">{{ node.get_menu_title }}</a>
+{% regroup nodes by menu_title as menu_list %}
+{% for menu in menu_list %}
+	<div class="item">
+		<div class="header">{{ menu.grouper }}</div>
+		<div class="menu">
+		{% for node in menu.list %}
+			<a href="{{ node.get_absolute_url }}" class="item">{{ node.get_node_title }}</a>
+		{% endfor %}
+		</div>
+	</div>
 {% endfor %}

@@ -34,8 +34,7 @@ class ShowMenu(InclusionTag):
         request = context['request']
         nodes = menu_pool.get_nodes(request, namespace)
         nodes = check_visibility(nodes)
-        nodes = menu_pool.apply_modifiers(nodes, request, namespace)
-        nodes = sorted(nodes, key=lambda c: (c.sort_order, c.title))
+        nodes = sorted(nodes, key=lambda n: (n.menu_sort_order, n.menu_title, n.sort_order, n.title))
 
         context['nodes'] = nodes
         context['template'] = template

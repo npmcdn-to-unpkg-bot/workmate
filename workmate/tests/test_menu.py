@@ -9,6 +9,8 @@ from workmate.test_utils.test_case import WorkmateTestCase
 
 class StaticMenu(Menu):
 
+    title = 'Static Menu'
+
     def get_nodes(self, request):
         node1 = NavigationNode('A', '/A/', 1)
         node2 = NavigationNode('B', '/B/', 2)
@@ -20,6 +22,8 @@ class StaticMenu(Menu):
 
 
 class StaticMenu2(StaticMenu):
+
+    title = 'Static Menu 2'
 
     def get_nodes(self, request):
         node1 = NavigationNode('F', '/F/', 1)
@@ -45,6 +49,8 @@ class InvalidURLMenu(Menu):
 
 
 class VisibilityMenu(Menu):
+
+    title = 'Visibility Menu'
 
     def get_nodes(self, request):
         node1 = NavigationNode('A', '/A/', 1)
@@ -79,7 +85,7 @@ class NavigationNodeTests(WorkmateTestCase):
         self.assertEqual(str(self.node), '<Navigation Node: foo>')
 
     def test_get_menu_title(self):
-        self.assertEqual(self.node.get_menu_title(), self.node.title)
+        self.assertEqual(self.node.get_node_title(), self.node.title)
 
     def test_get_absolute_url(self):
         self.assertEqual(self.node.get_absolute_url(), self.node.url)
@@ -133,14 +139,19 @@ class MenuTemplateTagTests(WorkmateTestCase):
         nodes = context['nodes']
         self.assertEqual(nodes[0].title, 'A')
         self.assertEqual(nodes[0].get_absolute_url(), '/A/')
+        self.assertEqual(nodes[0].menu_title, 'Static Menu')
         self.assertEqual(nodes[1].title, 'B')
         self.assertEqual(nodes[1].get_absolute_url(), '/B/')
+        self.assertEqual(nodes[1].menu_title, 'Static Menu')
         self.assertEqual(nodes[2].title, 'C')
         self.assertEqual(nodes[2].get_absolute_url(), '/C/')
+        self.assertEqual(nodes[2].menu_title, 'Static Menu')
         self.assertEqual(nodes[3].title, 'D')
         self.assertEqual(nodes[3].get_absolute_url(), '/D/')
+        self.assertEqual(nodes[3].menu_title, 'Static Menu')
         self.assertEqual(nodes[4].title, 'E')
         self.assertEqual(nodes[4].get_absolute_url(), '/E/')
+        self.assertEqual(nodes[4].menu_title, 'Static Menu')
 
     def test_menu_nodes_from_multiple_menus(self):
         menu_pool.register_menu(StaticMenu)
@@ -187,7 +198,10 @@ class MenuTemplateTagTests(WorkmateTestCase):
         self.assertEqual(nodes[0].title, 'A')
         self.assertEqual(nodes[1].title, 'B')
         self.assertEqual(nodes[2].title, 'C')
+        self.assertEqual(nodes[2].menu_title, 'Static Menu')
         self.assertEqual(nodes[3].title, 'C EX')
+        # ensure the appended node has the correct title
+        self.assertEqual(nodes[3].menu_title, 'Static Menu')
         self.assertEqual(nodes[4].title, 'D')
         self.assertEqual(nodes[5].title, 'E')
         self.assertEqual(nodes[6].title, 'F')

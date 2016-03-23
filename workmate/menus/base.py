@@ -4,9 +4,12 @@ from django.utils.encoding import smart_str
 
 class Menu(object):
     namespace = None
+    title = None
+    sort_order = 0
 
     def __init__(self):
         self.namespace = self.__class__.__name__
+        self.title = self.title or self.namespace
 
     def get_nodes(self, request):
         raise NotImplementedError
@@ -20,22 +23,22 @@ class Modifier(object):
 
 class NavigationNode(object):
 
-    def __init__(self, title, url, id, parent_namespace=None, attr=None, visible=True, sort_order=0):
-        self.children = []
-        self.parent = None
+    def __init__(self, title, url, id, parent_namespace=None, attr=None, visible=True, sort_order=None):
+        self.menu_title = None
+        self.menu_sort_order = None
         self.namespace = None
         self.title = title
         self.url = url
         self.id = id
         self.parent_namespace = parent_namespace
         self.visible = visible
-        self.sort_order = sort_order
+        self.sort_order = sort_order or 0
         self.attr = attr or {}
 
     def __repr__(self):
         return "<Navigation Node: %s>" % smart_str(self.title)
 
-    def get_menu_title(self):
+    def get_node_title(self):
         return self.title
 
     def get_absolute_url(self):

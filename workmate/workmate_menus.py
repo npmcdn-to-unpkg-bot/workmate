@@ -9,6 +9,9 @@ from workmate.menus.menu_pool import menu_pool
 
 class MainMenu(Menu):
 
+    title = _('Main Menu')
+    sort_order = -1
+
     def get_nodes(self, request):
         node1 = NavigationNode(_('Contacts'), reverse('contact-list'), 1)
         nodes = [node1, ]
@@ -19,6 +22,9 @@ menu_pool.register_menu(MainMenu)
 
 
 class AdminMenu(Menu):
+
+    title = _('Administration')
+    sort_order = 99
 
     def get_nodes(self, request):
         node1 = NavigationNode(_('Site Administration'), reverse('admin:index'), 1, attr={'staff_only': True})
@@ -31,9 +37,12 @@ menu_pool.register_menu(AdminMenu)
 
 class AccountMenu(Menu):
 
+    title = _('Account')
+    sort_order = 100
+
     def get_nodes(self, request):
-        node1 = NavigationNode(_('Change Password'), reverse('password_change'), 1, sort_order=1000)
-        node2 = NavigationNode(_('Logout'), settings.LOGOUT_URL, 2, sort_order=1000)
+        node1 = NavigationNode(_('Change Password'), reverse('password_change'), 1)
+        node2 = NavigationNode(_('Logout'), settings.LOGOUT_URL, 2)
         nodes = [node1, node2]
         return nodes
 

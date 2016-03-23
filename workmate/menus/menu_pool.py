@@ -59,11 +59,17 @@ class MenuPool(object):
                 nodes = menu.get_nodes(request)
             except NoReverseMatch:
                 nodes = []
+
             # ensure each node has a namespace
             # note at this point a node may belong to another menu via parent_namespace
             for node in nodes:
                 node.namespace = node.parent_namespace or menu_class_name
                 node.parent_namespace = node.parent_namespace or node.namespace
+                # set attributes from menu class for easy template grouping
+                # this means the nodes can stay a flat list and saves the
+                # problem of ordering a dictionary
+                node.menu_title = self.menus[node.namespace].title
+                node.menu_sort_order = self.menus[node.namespace].sort_order
             all_menu_nodes += nodes
 
         # redistribute the nodes across the menus they belong to
@@ -76,8 +82,7 @@ class MenuPool(object):
         # finally return the menus
         for menu_class in reorganised_nodes:
             if not namespace or namespace == menu_class:
-                nodes_for_class = reorganised_nodes[menu_class]
-                final_nodes += nodes_for_class
+                final_nodes += reorganised_nodes[menu_class]
 
         return final_nodes
 
