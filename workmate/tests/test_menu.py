@@ -11,9 +11,9 @@ class StaticMenu(Menu):
 
     def get_nodes(self, request):
         node1 = NavigationNode('A', '/A/', 1)
-        node2 = NavigationNode('B', '/B/', 2, 1)
-        node3 = NavigationNode('C', '/C/', 3, 2)
-        node4 = NavigationNode('D', '/D/', 4, 2)
+        node2 = NavigationNode('B', '/B/', 2)
+        node3 = NavigationNode('C', '/C/', 3)
+        node4 = NavigationNode('D', '/D/', 4)
         node5 = NavigationNode('E', '/E/', 5)
         nodes = [node1, node2, node3, node4, node5]
         return nodes
@@ -23,28 +23,15 @@ class StaticMenu2(StaticMenu):
 
     def get_nodes(self, request):
         node1 = NavigationNode('F', '/F/', 1)
-        node2 = NavigationNode('G', '/G/', 2, 1)
-        node3 = NavigationNode('H', '/H/', 3, 2)
-        node4 = NavigationNode('I', '/I/', 4, 2)
-        node5 = NavigationNode('J', '/J/', 5)
-        nodes = [node1, node2, node3, node4, node5]
+        nodes = [node1]
         return nodes
 
 
 class StaticExtendedMenu(Menu):
 
     def get_nodes(self, request):
-        node1 = NavigationNode('C EX', '/C_EX/', 1, 3, parent_namespace='StaticMenu')
+        node1 = NavigationNode('C EX', '/C_EX/', 1, parent_namespace='StaticMenu')
         node2 = NavigationNode('F', '/F/', 1)
-        nodes = [node1, node2]
-        return nodes
-
-
-class ParentNodeFirst(Menu):
-
-    def get_nodes(self, request):
-        node1 = NavigationNode('B', '/B/', 2, 1)
-        node2 = NavigationNode('A', '/A/', 1)
         nodes = [node1, node2]
         return nodes
 
@@ -61,11 +48,11 @@ class VisibilityMenu(Menu):
 
     def get_nodes(self, request):
         node1 = NavigationNode('A', '/A/', 1)
-        node2 = NavigationNode('B', '/B/', 2, 1)
-        node3 = NavigationNode('C', '/C/', 3, 2)
-        node4 = NavigationNode('D', '/D/', 4, 2, visible=False)
+        node2 = NavigationNode('B', '/B/', 2)
+        node3 = NavigationNode('C', '/C/', 3)
+        node4 = NavigationNode('D', '/D/', 4, visible=False)
         node5 = NavigationNode('E', '/E/', 5, visible=False)
-        node6 = NavigationNode('F', '/F/', 6, 5)
+        node6 = NavigationNode('F', '/F/', 6)
         nodes = [node1, node2, node3, node4, node5, node6]
         return nodes
 
@@ -139,92 +126,57 @@ class MenuTemplateTagTests(WorkmateTestCase):
         menu_pool._expanded = False
         menu_pool.menus = self.old_menu
 
-    def test_menu_full_level(self):
+    def test_menu_nodes(self):
         menu_pool.register_menu(StaticMenu)
         context = self.get_context()
         tpl = Template("{% load menu_tags %}{% show_menu %}")
         tpl.render(context)
-        nodes = context['children']
+        nodes = context['nodes']
         self.assertEqual(nodes[0].title, 'A')
         self.assertEqual(nodes[0].get_absolute_url(), '/A/')
-        self.assertEqual(nodes[0].children[0].title, 'B')
-        self.assertEqual(nodes[0].children[0].get_absolute_url(), '/B/')
-        self.assertEqual(nodes[0].children[0].children[0].title, 'C')
-        self.assertEqual(nodes[0].children[0].children[0].get_absolute_url(), '/C/')
-        self.assertEqual(nodes[0].children[0].children[1].title, 'D')
-        self.assertEqual(nodes[0].children[0].children[1].get_absolute_url(), '/D/')
-        self.assertEqual(nodes[1].title, 'E')
-        self.assertEqual(nodes[1].get_absolute_url(), '/E/')
+        self.assertEqual(nodes[1].title, 'B')
+        self.assertEqual(nodes[1].get_absolute_url(), '/B/')
+        self.assertEqual(nodes[2].title, 'C')
+        self.assertEqual(nodes[2].get_absolute_url(), '/C/')
+        self.assertEqual(nodes[3].title, 'D')
+        self.assertEqual(nodes[3].get_absolute_url(), '/D/')
+        self.assertEqual(nodes[4].title, 'E')
+        self.assertEqual(nodes[4].get_absolute_url(), '/E/')
 
-    def test_menu_from_multiple_menus(self):
+    def test_menu_nodes_from_multiple_menus(self):
         menu_pool.register_menu(StaticMenu)
         menu_pool.register_menu(StaticMenu2)
         context = self.get_context()
         tpl = Template("{% load menu_tags %}{% show_menu %}")
         tpl.render(context)
-        nodes = context['children']
+        nodes = context['nodes']
         self.assertEqual(nodes[0].title, 'A')
-        self.assertEqual(nodes[0].children[0].title, 'B')
-        self.assertEqual(nodes[0].children[0].children[0].title, 'C')
-        self.assertEqual(nodes[0].children[0].children[1].title, 'D')
-        self.assertEqual(nodes[1].title, 'E')
-        self.assertEqual(nodes[2].title, 'F')
-        self.assertEqual(nodes[2].children[0].title, 'G')
-        self.assertEqual(nodes[2].children[0].children[0].title, 'H')
-        self.assertEqual(nodes[2].children[0].children[1].title, 'I')
-        self.assertEqual(nodes[3].title, 'J')
+        self.assertEqual(nodes[1].title, 'B')
+        self.assertEqual(nodes[2].title, 'C')
+        self.assertEqual(nodes[3].title, 'D')
+        self.assertEqual(nodes[4].title, 'E')
+        self.assertEqual(nodes[5].title, 'F')
 
     def test_menu_from_single_namespace(self):
         menu_pool.register_menu(StaticMenu)
         menu_pool.register_menu(StaticMenu2)
         context = self.get_context()
-        tpl = Template('{% load menu_tags %}{% show_menu 0 100 "workmate/menu/menu.html" "StaticMenu" %}')
+        tpl = Template('{% load menu_tags %}{% show_menu "workmate/menu/menu.html" "StaticMenu" %}')
         tpl.render(context)
-        nodes = context['children']
-        self.assertEqual(len(nodes), 2)
+        nodes = context['nodes']
         self.assertEqual(nodes[0].title, 'A')
-        self.assertEqual(nodes[0].children[0].title, 'B')
-        self.assertEqual(nodes[0].children[0].children[0].title, 'C')
-        self.assertEqual(nodes[0].children[0].children[1].title, 'D')
-        self.assertEqual(nodes[1].title, 'E')
-
-    def test_menu_from_level(self):
-        menu_pool.register_menu(StaticMenu)
-        context = self.get_context()
-        tpl = Template("{% load menu_tags %}{% show_menu 1 %}")
-        tpl.render(context)
-        nodes = context['children']
-        self.assertEqual(nodes[0].title, 'B')
-        self.assertEqual(nodes[0].children[0].title, 'C')
-        self.assertEqual(nodes[0].children[1].title, 'D')
-
-    def test_menu_to_level(self):
-        menu_pool.register_menu(StaticMenu)
-        context = self.get_context()
-        tpl = Template("{% load menu_tags %}{% show_menu 0 1 %}")
-        tpl.render(context)
-        nodes = context['children']
-        self.assertEqual(nodes[0].title, 'A')
-        self.assertEqual(nodes[0].children[0].title, 'B')
-        self.assertFalse(nodes[0].children[0].children)
-        self.assertEqual(nodes[1].title, 'E')
+        self.assertEqual(nodes[1].title, 'B')
+        self.assertEqual(nodes[2].title, 'C')
+        self.assertEqual(nodes[3].title, 'D')
+        self.assertEqual(nodes[4].title, 'E')
 
     def test_invalid_reverse_in_node_renders_empty_menu(self):
         menu_pool.register_menu(InvalidURLMenu)
         context = self.get_context()
         tpl = Template("{% load menu_tags %}{% show_menu %}")
         tpl.render(context)
-        nodes = context['children']
+        nodes = context['nodes']
         self.assertEqual(len(nodes), 0)
-
-    def test_parent_node_added_before_child(self):
-        menu_pool.register_menu(ParentNodeFirst)
-        context = self.get_context()
-        tpl = Template("{% load menu_tags %}{% show_menu %}")
-        tpl.render(context)
-        nodes = context['children']
-        self.assertEqual(nodes[0].title, 'A')
-        self.assertEqual(nodes[0].children[0].title, 'B')
 
     def test_appending_nodes_to_existing_namespace(self):
         menu_pool.register_menu(StaticMenu)
@@ -232,23 +184,23 @@ class MenuTemplateTagTests(WorkmateTestCase):
         context = self.get_context()
         tpl = Template("{% load menu_tags %}{% show_menu %}")
         tpl.render(context)
-        nodes = context['children']
+        nodes = context['nodes']
         self.assertEqual(nodes[0].title, 'A')
-        self.assertEqual(nodes[0].children[0].title, 'B')
-        self.assertEqual(nodes[0].children[0].children[0].title, 'C')
-        self.assertEqual(nodes[0].children[0].children[0].children[0].title, 'C EX')
-        self.assertEqual(nodes[0].children[0].children[1].title, 'D')
-        self.assertEqual(nodes[1].title, 'E')
-        self.assertEqual(nodes[2].title, 'F')
+        self.assertEqual(nodes[1].title, 'B')
+        self.assertEqual(nodes[2].title, 'C')
+        self.assertEqual(nodes[3].title, 'C EX')
+        self.assertEqual(nodes[4].title, 'D')
+        self.assertEqual(nodes[5].title, 'E')
+        self.assertEqual(nodes[6].title, 'F')
 
     def test_node_visibility(self):
         menu_pool.register_menu(VisibilityMenu)
         context = self.get_context()
         tpl = Template("{% load menu_tags %}{% show_menu %}")
         tpl.render(context)
-        nodes = context['children']
-        self.assertEqual(len(nodes), 1)
+        nodes = context['nodes']
+        self.assertEqual(len(nodes), 4)
         self.assertEqual(nodes[0].title, 'A')
-        self.assertEqual(nodes[0].children[0].title, 'B')
-        self.assertEqual(len(nodes[0].children[0].children), 1)
-        self.assertEqual(nodes[0].children[0].children[0].title, 'C')
+        self.assertEqual(nodes[1].title, 'B')
+        self.assertEqual(nodes[2].title, 'C')
+        self.assertEqual(nodes[3].title, 'F')

@@ -8,34 +8,6 @@ from workmate.menus.exceptions import NamespaceAlreadyRegistered
 from workmate.utils.django_load import load
 
 
-def _build_relationships_one_menu(nodes):
-    done_nodes = {}
-    final_nodes = []
-    nodes_length = len(nodes)
-
-    while nodes:
-        should_add_to_final_list = True
-        node = nodes.pop(0)
-        node._counter = getattr(node, '_counter', 0) + 1
-
-        if node.namespace not in done_nodes:
-            done_nodes[node.namespace] = {}
-
-        if node.parent_id in done_nodes[node.namespace]:
-            parent = done_nodes[node.namespace][node.parent_id]
-            parent.children.append(node)
-            node.parent = parent
-        elif node.parent_id:
-            if node._counter < nodes_length:
-                nodes.append(node)
-            should_add_to_final_list = False
-
-        if should_add_to_final_list:
-            final_nodes.append(node)
-            done_nodes[node.namespace][node.id] = node
-    return final_nodes
-
-
 class MenuPool(object):
     def __init__(self):
         self.menus = {}
@@ -101,11 +73,11 @@ class MenuPool(object):
                 reorganised_nodes[node.namespace] = []
             reorganised_nodes[node.namespace].append(node)
 
-        # finally build the inner menus
+        # finally return the menus
         for menu_class in reorganised_nodes:
             if not namespace or namespace == menu_class:
                 nodes_for_class = reorganised_nodes[menu_class]
-                final_nodes += _build_relationships_one_menu(nodes_for_class)
+                final_nodes += nodes_for_class
 
         return final_nodes
 

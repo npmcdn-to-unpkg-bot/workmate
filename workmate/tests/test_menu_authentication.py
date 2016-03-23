@@ -12,12 +12,10 @@ class StaticMenu(Menu):
 
     def get_nodes(self, request):
         node1 = NavigationNode('A', '/A/', 1, attr={'visible_for_anonymous': False})
-        node2 = NavigationNode('A1', '/A1/', 4, 1)
-        node3 = NavigationNode('B', '/B/', 2, attr={'visible_for_authenticated': False})
-        node4 = NavigationNode('B1', '/B1/', 5, 2)
-        node5 = NavigationNode('C', '/C/', 3)
-        node6 = NavigationNode('C1', '/C1/', 6, 3, attr={'staff_only': True})
-        nodes = [node1, node2, node3, node4, node5, node6]
+        node2 = NavigationNode('B', '/B/', 2, attr={'visible_for_authenticated': False})
+        node3 = NavigationNode('C', '/C/', 3)
+        node4 = NavigationNode('D', '/D/', 4, attr={'staff_only': True})
+        nodes = [node1, node2, node3, node4]
         return nodes
 
 
@@ -38,10 +36,9 @@ class MenuAuthTests(WorkmateTestCase):
         context = self.get_context()
         tpl = Template("{% load menu_tags %}{% show_menu %}")
         tpl.render(context)
-        nodes = context['children']
+        nodes = context['nodes']
         self.assertEqual(len(nodes), 2)
         self.assertEqual(nodes[0].title, 'B')
-        self.assertEqual(nodes[0].children[0].title, 'B1')
         self.assertEqual(nodes[1].title, 'C')
 
     def test_menu_for_authenticated(self):
@@ -50,10 +47,9 @@ class MenuAuthTests(WorkmateTestCase):
         context = self.get_context(user=user)
         tpl = Template("{% load menu_tags %}{% show_menu %}")
         tpl.render(context)
-        nodes = context['children']
+        nodes = context['nodes']
         self.assertEqual(len(nodes), 2)
         self.assertEqual(nodes[0].title, 'A')
-        self.assertEqual(nodes[0].children[0].title, 'A1')
         self.assertEqual(nodes[1].title, 'C')
 
     def test_menu_for_staff(self):
@@ -62,9 +58,8 @@ class MenuAuthTests(WorkmateTestCase):
         context = self.get_context(user=user)
         tpl = Template("{% load menu_tags %}{% show_menu %}")
         tpl.render(context)
-        nodes = context['children']
-        self.assertEqual(len(nodes), 2)
+        nodes = context['nodes']
+        self.assertEqual(len(nodes), 3)
         self.assertEqual(nodes[0].title, 'A')
-        self.assertEqual(nodes[0].children[0].title, 'A1')
         self.assertEqual(nodes[1].title, 'C')
-        self.assertEqual(nodes[1].children[0].title, 'C1')
+        self.assertEqual(nodes[2].title, 'D')
