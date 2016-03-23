@@ -3,7 +3,6 @@
 from __future__ import unicode_literals
 
 from django.db import migrations, models
-import taggit_selectize.managers
 
 
 class Migration(migrations.Migration):
@@ -17,10 +16,5 @@ class Migration(migrations.Migration):
             model_name='contact',
             name='color',
             field=models.CharField(null=True, blank=True, max_length=10, editable=False),
-        ),
-        migrations.AlterField(
-            model_name='contact',
-            name='tags',
-            field=taggit_selectize.managers.TaggableManager(blank=True, help_text='A comma-separated list of tags.', through='taggit.TaggedItem', to='taggit.Tag', verbose_name='Tags'),
         ),
     ]

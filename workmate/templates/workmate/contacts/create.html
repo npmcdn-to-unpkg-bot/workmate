@@ -13,9 +13,9 @@
 {% block content %}
     <form class="ui form" method="post" novalidate>
         {% csrf_token %}
-        {{ form.non_field_errors }}
+        {% include 'workmate/partials/form_errors.html' %}
         {% for field in form %}
-        {% include 'workmate/partials/form_field.html' %}
+            {% include 'workmate/partials/form_field.html' %}
         {% endfor %}
         <a class="ui button" href="{% url 'contact-list' %}">Cancel</a>
         <button type="submit" class="ui primary button">Save</button>

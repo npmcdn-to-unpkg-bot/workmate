@@ -6,7 +6,6 @@ import django.contrib.sites.managers
 from django.db import migrations, models
 import django.db.models.deletion
 import phonenumber_field.modelfields
-import taggit.managers
 
 
 class Migration(migrations.Migration):
@@ -15,7 +14,6 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('sites', '0001_initial'),
-        ('taggit', '0002_auto_20150616_2121'),
     ]
 
     operations = [
@@ -32,7 +30,6 @@ class Migration(migrations.Migration):
                 ('website', models.URLField(blank=True, help_text='eg: http://www.example.com', null=True)),
                 ('notes', models.TextField(blank=True, null=True)),
                 ('site', models.ForeignKey(default=1, editable=False, on_delete=django.db.models.deletion.CASCADE, to='sites.Site')),
-                ('tags', taggit.managers.TaggableManager(blank=True, help_text='A comma-separated list of tags.', through='taggit.TaggedItem', to='taggit.Tag', verbose_name='Tags')),
             ],
             options={
                 'ordering': ('first_name', 'last_name'),

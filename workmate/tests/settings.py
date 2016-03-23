@@ -15,8 +15,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'reversion',
-    'taggit',
-    'taggit_selectize',
     'workmate',
 ]
 

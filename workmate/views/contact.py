@@ -3,7 +3,7 @@ from django.core.urlresolvers import reverse_lazy
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 
-from .mixins import SuccessMessageDeleteMixin
+from .mixins import DeleteConformationMessageMixin, DeleteSuccessMessageMixin
 from ..forms import ContactForm
 from ..models import Contact
 
@@ -20,7 +20,7 @@ class ContactCreate(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     success_message = 'The contact was created successfully.'
 
 
-class ContactDelete(LoginRequiredMixin, SuccessMessageDeleteMixin, DeleteView):
+class ContactDelete(LoginRequiredMixin, DeleteConformationMessageMixin, DeleteSuccessMessageMixin, DeleteView):
     model = Contact
     template_name = 'workmate/contacts/delete.html'
     success_message = 'The contact was deleted successfully.'

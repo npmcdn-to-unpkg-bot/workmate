@@ -5,9 +5,10 @@ window.workmate = {};
 workmate.ready = function() {
 
     var
-        $sideBar = $('.ui.sidebar'),
         $menuPopup = $('.ui.main.menu .popup.item'),
-        $messageClose = $('.message .close')
+        $messageClose = $('.message .close'),
+        $selectDropdown = $('select.dropdown'),
+        $sideBar = $('.ui.sidebar')
     ;
 
     $menuPopup
@@ -26,6 +27,12 @@ workmate.ready = function() {
                 .closest('.message')
                 .transition('fade')
             ;
+        })
+    ;
+
+    $selectDropdown
+        .dropdown({
+            fullTextSearch: true
         })
     ;
 

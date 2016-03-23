@@ -6,8 +6,6 @@ from workmate.views import ContactCreate, ContactDelete, ContactList, ContactUpd
 
 urlpatterns = [
 
-    url(r'taggit/', include('taggit_selectize.urls')),
-
     url(r'contacts/$', ContactList.as_view(), name='contact-list'),
     url(r'contacts/create/$', ContactCreate.as_view(), name='contact-create'),
     url(r'contacts/(?P<pk>[0-9]+)/delete/$', ContactDelete.as_view(), name='contact-delete'),

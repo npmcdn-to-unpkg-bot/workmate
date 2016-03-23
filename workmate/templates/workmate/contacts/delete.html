@@ -13,11 +13,8 @@
 {% block content %}
     <form class="ui form" method="post" novalidate>
         {% csrf_token %}
-        <p>Are you sure you want to delete "{{ object }}"?</p>
-        <div class="pure-controls">
-            <a class="ui button" href="{{ object.get_absolute_url }}"><i class="fa fa-times"></i> Cancel</a>
-            <button type="submit" class="ui primary button"><i class="fa fa-check"></i> Confirm</button>
-        </div>
+        <a class="ui button" href="{{ object.get_absolute_url }}">Cancel</a>
+        <button type="submit" class="ui primary button">Confirm</button>
     </form>
 {% endblock %}
 

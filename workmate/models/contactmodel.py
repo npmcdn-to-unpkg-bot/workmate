@@ -5,11 +5,12 @@ from django.utils.translation import ugettext_lazy as _
 
 from phonenumber_field.modelfields import PhoneNumberField
 
-from .abstract import SiteAbstract, TagsAbstract
+from .abstract import SiteAbstract
+from .tagsmodel import Tag
 from ..utils.color_generator import generate_new_color
 
 
-class Contact(SiteAbstract, TagsAbstract):
+class Contact(SiteAbstract):
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
     email_address = models.EmailField(null=True, blank=True)
@@ -19,6 +20,7 @@ class Contact(SiteAbstract, TagsAbstract):
     website = models.URLField(null=True, blank=True, help_text=_('eg: http://www.example.com'))
     notes = models.TextField(null=True, blank=True)
     color = models.CharField(null=True, blank=True, max_length=10, editable=False)
+    tags = models.ManyToManyField(Tag, blank=True)
 
     class Meta:
         ordering = ('first_name', 'last_name')
