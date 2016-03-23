@@ -5,9 +5,7 @@ from workmate.menus.menu_pool import menu_pool
 
 class AuthVisibility(Modifier):
 
-    def modify(self, request, nodes, namespace, post_cut):
-        if post_cut:
-            return nodes
+    def modify(self, request, nodes, namespace):
         final = []
         for node in nodes:
 
@@ -27,9 +25,7 @@ class AuthVisibility(Modifier):
 
 class RequireStaff(Modifier):
 
-    def modify(self, request, nodes, namespace, post_cut):
-        if post_cut:
-            return nodes
+    def modify(self, request, nodes, namespace):
         final = []
         for node in nodes:
 

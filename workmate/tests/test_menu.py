@@ -69,7 +69,6 @@ class NavigationNodeTests(WorkmateTestCase):
             title='foo',
             url='/',
             id=1,
-            parent_id=2,
             parent_namespace='AnotherMenu',
             attr={'foo': True},
             visible=False,

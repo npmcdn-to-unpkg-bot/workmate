@@ -81,10 +81,10 @@ class MenuPool(object):
 
         return final_nodes
 
-    def apply_modifiers(self, nodes, request, namespace=None, post_cut=False):
+    def apply_modifiers(self, nodes, request, namespace=None):
         for cls in self.modifiers:
             inst = cls()
-            nodes = inst.modify(request, nodes, namespace, post_cut)
+            nodes = inst.modify(request, nodes, namespace)
         return nodes
 
     def get_nodes(self, request, namespace=None):

@@ -20,14 +20,13 @@ class Modifier(object):
 
 class NavigationNode(object):
 
-    def __init__(self, title, url, id, parent_id=None, parent_namespace=None, attr=None, visible=True, sort_order=0):
+    def __init__(self, title, url, id, parent_namespace=None, attr=None, visible=True, sort_order=0):
         self.children = []
         self.parent = None
         self.namespace = None
         self.title = title
         self.url = url
         self.id = id
-        self.parent_id = parent_id
         self.parent_namespace = parent_namespace
         self.visible = visible
         self.sort_order = sort_order
