@@ -6,7 +6,7 @@ from workmate.test_utils.test_case import WorkmateTestCase
 class ModelTests(WorkmateTestCase):
 
     def test_base_class_is_site_abstract(self):
-        self.assertEqual(Tag.__base__, SiteAbstract)
+        self.assertTrue(issubclass(Tag, SiteAbstract))
 
     def test_title(self):
         field = Tag._meta.get_field("title")

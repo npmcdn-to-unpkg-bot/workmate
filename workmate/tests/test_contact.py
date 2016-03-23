@@ -1,17 +1,21 @@
 from mock import patch
 
 from django.core.urlresolvers import reverse
+from django.views.generic import ListView
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
 
 from workmate.models import Contact
 from workmate.models.abstract import SiteAbstract
 from workmate.test_utils.test_case import WorkmateTestCase
 from workmate.tests.mixins import AuthTestMixin
+from workmate.views import ContactCreate, ContactDelete, ContactList, ContactUpdate
+from workmate.views.mixins import DeleteConformationMessageMixin, DeleteSuccessMessageMixin
 
 
 class ModelTests(WorkmateTestCase):
 
     def test_base_class_is_site_abstract(self):
-        self.assertEqual(Contact.__base__, SiteAbstract)
+        self.assertTrue(issubclass(Contact, SiteAbstract))
 
     def test_first_name(self):
         field = Contact._meta.get_field("first_name")
@@ -95,11 +99,27 @@ class ListViewTests(AuthTestMixin, WorkmateTestCase):
     def get_url(self):
         return reverse('contact-list')
 
+    def test_is_correct_base_class(self):
+        self.assertTrue(issubclass(ContactList, ListView))
+
 
 class CreateViewTests(AuthTestMixin, WorkmateTestCase):
 
     def get_url(self):
         return reverse('contact-create')
+
+    def test_is_correct_base_class(self):
+        self.assertTrue(issubclass(ContactCreate, CreateView))
+
+    def test_created_success_message(self):
+        self.login()
+        data = {
+            'first_name': 'Mr', 'last_name': 'Smith'
+        }
+        response = self.client.post(self.url, data, follow=True)
+        self.assertIn(
+            'The contact was created successfully.', str(response.content)
+        )
 
 
 class UpdateViewTests(AuthTestMixin, WorkmateTestCase):
@@ -108,9 +128,41 @@ class UpdateViewTests(AuthTestMixin, WorkmateTestCase):
         contact = Contact.objects.create(first_name='Mr', last_name='Smith')
         return reverse('contact-update', kwargs={'pk': contact.id})
 
+    def test_is_correct_base_class(self):
+        self.assertTrue(issubclass(ContactUpdate, UpdateView))
+
+    def test_updated_success_message(self):
+        self.login()
+        data = {
+            'first_name': 'Mr', 'last_name': 'Smith'
+        }
+        response = self.client.post(self.url, data, follow=True)
+        self.assertIn(
+            'The contact was updated successfully.', str(response.content)
+        )
+
 
 class DeleteViewTests(AuthTestMixin, WorkmateTestCase):
 
     def get_url(self):
         contact = Contact.objects.create(first_name='Mr', last_name='Smith')
         return reverse('contact-delete', kwargs={'pk': contact.id})
+
+    def test_is_correct_base_class(self):
+        self.assertTrue(issubclass(ContactDelete, DeleteView))
+        self.assertTrue(issubclass(ContactDelete, DeleteConformationMessageMixin))
+        self.assertTrue(issubclass(ContactDelete, DeleteSuccessMessageMixin))
+
+    def test_delete_conformation_message(self):
+        self.login()
+        response = self.get_request(self.url)
+        self.assertIn(
+            'Are you sure you want to delete Mr Smith?', str(response.content)
+        )
+
+    def test_deleted_success_message(self):
+        self.login()
+        response = self.client.post(self.url, follow=True)
+        self.assertIn(
+            'The contact was deleted successfully.', str(response.content)
+        )
