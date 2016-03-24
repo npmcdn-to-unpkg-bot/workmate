@@ -6,7 +6,16 @@
 {% block extra_css %}{% endblock %}
 {% block extra_head %}{% endblock %}
 
-{% block title_extra_content %}{% endblock %}
+{% block title_extra_content %}
+    <div class="ui right floated main menu">
+        <a class="list popup icon item" data-content="List Contacts" href="{% url 'contact-list' %}">
+            <i class="list icon"></i>
+        </a>
+        <a class="pencil popup icon item" data-content="Edit Contact" href="{% url 'contact-update' object.pk %}">
+            <i class="pencil icon"></i>
+        </a>
+    </div>
+{% endblock %}
 {% block title_h1 %}Delete Contact{% endblock %}
 {% block title_sub_header %}{% blocktrans %}Delete {{ object }}.{% endblocktrans %}{% endblock %}
 

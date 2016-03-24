@@ -8,6 +8,9 @@
 
 {% block title_extra_content %}
     <div class="ui right floated main menu">
+        <a class="list popup icon item" data-content="List Contacts" href="{% url 'contact-list' %}">
+            <i class="list icon"></i>
+        </a>
         <a class="delete popup icon item" data-content="Delete Contact" href="{% url 'contact-delete' object.pk %}">
             <i class="trash icon"></i>
         </a>

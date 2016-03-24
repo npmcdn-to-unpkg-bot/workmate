@@ -6,7 +6,13 @@
 {% block extra_css %}{% endblock %}
 {% block extra_head %}{% endblock %}
 
-{% block title_extra_content %}{% endblock %}
+{% block title_extra_content %}
+    <div class="ui right floated main menu">
+        <a class="list popup icon item" data-content="List Contacts" href="{% url 'contact-list' %}">
+            <i class="list icon"></i>
+        </a>
+    </div>
+{% endblock %}
 {% block title_h1 %}New Contact{% endblock %}
 {% block title_sub_header %}{% blocktrans %}Create a new contact.{% endblocktrans %}{% endblock %}
 
