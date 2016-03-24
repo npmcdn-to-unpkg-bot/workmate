@@ -4,6 +4,7 @@ from django.views.generic import ListView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 
 from .mixins import DeleteConformationMessageMixin, DeleteSuccessMessageMixin
+from ..conf import WORKMATE_PAGINATE_BY
 from ..forms import ContactForm
 from ..models import Contact
 
@@ -30,6 +31,7 @@ class ContactDelete(LoginRequiredMixin, DeleteConformationMessageMixin, DeleteSu
 class ContactList(LoginRequiredMixin, ListView):
     model = Contact
     template_name = 'workmate/contacts/list.html'
+    paginate_by = WORKMATE_PAGINATE_BY
 
 
 class ContactUpdate(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
