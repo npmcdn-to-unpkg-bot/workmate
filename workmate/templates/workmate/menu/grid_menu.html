@@ -2,7 +2,12 @@
 
 {% regroup nodes by menu_title as menu_list %}
 {% for menu in menu_list %}
-    <div class="header">{{ menu.grouper }}</div>
+    <div class="header">
+        {{ menu.grouper }}
+        {% if forloop.first %}
+            <div class="floated right button"><i class="close icon"></i></div>
+        {% endif %}
+    </div>
     <div class="content">
         <div class="ui menu inverted grid">
             <div class="doubling six column row">

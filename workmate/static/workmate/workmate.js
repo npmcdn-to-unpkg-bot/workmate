@@ -14,6 +14,7 @@ workmate.ready = function() {
     
     $menuModal
         .modal('attach events', '.ui.sidebar.menu .site.title')
+        .modal('attach events', '.ui.menu.modal .close', 'hide')
     ;
 
     $menuPopup
