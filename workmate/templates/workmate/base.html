@@ -13,43 +13,46 @@
     <body class="basic minimal pushable">
 
         <div class="ui vertical inverted sidebar menu left">
-            {% show_menu %}
+            <div class="item">
+                <div class="header site title">
+                    <h2>Workmate
+                        <div class="floated right button"><i class="chevron down icon"></i></div>
+                    </h2>
+                </div>
+            </div>
         </div>
+
         <div class="ui black big launch right attached fixed button">
             <i class="content icon"></i>
-            <span class="text">Menu</span>
         </div>
+
         <div class="pusher">
-            <div class="full height">
-                <div class="ui masthead vertical segment">
-                    <div class="ui container">
-                        <h1 class="ui header">
-                            {% block title_h1 %}{% endblock %}
-                            <div class="sub header">
-                                {% block title_sub_header %}{% endblock %}
-                            </div>
-                        </h1>
-                        <div class="ui divider"></div>
-                        {% block title_extra_content %}{% endblock %}
-
-                    </div>
-                </div>
-
+            <div class="ui masthead vertical segment">
                 <div class="ui container">
-                    {% include 'workmate/partials/messages.html' %}
+                    <h1 class="ui header">
+                        {% block title_h1 %}{% endblock %}
+                        <div class="sub header">
+                            {% block title_sub_header %}{% endblock %}
+                        </div>
+                    </h1>
+                    <div class="ui divider"></div>
+                    {% block title_extra_content %}{% endblock %}
                 </div>
-
-                <div class="ui main container">
-                    {% block content %}{% endblock %}
-                </div>
+            </div>
+            <div class="ui main container">
+                {% include 'workmate/partials/messages.html' %}
+                {% block content %}{% endblock %}
             </div>
         </div>
 
         {% include 'workmate/partials/footer.html' %}
 
+        <div class="ui basic menu long modal">
+            {% show_menu 'workmate/menu/grid_menu.html' %}
+        </div>
+
         <script src="{% static 'semantic-ui/semantic.min.js' %}"></script>
         <script src="{% static 'workmate/workmate.js' %}"></script>
         {% block extra_js %}{% endblock %}
-
     </body>
 </html>

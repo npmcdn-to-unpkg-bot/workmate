@@ -13,8 +13,9 @@ class MainMenu(Menu):
     sort_order = -1
 
     def get_nodes(self, request):
-        node1 = NavigationNode(_('Contacts'), reverse('contact-list'), 1)
-        nodes = [node1, ]
+        node1 = NavigationNode(_('Home'), '/', 1, icon='home', sort_order=1)
+        node2 = NavigationNode(_('Contacts'), reverse('contact-list'), 2, icon='users', sort_order=2)
+        nodes = [node1, node2]
         return nodes
 
 
@@ -27,7 +28,8 @@ class AdminMenu(Menu):
     sort_order = 99
 
     def get_nodes(self, request):
-        node1 = NavigationNode(_('Site Administration'), reverse('admin:index'), 1, attr={'staff_only': True})
+        node1 = NavigationNode(_('Site Administration'), reverse('admin:index'), 1, icon='cogs',
+                               attr={'staff_only': True})
         nodes = [node1]
         return nodes
 
@@ -41,8 +43,8 @@ class AccountMenu(Menu):
     sort_order = 100
 
     def get_nodes(self, request):
-        node1 = NavigationNode(_('Change Password'), reverse('password_change'), 1)
-        node2 = NavigationNode(_('Logout'), settings.LOGOUT_URL, 2)
+        node1 = NavigationNode(_('Change Password'), reverse('password_change'), 1, icon='key')
+        node2 = NavigationNode(_('Logout'), settings.LOGOUT_URL, 2, icon='lock')
         nodes = [node1, node2]
         return nodes
 

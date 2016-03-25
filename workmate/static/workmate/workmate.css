@@ -1,3 +1,10 @@
+
+/* generic */
+.floated.right {
+    float: right;
+}
+
+/* header */
 .ui.vertical.segment {
     position: relative;
     z-index: 1;
@@ -7,69 +14,61 @@
     border-bottom: none;
     box-shadow: none;
 }
+
+/* main */
 .main.container {
-    padding: 1em 0em 7em;
-}
-.ui.vertical.footer.segment {
-    z-index: 103;
+    padding: 0em 0em 7em;
 }
 
+/* sidebar */
 .fixed.launch.button {
-  z-index: 101;
-  display: none;
   position: fixed;
-  top: 7em;
+  display: none;
+  top: 6.7em;
   left: 0px;
-  width: 55px;
+  width: 45px;
   height: auto;
   white-space: nowrap;
   overflow: hidden;
-  transition:
-    0.3s width ease,
-    0.5s transform ease
-  ;
-}
-.launch.button .icon {
-  margin-left: 0px;
-}
-
-.fixed.launch.button .text {
-  position: absolute;
-  white-space: nowrap;
-  top: auto;
-  left: 54px;
-  opacity: 0;
-  -webkit-transition:
-    0.3s opacity 0.3s
-  ;
-  -moz-transition:
-    0.3s opacity 0.3s
-  ;
-  -o-transition:
-    0.3s opacity 0.3s
-  ;
-  -ms-transition:
-    0.3s opacity 0.3s
-  ;
-  transition:
-    0.3s opacity 0.3s
-  ;
-}
-.fixed.launch.button:hover {
-  width: 130px;
-}
-.fixed.launch.button:hover .text {
-  opacity: 1;
-}
-
-/* Position Change */
-.pushable.left.overlay .fixed.launch.button {
-  transform: translate3d(0, 0, 0);
-}
-.pushable.overlay.left.pushed .fixed.launch.button {
-  transform: translate3d(260px, 0, 0);
 }
 
 .ui.visible.left.overlay.sidebar {
     z-index: 102;
+}
+
+.ui.visible.left.overlay.sidebar .site.title {
+    cursor: pointer;
+}
+
+/* main menu modal */
+.menu.modal .header {
+    padding-top: 0;
+    padding-bottom: 0;
+    font-size: 1rem!important;
+}
+
+.menu.modal .content {
+    padding: 1em;
+}
+
+.menu.modal .grid > .column {
+    text-align: center;
+    padding-top: 1em;
+}
+
+.menu.modal .grid .column a {
+    color: #fff;
+    opacity: 0.8;
+    font-size: 0.8em;
+}
+
+.menu.modal .grid .column a:hover {
+    opacity: 1;
+}
+
+.menu.modal .grid .column a .icon {
+    height: 1em;
+    display: block;
+    margin: 0em auto 0.25em;
+    font-size: 2em;
 }

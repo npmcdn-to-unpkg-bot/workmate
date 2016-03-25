@@ -23,7 +23,7 @@ class Modifier(object):
 
 class NavigationNode(object):
 
-    def __init__(self, title, url, id, parent_namespace=None, attr=None, visible=True, sort_order=None):
+    def __init__(self, title, url, id, parent_namespace=None, icon=None, attr=None, visible=True, sort_order=None):
         self.menu_title = None
         self.menu_sort_order = None
         self.namespace = None
@@ -31,6 +31,7 @@ class NavigationNode(object):
         self.url = url
         self.id = id
         self.parent_namespace = parent_namespace
+        self.icon = icon or 'external'
         self.visible = visible
         self.sort_order = sort_order or 0
         self.attr = attr or {}

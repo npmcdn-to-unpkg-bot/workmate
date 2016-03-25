@@ -76,6 +76,7 @@ class NavigationNodeTests(WorkmateTestCase):
             url='/',
             id=1,
             parent_namespace='AnotherMenu',
+            icon='pencil',
             attr={'foo': True},
             visible=False,
             sort_order=1000

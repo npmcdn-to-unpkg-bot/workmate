@@ -1,0 +1,19 @@
+{% load menu_tags %}
+
+{% regroup nodes by menu_title as menu_list %}
+{% for menu in menu_list %}
+    <div class="header">{{ menu.grouper }}</div>
+    <div class="content">
+        <div class="ui menu inverted grid">
+            <div class="doubling six column row">
+            {% for node in menu.list %}
+                <div class="column">
+                    <a href="{{ node.get_absolute_url }}">
+                        <i class="{{ node.icon }} icon"></i>{{ node.get_node_title }}
+                    </a>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endfor %}

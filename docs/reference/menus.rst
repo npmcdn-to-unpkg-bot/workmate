@@ -41,6 +41,9 @@ The ``get_nodes`` function should return a list of
   If you want the menu item to appear in another menu then this can be set
   to the class name of that menu
 
+``icon=None``
+  The font awesome icon for the link
+
 ``attr=None``
   A dictionary of additional attributes you may want to use in a modifier or
   in the template

@@ -5,10 +5,15 @@ window.workmate = {};
 workmate.ready = function() {
 
     var
+        $menuModal = $('.ui.menu.modal'),
         $menuPopup = $('.ui.main.menu .popup.item'),
         $messageClose = $('.message .close'),
         $selectDropdown = $('select.dropdown'),
         $sideBar = $('.ui.sidebar')
+    ;
+    
+    $menuModal
+        .modal('attach events', '.ui.sidebar.menu .site.title')
     ;
 
     $menuPopup
@@ -29,13 +34,21 @@ workmate.ready = function() {
             ;
         })
     ;
-
+    
     $selectDropdown
         .dropdown({
             fullTextSearch: true
         })
     ;
 
+    $sideBar
+        .sidebar({
+            dimPage: true,
+            transition: 'overlay',
+            mobileTransition: 'uncover'
+        })
+    ;
+    
     $sideBar
         .sidebar('attach events', '.launch.button')
     ;
