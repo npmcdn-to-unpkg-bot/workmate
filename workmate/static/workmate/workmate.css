@@ -1,4 +1,3 @@
-
 /* generic */
 .floated.right {
     float: right;
@@ -22,22 +21,45 @@
 
 /* sidebar */
 .fixed.launch.button {
-  position: fixed;
-  display: none;
-  top: 6.7em;
-  left: 0px;
-  width: 45px;
-  height: auto;
-  white-space: nowrap;
-  overflow: hidden;
+    position: fixed;
+    display: none;
+    top: 6.7em;
+    left: 0px;
+    width: 45px;
+    height: auto;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
-.ui.visible.left.overlay.sidebar {
+.ui.left.sidebar {
     z-index: 102;
 }
 
-.ui.visible.left.overlay.sidebar .site.title {
+.ui.left.sidebar .site.title {
     cursor: pointer;
+}
+
+@media only screen and (min-width: 1144px) {
+    .ui.left.overlay.sidebar {
+        -webkit-transform: none!important;
+        transform: none!important;
+    }
+
+    .ui.left.sidebar ~ .fixed,
+    .ui.left.sidebar ~ .pusher {
+        padding-left: 3em;
+        padding-right: 3em;
+        margin-left: 260px;
+    }
+
+    .animating.ui.overlay.sidebar,
+    .ui.visible.overlay.sidebar {
+        transition: none!important;
+    }
+
+    .fixed.launch.button {
+        z-index: 0;
+    }
 }
 
 /* main menu modal */
@@ -82,3 +104,4 @@
     margin: 0em auto 0.25em;
     font-size: 2em;
 }
+

@@ -5,15 +5,17 @@ window.workmate = {};
 workmate.ready = function() {
 
     var
+        $leftSideBar = $('.ui.left.sidebar'),
         $menuModal = $('.ui.menu.modal'),
         $menuPopup = $('.ui.main.menu .popup.item'),
         $messageClose = $('.message .close'),
-        $selectDropdown = $('select.dropdown'),
-        $sideBar = $('.ui.sidebar')
+        $selectDropdown = $('select.dropdown')
     ;
     
     $menuModal
         .modal('attach events', '.ui.sidebar.menu .site.title')
+    ;
+    $menuModal
         .modal('attach events', '.ui.menu.modal .close', 'hide')
     ;
 
@@ -42,17 +44,33 @@ workmate.ready = function() {
         })
     ;
 
-    $sideBar
-        .sidebar({
-            dimPage: true,
-            transition: 'overlay',
-            mobileTransition: 'uncover'
-        })
-    ;
-    
-    $sideBar
-        .sidebar('attach events', '.launch.button')
-    ;
+    enableLeftSidebar = function () {
+        if($(window).width() >= 1144) {
+            /* sidebar cannot be closed and does not dim the page */
+            $leftSideBar
+                .sidebar({
+                    dimPage: false,
+                    closable: false
+                })
+                .sidebar('show')
+            ;
+        } else {
+            /* set to responsive operation */
+            $leftSideBar
+                .sidebar({
+                    dimPage: false
+                })
+                .sidebar('attach events', '.launch.button')
+                .sidebar('hide')
+            ;
+        }
+    };
+
+    enableLeftSidebar();
+
+    $(window).resize(function(e) {
+        enableLeftSidebar();
+    })
 
 };
 
