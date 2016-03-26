@@ -10,7 +10,7 @@
         {% block extra_css %}{% endblock %}
         {% block extra_head %}{% endblock %}
     </head>
-    <body class="basic minimal pushable">
+    <body class="basic minimal pushable {% if not hidden_sidebar %}fixed-sidebar{% endif %}">
 
         <div class="ui vertical inverted sidebar overlay menu left">
             <div class="item">

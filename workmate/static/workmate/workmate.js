@@ -5,6 +5,7 @@ window.workmate = {};
 workmate.ready = function() {
 
     var
+        $body = $('body'),
         $leftSideBar = $('.ui.left.sidebar'),
         $menuModal = $('.ui.menu.modal'),
         $menuPopup = $('.ui.main.menu .popup.item'),
@@ -46,14 +47,21 @@ workmate.ready = function() {
 
     enableLeftSidebar = function () {
         if($(window).width() >= 1144) {
-            /* sidebar cannot be closed and does not dim the page */
+            /* if body has the fixed-sidebar class then the sidebar
+               cannot be closed and does not dim the page */
+            var fixedSidebar = $body.hasClass('fixed-sidebar');
             $leftSideBar
                 .sidebar({
                     dimPage: false,
-                    closable: false
+                    closable: !fixedSidebar
                 })
-                .sidebar('show')
+                .sidebar('attach events', '.launch.button')
             ;
+            if(fixedSidebar) {
+                $leftSideBar
+                    .sidebar('show')
+                ;
+            }
         } else {
             /* set to responsive operation */
             $leftSideBar

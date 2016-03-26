@@ -7,3 +7,4 @@ Reference
 
    context_processors
    menus
+   sidebar
