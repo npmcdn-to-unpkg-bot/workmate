@@ -8,3 +8,4 @@ Reference
    context_processors
    menus
    sidebar
+   template_tags

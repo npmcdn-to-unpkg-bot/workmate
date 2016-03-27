@@ -6,7 +6,7 @@ from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from .mixins import DeleteConformationMessageMixin, DeleteSuccessMessageMixin
 from ..conf import WORKMATE_PAGINATE_BY
 from ..forms import ContactForm
-from ..models import Contact
+from ..models import Contact, Tag
 
 try:
     from django.contrib.auth.mixins import LoginRequiredMixin
@@ -32,6 +32,13 @@ class ContactList(LoginRequiredMixin, ListView):
     model = Contact
     template_name = 'workmate/contacts/list.html'
     paginate_by = WORKMATE_PAGINATE_BY
+
+    def get_queryset(self):
+        queryset = super(ContactList, self).get_queryset()
+        tag = self.request.GET.get('tag', None)
+        if tag:
+            queryset = queryset.filter(tags__pk=int(tag))
+        return queryset
 
 
 class ContactUpdate(LoginRequiredMixin, SuccessMessageMixin, UpdateView):

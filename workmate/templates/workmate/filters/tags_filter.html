@@ -1,0 +1,17 @@
+{% load i18n %}
+
+<div class="item">
+    <div class="header">{% trans 'By Tag' %}</div>
+    <div class="menu">
+        <a href="{% url url %}" class="item">{% trans 'All' %}</a>
+        {% for tag in tags %}
+            {% if tag.count %}
+            <a href="{% url url %}?tag={{ tag.pk }}" class="item">
+                {{ tag }}<div class="ui label">{{ tag.count }}</div>
+            </a>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
+

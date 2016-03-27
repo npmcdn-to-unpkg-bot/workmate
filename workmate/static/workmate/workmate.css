@@ -6,7 +6,6 @@
 /* header */
 .ui.vertical.segment {
     position: relative;
-    z-index: 1;
     margin: 0em;
     min-height: 185px;
     padding: 3em 0em;
@@ -32,7 +31,7 @@
 }
 
 .ui.left.sidebar {
-    z-index: 102;
+    z-index: 100;
 }
 
 .ui.left.sidebar .site.title {
@@ -103,5 +102,9 @@
     display: block;
     margin: 0em auto 0.25em;
     font-size: 2em;
+}
+
+.footer {
+    z-index: 101;
 }
 

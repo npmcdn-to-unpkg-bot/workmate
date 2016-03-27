@@ -1,5 +1,5 @@
 {% extends 'workmate/base.html' %}
-{% load i18n %}
+{% load i18n filter_tags %}
 
 {% block page_title %}Workmate | Contacts{% endblock %}
 
@@ -15,6 +15,10 @@
 {% endblock %}
 {% block title_h1 %}{% blocktrans %}Contacts{% endblocktrans %}{% endblock %}
 {% block title_sub_header %}{% blocktrans %}Add, edit, create and delete contacts.{% endblocktrans %}{% endblock %}
+
+{% block sidebar_content %}
+    {% show_tags_filter 'contact' 'contact-list' %}
+{% endblock %}
 
 {% block content %}
     <div class="ui relaxed divided list">
