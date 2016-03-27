@@ -20,6 +20,7 @@
 
 /* sidebar */
 .fixed.launch.button {
+    z-index: 99;
     position: fixed;
     display: none;
     top: 6.7em;
