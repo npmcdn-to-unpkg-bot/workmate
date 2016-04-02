@@ -1,18 +1,21 @@
-// declare namespace
-window.workmate = {};
-
-// ready function
-workmate.ready = function() {
+(function( workmate, $, undefined ) {
 
     var
         $body = $('body'),
+        $dropdown = $('.dropdown'),
         $leftSideBar = $('.ui.left.sidebar'),
         $menuModal = $('.ui.menu.modal'),
         $menuPopup = $('.ui.main.menu .popup.item'),
         $messageClose = $('.message .close'),
         $selectDropdown = $('select.dropdown')
     ;
-    
+
+    $dropdown
+        .dropdown({
+            //transition: 'drop'
+        })
+    ;
+
     $menuModal
         .modal('attach events', '.ui.sidebar.menu .site.title')
     ;
@@ -45,7 +48,7 @@ workmate.ready = function() {
         })
     ;
 
-    enableLeftSidebar = function () {
+    function enableLeftSidebar () {
         if($(window).width() >= 1144) {
             /* if body has the fixed-sidebar class then the sidebar
                cannot be closed and does not dim the page */
@@ -76,12 +79,25 @@ workmate.ready = function() {
 
     enableLeftSidebar();
 
-    $(window).resize(function(e) {
-        enableLeftSidebar();
-    })
+    $(window)
+        .resize(function (e) {
+            enableLeftSidebar();
+        })
+    ;
 
-};
+    workmate.getCookie = function (name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie != '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = jQuery.trim(cookies[i]);
+                if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    };
 
-// attach ready
-$(document)
-    .ready(workmate.ready);
+}(window.workmate = window.workmate || {}, jQuery));
