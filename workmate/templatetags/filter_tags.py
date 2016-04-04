@@ -26,9 +26,12 @@ class ShowTagsFilter(InclusionTag):
     )
 
     def get_context(self, context, related_model, url):
+        request = context['request']
+        tag_id = request.GET.get('tag')
         tags = Tag.onsite.all().annotate(count=Count(related_model))
         context['tags'] = tags
         context['url'] = url
+        context['selected_tag'] = tags.filter(id__iexact=int(tag_id))[0] if tag_id else None
         return context
 
 

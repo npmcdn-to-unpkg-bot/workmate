@@ -7,6 +7,9 @@
 {% block extra_head %}{% endblock %}
 
 {% block title_extra_content %}
+    <div class="ui compact menu">
+        {% show_tags_filter 'contact' 'contact-list' %}
+    </div>
     <div class="ui right floated main menu">
         <a class="plus popup icon item" data-content="Add Contact" href="{% url 'contact-create' %}">
             <i class="plus icon"></i>
@@ -16,9 +19,7 @@
 {% block title_h1 %}{% blocktrans %}Contacts{% endblocktrans %}{% endblock %}
 {% block title_sub_header %}{% blocktrans %}Add, edit, create and delete contacts.{% endblocktrans %}{% endblock %}
 
-{% block sidebar_content %}
-    {% show_tags_filter 'contact' 'contact-list' %}
-{% endblock %}
+{% block sidebar_content %}{% endblock %}
 
 {% block content %}
     <div class="ui relaxed divided list">

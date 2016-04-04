@@ -1,13 +1,29 @@
 {% load i18n %}
 
-<div class="item">
-    <div class="header">{% trans 'By Tag' %}</div>
+<div class="ui floating dropdown item">
+    <i class="filter icon"></i>
+    {% if selected_tag %}
+        <span class="text">
+            <span class="description">{{ selected_tag.count }}</span>
+            <span class="text">{{ selected_tag.title }}</span>
+        </span>
+    {% else %}
+        <span class="text">{% trans 'Tag' %}</span>
+    {% endif %}
     <div class="menu">
-        <a href="{% url url %}" class="item">{% trans 'All' %}</a>
+        <div class="ui icon search input">
+            <i class="search icon"></i>
+            <input type="text" placeholder="Search tags...">
+        </div>
+        <div class="divider"></div><div class="header">
+            <i class="tags icon"></i> Tags
+        </div>
+        <div class="divider"></div>
         {% for tag in tags %}
             {% if tag.count %}
-            <a href="{% url url %}?tag={{ tag.pk }}" class="item">
-                {{ tag }}<div class="ui label">{{ tag.count }}</div>
+            <a href="{% url url %}?tag={{ tag.pk }}" class="item" data-value="{{ tag.pk }}" data-text="{{ tag }}">
+                <span class="description">{{ tag.count }}</span>
+                {{ tag }}
             </a>
             {% endif %}
         {% endfor %}
