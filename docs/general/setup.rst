@@ -9,6 +9,7 @@ Add the following apps to the ``INSTALLED_APPS``::
         'django.contrib.auth',
         'django.contrib.sites',
         ...
+        'localflavor',
         'revision',
         'workmate',
         ...

@@ -45,6 +45,11 @@
                         <i class="world icon"></i><a href="{{ contact.website }}" target="_blank">{{ contact.website }}</a>&nbsp;
                         {% endif %}
                     </p>
+                    <p>
+                        {% if contact.address %}
+                        <i class="marker icon"></i><a href="http://maps.google.com/?q={{ contact.address }}" target="_blank">{{ contact.address }}</a>
+                        {% endif %}
+                    </p>
                 </div>
                 <div class="extra">
                     {% for tag in contact.tags.all %}

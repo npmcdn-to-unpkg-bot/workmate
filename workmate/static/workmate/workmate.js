@@ -6,13 +6,11 @@
         $leftSideBar = $('.ui.left.sidebar'),
         $menuModal = $('.ui.menu.modal'),
         $menuPopup = $('.ui.main.menu .popup.item'),
-        $messageClose = $('.message .close'),
-        $selectDropdown = $('select.dropdown')
+        $messageClose = $('.message .close')
     ;
 
     $dropdown
         .dropdown({
-            //transition: 'drop'
         })
     ;
 
@@ -39,12 +37,6 @@
                 .closest('.message')
                 .transition('fade')
             ;
-        })
-    ;
-    
-    $selectDropdown
-        .dropdown({
-            fullTextSearch: true
         })
     ;
 

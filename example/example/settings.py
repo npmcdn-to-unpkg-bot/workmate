@@ -36,6 +36,7 @@ INSTALLED_APPS = (
 
     'example',
 
+    'localflavor',
     'reversion',
     'workmate',
     'workmate_plugin',

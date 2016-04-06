@@ -3,11 +3,13 @@ from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
+from localflavor.gb.gb_regions import GB_REGION_CHOICES
 from phonenumber_field.modelfields import PhoneNumberField
 
 from .abstract import SiteAbstract
 from .tagsmodel import Tag
-from ..utils.color_generator import generate_new_color
+from workmate.utils.color_generator import generate_new_color
+from workmate.utils.misc import xstr
 
 
 class Contact(SiteAbstract):
@@ -21,6 +23,12 @@ class Contact(SiteAbstract):
     notes = models.TextField(null=True, blank=True)
     color = models.CharField(null=True, blank=True, max_length=10, editable=False)
     tags = models.ManyToManyField(Tag, blank=True)
+
+    address_line_1 = models.CharField(_('Address Line 1'), null=True, blank=True, max_length=100)
+    address_line_2 = models.CharField(_('Address Line 2'), null=True, blank=True, max_length=100)
+    city = models.CharField(_('Town'), null=True, blank=True, max_length=100)
+    state = models.CharField(_('County'), null=True, blank=True, max_length=100, choices=GB_REGION_CHOICES)
+    code = models.CharField(_('Postcode'), null=True, blank=True, max_length=10)
 
     class Meta:
         ordering = ('first_name', 'last_name')
@@ -36,6 +44,16 @@ class Contact(SiteAbstract):
     @property
     def name(self):
         return '{} {}'.format(self.first_name, self.last_name)
+
+    @property
+    def address(self):
+        if self.address_line_1 or self.address_line_2 or self.city or self.state or self.code:
+            return '{} {} {} {} {}'.format(
+                xstr(self.address_line_1),
+                xstr(self.address_line_2),
+                xstr(self.city),
+                xstr(self.state),
+                xstr(self.code))
 
     def get_absolute_url(self):
         return reverse('contact-update', kwargs={'pk': self.pk})

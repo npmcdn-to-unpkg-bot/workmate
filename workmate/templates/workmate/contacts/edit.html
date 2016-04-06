@@ -34,6 +34,14 @@
             {% include 'workmate/partials/form_field.html' with field=form.website %}
         </div>
         <div class="ui form segment">
+            <h3>{% trans 'Address' %}</h3>
+            {% include 'workmate/partials/form_field.html' with field=form.address_line_1 %}
+            {% include 'workmate/partials/form_field.html' with field=form.address_line_2 %}
+            {% include 'workmate/partials/form_field.html' with field=form.city %}
+            {% include 'workmate/partials/form_field.html' with field=form.state %}
+            {% include 'workmate/partials/form_field.html' with field=form.code %}
+        </div>
+        <div class="ui form segment">
             <h3>{% trans 'Miscellaneous' %}</h3>
             {% include 'workmate/partials/form_field.html' with field=form.notes %}
             {% include 'workmate/partials/form_field.html' with field=form.tags %}

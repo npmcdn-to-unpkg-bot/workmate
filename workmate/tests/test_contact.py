@@ -73,9 +73,48 @@ class ModelTests(WorkmateTestCase):
         self.assertFalse(field.editable)
         self.assertEqual(field.max_length, 10)
 
+    def test_address_line_1(self):
+        field = Contact._meta.get_field("address_line_1")
+        self.assertTrue(field.null)
+        self.assertTrue(field.blank)
+        self.assertEqual(field.max_length, 100)
+
+    def test_address_line_2(self):
+        field = Contact._meta.get_field("address_line_2")
+        self.assertTrue(field.null)
+        self.assertTrue(field.blank)
+        self.assertEqual(field.max_length, 100)
+
+    def test_city(self):
+        field = Contact._meta.get_field("city")
+        self.assertTrue(field.null)
+        self.assertTrue(field.blank)
+        self.assertEqual(field.max_length, 100)
+
+    def test_state(self):
+        field = Contact._meta.get_field("state")
+        self.assertTrue(field.null)
+        self.assertTrue(field.blank)
+        self.assertEqual(field.max_length, 100)
+
+    def test_code(self):
+        field = Contact._meta.get_field("code")
+        self.assertTrue(field.null)
+        self.assertTrue(field.blank)
+        self.assertEqual(field.max_length, 10)
+
     def test_str_method(self):
         contact = Contact(first_name='Some', last_name='One')
         self.assertEqual(contact.__str__(), 'Some One')
+
+    def test_address(self):
+        contact = Contact(
+            address_line_1='1 Foo Street',
+            address_line_2='Foo',
+            city='London',
+            state='Foo',
+            code='SW1A 1AA')
+        self.assertEqual(contact.address, '1 Foo Street Foo London Foo SW1A 1AA')
 
     def test_get_absolute_url(self):
         contact = Contact.objects.create(first_name='Mr', last_name='Smith')
