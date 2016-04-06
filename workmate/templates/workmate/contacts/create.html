@@ -13,18 +13,30 @@
         </a>
     </div>
 {% endblock %}
-{% block title_h1 %}New Contact{% endblock %}
+{% block title_h1 %}{% trans 'New Contact' %}{% endblock %}
 {% block title_sub_header %}{% blocktrans %}Create a new contact.{% endblocktrans %}{% endblock %}
 
 {% block content %}
     <form class="ui form" method="post" novalidate>
         {% csrf_token %}
         {% include 'workmate/partials/form_errors.html' %}
-        {% for field in form %}
-            {% include 'workmate/partials/form_field.html' %}
-        {% endfor %}
-        <a class="ui button" href="{% url 'contact-list' %}">Cancel</a>
-        <button type="submit" class="ui primary button">Save</button>
+        <div class="ui form segment">
+            <h3>{% trans 'Personal' %}</h3>
+            {% include 'workmate/partials/form_field.html' with field=form.first_name %}
+            {% include 'workmate/partials/form_field.html' with field=form.last_name %}
+            {% include 'workmate/partials/form_field.html' with field=form.email_address %}
+            {% include 'workmate/partials/form_field.html' with field=form.mobile_number %}
+            {% include 'workmate/partials/form_field.html' with field=form.work_number %}
+            {% include 'workmate/partials/form_field.html' with field=form.home_number %}
+            {% include 'workmate/partials/form_field.html' with field=form.website %}
+        </div>
+        <div class="ui form segment">
+            <h3>{% trans 'Miscellaneous' %}</h3>
+            {% include 'workmate/partials/form_field.html' with field=form.notes %}
+            {% include 'workmate/partials/form_field.html' with field=form.tags %}
+        </div>
+        <a class="ui button" href="{% url 'contact-list' %}">{% trans 'Cancel' %}</a>
+        <button type="submit" class="ui primary button">{% trans 'Save' %}</button>
     </form>
 {% endblock %}
 
