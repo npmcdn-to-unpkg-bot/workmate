@@ -5,7 +5,7 @@
     {% if selected_tag %}
         <span class="text">
             <span class="description">{{ selected_tag.count }}</span>
-            <span class="text">{{ selected_tag.title }}</span>
+            <span class="text">{{ selected_tag }}</span>
         </span>
     {% else %}
         <span class="text">{% trans 'Tag' %}</span>
@@ -21,7 +21,7 @@
         <div class="divider"></div>
         {% for tag in tags %}
             {% if tag.count %}
-            <a href="{% url url %}?tag={{ tag.pk }}" class="item" data-value="{{ tag.pk }}" data-text="{{ tag }}">
+            <a href="{% url url %}?tag={{ tag.pk }}" class="item" data-value="{{ tag.pk }}" data-text="{{ tag|escapejs }}">
                 <span class="description">{{ tag.count }}</span>
                 {{ tag }}
             </a>
