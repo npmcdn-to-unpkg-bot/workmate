@@ -25,6 +25,7 @@ Add the middleware::
 
     MIDDLEWARE_CLASSES = (
         ...
+        'reversion.middleware.RevisionMiddleware',
         'workmate.middleware.sitesetup.SiteSettingMiddleware',
     )
 
