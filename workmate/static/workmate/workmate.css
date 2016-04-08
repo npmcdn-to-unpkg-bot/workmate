@@ -4,11 +4,11 @@
 }
 
 /* header */
-.ui.vertical.segment {
+.ui.masthead.vertical.segment {
     position: relative;
     margin: 0em;
-    min-height: 185px;
-    padding: 3em 0em;
+    min-height: 150px;
+    padding: 1em 0;
     border-bottom: none;
     box-shadow: none;
 }
@@ -23,16 +23,16 @@
     z-index: 99;
     position: fixed;
     display: none;
-    top: 6.7em;
-    left: 0px;
+    top: 4.9em;
     width: 45px;
-    height: auto;
-    white-space: nowrap;
-    overflow: hidden;
 }
 
 .ui.left.sidebar {
     z-index: 100;
+}
+
+.ui.left.sidebar .brand {
+    background-color: rgba(38, 46, 60, 1);
 }
 
 .ui.left.sidebar .site.title {
@@ -89,7 +89,7 @@
 }
 
 .menu.modal .grid .column a {
-    color: #fff;
+    color: #c0cad8;
     opacity: 0.8;
     font-size: 0.8em;
 }
