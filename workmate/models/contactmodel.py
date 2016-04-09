@@ -53,7 +53,7 @@ class Contact(SiteAbstract):
                 xstr(self.address_line_2),
                 xstr(self.city),
                 xstr(self.state),
-                xstr(self.code))
+                xstr(self.code)).strip()
 
     def get_absolute_url(self):
         return reverse('contact-update', kwargs={'pk': self.pk})

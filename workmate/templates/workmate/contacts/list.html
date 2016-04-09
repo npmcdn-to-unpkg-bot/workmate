@@ -28,32 +28,28 @@
             <div class="content">
                 <a class="header" href="{{ contact.get_absolute_url }}">{{ contact.name }}</a>
                 <div class="description">
-                    <p>
-                        {% if contact.mobile_number %}
+                    {% if contact.mobile_number %}
                         <i class="mobile icon"></i>{{ contact.mobile_number }}&nbsp;
-                        {% endif %}
-                        {% if contact.home_number %}
+                    {% endif %}
+                    {% if contact.home_number %}
                         <i class="home icon"></i>{{ contact.home_number }}&nbsp;
-                        {% endif %}
-                        {% if contact.work_number %}
+                    {% endif %}
+                    {% if contact.work_number %}
                         <i class="building icon"></i>{{ contact.work_number }}&nbsp;
-                        {% endif %}
-                        {% if contact.email_address %}
+                    {% endif %}
+                    {% if contact.email_address %}
                         <i class="at icon"></i><a href="mailto:{{ contact.email_address }}">{{ contact.email_address }}</a>&nbsp;
-                        {% endif %}
-                        {% if contact.website %}
+                    {% endif %}
+                    {% if contact.website %}
                         <i class="world icon"></i><a href="{{ contact.website }}" target="_blank">{{ contact.website }}</a>&nbsp;
-                        {% endif %}
-                    </p>
-                    <p>
-                        {% if contact.address %}
-                        <i class="marker icon"></i><a href="http://maps.google.com/?q={{ contact.address }}" target="_blank">{{ contact.address }}</a>
-                        {% endif %}
-                    </p>
-                </div>
-                <div class="extra">
+                    {% endif %}
+                    {% if contact.address %}
+                        <p>
+                            <i class="marker icon"></i><a href="http://maps.google.com/?q={{ contact.address }}" target="_blank">{{ contact.address }}</a>
+                        </p>
+                    {% endif %}
                     {% for tag in contact.tags.all %}
-                    <div class="ui tag label">{{ tag }}</div>
+                        <div class="ui small tag label">{{ tag }}</div>
                     {% endfor %}
                 </div>
             </div>
