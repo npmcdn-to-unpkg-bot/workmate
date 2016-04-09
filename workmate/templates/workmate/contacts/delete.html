@@ -22,7 +22,7 @@
 {% block content %}
     <form class="ui form" method="post" novalidate>
         {% csrf_token %}
-        <a class="ui button" href="{{ object.get_absolute_url }}">Cancel</a>
+        <a class="ui secondary button" href="{{ object.get_absolute_url }}">Cancel</a>
         <button type="submit" class="ui primary button">Confirm</button>
     </form>
 {% endblock %}
