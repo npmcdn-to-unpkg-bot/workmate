@@ -21,7 +21,7 @@
         {% csrf_token %}
         {% include 'workmate/partials/form_errors.html' %}
         <div class="ui form segment">
-            <h3>{% trans 'Personal' %}</h3>
+            <div class="ui top attached black label">{% trans 'Personal' %}</div>
             {% include 'workmate/partials/form_field.html' with field=form.first_name %}
             {% include 'workmate/partials/form_field.html' with field=form.last_name %}
             {% include 'workmate/partials/form_field.html' with field=form.email_address %}
@@ -31,7 +31,7 @@
             {% include 'workmate/partials/form_field.html' with field=form.website %}
         </div>
         <div class="ui form segment">
-            <h3>{% trans 'Address' %}</h3>
+            <div class="ui top attached black label">{% trans 'Address' %}</div>
             {% include 'workmate/partials/form_field.html' with field=form.address_line_1 %}
             {% include 'workmate/partials/form_field.html' with field=form.address_line_2 %}
             {% include 'workmate/partials/form_field.html' with field=form.city %}
@@ -39,7 +39,7 @@
             {% include 'workmate/partials/form_field.html' with field=form.code %}
         </div>
         <div class="ui form segment">
-            <h3>{% trans 'Miscellaneous' %}</h3>
+            <div class="ui top attached black label">{% trans 'Miscellaneous' %}</div>
             {% include 'workmate/partials/form_field.html' with field=form.notes %}
             {% include 'workmate/partials/form_field.html' with field=form.tags %}
         </div>
