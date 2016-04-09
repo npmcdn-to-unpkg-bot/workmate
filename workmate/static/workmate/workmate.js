@@ -14,8 +14,15 @@
         })
     ;
 
+    $leftSideBar
+        .sidebar({
+            dimPage: false
+        })
+        .sidebar('attach events', '.sidebar.launch.item')
+    ;
+
     $menuModal
-        .modal('attach events', '.ui.sidebar.menu .site.title')
+        .modal('attach events', '.grid.launch.item')
     ;
     $menuModal
         .modal('attach events', '.ui.menu.modal .close', 'hide')
@@ -37,43 +44,6 @@
                 .closest('.message')
                 .transition('fade')
             ;
-        })
-    ;
-
-    function enableLeftSidebar () {
-        if($(window).width() >= 1144) {
-            /* if body has the fixed-sidebar class then the sidebar
-               cannot be closed and does not dim the page */
-            var fixedSidebar = $body.hasClass('fixed-sidebar');
-            $leftSideBar
-                .sidebar({
-                    dimPage: false,
-                    closable: !fixedSidebar
-                })
-                .sidebar('attach events', '.launch.button')
-            ;
-            if(fixedSidebar) {
-                $leftSideBar
-                    .sidebar('show')
-                ;
-            }
-        } else {
-            /* set to responsive operation */
-            $leftSideBar
-                .sidebar({
-                    dimPage: false
-                })
-                .sidebar('attach events', '.launch.button')
-                .sidebar('hide')
-            ;
-        }
-    };
-
-    enableLeftSidebar();
-
-    $(window)
-        .resize(function (e) {
-            enableLeftSidebar();
         })
     ;
 

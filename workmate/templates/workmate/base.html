@@ -1,4 +1,4 @@
-{% load menu_tags staticfiles %}
+{% load i18n menu_tags staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -10,36 +10,28 @@
         {% block extra_css %}{% endblock %}
         {% block extra_head %}{% endblock %}
     </head>
-    <body class="basic minimal pushable {% if not hidden_sidebar %}fixed-sidebar{% endif %}">
+    <body class="basic minimal pushable">
 
         <div class="ui vertical inverted sidebar overlay menu left">
             <div class="item brand">
-                <div class="header site title">
-                    <h2>Workmate
-                        <div class="right floated button"><i class="chevron down icon"></i></div>
-                    </h2>
-                </div>
+                <div class="header site title"><h3>{% trans 'Workmate' %}</h3></div>
             </div>
             {% block sidebar_content %}{% endblock %}
         </div>
 
-        <div class="ui blue launch right attached fixed button">
-            <i class="content icon"></i>
+        <div class="ui fixed inverted main menu">
+            <div class="ui container">
+                <a class="popup icon item" data-content="Home" href="/"><i class="home icon"></i></a>
+                <a class="grid launch icon popup item" data-content="Open Main Menu"><i class="grid layout icon"></i></a>
+                <a class="sidebar launch icon popup item" data-content="Open Sidebar"><i class="sidebar icon"></i></a>
+                {% block left_nav_content %}{% endblock %}
+                <div class="right menu">
+                    {% block right_nav_content %}{% endblock %}
+                </div>
+            </div>
         </div>
 
         <div class="pusher">
-            <div class="ui masthead vertical segment">
-                <div class="ui container">
-                    <h2 class="ui header">
-                        {% block title_h1 %}{% endblock %}
-                        <div class="sub header">
-                            {% block title_sub_header %}{% endblock %}
-                        </div>
-                    </h2>
-                    <div class="ui divider"></div>
-                    {% block title_extra_content %}{% endblock %}
-                </div>
-            </div>
             <div class="ui main container">
                 {% include 'workmate/partials/messages.html' %}
                 {% block content %}{% endblock %}

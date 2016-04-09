@@ -6,22 +6,22 @@
 {% block extra_css %}{% endblock %}
 {% block extra_head %}{% endblock %}
 
-{% block title_extra_content %}
-    <div class="ui compact menu">
-        {% show_tags_filter 'contact' 'contact-list' %}
-    </div>
-    <div class="ui right floated main menu">
-        <a class="plus popup icon item" data-content="Add Contact" href="{% url 'contact-create' %}">
-            <i class="plus icon"></i>
-        </a>
-    </div>
+{% block left_nav_content %}
+    <a class="item" href="{% url 'contact-list' %}">{% trans 'Contacts' %}</a>
+    <a class="popup icon item" data-content="Add Contact" href="{% url 'contact-create' %}">
+        <i class="plus icon"></i>
+    </a>
 {% endblock %}
-{% block title_h1 %}{% trans 'Contacts' %}{% endblock %}
-{% block title_sub_header %}{% blocktrans %}Add, edit, create and delete contacts.{% endblocktrans %}{% endblock %}
+
+{% block right_nav_content %}{% endblock %}
 
 {% block sidebar_content %}{% endblock %}
 
 {% block content %}
+    <div class="ui compact main menu">
+        {% show_tags_filter 'contact' 'contact-list' %}
+    </div>
+
     <div class="ui divided items">
         {% for contact in object_list %}
         <div class="item">
