@@ -3,10 +3,10 @@ from django.core.urlresolvers import reverse_lazy
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 
-from .mixins import DeleteConformationMessageMixin, DeleteSuccessMessageMixin
+from .mixins import DeleteMessageMixin
 from ..conf import WORKMATE_PAGINATE_BY
 from ..forms import ContactForm
-from ..models import Contact, Tag
+from ..models import Contact
 
 try:
     from django.contrib.auth.mixins import LoginRequiredMixin
@@ -21,7 +21,7 @@ class ContactCreate(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     success_message = 'The contact was created successfully.'
 
 
-class ContactDelete(LoginRequiredMixin, DeleteConformationMessageMixin, DeleteSuccessMessageMixin, DeleteView):
+class ContactDelete(LoginRequiredMixin, DeleteMessageMixin, DeleteView):
     model = Contact
     template_name = 'workmate/contacts/delete.html'
     success_message = 'The contact was deleted successfully.'

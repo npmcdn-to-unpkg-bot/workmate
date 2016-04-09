@@ -9,7 +9,7 @@ from workmate.models.abstract import SiteAbstract
 from workmate.test_utils.test_case import WorkmateTestCase
 from workmate.tests.mixins import AuthTestMixin
 from workmate.views import ContactCreate, ContactDelete, ContactList, ContactUpdate
-from workmate.views.mixins import DeleteConformationMessageMixin, DeleteSuccessMessageMixin
+from workmate.views.mixins import DeleteMessageMixin
 
 
 class ModelTests(WorkmateTestCase):
@@ -189,13 +189,19 @@ class DeleteViewTests(AuthTestMixin, WorkmateTestCase):
 
     def test_is_correct_base_class(self):
         self.assertTrue(issubclass(ContactDelete, DeleteView))
-        self.assertTrue(issubclass(ContactDelete, DeleteConformationMessageMixin))
-        self.assertTrue(issubclass(ContactDelete, DeleteSuccessMessageMixin))
+        self.assertTrue(issubclass(ContactDelete, DeleteMessageMixin))
 
     def test_delete_conformation_message(self):
         self.login()
         response = self.get_request(self.url)
         self.assertIn(
+            'Are you sure you want to delete Mr Smith?', str(response.content)
+        )
+
+    def test_delete_conformation_message_not_shown_on_post(self):
+        self.login()
+        response = self.client.post(self.url, follow=True)
+        self.assertNotIn(
             'Are you sure you want to delete Mr Smith?', str(response.content)
         )
 
