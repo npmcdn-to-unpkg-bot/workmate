@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{% block page_title %}Workmate{% endblock %}</title>
         <link rel="stylesheet" href="{% static 'semantic-ui/semantic.min.css' %}">
-        <link rel="stylesheet" href="{% static 'workmate/workmate.css' %}">
+        <link rel="stylesheet" href="{% static 'workmate/workmate.min.css' %}">
         {% block extra_css %}{% endblock %}
         {% block extra_head %}{% endblock %}
     </head>
@@ -53,7 +53,7 @@
         </div>
 
         <script src="{% static 'semantic-ui/semantic.min.js' %}"></script>
-        <script src="{% static 'workmate/workmate.js' %}"></script>
+        <script src="{% static 'workmate/workmate.min.js' %}"></script>
         {% block extra_js %}{% endblock %}
     </body>
 </html>
