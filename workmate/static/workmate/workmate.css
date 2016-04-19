@@ -5,7 +5,7 @@
 
 /* main */
 .main.container {
-    padding: 4em 0em 7em;
+    padding: 6em 0em 7em;
 }
 
 /* sidebar */
@@ -14,7 +14,6 @@
 }
 
 .ui.left.sidebar .brand {
-    background-color: rgba(38, 46, 60, 1);
 }
 
 .ui.left.sidebar .brand .header {

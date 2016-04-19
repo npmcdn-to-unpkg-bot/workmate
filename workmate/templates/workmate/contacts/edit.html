@@ -21,29 +21,26 @@
     <form class="ui form" method="post" novalidate>
         {% csrf_token %}
         {% include 'workmate/partials/form_errors.html' %}
-        <div class="ui form segment">
-            <div class="ui top attached blue label">{% trans 'Personal' %}</div>
-            {% include 'workmate/partials/form_field.html' with field=form.first_name %}
-            {% include 'workmate/partials/form_field.html' with field=form.last_name %}
-            {% include 'workmate/partials/form_field.html' with field=form.email_address %}
-            {% include 'workmate/partials/form_field.html' with field=form.mobile_number %}
-            {% include 'workmate/partials/form_field.html' with field=form.work_number %}
-            {% include 'workmate/partials/form_field.html' with field=form.home_number %}
-            {% include 'workmate/partials/form_field.html' with field=form.website %}
-        </div>
-        <div class="ui form segment">
-            <div class="ui top attached blue label">{% trans 'Address' %}</div>
-            {% include 'workmate/partials/form_field.html' with field=form.address_line_1 %}
-            {% include 'workmate/partials/form_field.html' with field=form.address_line_2 %}
-            {% include 'workmate/partials/form_field.html' with field=form.city %}
-            {% include 'workmate/partials/form_field.html' with field=form.state %}
-            {% include 'workmate/partials/form_field.html' with field=form.code %}
-        </div>
-        <div class="ui form segment">
-            <div class="ui top attached blue label">{% trans 'Miscellaneous' %}</div>
-            {% include 'workmate/partials/form_field.html' with field=form.notes %}
-            {% include 'workmate/partials/form_field.html' with field=form.tags %}
-        </div>
+        <h2 class="ui dividing header">{% trans 'Personal Information' %}</h2>
+        {% include 'workmate/partials/form_field.html' with field=form.first_name %}
+        {% include 'workmate/partials/form_field.html' with field=form.last_name %}
+        {% include 'workmate/partials/form_field.html' with field=form.email_address %}
+        {% include 'workmate/partials/form_field.html' with field=form.mobile_number %}
+        {% include 'workmate/partials/form_field.html' with field=form.work_number %}
+        {% include 'workmate/partials/form_field.html' with field=form.home_number %}
+        {% include 'workmate/partials/form_field.html' with field=form.website %}
+        <div class="ui hidden divider"></div>
+        <h2 class="ui dividing header">{% trans 'Address Details' %}</h2>
+        {% include 'workmate/partials/form_field.html' with field=form.address_line_1 %}
+        {% include 'workmate/partials/form_field.html' with field=form.address_line_2 %}
+        {% include 'workmate/partials/form_field.html' with field=form.city %}
+        {% include 'workmate/partials/form_field.html' with field=form.state %}
+        {% include 'workmate/partials/form_field.html' with field=form.code %}
+        <div class="ui hidden divider"></div>
+        <h2 class="ui dividing header">{% trans 'Miscellaneous' %}</h2>
+        {% include 'workmate/partials/form_field.html' with field=form.notes %}
+        {% include 'workmate/partials/form_field.html' with field=form.tags %}
+        <div class="ui hidden divider"></div>
         <a class="ui secondary button" href="{% url 'contact-list' %}">{% trans 'Cancel' %}</a>
         <button type="submit" class="ui primary button">{% trans 'Save' %}</button>
     </form>
