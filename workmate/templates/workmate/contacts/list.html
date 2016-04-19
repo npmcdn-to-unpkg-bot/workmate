@@ -21,41 +21,50 @@
     <div class="ui compact main menu">
         {% show_tags_filter 'contact' 'contact-list' %}
     </div>
-
-    <div class="ui divided items">
-        {% for contact in object_list %}
-        <div class="item">
-            <div class="content">
-                <a class="header" href="{{ contact.get_absolute_url }}">{{ contact.name }}</a>
-                <div class="description">
-                    {% if contact.mobile_number %}
-                        <i class="mobile icon"></i>{{ contact.mobile_number }}&nbsp;
-                    {% endif %}
-                    {% if contact.home_number %}
-                        <i class="home icon"></i>{{ contact.home_number }}&nbsp;
-                    {% endif %}
-                    {% if contact.work_number %}
-                        <i class="building icon"></i>{{ contact.work_number }}&nbsp;
-                    {% endif %}
-                    {% if contact.email_address %}
-                        <i class="at icon"></i><a href="mailto:{{ contact.email_address }}">{{ contact.email_address }}</a>&nbsp;
-                    {% endif %}
-                    {% if contact.website %}
-                        <i class="world icon"></i><a href="{{ contact.website }}" target="_blank">{{ contact.website }}</a>&nbsp;
-                    {% endif %}
-                    {% if contact.address %}
-                        <p>
-                            <i class="marker icon"></i><a href="http://maps.google.com/?q={{ contact.address }}" target="_blank">{{ contact.address }}</a>
-                        </p>
-                    {% endif %}
-                    {% for tag in contact.tags.all %}
-                        <div class="ui small tag label">{{ tag }}</div>
-                    {% endfor %}
+    {% for contact in object_list %}
+        <div class="ui padded segment">
+            <h4 class="ui header"><a href="{{ contact.get_absolute_url }}">{{ contact.name }}</a></h4>
+            <div class="ui relaxed list">
+            {% if contact.mobile_number %}
+                <div class="item">
+                    <i class="mobile icon"></i><div class="content">{{ contact.mobile_number }}</div>
                 </div>
+            {% endif %}
+            {% if contact.home_number %}
+                <div class="item">
+                    <i class="home icon"></i><div class="content">{{ contact.home_number }}</div>
+                </div>
+            {% endif %}
+            {% if contact.work_number %}
+                <div class="item">
+                    <i class="building icon"></i><div class="content">{{ contact.work_number }}</div>
+                </div>
+            {% endif %}
+            {% if contact.email_address %}
+                <div class="item">
+                    <i class="at icon"></i><div class="content"><a href="mailto:{{ contact.email_address }}">{{ contact.email_address }}</a></div>
+                </div>
+            {% endif %}
+            {% if contact.website %}
+                <div class="item">
+                    <i class="world icon"></i><div class="content"><a href="{{ contact.website }}" target="_blank">{{ contact.website }}</a></div>
+                </div>
+            {% endif %}
+            {% if contact.address %}
+                <div class="item">
+                    <i class="marker icon"></i><div class="content"><a href="http://maps.google.com/?q={{ contact.address }}" target="_blank">{{ contact.address }}</a></div>
+                </div>
+            {% endif %}
             </div>
+            {% if contact.tags.all %}
+                <div class="ui divider"></div>
+                {% for tag in contact.tags.all %}
+                <div class="ui small tag label">{{ tag }}</div>
+                {% endfor %}
+            {% endif %}
         </div>
-        {% endfor %}
-    </div>
+    {% endfor %}
+
     {% include 'workmate/partials/paginator.html' %}
 {% endblock %}
 
