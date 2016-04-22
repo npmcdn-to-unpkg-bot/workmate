@@ -1,24 +1,23 @@
 {% load menu_tags %}
 
 {% regroup nodes by menu_title as menu_list %}
+
+<div class="content">
 {% for menu in menu_list %}
-    <div class="header">
-        {{ menu.grouper }}
-        {% if forloop.first %}
-            <div class="right floated button"><i class="close icon"></i></div>
-        {% endif %}
-    </div>
-    <div class="content">
-        <div class="ui menu inverted grid">
-            <div class="doubling six column row">
+    <h4 class="ui header">{{ menu.grouper }}</h4>
+    <div class="ui inverted segment">
+        <div class="ui eight doubling cards">
             {% for node in menu.list %}
-                <div class="column">
-                    <a href="{{ node.get_absolute_url }}">
-                        <i class="{{ node.icon }} icon"></i>{{ node.get_node_title }}
-                    </a>
+            <a class="ui card" href="{{ node.get_absolute_url }}">
+                <div class="image">
+                    <i class="{{ node.icon }} icon"></i>
                 </div>
+                <div class="extra content">
+                    {{ node.get_node_title }}
+                </div>
+            </a>
             {% endfor %}
-            </div>
         </div>
     </div>
 {% endfor %}
+</div>

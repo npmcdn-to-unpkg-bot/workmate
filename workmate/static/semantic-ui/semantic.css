@@ -249,6 +249,9 @@
        Fonts
 --------------------*/
 /*-------------------
+    Border Radius
+--------------------*/
+/*-------------------
     Brand Colors
 --------------------*/
 /*-------------------
@@ -1089,6 +1092,9 @@ th {
        Fonts
 --------------------*/
 /*-------------------
+    Border Radius
+--------------------*/
+/*-------------------
     Brand Colors
 --------------------*/
 /*-------------------
@@ -1111,6 +1117,9 @@ th {
 *******************************/
 /*-------------------
        Fonts
+--------------------*/
+/*-------------------
+    Border Radius
 --------------------*/
 /*-------------------
     Brand Colors
@@ -1319,6 +1328,9 @@ th {
 *******************************/
 /*-------------------
        Fonts
+--------------------*/
+/*-------------------
+    Border Radius
 --------------------*/
 /*-------------------
     Brand Colors
@@ -1710,6 +1722,9 @@ input::selection {
        Fonts
 --------------------*/
 /*-------------------
+    Border Radius
+--------------------*/
+/*-------------------
     Brand Colors
 --------------------*/
 /*-------------------
@@ -1732,6 +1747,9 @@ input::selection {
 *******************************/
 /*-------------------
        Fonts
+--------------------*/
+/*-------------------
+    Border Radius
 --------------------*/
 /*-------------------
     Brand Colors
@@ -1844,7 +1862,7 @@ input::selection {
   font-style: normal;
   text-align: center;
   text-decoration: none;
-  border-radius: 0.28571429rem;
+  border-radius: 0.07142857rem;
   box-shadow: 0px 0px 0px 1px transparent inset, 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -2474,7 +2492,7 @@ input::selection {
   background: transparent none !important;
   color: rgba(0, 0, 0, 0.6) !important;
   font-weight: normal;
-  border-radius: 0.28571429rem;
+  border-radius: 0.07142857rem;
   text-transform: none;
   text-shadow: none !important;
   box-shadow: 0px 0px 0px 1px rgba(34, 36, 38, 0.15) inset;
@@ -2482,7 +2500,7 @@ input::selection {
 .ui.basic.buttons {
   box-shadow: none;
   border: 1px solid rgba(34, 36, 38, 0.15);
-  border-radius: 0.28571429rem;
+  border-radius: 0.07142857rem;
 }
 .ui.basic.buttons .button {
   border-radius: 0em;
@@ -2637,20 +2655,20 @@ input::selection {
   border-radius: 0em;
 }
 .ui.labeled.icon.buttons .button:first-child > .icon {
-  border-top-left-radius: 0.28571429rem;
-  border-bottom-left-radius: 0.28571429rem;
+  border-top-left-radius: 0.07142857rem;
+  border-bottom-left-radius: 0.07142857rem;
 }
 .ui.labeled.icon.buttons .button:last-child > .icon {
-  border-top-right-radius: 0.28571429rem;
-  border-bottom-right-radius: 0.28571429rem;
+  border-top-right-radius: 0.07142857rem;
+  border-bottom-right-radius: 0.07142857rem;
 }
 .ui.vertical.labeled.icon.buttons .button:first-child > .icon {
   border-radius: 0em;
-  border-top-left-radius: 0.28571429rem;
+  border-top-left-radius: 0.07142857rem;
 }
 .ui.vertical.labeled.icon.buttons .button:last-child > .icon {
   border-radius: 0em;
-  border-bottom-left-radius: 0.28571429rem;
+  border-bottom-left-radius: 0.07142857rem;
 }
 /* Fluid Labeled */
 .ui.fluid[class*="left labeled"].icon.button,
@@ -2736,10 +2754,10 @@ input::selection {
 }
 /* Top / Bottom */
 .ui.attached.top.button {
-  border-radius: 0.28571429rem 0.28571429rem 0em 0em;
+  border-radius: 0.07142857rem 0.07142857rem 0em 0em;
 }
 .ui.attached.bottom.button {
-  border-radius: 0em 0em 0.28571429rem 0.28571429rem;
+  border-radius: 0em 0em 0.07142857rem 0.07142857rem;
 }
 /* Left / Right */
 .ui.left.attached.button {
@@ -2747,13 +2765,13 @@ input::selection {
   border-left: none;
   text-align: right;
   padding-right: 0.75em;
-  border-radius: 0.28571429rem 0em 0em 0.28571429rem;
+  border-radius: 0.07142857rem 0em 0em 0.07142857rem;
 }
 .ui.right.attached.button {
   display: inline-block;
   text-align: left;
   padding-left: 0.75em;
-  border-radius: 0em 0.28571429rem 0.28571429rem 0em;
+  border-radius: 0em 0.07142857rem 0.07142857rem 0em;
 }
 /* Plural */
 .ui.attached.buttons {
@@ -2780,23 +2798,23 @@ input::selection {
 /* Top / Bottom */
 .ui[class*="top attached"].buttons {
   margin-bottom: -1px;
-  border-radius: 0.28571429rem 0.28571429rem 0em 0em;
+  border-radius: 0.07142857rem 0.07142857rem 0em 0em;
 }
 .ui[class*="top attached"].buttons .button:first-child {
-  border-radius: 0.28571429rem 0em 0em 0em;
+  border-radius: 0.07142857rem 0em 0em 0em;
 }
 .ui[class*="top attached"].buttons .button:last-child {
-  border-radius: 0em 0.28571429rem 0em 0em;
+  border-radius: 0em 0.07142857rem 0em 0em;
 }
 .ui[class*="bottom attached"].buttons {
   margin-top: -1px;
-  border-radius: 0em 0em 0.28571429rem 0.28571429rem;
+  border-radius: 0em 0em 0.07142857rem 0.07142857rem;
 }
 .ui[class*="bottom attached"].buttons .button:first-child {
-  border-radius: 0em 0em 0em 0.28571429rem;
+  border-radius: 0em 0em 0em 0.07142857rem;
 }
 .ui[class*="bottom attached"].buttons .button:last-child {
-  border-radius: 0em 0em 0.28571429rem 0em;
+  border-radius: 0em 0em 0.07142857rem 0em;
 }
 /* Left / Right */
 .ui[class*="left attached"].buttons {
@@ -2806,15 +2824,15 @@ input::selection {
   display: inline-flex;
   margin-right: 0em;
   margin-left: -1px;
-  border-radius: 0em 0.28571429rem 0.28571429rem 0em;
+  border-radius: 0em 0.07142857rem 0.07142857rem 0em;
 }
 .ui[class*="left attached"].buttons .button:first-child {
   margin-left: -1px;
-  border-radius: 0em 0.28571429rem 0em 0em;
+  border-radius: 0em 0.07142857rem 0em 0em;
 }
 .ui[class*="left attached"].buttons .button:last-child {
   margin-left: -1px;
-  border-radius: 0em 0em 0.28571429rem 0em;
+  border-radius: 0em 0em 0.07142857rem 0em;
 }
 .ui[class*="right attached"].buttons {
   display: -webkit-inline-box;
@@ -2823,15 +2841,15 @@ input::selection {
   display: inline-flex;
   margin-left: 0em;
   margin-right: -1px;
-  border-radius: 0.28571429rem 0em 0em 0.28571429rem;
+  border-radius: 0.07142857rem 0em 0em 0.07142857rem;
 }
 .ui[class*="right attached"].buttons .button:first-child {
   margin-left: -1px;
-  border-radius: 0.28571429rem 0em 0em 0em;
+  border-radius: 0.07142857rem 0em 0em 0em;
 }
 .ui[class*="right attached"].buttons .button:last-child {
   margin-left: -1px;
-  border-radius: 0em 0em 0em 0.28571429rem;
+  border-radius: 0em 0em 0em 0.07142857rem;
 }
 /*-------------------
         Fluid
@@ -4904,12 +4922,12 @@ input::selection {
 .ui.buttons .button:first-child {
   border-left: none;
   margin-left: 0em;
-  border-top-left-radius: 0.28571429rem;
-  border-bottom-left-radius: 0.28571429rem;
+  border-top-left-radius: 0.07142857rem;
+  border-bottom-left-radius: 0.07142857rem;
 }
 .ui.buttons .button:last-child {
-  border-top-right-radius: 0.28571429rem;
-  border-bottom-right-radius: 0.28571429rem;
+  border-top-right-radius: 0.07142857rem;
+  border-bottom-right-radius: 0.07142857rem;
 }
 /* Vertical  Style */
 .ui.vertical.buttons {
@@ -4936,7 +4954,7 @@ input::selection {
 .ui.vertical.buttons .small.button:first-child,
 .ui.vertical.buttons .massive.button:first-child,
 .ui.vertical.buttons .huge.button:first-child {
-  border-radius: 0.28571429rem 0.28571429rem 0px 0px;
+  border-radius: 0.07142857rem 0.07142857rem 0px 0px;
 }
 .ui.vertical.buttons .button:last-child,
 .ui.vertical.buttons .mini.button:last-child,
@@ -4946,7 +4964,7 @@ input::selection {
 .ui.vertical.buttons .huge.button:last-child,
 .ui.vertical.buttons .gigantic.button:last-child {
   margin-bottom: 0px;
-  border-radius: 0px 0px 0.28571429rem 0.28571429rem;
+  border-radius: 0px 0px 0.07142857rem 0.07142857rem;
 }
 /*!
  * # Semantic UI - Container
@@ -5187,6 +5205,9 @@ input::selection {
        Fonts
 --------------------*/
 /*-------------------
+    Border Radius
+--------------------*/
+/*-------------------
     Brand Colors
 --------------------*/
 /*-------------------
@@ -5209,6 +5230,9 @@ input::selection {
 *******************************/
 /*-------------------
        Fonts
+--------------------*/
+/*-------------------
+    Border Radius
 --------------------*/
 /*-------------------
     Brand Colors
@@ -5607,6 +5631,9 @@ input::selection {
        Fonts
 --------------------*/
 /*-------------------
+    Border Radius
+--------------------*/
+/*-------------------
     Brand Colors
 --------------------*/
 /*-------------------
@@ -5629,6 +5656,9 @@ input::selection {
 *******************************/
 /*-------------------
        Fonts
+--------------------*/
+/*-------------------
+    Border Radius
 --------------------*/
 /*-------------------
     Brand Colors
@@ -6121,6 +6151,9 @@ input::selection {
        Fonts
 --------------------*/
 /*-------------------
+    Border Radius
+--------------------*/
+/*-------------------
     Brand Colors
 --------------------*/
 /*-------------------
@@ -6143,6 +6176,9 @@ input::selection {
 *******************************/
 /*-------------------
        Fonts
+--------------------*/
+/*-------------------
+    Border Radius
 --------------------*/
 /*-------------------
     Brand Colors
@@ -6447,6 +6483,9 @@ i.flag:not(.icon):before {
        Fonts
 --------------------*/
 /*-------------------
+    Border Radius
+--------------------*/
+/*-------------------
     Brand Colors
 --------------------*/
 /*-------------------
@@ -6469,6 +6508,9 @@ i.flag:not(.icon):before {
 *******************************/
 /*-------------------
        Fonts
+--------------------*/
+/*-------------------
+    Border Radius
 --------------------*/
 /*-------------------
     Brand Colors
@@ -7068,7 +7110,7 @@ a.ui.inverted.grey.header:hover {
   padding: 0.71428571rem 1rem;
   box-shadow: none;
   border: 1px solid #D4D4D5;
-  border-radius: 0.28571429rem;
+  border-radius: 0.07142857rem;
 }
 .ui.tiny.block.header {
   font-size: 0.85714286rem;
@@ -7107,12 +7149,12 @@ a.ui.inverted.grey.header:hover {
 }
 .ui.top.attached.header {
   margin-bottom: 0em;
-  border-radius: 0.28571429rem 0.28571429rem 0em 0em;
+  border-radius: 0.07142857rem 0.07142857rem 0em 0em;
 }
 .ui.bottom.attached.header {
   margin-top: 0em;
   border-top: none;
-  border-radius: 0em 0em 0.28571429rem 0.28571429rem;
+  border-radius: 0em 0em 0.07142857rem 0.07142857rem;
 }
 /* Attached Sizes */
 .ui.tiny.attached.header {
@@ -7373,6 +7415,9 @@ a.ui.inverted.grey.header:hover {
 *******************************/
 /*-------------------
        Fonts
+--------------------*/
+/*-------------------
+    Border Radius
 --------------------*/
 /*-------------------
     Brand Colors
@@ -10335,6 +10380,9 @@ i.icon.bed:before {
        Fonts
 --------------------*/
 /*-------------------
+    Border Radius
+--------------------*/
+/*-------------------
     Brand Colors
 --------------------*/
 /*-------------------
@@ -10357,6 +10405,9 @@ i.icon.bed:before {
 *******************************/
 /*-------------------
        Fonts
+--------------------*/
+/*-------------------
+    Border Radius
 --------------------*/
 /*-------------------
     Brand Colors
@@ -10895,6 +10946,9 @@ img.ui.bordered.image {
        Fonts
 --------------------*/
 /*-------------------
+    Border Radius
+--------------------*/
+/*-------------------
     Brand Colors
 --------------------*/
 /*-------------------
@@ -10917,6 +10971,9 @@ img.ui.bordered.image {
 *******************************/
 /*-------------------
        Fonts
+--------------------*/
+/*-------------------
+    Border Radius
 --------------------*/
 /*-------------------
     Brand Colors
@@ -11008,7 +11065,7 @@ img.ui.bordered.image {
   background: #FFFFFF;
   border: 1px solid rgba(34, 36, 38, 0.15);
   color: #000000;
-  border-radius: 0.28571429rem;
+  border-radius: 0.07142857rem;
   -webkit-transition: box-shadow 0.1s ease, border-color 0.1s ease;
           transition: box-shadow 0.1s ease, border-color 0.1s ease;
   box-shadow: none;
@@ -11186,7 +11243,7 @@ img.ui.bordered.image {
   height: 100%;
   width: 2.67142857em;
   opacity: 0.5;
-  border-radius: 0em 0.28571429rem 0.28571429rem 0em;
+  border-radius: 0em 0.07142857rem 0.07142857rem 0em;
   -webkit-transition: opacity 0.3s ease;
           transition: opacity 0.3s ease;
 }
@@ -11216,7 +11273,7 @@ img.ui.bordered.image {
 .ui[class*="left icon"].input > i.icon {
   right: auto;
   left: 1px;
-  border-radius: 0.28571429rem 0em 0em 0.28571429rem;
+  border-radius: 0.07142857rem 0em 0em 0.07142857rem;
 }
 .ui[class*="left icon"].input > i.circular.icon {
   right: auto;
@@ -11277,7 +11334,7 @@ img.ui.bordered.image {
   top: 1px;
   right: 1px;
   font-size: 0.64285714em;
-  border-radius: 0em 0.28571429rem 0em 0em;
+  border-radius: 0em 0.07142857rem 0em 0em;
 }
 /* Spacing with corner label */
 .ui[class*="corner labeled"]:not([class*="left corner labeled"]).labeled.input input {
@@ -11346,7 +11403,7 @@ img.ui.bordered.image {
 .ui.action.input:not([class*="left action"]) > .dropdown:last-child,
 .ui.action.input:not([class*="left action"]) > .button:last-child,
 .ui.action.input:not([class*="left action"]) > .buttons:last-child > .button {
-  border-radius: 0px 0.28571429rem 0.28571429rem 0px;
+  border-radius: 0px 0.07142857rem 0.07142857rem 0px;
 }
 /* Input Focus */
 .ui.action.input:not([class*="left action"]) input:focus {
@@ -11366,7 +11423,7 @@ img.ui.bordered.image {
 .ui[class*="left action"].input > .dropdown:first-child,
 .ui[class*="left action"].input > .button:first-child,
 .ui[class*="left action"].input > .buttons:first-child > .button {
-  border-radius: 0.28571429rem 0px 0px 0.28571429rem;
+  border-radius: 0.07142857rem 0px 0px 0.07142857rem;
 }
 /* Input Focus */
 .ui[class*="left action"].input > input:focus {
@@ -11654,6 +11711,9 @@ img.ui.bordered.image {
        Fonts
 --------------------*/
 /*-------------------
+    Border Radius
+--------------------*/
+/*-------------------
     Brand Colors
 --------------------*/
 /*-------------------
@@ -11676,6 +11736,9 @@ img.ui.bordered.image {
 *******************************/
 /*-------------------
        Fonts
+--------------------*/
+/*-------------------
+    Border Radius
 --------------------*/
 /*-------------------
     Brand Colors
@@ -11774,7 +11837,7 @@ img.ui.bordered.image {
   text-transform: none;
   font-weight: bold;
   border: 0px solid transparent;
-  border-radius: 0.28571429rem;
+  border-radius: 0.07142857rem;
   -webkit-transition: background 0.1s ease;
           transition: background 0.1s ease;
 }
@@ -11882,7 +11945,7 @@ a.ui.label {
   text-transform: none;
   background: #E8E8E8;
   padding: 0.5833em 0.833em 0.5833em 0.5em;
-  border-radius: 0.28571429rem;
+  border-radius: 0.07142857rem;
   box-shadow: none;
 }
 .ui.image.label img {
@@ -11890,13 +11953,13 @@ a.ui.label {
   vertical-align: top;
   height: 2.1666em;
   margin: -0.5833em 0.5em -0.5833em -0.5em;
-  border-radius: 0.28571429rem 0em 0em 0.28571429rem;
+  border-radius: 0.07142857rem 0em 0em 0.07142857rem;
 }
 .ui.image.label .detail {
   background: rgba(0, 0, 0, 0.1);
   margin: -0.5833em -0.833em -0.5833em 0.5em;
   padding: 0.5833em 0.833em;
-  border-radius: 0em 0.28571429rem 0.28571429rem 0em;
+  border-radius: 0em 0.07142857rem 0.07142857rem 0em;
 }
 /*-------------------
          Tag
@@ -11907,7 +11970,7 @@ a.ui.label {
   position: relative;
   padding-left: 1.5em;
   padding-right: 1.5em;
-  border-radius: 0em 0.28571429rem 0.28571429rem 0em;
+  border-radius: 0em 0.07142857rem 0.07142857rem 0em;
   -webkit-transition: none;
           transition: none;
 }
@@ -12020,7 +12083,7 @@ a.ui.label {
   min-width: -webkit-max-content;
   min-width: -moz-max-content;
   min-width: max-content;
-  border-radius: 0em 0.28571429rem 0.28571429rem 0em;
+  border-radius: 0em 0.07142857rem 0.07142857rem 0em;
   border-color: rgba(0, 0, 0, 0.15);
 }
 .ui.ribbon.label:after {
@@ -12054,7 +12117,7 @@ a.ui.label {
   -webkit-transform: translateX(-100%);
       -ms-transform: translateX(-100%);
           transform: translateX(-100%);
-  border-radius: 0.28571429rem 0em 0em 0.28571429rem;
+  border-radius: 0.07142857rem 0em 0em 0.07142857rem;
 }
 .ui[class*="right ribbon"].label:after {
   left: auto;
@@ -12108,19 +12171,19 @@ a.ui.label {
 .ui[class*="top left attached"].label {
   width: auto;
   margin-top: 0em !important;
-  border-radius: 0.21428571rem 0em 0.28571429rem 0em;
+  border-radius: 0.21428571rem 0em 0.07142857rem 0em;
 }
 .ui[class*="top right attached"].label {
   width: auto;
   left: auto;
   right: 0em;
-  border-radius: 0em 0.21428571rem 0em 0.28571429rem;
+  border-radius: 0em 0.21428571rem 0em 0.07142857rem;
 }
 .ui[class*="bottom left attached"].label {
   width: auto;
   top: auto;
   bottom: 0em;
-  border-radius: 0em 0.28571429rem 0em 0.21428571rem;
+  border-radius: 0em 0.07142857rem 0em 0.21428571rem;
 }
 .ui[class*="bottom right attached"].label {
   top: auto;
@@ -12128,7 +12191,7 @@ a.ui.label {
   left: auto;
   right: 0em;
   width: auto;
-  border-radius: 0.28571429rem 0em 0.21428571rem 0em;
+  border-radius: 0.07142857rem 0em 0.21428571rem 0em;
 }
 /*******************************
              States
@@ -13123,6 +13186,9 @@ a.ui.basic.label:hover {
        Fonts
 --------------------*/
 /*-------------------
+    Border Radius
+--------------------*/
+/*-------------------
     Brand Colors
 --------------------*/
 /*-------------------
@@ -13145,6 +13211,9 @@ a.ui.basic.label:hover {
 *******************************/
 /*-------------------
        Fonts
+--------------------*/
+/*-------------------
+    Border Radius
 --------------------*/
 /*-------------------
     Brand Colors
@@ -14297,6 +14366,9 @@ ol.ui.horizontal.list li:before,
        Fonts
 --------------------*/
 /*-------------------
+    Border Radius
+--------------------*/
+/*-------------------
     Brand Colors
 --------------------*/
 /*-------------------
@@ -14319,6 +14391,9 @@ ol.ui.horizontal.list li:before,
 *******************************/
 /*-------------------
        Fonts
+--------------------*/
+/*-------------------
+    Border Radius
 --------------------*/
 /*-------------------
     Brand Colors
@@ -14846,6 +14921,9 @@ ol.ui.horizontal.list li:before,
        Fonts
 --------------------*/
 /*-------------------
+    Border Radius
+--------------------*/
+/*-------------------
     Brand Colors
 --------------------*/
 /*-------------------
@@ -14868,6 +14946,9 @@ ol.ui.horizontal.list li:before,
 *******************************/
 /*-------------------
        Fonts
+--------------------*/
+/*-------------------
+    Border Radius
 --------------------*/
 /*-------------------
     Brand Colors
@@ -15247,6 +15328,9 @@ ol.ui.horizontal.list li:before,
        Fonts
 --------------------*/
 /*-------------------
+    Border Radius
+--------------------*/
+/*-------------------
     Brand Colors
 --------------------*/
 /*-------------------
@@ -15269,6 +15353,9 @@ ol.ui.horizontal.list li:before,
 *******************************/
 /*-------------------
        Fonts
+--------------------*/
+/*-------------------
+    Border Radius
 --------------------*/
 /*-------------------
     Brand Colors
@@ -15802,6 +15889,9 @@ ol.ui.horizontal.list li:before,
        Fonts
 --------------------*/
 /*-------------------
+    Border Radius
+--------------------*/
+/*-------------------
     Brand Colors
 --------------------*/
 /*-------------------
@@ -15824,6 +15914,9 @@ ol.ui.horizontal.list li:before,
 *******************************/
 /*-------------------
        Fonts
+--------------------*/
+/*-------------------
+    Border Radius
 --------------------*/
 /*-------------------
     Brand Colors
@@ -15904,7 +15997,7 @@ ol.ui.horizontal.list li:before,
   box-shadow: 0px 1px 2px 0 rgba(34, 36, 38, 0.15);
   margin: 1rem 0em;
   padding: 1em 1em;
-  border-radius: 0.28571429rem;
+  border-radius: 0.07142857rem;
   border: 1px solid rgba(34, 36, 38, 0.15);
 }
 .ui.segment:first-child {
@@ -15960,7 +16053,7 @@ ol.ui.horizontal.list li:before,
 }
 .ui.grid.segment {
   margin: 1rem 0em;
-  border-radius: 0.28571429rem;
+  border-radius: 0.07142857rem;
 }
 /* Table */
 .ui.basic.table.segment {
@@ -16134,7 +16227,7 @@ ol.ui.horizontal.list li:before,
   margin: 1rem 0em;
   border: 1px solid rgba(34, 36, 38, 0.15);
   box-shadow: 0px 1px 2px 0 rgba(34, 36, 38, 0.15);
-  border-radius: 0.28571429rem;
+  border-radius: 0.07142857rem;
 }
 .ui.segments:first-child {
   margin-top: 0em;
@@ -16159,7 +16252,7 @@ ol.ui.horizontal.list li:before,
   bottom: 0px;
   margin-bottom: 0em;
   top: 0px;
-  border-radius: 0.28571429rem 0.28571429rem 0em 0em;
+  border-radius: 0.07142857rem 0.07142857rem 0em 0em;
 }
 /* Bottom */
 .ui.segments:not(.horizontal) > .segment:last-child {
@@ -16168,7 +16261,7 @@ ol.ui.horizontal.list li:before,
   margin-top: 0em;
   margin-bottom: 0em;
   box-shadow: 0px 1px 2px 0 rgba(34, 36, 38, 0.15), none;
-  border-radius: 0em 0em 0.28571429rem 0.28571429rem;
+  border-radius: 0em 0em 0.07142857rem 0.07142857rem;
 }
 /* Nested Group */
 .ui.segments > .ui.segments {
@@ -16198,7 +16291,7 @@ ol.ui.horizontal.list li:before,
   background-color: #FFFFFF;
   box-shadow: 0px 1px 2px 0 rgba(34, 36, 38, 0.15);
   margin: 1rem 0em;
-  border-radius: 0.28571429rem;
+  border-radius: 0.07142857rem;
   border: 1px solid rgba(34, 36, 38, 0.15);
 }
 /* Nested Horizontal Group */
@@ -16262,7 +16355,7 @@ ol.ui.horizontal.list li:before,
   background: rgba(255, 255, 255, 0.8);
   width: 100%;
   height: 100%;
-  border-radius: 0.28571429rem;
+  border-radius: 0.07142857rem;
   z-index: 100;
 }
 .ui.loading.segment:after {
@@ -16527,7 +16620,7 @@ ol.ui.horizontal.list li:before,
   margin-bottom: 0em;
   top: 0px;
   margin-top: 1rem;
-  border-radius: 0.28571429rem 0.28571429rem 0em 0em;
+  border-radius: 0.07142857rem 0.07142857rem 0em 0em;
 }
 .ui.segment[class*="top attached"]:first-child {
   margin-top: 0em;
@@ -16539,7 +16632,7 @@ ol.ui.horizontal.list li:before,
   top: 0px;
   margin-bottom: 1rem;
   box-shadow: 0px 1px 2px 0 rgba(34, 36, 38, 0.15), none;
-  border-radius: 0em 0em 0.28571429rem 0.28571429rem;
+  border-radius: 0em 0em 0.07142857rem 0.07142857rem;
 }
 .ui.segment[class*="bottom attached"]:last-child {
   margin-bottom: 0em;
@@ -16786,6 +16879,9 @@ ol.ui.horizontal.list li:before,
        Fonts
 --------------------*/
 /*-------------------
+    Border Radius
+--------------------*/
+/*-------------------
     Brand Colors
 --------------------*/
 /*-------------------
@@ -16808,6 +16904,9 @@ ol.ui.horizontal.list li:before,
 *******************************/
 /*-------------------
        Fonts
+--------------------*/
+/*-------------------
+    Border Radius
 --------------------*/
 /*-------------------
     Brand Colors
@@ -16894,7 +16993,7 @@ ol.ui.horizontal.list li:before,
   background: '';
   box-shadow: none;
   line-height: 1.14285714em;
-  border-radius: 0.28571429rem;
+  border-radius: 0.07142857rem;
   border: 1px solid rgba(34, 36, 38, 0.15);
 }
 /* First Steps */
@@ -16970,11 +17069,11 @@ ol.ui.horizontal.list li:before,
 /* First Step */
 .ui.steps .step:first-child {
   padding-left: 2em;
-  border-radius: 0.28571429rem 0em 0em 0.28571429rem;
+  border-radius: 0.07142857rem 0em 0em 0.07142857rem;
 }
 /* Last Step */
 .ui.steps .step:last-child {
-  border-radius: 0em 0.28571429rem 0.28571429rem 0em;
+  border-radius: 0em 0.07142857rem 0.07142857rem 0em;
 }
 .ui.steps .step:last-child {
   border-right: none;
@@ -16982,7 +17081,7 @@ ol.ui.horizontal.list li:before,
 }
 /* Only Step */
 .ui.steps .step:only-child {
-  border-radius: 0.28571429rem;
+  border-radius: 0.07142857rem;
 }
 /*******************************
             Content
@@ -17096,14 +17195,14 @@ ol.ui.horizontal.list li:before,
 }
 .ui.vertical.steps .step:first-child {
   padding: 1.14285714em 2em;
-  border-radius: 0.28571429rem 0.28571429rem 0em 0em;
+  border-radius: 0.07142857rem 0.07142857rem 0em 0em;
 }
 .ui.vertical.steps .step:last-child {
   border-bottom: none;
-  border-radius: 0em 0em 0.28571429rem 0.28571429rem;
+  border-radius: 0em 0em 0.07142857rem 0.07142857rem;
 }
 .ui.vertical.steps .step:only-child {
-  border-radius: 0.28571429rem;
+  border-radius: 0.07142857rem;
 }
 /* Arrow */
 .ui.vertical.steps .step:after {
@@ -17155,10 +17254,10 @@ ol.ui.horizontal.list li:before,
   }
   .ui.steps .step:first-child {
     padding: 1.14285714em 2em;
-    border-radius: 0.28571429rem 0.28571429rem 0em 0em;
+    border-radius: 0.07142857rem 0.07142857rem 0em 0em;
   }
   .ui.steps .step:last-child {
-    border-radius: 0em 0em 0.28571429rem 0.28571429rem;
+    border-radius: 0em 0em 0.07142857rem 0.07142857rem;
   }
   /* Arrow */
   .ui.steps .step:after {
@@ -17281,10 +17380,10 @@ ol.ui.horizontal.list li:before,
   }
   .ui[class*="tablet stackable"].steps .step:first-child {
     padding: 1.14285714em 2em;
-    border-radius: 0.28571429rem 0.28571429rem 0em 0em;
+    border-radius: 0.07142857rem 0.07142857rem 0em 0em;
   }
   .ui[class*="tablet stackable"].steps .step:last-child {
-    border-radius: 0em 0em 0.28571429rem 0.28571429rem;
+    border-radius: 0em 0em 0.07142857rem 0.07142857rem;
   }
   /* Arrow */
   .ui[class*="tablet stackable"].steps .step:after {
@@ -17319,24 +17418,24 @@ ol.ui.horizontal.list li:before,
   width: calc(100% +  2px ) !important;
   margin: 0em -1px -1px;
   max-width: calc(100% +  2px );
-  border-radius: 0.28571429rem 0.28571429rem 0em 0em;
+  border-radius: 0.07142857rem 0.07142857rem 0em 0em;
 }
 .ui.attached.steps .step:first-child {
-  border-radius: 0.28571429rem 0em 0em 0em;
+  border-radius: 0.07142857rem 0em 0em 0em;
 }
 .ui.attached.steps .step:last-child {
-  border-radius: 0em 0.28571429rem 0em 0em;
+  border-radius: 0em 0.07142857rem 0em 0em;
 }
 /* Bottom */
 .ui.bottom.attached.steps {
   margin: -1px -1px 0em;
-  border-radius: 0em 0em 0.28571429rem 0.28571429rem;
+  border-radius: 0em 0em 0.07142857rem 0.07142857rem;
 }
 .ui.bottom.attached.steps .step:first-child {
-  border-radius: 0em 0em 0em 0.28571429rem;
+  border-radius: 0em 0em 0em 0.07142857rem;
 }
 .ui.bottom.attached.steps .step:last-child {
-  border-radius: 0em 0em 0.28571429rem 0em;
+  border-radius: 0em 0em 0.07142857rem 0em;
 }
 /*-------------------
     Evenly Divided
@@ -17642,6 +17741,9 @@ ol.ui.horizontal.list li:before,
        Fonts
 --------------------*/
 /*-------------------
+    Border Radius
+--------------------*/
+/*-------------------
     Brand Colors
 --------------------*/
 /*-------------------
@@ -17664,6 +17766,9 @@ ol.ui.horizontal.list li:before,
 *******************************/
 /*-------------------
        Fonts
+--------------------*/
+/*-------------------
+    Border Radius
 --------------------*/
 /*-------------------
     Brand Colors
@@ -18034,6 +18139,9 @@ ol.ui.horizontal.list li:before,
        Fonts
 --------------------*/
 /*-------------------
+    Border Radius
+--------------------*/
+/*-------------------
     Brand Colors
 --------------------*/
 /*-------------------
@@ -18056,6 +18164,9 @@ ol.ui.horizontal.list li:before,
 *******************************/
 /*-------------------
        Fonts
+--------------------*/
+/*-------------------
+    Border Radius
 --------------------*/
 /*-------------------
     Brand Colors
@@ -18222,7 +18333,7 @@ ol.ui.horizontal.list li:before,
   background: #FFFFFF;
   border: 1px solid rgba(34, 36, 38, 0.15);
   color: #000000;
-  border-radius: 0.28571429rem;
+  border-radius: 0.07142857rem;
   box-shadow: 0em 0em 0em 0em transparent inset;
   -webkit-transition: color 0.1s ease, border-color 0.1s ease;
           transition: color 0.1s ease, border-color 0.1s ease;
@@ -18237,7 +18348,7 @@ ol.ui.horizontal.list li:before,
   border: 1px solid rgba(34, 36, 38, 0.15);
   outline: none;
   color: #000000;
-  border-radius: 0.28571429rem;
+  border-radius: 0.07142857rem;
   box-shadow: 0em 0em 0em 0em transparent inset;
   -webkit-transition: color 0.1s ease, border-color 0.1s ease;
           transition: color 0.1s ease, border-color 0.1s ease;
@@ -18269,7 +18380,7 @@ ol.ui.horizontal.list li:before,
   width: 100%;
   background: #FFFFFF;
   border: 1px solid rgba(34, 36, 38, 0.15);
-  border-radius: 0.28571429rem;
+  border-radius: 0.07142857rem;
   box-shadow: 0em 0em 0em 0em transparent inset;
   padding: 0.62em 1em;
   color: #000000;
@@ -18443,14 +18554,14 @@ ol.ui.horizontal.list li:before,
 .ui.form input[type="url"]:focus {
   color: rgba(0, 0, 0, 0.95);
   border-color: #85B7D9;
-  border-radius: 0.28571429rem;
+  border-radius: 0.07142857rem;
   background: #FFFFFF;
   box-shadow: 0px 0em 0em 0em rgba(34, 36, 38, 0.35) inset;
 }
 .ui.form textarea:focus {
   color: rgba(0, 0, 0, 0.95);
   border-color: #85B7D9;
-  border-radius: 0.28571429rem;
+  border-radius: 0.07142857rem;
   background: #FFFFFF;
   box-shadow: 0px 0em 0em 0em rgba(34, 36, 38, 0.35) inset;
   -webkit-appearance: none;
@@ -19312,6 +19423,9 @@ ol.ui.horizontal.list li:before,
        Fonts
 --------------------*/
 /*-------------------
+    Border Radius
+--------------------*/
+/*-------------------
     Brand Colors
 --------------------*/
 /*-------------------
@@ -19334,6 +19448,9 @@ ol.ui.horizontal.list li:before,
 *******************************/
 /*-------------------
        Fonts
+--------------------*/
+/*-------------------
+    Border Radius
 --------------------*/
 /*-------------------
     Brand Colors
@@ -21519,6 +21636,9 @@ ol.ui.horizontal.list li:before,
        Fonts
 --------------------*/
 /*-------------------
+    Border Radius
+--------------------*/
+/*-------------------
     Brand Colors
 --------------------*/
 /*-------------------
@@ -21541,6 +21661,9 @@ ol.ui.horizontal.list li:before,
 *******************************/
 /*-------------------
        Fonts
+--------------------*/
+/*-------------------
+    Border Radius
 --------------------*/
 /*-------------------
     Brand Colors
@@ -21668,7 +21791,7 @@ ol.ui.horizontal.list li:before,
   font-weight: normal;
   border: 1px solid rgba(34, 36, 38, 0.15);
   box-shadow: 0px 1px 2px 0 rgba(34, 36, 38, 0.15);
-  border-radius: 0.28571429rem;
+  border-radius: 0.07142857rem;
   min-height: 2.85714286em;
 }
 .ui.menu:after {
@@ -21732,7 +21855,7 @@ ol.ui.horizontal.list li:before,
           transition: background 0.1s ease, box-shadow 0.1s ease, color 0.1s ease;
 }
 .ui.menu > .item:first-child {
-  border-radius: 0.28571429rem 0px 0px 0.28571429rem;
+  border-radius: 0.07142857rem 0px 0px 0.07142857rem;
 }
 /* Border */
 .ui.menu .item:before {
@@ -21853,7 +21976,7 @@ ol.ui.horizontal.list li:before,
 .ui.menu .dropdown.item .menu {
   left: 0px;
   min-width: calc(100% - 1px);
-  border-radius: 0em 0em 0.28571429rem 0.28571429rem;
+  border-radius: 0em 0em 0.07142857rem 0.07142857rem;
   background: #FFFFFF;
   margin: 0em 0px 0px;
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
@@ -21902,7 +22025,7 @@ ol.ui.horizontal.list li:before,
 /* Secondary */
 .ui.secondary.menu .dropdown.item > .menu,
 .ui.text.menu .dropdown.item > .menu {
-  border-radius: 0.28571429rem;
+  border-radius: 0.07142857rem;
   margin-top: 0.35714286em;
 }
 /* Pointing */
@@ -21926,7 +22049,7 @@ ol.ui.horizontal.list li:before,
   min-width: 0;
   margin: 0em 0em 0em 0em;
   box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.08);
-  border-radius: 0em 0.28571429rem 0.28571429rem 0.28571429rem;
+  border-radius: 0em 0.07142857rem 0.07142857rem 0.07142857rem;
 }
 .ui.vertical.menu .active.dropdown.item {
   border-top-right-radius: 0em;
@@ -22104,10 +22227,10 @@ Floated Menu / Item
   border-right: none;
 }
 .ui.vertical.menu > .item:first-child {
-  border-radius: 0.28571429rem 0.28571429rem 0px 0px;
+  border-radius: 0.07142857rem 0.07142857rem 0px 0px;
 }
 .ui.vertical.menu > .item:last-child {
-  border-radius: 0px 0px 0.28571429rem 0.28571429rem;
+  border-radius: 0px 0px 0.07142857rem 0.07142857rem;
 }
 /*--- Label ---*/
 .ui.vertical.menu .item > .label {
@@ -22161,13 +22284,13 @@ Floated Menu / Item
   box-shadow: none;
 }
 .ui.vertical.menu > .active.item:first-child {
-  border-radius: 0.28571429rem 0.28571429rem 0em 0em;
+  border-radius: 0.07142857rem 0.07142857rem 0em 0em;
 }
 .ui.vertical.menu > .active.item:last-child {
-  border-radius: 0em 0em 0.28571429rem 0.28571429rem;
+  border-radius: 0em 0em 0.07142857rem 0.07142857rem;
 }
 .ui.vertical.menu > .active.item:only-child {
-  border-radius: 0.28571429rem;
+  border-radius: 0.07142857rem;
 }
 .ui.vertical.menu .active.item .menu .active.item {
   border-left: none;
@@ -22216,7 +22339,7 @@ Floated Menu / Item
   font-weight: bold;
   margin-bottom: -1px;
   box-shadow: none;
-  border-radius: 0.28571429rem 0.28571429rem 0px 0px !important;
+  border-radius: 0.07142857rem 0.07142857rem 0px 0px !important;
 }
 /* Coupling with segment for attachment */
 .ui.tabular.menu + .attached:not(.top).segment,
@@ -22250,7 +22373,7 @@ Floated Menu / Item
   color: rgba(0, 0, 0, 0.95);
   border-color: #D4D4D5;
   margin: -1px 0px 0px 0px;
-  border-radius: 0px 0px 0.28571429rem 0.28571429rem !important;
+  border-radius: 0px 0px 0.07142857rem 0.07142857rem !important;
 }
 /* Vertical Tabular (Left) */
 .ui.vertical.tabular.menu {
@@ -22272,7 +22395,7 @@ Floated Menu / Item
   color: rgba(0, 0, 0, 0.95);
   border-color: #D4D4D5;
   margin: 0px -1px 0px 0px;
-  border-radius: 0.28571429rem 0px 0px 0.28571429rem !important;
+  border-radius: 0.07142857rem 0px 0px 0.07142857rem !important;
 }
 /* Vertical Right Tabular */
 .ui.vertical.right.tabular.menu {
@@ -22295,7 +22418,7 @@ Floated Menu / Item
   color: rgba(0, 0, 0, 0.95);
   border-color: #D4D4D5;
   margin: 0px 0px 0px -1px;
-  border-radius: 0px 0.28571429rem 0.28571429rem 0px !important;
+  border-radius: 0px 0.07142857rem 0.07142857rem 0px !important;
 }
 /* Dropdown */
 .ui.tabular.menu .active.dropdown.item {
@@ -22317,10 +22440,10 @@ Floated Menu / Item
   vertical-align: middle;
 }
 .ui.pagination.menu .item:last-child {
-  border-radius: 0em 0.28571429rem 0.28571429rem 0em;
+  border-radius: 0em 0.07142857rem 0.07142857rem 0em;
 }
 .ui.compact.menu .item:last-child {
-  border-radius: 0em 0.28571429rem 0.28571429rem 0em;
+  border-radius: 0em 0.07142857rem 0.07142857rem 0em;
 }
 .ui.pagination.menu .item:last-child:before {
   display: none;
@@ -22363,7 +22486,7 @@ Floated Menu / Item
   background: none;
   -webkit-transition: color 0.1s ease;
           transition: color 0.1s ease;
-  border-radius: 0.28571429rem;
+  border-radius: 0.07142857rem;
 }
 /* No Divider */
 .ui.secondary.menu .item:before {
@@ -22391,7 +22514,7 @@ Floated Menu / Item
   box-shadow: none;
   background: rgba(0, 0, 0, 0.05);
   color: rgba(0, 0, 0, 0.95);
-  border-radius: 0.28571429rem;
+  border-radius: 0.07142857rem;
 }
 /* Active Hover */
 .ui.secondary.menu .active.item:hover {
@@ -22439,7 +22562,7 @@ Floated Menu / Item
 .ui.secondary.vertical.menu > .item {
   border: none;
   margin: 0em 0em 0.35714286em;
-  border-radius: 0.28571429rem !important;
+  border-radius: 0.07142857rem !important;
 }
 .ui.secondary.vertical.menu > .header.item {
   border-radius: 0em;
@@ -23098,7 +23221,7 @@ Floated Menu / Item
   display: inline-block;
 }
 .ui.compact.menu .item:last-child {
-  border-radius: 0em 0.28571429rem 0.28571429rem 0em;
+  border-radius: 0em 0.07142857rem 0.07142857rem 0em;
 }
 .ui.compact.menu .item:last-child:before {
   display: none;
@@ -23319,7 +23442,7 @@ Floated Menu / Item
   margin-bottom: 0em;
   top: 0px;
   margin-top: 1rem;
-  border-radius: 0.28571429rem 0.28571429rem 0em 0em;
+  border-radius: 0.07142857rem 0.07142857rem 0em 0em;
 }
 .ui.menu[class*="top attached"]:first-child {
   margin-top: 0em;
@@ -23331,17 +23454,17 @@ Floated Menu / Item
   top: 0px;
   margin-bottom: 1rem;
   box-shadow: 0px 1px 2px 0 rgba(34, 36, 38, 0.15), none;
-  border-radius: 0em 0em 0.28571429rem 0.28571429rem;
+  border-radius: 0em 0em 0.07142857rem 0.07142857rem;
 }
 .ui[class*="bottom attached"].menu:last-child {
   margin-bottom: 0em;
 }
 /* Attached Menu Item */
 .ui.top.attached.menu > .item:first-child {
-  border-radius: 0.28571429rem 0em 0em 0em;
+  border-radius: 0.07142857rem 0em 0em 0em;
 }
 .ui.bottom.attached.menu > .item:first-child {
-  border-radius: 0em 0em 0em 0.28571429rem;
+  border-radius: 0em 0em 0em 0.07142857rem;
 }
 /* Tabular Attached */
 .ui.attached.menu:not(.tabular) {
@@ -23625,6 +23748,9 @@ Floated Menu / Item
        Fonts
 --------------------*/
 /*-------------------
+    Border Radius
+--------------------*/
+/*-------------------
     Brand Colors
 --------------------*/
 /*-------------------
@@ -23647,6 +23773,9 @@ Floated Menu / Item
 *******************************/
 /*-------------------
        Fonts
+--------------------*/
+/*-------------------
+    Border Radius
 --------------------*/
 /*-------------------
     Brand Colors
@@ -23713,7 +23842,7 @@ Floated Menu / Item
   color: #000000;
   -webkit-transition: opacity 0.1s ease, color 0.1s ease, background 0.1s ease, box-shadow 0.1s ease;
           transition: opacity 0.1s ease, color 0.1s ease, background 0.1s ease, box-shadow 0.1s ease;
-  border-radius: 0.28571429rem;
+  border-radius: 0.07142857rem;
   box-shadow: 0px 0px 0px 1px rgba(34, 36, 38, 0.22) inset, 0px 0px 0px 0px rgba(0, 0, 0, 0);
 }
 .ui.message:first-child {
@@ -23846,7 +23975,7 @@ Floated Menu / Item
 ---------------*/
 .ui.attached.message {
   margin-bottom: -1px;
-  border-radius: 0.28571429rem 0.28571429rem 0em 0em;
+  border-radius: 0.07142857rem 0.07142857rem 0em 0em;
   box-shadow: 0em 0em 0em 1px rgba(34, 36, 38, 0.15) inset;
   margin-left: -1px;
   margin-right: -1px;
@@ -23857,7 +23986,7 @@ Floated Menu / Item
 }
 .ui.bottom.attached.message {
   margin-top: -1px;
-  border-radius: 0em 0em 0.28571429rem 0.28571429rem;
+  border-radius: 0em 0em 0.07142857rem 0.07142857rem;
   box-shadow: 0em 0em 0em 1px rgba(34, 36, 38, 0.15) inset, 0px 1px 2px 0 rgba(34, 36, 38, 0.15);
 }
 .ui.bottom.attached.message:not(:last-child) {
@@ -24334,6 +24463,9 @@ Floated Menu / Item
        Fonts
 --------------------*/
 /*-------------------
+    Border Radius
+--------------------*/
+/*-------------------
     Brand Colors
 --------------------*/
 /*-------------------
@@ -24356,6 +24488,9 @@ Floated Menu / Item
 *******************************/
 /*-------------------
        Fonts
+--------------------*/
+/*-------------------
+    Border Radius
 --------------------*/
 /*-------------------
     Brand Colors
@@ -24443,7 +24578,7 @@ Floated Menu / Item
   margin: 1em 0em;
   border: 1px solid rgba(34, 36, 38, 0.15);
   box-shadow: none;
-  border-radius: 0.28571429rem;
+  border-radius: 0.07142857rem;
   text-align: left;
   color: #000000;
   border-collapse: separate;
@@ -24485,13 +24620,13 @@ Floated Menu / Item
   border-left: none;
 }
 .ui.table thead tr:first-child > th:first-child {
-  border-radius: 0.28571429rem 0em 0em 0em;
+  border-radius: 0.07142857rem 0em 0em 0em;
 }
 .ui.table thead tr:first-child > th:last-child {
-  border-radius: 0em 0.28571429rem 0em 0em;
+  border-radius: 0em 0.07142857rem 0em 0em;
 }
 .ui.table thead tr:first-child > th:only-child {
-  border-radius: 0.28571429rem 0.28571429rem 0em 0em;
+  border-radius: 0.07142857rem 0.07142857rem 0em 0em;
 }
 /* Footer */
 .ui.table tfoot {
@@ -24513,13 +24648,13 @@ Floated Menu / Item
   border-left: none;
 }
 .ui.table tfoot tr:first-child > th:first-child {
-  border-radius: 0em 0em 0em 0.28571429rem;
+  border-radius: 0em 0em 0em 0.07142857rem;
 }
 .ui.table tfoot tr:first-child > th:last-child {
-  border-radius: 0em 0em 0.28571429rem 0em;
+  border-radius: 0em 0em 0.07142857rem 0em;
 }
 .ui.table tfoot tr:first-child > th:only-child {
-  border-radius: 0em 0em 0.28571429rem 0.28571429rem;
+  border-radius: 0em 0em 0.07142857rem 0.07142857rem;
 }
 /* Table Row */
 .ui.table tr td {
@@ -24907,7 +25042,7 @@ Floated Menu / Item
   margin-bottom: 0em;
   top: 0px;
   margin-top: 1em;
-  border-radius: 0.28571429rem 0.28571429rem 0em 0em;
+  border-radius: 0.07142857rem 0.07142857rem 0em 0em;
 }
 .ui.table[class*="top attached"]:first-child {
   margin-top: 0em;
@@ -24919,7 +25054,7 @@ Floated Menu / Item
   top: 0px;
   margin-bottom: 1em;
   box-shadow: none, none;
-  border-radius: 0em 0em 0.28571429rem 0.28571429rem;
+  border-radius: 0em 0em 0.07142857rem 0.07142857rem;
 }
 .ui[class*="bottom attached"].table:last-child {
   margin-bottom: 0em;
@@ -25632,6 +25767,9 @@ Floated Menu / Item
        Fonts
 --------------------*/
 /*-------------------
+    Border Radius
+--------------------*/
+/*-------------------
     Brand Colors
 --------------------*/
 /*-------------------
@@ -25654,6 +25792,9 @@ Floated Menu / Item
 *******************************/
 /*-------------------
        Fonts
+--------------------*/
+/*-------------------
+    Border Radius
 --------------------*/
 /*-------------------
     Brand Colors
@@ -26135,6 +26276,9 @@ Floated Menu / Item
        Fonts
 --------------------*/
 /*-------------------
+    Border Radius
+--------------------*/
+/*-------------------
     Brand Colors
 --------------------*/
 /*-------------------
@@ -26157,6 +26301,9 @@ Floated Menu / Item
 *******************************/
 /*-------------------
        Fonts
+--------------------*/
+/*-------------------
+    Border Radius
 --------------------*/
 /*-------------------
     Brand Colors
@@ -26251,7 +26398,7 @@ Floated Menu / Item
   background: #FFFFFF;
   padding: 0em;
   border: none;
-  border-radius: 0.28571429rem;
+  border-radius: 0.07142857rem;
   box-shadow: 0px 1px 3px 0px #D4D4D5, 0px 0px 0px 1px #D4D4D5;
   -webkit-transition: box-shadow 0.1s ease, -webkit-transform 0.1s ease;
           transition: box-shadow 0.1s ease, transform 0.1s ease;
@@ -26310,16 +26457,16 @@ Floated Menu / Item
 ---------------*/
 .ui.cards > .card > :first-child,
 .ui.card > :first-child {
-  border-radius: 0.28571429rem 0.28571429rem 0em 0em !important;
+  border-radius: 0.07142857rem 0.07142857rem 0em 0em !important;
   border-top: none !important;
 }
 .ui.cards > .card > :last-child,
 .ui.card > :last-child {
-  border-radius: 0em 0em 0.28571429rem 0.28571429rem !important;
+  border-radius: 0em 0em 0.07142857rem 0.07142857rem !important;
 }
 .ui.cards > .card > :only-child,
 .ui.card > :only-child {
-  border-radius: 0.28571429rem !important;
+  border-radius: 0.07142857rem !important;
 }
 /*--------------
      Images
@@ -27318,6 +27465,9 @@ a.ui.card:hover,
        Fonts
 --------------------*/
 /*-------------------
+    Border Radius
+--------------------*/
+/*-------------------
     Brand Colors
 --------------------*/
 /*-------------------
@@ -27340,6 +27490,9 @@ a.ui.card:hover,
 *******************************/
 /*-------------------
        Fonts
+--------------------*/
+/*-------------------
+    Border Radius
 --------------------*/
 /*-------------------
     Brand Colors
@@ -27839,6 +27992,9 @@ a.ui.card:hover,
        Fonts
 --------------------*/
 /*-------------------
+    Border Radius
+--------------------*/
+/*-------------------
     Brand Colors
 --------------------*/
 /*-------------------
@@ -27861,6 +28017,9 @@ a.ui.card:hover,
 *******************************/
 /*-------------------
        Fonts
+--------------------*/
+/*-------------------
+    Border Radius
 --------------------*/
 /*-------------------
     Brand Colors
@@ -28410,6 +28569,9 @@ a.ui.card:hover,
        Fonts
 --------------------*/
 /*-------------------
+    Border Radius
+--------------------*/
+/*-------------------
     Brand Colors
 --------------------*/
 /*-------------------
@@ -28432,6 +28594,9 @@ a.ui.card:hover,
 *******************************/
 /*-------------------
        Fonts
+--------------------*/
+/*-------------------
+    Border Radius
 --------------------*/
 /*-------------------
     Brand Colors
@@ -29137,6 +29302,9 @@ a.ui.card:hover,
        Fonts
 --------------------*/
 /*-------------------
+    Border Radius
+--------------------*/
+/*-------------------
     Brand Colors
 --------------------*/
 /*-------------------
@@ -29159,6 +29327,9 @@ a.ui.card:hover,
 *******************************/
 /*-------------------
        Fonts
+--------------------*/
+/*-------------------
+    Border Radius
 --------------------*/
 /*-------------------
     Brand Colors
@@ -29973,6 +30144,9 @@ a.ui.card:hover,
        Fonts
 --------------------*/
 /*-------------------
+    Border Radius
+--------------------*/
+/*-------------------
     Brand Colors
 --------------------*/
 /*-------------------
@@ -30669,6 +30843,9 @@ a.ui.card:hover,
 *******************************/
 /*-------------------
        Fonts
+--------------------*/
+/*-------------------
+    Border Radius
 --------------------*/
 /*-------------------
     Brand Colors
@@ -31713,6 +31890,9 @@ a.ui.card:hover,
        Fonts
 --------------------*/
 /*-------------------
+    Border Radius
+--------------------*/
+/*-------------------
     Brand Colors
 --------------------*/
 /*-------------------
@@ -31735,6 +31915,9 @@ a.ui.card:hover,
 *******************************/
 /*-------------------
        Fonts
+--------------------*/
+/*-------------------
+    Border Radius
 --------------------*/
 /*-------------------
     Brand Colors
@@ -32180,6 +32363,9 @@ body.dimmable > .dimmer {
 *******************************/
 /*-------------------
        Fonts
+--------------------*/
+/*-------------------
+    Border Radius
 --------------------*/
 /*-------------------
     Brand Colors
@@ -34003,6 +34189,9 @@ select.ui.dropdown {
        Fonts
 --------------------*/
 /*-------------------
+    Border Radius
+--------------------*/
+/*-------------------
     Brand Colors
 --------------------*/
 /*-------------------
@@ -34617,6 +34806,9 @@ select.ui.dropdown {
 *******************************/
 /*-------------------
        Fonts
+--------------------*/
+/*-------------------
+    Border Radius
 --------------------*/
 /*-------------------
     Brand Colors
@@ -35560,6 +35752,9 @@ select.ui.dropdown {
        Fonts
 --------------------*/
 /*-------------------
+    Border Radius
+--------------------*/
+/*-------------------
     Brand Colors
 --------------------*/
 /*-------------------
@@ -36162,6 +36357,9 @@ a.ui.nag {
 *******************************/
 /*-------------------
        Fonts
+--------------------*/
+/*-------------------
+    Border Radius
 --------------------*/
 /*-------------------
     Brand Colors
@@ -36989,6 +37187,9 @@ a.ui.nag {
 *******************************/
 /*-------------------
        Fonts
+--------------------*/
+/*-------------------
+    Border Radius
 --------------------*/
 /*-------------------
     Brand Colors
@@ -37929,6 +38130,9 @@ a.ui.nag {
        Fonts
 --------------------*/
 /*-------------------
+    Border Radius
+--------------------*/
+/*-------------------
     Brand Colors
 --------------------*/
 /*-------------------
@@ -38613,6 +38817,9 @@ a.ui.nag {
 *******************************/
 /*-------------------
        Fonts
+--------------------*/
+/*-------------------
+    Border Radius
 --------------------*/
 /*-------------------
     Brand Colors
@@ -39459,6 +39666,9 @@ a.ui.nag {
        Fonts
 --------------------*/
 /*-------------------
+    Border Radius
+--------------------*/
+/*-------------------
     Brand Colors
 --------------------*/
 /*-------------------
@@ -40044,6 +40254,9 @@ a.ui.nag {
        Fonts
 --------------------*/
 /*-------------------
+    Border Radius
+--------------------*/
+/*-------------------
     Brand Colors
 --------------------*/
 /*-------------------
@@ -40066,6 +40279,9 @@ a.ui.nag {
 *******************************/
 /*-------------------
        Fonts
+--------------------*/
+/*-------------------
+    Border Radius
 --------------------*/
 /*-------------------
     Brand Colors
@@ -40881,6 +41097,9 @@ html.ios body {
        Fonts
 --------------------*/
 /*-------------------
+    Border Radius
+--------------------*/
+/*-------------------
     Brand Colors
 --------------------*/
 /*-------------------
@@ -41385,6 +41604,9 @@ html.ios body {
 *******************************/
 /*-------------------
        Fonts
+--------------------*/
+/*-------------------
+    Border Radius
 --------------------*/
 /*-------------------
     Brand Colors
@@ -41908,6 +42130,9 @@ html.ios body {
 *******************************/
 /*-------------------
        Fonts
+--------------------*/
+/*-------------------
+    Border Radius
 --------------------*/
 /*-------------------
     Brand Colors

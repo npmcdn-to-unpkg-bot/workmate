@@ -28,40 +28,61 @@
     cursor: pointer;
 }
 
+.menu.modal .ui.header {
+    color: #c0cad8;
+}
+
+.menu.modal .ui.card,
+.menu.modal .ui.cards>.card {
+    background: transparent;
+    border: none !important;
+    color: #c0cad8;
+    opacity: .8;
+    padding-top: 10px;
+    box-shadow: none;
+}
+
+.menu.modal .ui.cards a.card:hover,
+.menu.modal .ui.link.card:hover,
+.menu.modal .ui.link.cards
+.menu.modal .card:hover,
+.menu.modal a.ui.card:hover {
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    opacity: .8;
+    -webkit-transform: translateY(-3px);
+    -ms-transform: translateY(-3px);
+    transform: translateY(-3px);
+}
+
+.menu.modal .ui.card>.image,
+.menu.modal .ui.cards>.card>.image {
+    background: none;
+}
+
+.menu.modal .ui.card>.image>.icon,
+.menu.modal .ui.cards>.card>.image>.icon {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: inherit;
+    font-size: 2.5em;
+}
+
+.menu.modal .ui.card>.extra,
+.menu.modal .ui.cards>.card>.extra {
+    text-align: center;
+    border-top: none !important;
+    color: #c0cad8;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+
 .menu.modal .close.icon:hover {
     opacity: 1;
-}
-
-.menu.modal .header {
-    padding-top: 0;
-    padding-bottom: 0;
-    font-size: 1rem!important;
-}
-
-.menu.modal .content {
-    padding: 1em;
-}
-
-.menu.modal .grid > .column {
-    text-align: center;
-    padding-top: 1em;
-}
-
-.menu.modal .grid .column a {
-    color: #c0cad8;
-    opacity: 0.8;
-    font-size: 0.8em;
-}
-
-.menu.modal .grid .column a:hover {
-    opacity: 1;
-}
-
-.menu.modal .grid .column a .icon {
-    height: 1em;
-    display: block;
-    margin: 0em auto 0.25em;
-    font-size: 2em;
 }
 
 /* footer */
