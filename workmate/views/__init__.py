@@ -1,4 +1,5 @@
 from .contact import (
+    ContactCall,
     ContactCreate,
     ContactDelete,
     ContactList,

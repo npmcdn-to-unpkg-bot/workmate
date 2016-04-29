@@ -2,10 +2,17 @@
 
     var
         $body = $('body'),
+        $callIcon = $('.call.icon'),
         $dropdown = $('.dropdown'),
         $menuModal = $('.ui.menu.modal'),
         $menuPopup = $('.ui.main.menu .popup.item'),
         $messageClose = $('.message .close')
+    ;
+
+    $.fn.api.settings
+        .api = {
+            contact_call: '/contacts/{id}/call/'
+        }
     ;
 
     $dropdown
@@ -36,6 +43,31 @@
                 .closest('.message')
                 .transition('fade')
             ;
+        })
+    ;
+
+    $callIcon
+        .api({
+            action       : 'contact_call',
+            urlData      : {
+                id: $(this).data('id')
+            },
+            method       : 'POST',
+            on           : 'click',
+            beforeSend: function(settings) {
+                settings.data.type = $(this).data('type');
+                return settings;
+            },
+            beforeXHR: function(xhr) {
+                xhr.setRequestHeader ("X-CSRFToken", workmate.getCookie('csrftoken'));
+            },
+            onSuccess: function(response) {
+                console.log(response);
+                alert(response.message);
+            },
+            onError: function(response) {
+                console.log(response);
+            }
         })
     ;
 
