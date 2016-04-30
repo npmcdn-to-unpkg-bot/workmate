@@ -1,4 +1,3 @@
-import requests
 from django.contrib.messages.views import SuccessMessageMixin
 from django.core.urlresolvers import reverse_lazy
 from django.views.generic import ListView, View
@@ -6,8 +5,9 @@ from django.views.generic.detail import SingleObjectMixin
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 
 from .mixins import DeleteMessageMixin, JSONResponseMixin
-from ..conf import GRADWELL_URL, WORKMATE_PAGINATE_BY
+from ..conf import WORKMATE_CALL_GATEWAY, WORKMATE_PAGINATE_BY
 from ..forms import ContactForm
+from ..gateways import get_gateway_class
 from ..models import Contact
 
 try:
@@ -19,10 +19,6 @@ except:
 class ContactCall(LoginRequiredMixin, JSONResponseMixin, SingleObjectMixin, View):
     model = Contact
 
-    def make_call(self, number, gradwell_token, gradwell_extension):
-        url = GRADWELL_URL.format(gradwell_token, gradwell_extension, number)
-        return requests.post(url, verify=False)
-
     def post(self, request, *args, **kwargs):
         type = request.POST.get('type')
         if type:
@@ -30,9 +26,8 @@ class ContactCall(LoginRequiredMixin, JSONResponseMixin, SingleObjectMixin, View
                 object = self.get_object()
                 number_attr = getattr(object, type)
                 number = number_attr.as_national.replace(' ', '')
-                gradwell_token = ''  # TODO: get from profile
-                gradwell_extension = ''  # TODO: get from profile
-                response = self.make_call(number, gradwell_token, gradwell_extension)
+                call_gateway = get_gateway_class(WORKMATE_CALL_GATEWAY)()
+                response = call_gateway.make_call(number)
                 if response.status_code == 200:
                     data = {'status': 'ok', 'message': 'We are calling you now.'}
                     return self.render_to_response(data)
