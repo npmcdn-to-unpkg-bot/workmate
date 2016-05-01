@@ -1,12 +1,13 @@
 (function( workmate, $, undefined ) {
 
     var
+        $ajaxMessages = $('.ajax-messages'),
         $body = $('body'),
         $callIcon = $('.call.icon'),
         $dropdown = $('.dropdown'),
         $menuModal = $('.ui.menu.modal'),
         $menuPopup = $('.ui.main.menu .popup.item'),
-        $messageClose = $('.message .close')
+        $messageClose = '.message .close'
     ;
 
     $.fn.api.settings
@@ -37,8 +38,8 @@
         })
     ;
 
-    $messageClose
-        .on('click', function() {
+    $(document)
+        .on('click', $messageClose, function() {
             $(this)
                 .closest('.message')
                 .transition('fade')
@@ -61,15 +62,25 @@
             beforeXHR: function(xhr) {
                 xhr.setRequestHeader ("X-CSRFToken", workmate.getCookie('csrftoken'));
             },
-            onSuccess: function(response) {
-                console.log(response);
-                alert(response.message);
+            onSuccess: function(response, $module, xhr) {
+                if (response.status) {
+                    workmate.createMessage(response.status, response.message);
+                }
             },
-            onError: function(response) {
-                console.log(response);
+            onError: function(errorMessage, $module, xhr) {
+                if (xhr.responseJSON.status) {
+                    workmate.createMessage(xhr.responseJSON.status, xhr.responseJSON.message);
+                }
             }
         })
     ;
+
+    workmate.createMessage = function(status, messageText) {
+        var message = $('<div class="ui ' + status + ' message"><i class="close icon"></i></div>');
+        message.append('<div class="header capitalize">' + status + '</div>');
+        message.append('<p>' + messageText + '</p>');
+        $ajaxMessages.append(message);
+    };
 
     workmate.getCookie = function (name) {
         var cookieValue = null;

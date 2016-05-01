@@ -21,10 +21,13 @@ class DeleteMessageMixin(object):
 
 class JSONResponseMixin(object):
     def render_to_response(self, context, **response_kwargs):
+        context['status'] = context.get('status', 'success')
         return self.render_to_json_response(context, **response_kwargs)
 
     def render_to_bad_response(self, context, **response_kwargs):
-        return HttpResponseBadRequest(self.get_data(context), **response_kwargs)
+        context['status'] = context.get('status', 'error')
+        response_kwargs['status'] = response_kwargs.get('status', 400)
+        return self.render_to_json_response(context, **response_kwargs)
 
     def render_to_json_response(self, context, **response_kwargs):
         return JsonResponse(self.get_data(context), **response_kwargs)

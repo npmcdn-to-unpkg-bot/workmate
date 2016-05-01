@@ -27,18 +27,13 @@ class ContactCall(LoginRequiredMixin, JSONResponseMixin, SingleObjectMixin, View
                 number_attr = getattr(object, type)
                 number = number_attr.as_national.replace(' ', '')
                 call_gateway = get_gateway_class(WORKMATE_CALL_GATEWAY)()
-                response = call_gateway.make_call(request.user, number)
-                if response.status_code == 200:
-                    data = {'status': 'ok', 'message': 'We are calling you now.'}
-                    return self.render_to_response(data)
-                else:
-                    data = {'status': 'error', 'message': response.text}
-                    return self.render_to_bad_response(data)
+                success, message = call_gateway.make_call(request.user, number)
+                if success:
+                    return self.render_to_response({'message': message})
+                return self.render_to_bad_response({'message': message})
             except:
                 pass
-
-        data = {'status': 'error', 'message': 'Something went wrong.'}
-        return self.render_to_bad_response(data)
+        return self.render_to_bad_response({'message': 'Something went wrong'})
 
 
 class ContactCreate(LoginRequiredMixin, SuccessMessageMixin, CreateView):
