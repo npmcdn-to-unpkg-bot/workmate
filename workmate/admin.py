@@ -3,7 +3,7 @@ from django.contrib import admin
 from django.contrib.sites.models import Site
 from reversion.admin import VersionAdmin
 
-from .models import Contact, SiteSetting, Tag
+from .models import Contact, SiteSetting, Tag, UserSetting
 
 
 class ContactAdmin(VersionAdmin):
@@ -28,3 +28,4 @@ admin.site.register(Contact, ContactAdmin)
 admin.site.unregister(Site)
 admin.site.register(Site, SiteAdmin)
 admin.site.register(Tag, VersionAdmin)
+admin.site.register(UserSetting, VersionAdmin)

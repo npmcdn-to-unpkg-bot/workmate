@@ -27,7 +27,7 @@ class ContactCall(LoginRequiredMixin, JSONResponseMixin, SingleObjectMixin, View
                 number_attr = getattr(object, type)
                 number = number_attr.as_national.replace(' ', '')
                 call_gateway = get_gateway_class(WORKMATE_CALL_GATEWAY)()
-                response = call_gateway.make_call(number)
+                response = call_gateway.make_call(request.user, number)
                 if response.status_code == 200:
                     data = {'status': 'ok', 'message': 'We are calling you now.'}
                     return self.render_to_response(data)
