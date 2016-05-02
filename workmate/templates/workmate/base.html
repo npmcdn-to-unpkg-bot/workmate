@@ -10,19 +10,11 @@
         {% block extra_css %}{% endblock %}
         {% block extra_head %}{% endblock %}
     </head>
-    <body class="basic minimal pushable">
-
-        <div class="ui vertical inverted sidebar overlay menu left">
-            <div class="item brand">
-                <div class="header site title"><h3>{% trans 'Workmate' %}</h3></div>
-            </div>
-            {% block sidebar_content %}{% endblock %}
-        </div>
+    <body>
 
         <div class="ui fixed inverted menu">
             <div class="ui container">
                 <a class="popup icon item" data-content="Home" href="/"><i class="home icon"></i></a>
-                <a class="sidebar launch icon popup item" data-content="Open Sidebar"><i class="sidebar icon"></i></a>
                 <a class="grid launch icon popup item" data-content="Open Main Menu"><i class="grid layout icon"></i></a>
                 {% block left_nav_content %}{% endblock %}
                 <div class="right menu">
@@ -31,11 +23,9 @@
             </div>
         </div>
 
-        <div class="pusher">
-            <div class="ui main container">
-                {% include 'workmate/partials/messages.html' %}
-                {% block content %}{% endblock %}
-            </div>
+        <div class="ui main container">
+            {% include 'workmate/partials/messages.html' %}
+            {% block content %}{% endblock %}
         </div>
 
         {% include 'workmate/partials/footer.html' %}

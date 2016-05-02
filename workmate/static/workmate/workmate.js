@@ -3,7 +3,6 @@
     var
         $body = $('body'),
         $dropdown = $('.dropdown'),
-        $leftSideBar = $('.ui.left.sidebar'),
         $menuModal = $('.ui.menu.modal'),
         $menuPopup = $('.ui.main.menu .popup.item'),
         $messageClose = $('.message .close')
@@ -12,13 +11,6 @@
     $dropdown
         .dropdown({
         })
-    ;
-
-    $leftSideBar
-        .sidebar({
-            dimPage: false
-        })
-        .sidebar('attach events', '.sidebar.launch.item')
     ;
 
     $menuModal

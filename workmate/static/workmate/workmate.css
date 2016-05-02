@@ -3,22 +3,14 @@
     float: right;
 }
 
+body {
+    height: 100%;
+}
+
 /* main */
 .main.container {
     padding: 6em 0em 7em;
-}
-
-/* sidebar */
-.ui.left.sidebar {
-    z-index: 102;
-}
-
-.ui.left.sidebar .brand {
-}
-
-.ui.left.sidebar .brand .header {
-    cursor: pointer;
-    margin: 0 !important;
+    height: 100%;
 }
 
 /* main menu modal */
