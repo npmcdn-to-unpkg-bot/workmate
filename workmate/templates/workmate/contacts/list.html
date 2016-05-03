@@ -27,19 +27,19 @@
             {% if contact.mobile_number %}
                 <div class="item">
                     <i class="mobile icon"></i><div class="content">{{ contact.mobile_number }}</div>
-                    <i class="call icon" data-id="{{ contact.id }}" data-type="mobile_number"></i>
+                    <i class="call icon" data-action="contact_call" data-id="{{ contact.id }}" data-type="mobile_number"></i>
                 </div>
             {% endif %}
             {% if contact.home_number %}
                 <div class="item">
                     <i class="home icon"></i><div class="content">{{ contact.home_number }}</div>
-                    <i class="call icon" data-id="{{ contact.id }}" data-type="home_number"></i>
+                    <i class="call icon" data-action="contact_call" data-id="{{ contact.id }}" data-type="home_number"></i>
                 </div>
             {% endif %}
             {% if contact.work_number %}
                 <div class="item">
                     <i class="building icon"></i><div class="content">{{ contact.work_number }}</div>
-                    <i class="call icon" data-id="{{ contact.id }}" data-type="work_number"></i>
+                    <i class="call icon" data-action="contact_call" data-id="{{ contact.id }}" data-type="work_number"></i>
                 </div>
             {% endif %}
             {% if contact.email_address %}

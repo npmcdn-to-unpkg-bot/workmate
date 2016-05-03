@@ -1,9 +1,8 @@
 (function( workmate, $, undefined ) {
 
     var
+        $actionContactCall = $('*[data-action="contact_call"]'),
         $ajaxMessages = $('.ajax-messages'),
-        $body = $('body'),
-        $callIcon = $('.call.icon'),
         $dropdown = $('.dropdown'),
         $menuModal = $('.ui.menu.modal'),
         $menuPopup = $('.ui.main.menu .popup.item'),
@@ -47,9 +46,9 @@
         })
     ;
 
-    $callIcon
+    $actionContactCall
         .api({
-            action       : 'contact_call',
+            action       : $(this).data('action'),
             urlData      : {
                 id: $(this).data('id')
             },

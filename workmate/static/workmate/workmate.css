@@ -21,6 +21,11 @@ body {
 }
 
 
+/* actions */
+[data-action="contact_call"] {
+    cursor: pointer;
+}
+
 /* main menu modal */
 .menu.modal .close.icon {
     font-size: 1.5em;
