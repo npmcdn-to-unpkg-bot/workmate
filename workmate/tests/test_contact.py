@@ -1,6 +1,8 @@
+import json
 from mock import patch
 
 from django.core.urlresolvers import reverse
+from django.test import override_settings
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 
@@ -211,3 +213,65 @@ class DeleteViewTests(AuthTestMixin, WorkmateTestCase):
         self.assertIn(
             'The contact was deleted successfully.', str(response.content)
         )
+
+
+class FakeCallGateway(object):
+
+    def make_call(self, user, number):
+        return True, 'We are calling you now'
+
+
+class FakeCallGatewayError(object):
+
+    def make_call(self, user, number):
+        return False, 'Oops! Something messed up'
+
+
+class CallViewTests(WorkmateTestCase):
+
+    def setUp(self):
+        self.create_site_settings()
+        self.contact = Contact.objects.create(first_name='Mr', last_name='Smith', mobile_number='+447917759123')
+        self.user = self.create_user()
+        self.create_user_settings(self.user)
+        self.login()
+
+    @override_settings(WORKMATE_CALL_GATEWAY='workmate.tests.test_contact.FakeCallGateway')
+    def test_success_response(self):
+        response = self.client.post(
+            reverse('contact-call', kwargs={'pk': self.contact.id}),
+            data={'type': 'mobile_number'})
+        content = json.loads(response.content.decode('utf-8'))
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(content['status'], 'success')
+        self.assertEqual(content['message'], 'We are calling you now')
+
+    @override_settings(WORKMATE_CALL_GATEWAY='workmate.tests.test_contact.FakeCallGateway')
+    def test_missing_type_response(self):
+        response = self.client.post(
+            reverse('contact-call', kwargs={'pk': self.contact.id}),
+            data={})
+        content = json.loads(response.content.decode('utf-8'))
+        self.assertEqual(response.status_code, 400)
+        self.assertEqual(content['status'], 'error')
+        self.assertEqual(content['message'], 'Requires type parameter')
+
+    @override_settings(WORKMATE_CALL_GATEWAY='workmate.tests.test_contact.FakeCallGateway')
+    def test_invalid_contact_id_response(self):
+        response = self.client.post(
+            reverse('contact-call', kwargs={'pk': 0}),
+            data={'type': 'mobile_number'})
+        content = json.loads(response.content.decode('utf-8'))
+        self.assertEqual(response.status_code, 400)
+        self.assertEqual(content['status'], 'error')
+        self.assertEqual(content['message'], 'Something went wrong')
+
+    @override_settings(WORKMATE_CALL_GATEWAY='workmate.tests.test_contact.FakeCallGatewayError')
+    def test_gateway_error_response(self):
+        response = self.client.post(
+            reverse('contact-call', kwargs={'pk': self.contact.id}),
+            data={'type': 'mobile_number'})
+        content = json.loads(response.content.decode('utf-8'))
+        self.assertEqual(response.status_code, 400)
+        self.assertEqual(content['status'], 'error')
+        self.assertEqual(content['message'], 'Oops! Something messed up')

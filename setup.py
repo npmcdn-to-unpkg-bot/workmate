@@ -13,10 +13,12 @@ setup(
     packages=find_packages(exclude=('example', 'tests')),
     install_requires=[
         'Django>=1.8,<1.10',
+        'django-appconf>=1.0.2',
         'django-classy-tags>=0.7',
         'django-localflavor>=1.2',
         'django-phonenumber-field>=1.0.0',
         'django-reversion>=1.10.0',
+        'requests>=2.9.1'
     ],
     include_package_data=True,
     keywords = ['workmate', ],

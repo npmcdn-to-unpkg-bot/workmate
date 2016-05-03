@@ -3,14 +3,27 @@
     float: right;
 }
 
+.capitalize {
+    text-transform: capitalize;
+}
+
+.ajax-messages {
+    margin-bottom: 14px;
+}
+
 body {
     height: 100%;
 }
 
-/* main */
 .main.container {
     padding: 6em 0em 7em;
     height: 100%;
+}
+
+
+/* actions */
+[data-action="contact_call"] {
+    cursor: pointer;
 }
 
 /* main menu modal */

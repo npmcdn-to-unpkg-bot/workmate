@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.test import TestCase
 
-from workmate.test_utils.helpers import create_site_settings, get_context
+from workmate.test_utils.helpers import create_site_settings, create_user_settings, get_context
 
 
 UserModel = get_user_model()
@@ -19,6 +19,9 @@ class WorkmateTestCase(TestCase):
 
     def create_site_settings(self):
         return create_site_settings()
+
+    def create_user_settings(self, user):
+        return create_user_settings(user)
 
     def login(self, username='username', is_staff=False, is_superuser=False):
         user = self.create_user(username, is_staff, is_superuser)
