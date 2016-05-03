@@ -3,7 +3,7 @@ from django.contrib import admin
 from django.contrib.sites.models import Site
 from reversion.admin import VersionAdmin
 
-from .models import Contact, SiteSetting, Tag, UserSetting
+from workmate.models import Contact, SiteSetting, Tag, UserSetting
 
 
 class ContactAdmin(VersionAdmin):

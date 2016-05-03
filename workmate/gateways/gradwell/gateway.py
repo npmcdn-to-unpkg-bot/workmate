@@ -1,7 +1,7 @@
 import requests
 
-from ...conf import GRADWELL_URL
-from ...models import UserSetting
+from workmate.conf import settings
+from workmate.models import UserSetting
 
 
 class Gradwell(object):
@@ -14,7 +14,7 @@ class Gradwell(object):
             gradwell_token = user.usersetting.gradwell_token
             gradwell_extension = user.usersetting.gradwell_extension
             if gradwell_token and gradwell_extension:
-                url = GRADWELL_URL.format(gradwell_token, gradwell_extension, number)
+                url = settings.WORKMATE_GRADWELL_URL.format(gradwell_token, gradwell_extension, number)
                 response = requests.post(url, verify=False)
                 if response.status_code == 200:
                     return True, self.SUCCESS_MESSAGE

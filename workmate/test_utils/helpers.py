@@ -4,7 +4,7 @@ from django.template.context import Context
 from django.test import RequestFactory
 
 from workmate.conf import settings
-from workmate.models import SiteSetting
+from workmate.models import SiteSetting, UserSetting
 
 
 def create_site_settings():
@@ -12,6 +12,15 @@ def create_site_settings():
         company_name='Foo Inc.',
         company_email_address='foo@inc.com'
     )
+
+
+def create_user_settings(user):
+    setting = UserSetting.objects.create(
+        user=user,
+        gradwell_token='ABC123',
+        gradwell_extension='123456'
+    )
+    return setting
 
 
 def get_request(language=None, user=None, path=None):

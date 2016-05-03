@@ -1,6 +1,6 @@
 from mock import patch
 
-from workmate.conf import WORKMATE_CALL_GATEWAY
+from workmate.conf import settings
 from workmate.gateways import get_gateway_class
 from workmate.gateways.gradwell.gateway import Gradwell
 from workmate.models import UserSetting
@@ -30,7 +30,7 @@ def mock_gateway_post_error(*args, **kwargs):
 class MakeCallTests(WorkmateTestCase):
 
     def test_default_setting_is_gradwell_class(self):
-        gateway = get_gateway_class(WORKMATE_CALL_GATEWAY)()
+        gateway = get_gateway_class(settings.WORKMATE_CALL_GATEWAY)()
         self.assertEqual(gateway.__class__.__name__, Gradwell().__class__.__name__)
 
     @patch('workmate.gateways.gradwell.gateway.requests.post', side_effect=mock_gateway_post)
