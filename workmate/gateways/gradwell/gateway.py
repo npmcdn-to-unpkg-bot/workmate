@@ -11,9 +11,9 @@ class Gradwell(object):
 
     def make_call(self, user, number):
         try:
-            gradwell_token = getattr(user.usersetting, 'gradwell_token', '')
-            gradwell_extension = getattr(user.usersetting, 'gradwell_extension', '')
-            if gradwell_token != '' and gradwell_extension != '':
+            gradwell_token = user.usersetting.gradwell_token
+            gradwell_extension = user.usersetting.gradwell_extension
+            if gradwell_token and gradwell_extension:
                 url = GRADWELL_URL.format(gradwell_token, gradwell_extension, number)
                 response = requests.post(url, verify=False)
                 if response.status_code == 200:
