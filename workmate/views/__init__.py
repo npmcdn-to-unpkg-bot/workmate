@@ -6,3 +6,4 @@ from .contact import (
     ContactUpdate
 )
 from .main import MainView
+from .usersetting import UserSettingUpdate

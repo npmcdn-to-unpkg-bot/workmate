@@ -1,7 +1,4 @@
 # -*- coding: utf-8 -*-
-import imp
-from importlib import import_module
-
 from django.apps import apps
 
 
@@ -11,12 +8,11 @@ def installed_apps():
 
 def get_module(app, modname):
     module_name = '%s.%s' % (app, modname)
-    app_mod = import_module(app)
     try:
-        imp.find_module(modname, app_mod.__path__ if hasattr(app_mod, '__path__') else None)
+        module = __import__(module_name)
     except ImportError:
-        return None
-    return import_module(module_name)
+        module = None
+    return module
 
 
 def load(modname):

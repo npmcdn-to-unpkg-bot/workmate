@@ -7,7 +7,9 @@ from workmate.models import UserSetting
 class Gradwell(object):
 
     SUCCESS_MESSAGE = 'We are calling you now'
-    ERROR_IN_SETUP_MESSAGE = 'Please ensure your Gradwell token and extension are set in your user settings'
+    ERROR_IN_SETUP_MESSAGE = (
+        'Please ensure your Gradwell token and extension are set in the "Gradwell Authentication Settings" '
+        'section of your account setting page')
 
     def make_call(self, user, number):
         try:

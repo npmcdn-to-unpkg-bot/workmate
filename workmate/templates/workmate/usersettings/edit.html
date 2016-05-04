@@ -1,0 +1,33 @@
+{% extends 'workmate/base.html' %}
+{% load i18n staticfiles %}
+
+{% block page_title %}{{ block.super }} | Edit User Settings{% endblock %}
+
+{% block extra_css %}{% endblock %}
+{% block extra_head %}{% endblock %}
+
+{% block left_nav_content %}
+    <li class="item">{% trans 'My Settings' %}</li>
+{% endblock %}
+
+{% block right_nav_content %}{% endblock %}
+
+{% block content %}
+    <form class="ui form" method="post" novalidate>
+        {% csrf_token %}
+        {% include 'workmate/partials/form_errors.html' %}
+        <h2 class="ui dividing header">{% trans 'Gradwell Authentication Settings' %}</h2>
+        <div class="ui info ignored message">
+            {% blocktrans %}These settings are required if you want to be able to use
+            the contact calling feature and can be obtained by the maintainer of your
+            voip telephony system.{% endblocktrans %}
+        </div>
+        {% include 'workmate/partials/form_field.html' with field=form.gradwell_token %}
+        {% include 'workmate/partials/form_field.html' with field=form.gradwell_extension %}
+        <div class="ui hidden divider"></div>
+        <a class="ui secondary button" href="/">{% trans 'Cancel' %}</a>
+        <button type="submit" class="ui primary button">{% trans 'Save' %}</button>
+    </form>
+{% endblock %}
+
+{% block extra_js %}{% endblock %}

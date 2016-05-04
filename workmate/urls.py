@@ -12,6 +12,8 @@ urlpatterns = [
     url(r'contacts/(?P<pk>[0-9]+)/delete/$', ContactDelete.as_view(), name='contact-delete'),
     url(r'contacts/(?P<pk>[0-9]+)/update/$', ContactUpdate.as_view(), name='contact-update'),
 
+    url(r'usersettings/update/$', UserSettingUpdate.as_view(), name='usersetting-update'),
+
     url(r'^$', MainView.as_view(), name='workmate-main'),
 
 ]
