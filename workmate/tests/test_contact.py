@@ -6,7 +6,7 @@ from django.test import override_settings
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 
-from workmate.models import Contact
+from workmate.models import Contact, Tag
 from workmate.models.abstract import SiteAbstract
 from workmate.test_utils.test_case import WorkmateTestCase
 from workmate.tests.mixins import AuthTestMixin
@@ -118,6 +118,19 @@ class ModelTests(WorkmateTestCase):
             code='SW1A 1AA')
         self.assertEqual(contact.address, '1 Foo Street Foo London Foo SW1A 1AA')
 
+    def test_partial_address(self):
+        contact = Contact(
+            address_line_1='1 Foo Street',
+            city='London',
+            state='Foo',
+            code='SW1A 1AA')
+        self.assertEqual(contact.address,
+                         '1 Foo Street London Foo SW1A 1AA')
+
+    def test_no_address(self):
+        contact = Contact()
+        self.assertIsNone(contact.address)
+
     def test_get_absolute_url(self):
         contact = Contact.objects.create(first_name='Mr', last_name='Smith')
         self.assertEqual(contact.get_absolute_url(), reverse('contact-update', kwargs={'pk': contact.id}))
@@ -142,6 +155,17 @@ class ListViewTests(AuthTestMixin, WorkmateTestCase):
 
     def test_is_correct_base_class(self):
         self.assertTrue(issubclass(ContactList, ListView))
+
+    def test_tag_parameter_filters_the_queryset(self):
+        tag = Tag.objects.create(title='Tag 1')
+        contact1 = Contact.objects.create(first_name='Mr', last_name='Smith')
+        contact1.tags.add(tag)
+        Contact.objects.create(first_name='Mrs', last_name='Smith')
+        self.login()
+        response = self.client.get(reverse('contact-list') + '?tag={}'.format(tag.id))
+        object_list = response.context[-1]['object_list']
+        self.assertEqual(len(object_list), 1)
+        self.assertEqual(object_list[0].id, contact1.id)
 
 
 class CreateViewTests(AuthTestMixin, WorkmateTestCase):

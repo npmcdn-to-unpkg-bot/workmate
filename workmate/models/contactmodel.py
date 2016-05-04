@@ -48,7 +48,7 @@ class Contact(SiteAbstract):
     @property
     def address(self):
         if self.address_line_1 or self.address_line_2 or self.city or self.state or self.code:
-            return '{} {} {} {} {}'.format(
+            return '{}{}{}{}{}'.format(
                 xstr(self.address_line_1),
                 xstr(self.address_line_2),
                 xstr(self.city),
