@@ -1,15 +1,40 @@
 {% extends 'workmate/base.html' %}
-{% load i18n %}
+{% load i18n staticfiles %}
 
 {% block page_title %}{{ block.super }} | Home{% endblock %}
 
-{% block extra_css %}{% endblock %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'fullcalendar/fullcalendar.min.css' %}">
+    <link rel="stylesheet" href="{% static 'fullcalendar/fullcalendar.print.css' %}" media="print">
+{% endblock %}
 {% block extra_head %}{% endblock %}
 
 {% block title_extra_content %}{% endblock %}
 {% block title_h1 %}{% blocktrans %}Home{% endblocktrans %}{% endblock %}
 {% block title_sub_header %}{% blocktrans %}Welcome to workmate.{% endblocktrans %}{% endblock %}
 
-{% block content %}{% endblock %}
+{% block content %}
+    <div class="calendar"></div>
+    <div class="ui small event modal">
+        <div class="header">{% trans 'New Event' %}</div>
+        <div class="content">
+            <div class="ui form">
+                <div class="field">
+                    <label>Title</label>
+                    <input type="text" placeholder="Title" name="event_title">
+                </div>
+            </div>
+        </div>
+        <div class="actions">
+            <div class="ui deny button">Cancel</div>
+            <div class="ui positive button">Submit</div>
+        </div>
+    </div>
+{% endblock %}
 
-{% block extra_js %}{% endblock %}
+{% block extra_js %}
+    <script src="{% static 'jQuery/jquery-ui.custom.min.js' %}"></script>
+    <script src="{% static 'jQuery/moment.min.js' %}"></script>
+    <script src="{% static 'fullcalendar/fullcalendar.min.js' %}"></script>
+    <script src="{% static 'workmate/addons/calendar.js' %}"></script>
+{% endblock %}

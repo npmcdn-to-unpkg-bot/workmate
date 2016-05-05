@@ -1,4 +1,4 @@
-// @koala-prepend "../jQuery/jquery-2.1.4.min.js"
+// @koala-prepend "../jQuery/jquery.min.js"
 // @koala-prepend "definitions/globals/site.js"
 // @koala-prepend "definitions/behaviors/form.js"
 // @koala-prepend "definitions/modules/accordion.js"
