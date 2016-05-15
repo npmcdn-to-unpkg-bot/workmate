@@ -1,5 +1,8 @@
 from django.contrib.auth import get_user_model
+from django.contrib.auth.models import Permission
 from django.test import TestCase
+
+from tastypie.test import ResourceTestCaseMixin, TestApiClient
 
 from workmate.test_utils.helpers import create_site_settings, create_user_settings, get_context
 
@@ -27,7 +30,7 @@ class WorkmateTestCase(TestCase):
         user = self.create_user(username, is_staff, is_superuser)
         user.set_password('password')
         user.save()
-        self.client.login(username=username, password='password')
+        return self.client.login(username=username, password='password')
 
     def get_context(self, user=None):
         return get_context(user=user)
@@ -35,3 +38,26 @@ class WorkmateTestCase(TestCase):
     def get_request(self, path=None):
         path = path or '/'
         return self.client.get(path)
+
+
+class WorkmateAPITestCase(ResourceTestCaseMixin, WorkmateTestCase):
+
+    def setUp(self):
+        super(WorkmateAPITestCase, self).setUp()
+        self.create_site_settings()
+
+    def clear_permissions(self, user):
+        user.user_permissions.clear()
+
+    def add_permissions(self, user, permissions):
+        for permission in permissions:
+            object = Permission.objects.get(codename=permission)
+            user.user_permissions.add(object)
+
+    def get_credentials(self, username='username', is_staff=False, is_superuser=False, permissions=[]):
+        user = self.create_user(username, is_staff, is_superuser)
+        user.set_password('password')
+        user.save()
+        self.clear_permissions(user)
+        self.add_permissions(user, permissions)
+        return self.api_client.client.login(username=username, password='password')

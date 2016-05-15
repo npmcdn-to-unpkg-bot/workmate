@@ -1,10 +1,13 @@
 # -*- coding: utf-8 -*-
-from django.conf.urls import url
+from django.conf.urls import include, url
 
+from workmate.api import v1_api
 from workmate.views import *
 
 
 urlpatterns = [
+
+    url(r'api/', include(v1_api.urls)),
 
     url(r'contacts/$', ContactList.as_view(), name='contact-list'),
     url(r'contacts/create/$', ContactCreate.as_view(), name='contact-create'),

@@ -53,7 +53,7 @@ class ContactDelete(LoginRequiredMixin, DeleteMessageMixin, DeleteView):
 
 class ContactList(LoginRequiredMixin, ListView):
     model = Contact
-    template_name = 'workmate/contacts/list.html'
+    template_name = 'workmate/contacts/index.html'
     paginate_by = settings.WORKMATE_PAGINATE_BY
 
     def get_queryset(self):
