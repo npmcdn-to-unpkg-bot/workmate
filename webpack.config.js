@@ -11,11 +11,8 @@ module.exports = {
     output: {
         path: './workmate/static/workmate/dist',
         filename: '[name].js',
-        sourceMapFilename: '[name].map',
-        chunkFilename: '[id].chunk.js',
         pathinfo: true
     },
-    devtool: 'source-map',
     resolve: {
         extensions: ['', '.ts', '.js']
     },
