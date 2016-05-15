@@ -2,15 +2,14 @@
 .tox
 htmlcov
 typings/**
-node_modules/
-!workmate/static/node_modules/**
 !typings/typings.d.ts
+node_modules/
 *.egg-info
+__pycache__
 *.pyc
 *.log
 *.sqlite3
 .coverage
-__pycache__
 /docs/*.html
 /docs/_build
 *.DS_Store
