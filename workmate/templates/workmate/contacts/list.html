@@ -1,5 +1,5 @@
 {% extends 'workmate/base.html' %}
-{% load i18n filter_tags %}
+{% load i18n filter_tags staticfiles %}
 
 {% block page_title %}{{ block.super }} | Contacts{% endblock %}
 
@@ -16,57 +16,12 @@
 {% block right_nav_content %}{% endblock %}
 
 {% block content %}
-
-    {% show_tags_filter 'contact' 'contact-list' %}
-
-    {% for contact in object_list %}
-        <div class="ui padded segment">
-            <h4 class="ui header"><a href="{{ contact.get_absolute_url }}">{{ contact.name }}</a></h4>
-            <div class="ui relaxed list">
-            {% if contact.mobile_number %}
-                <div class="item">
-                    <i class="mobile icon"></i><div class="content">{{ contact.mobile_number }}</div>
-                    <i class="call icon" data-action="contact_call" data-id="{{ contact.id }}" data-type="mobile_number"></i>
-                </div>
-            {% endif %}
-            {% if contact.home_number %}
-                <div class="item">
-                    <i class="home icon"></i><div class="content">{{ contact.home_number }}</div>
-                    <i class="call icon" data-action="contact_call" data-id="{{ contact.id }}" data-type="home_number"></i>
-                </div>
-            {% endif %}
-            {% if contact.work_number %}
-                <div class="item">
-                    <i class="building icon"></i><div class="content">{{ contact.work_number }}</div>
-                    <i class="call icon" data-action="contact_call" data-id="{{ contact.id }}" data-type="work_number"></i>
-                </div>
-            {% endif %}
-            {% if contact.email_address %}
-                <div class="item">
-                    <i class="at icon"></i><div class="content"><a href="mailto:{{ contact.email_address }}">{{ contact.email_address }}</a></div>
-                </div>
-            {% endif %}
-            {% if contact.website %}
-                <div class="item">
-                    <i class="world icon"></i><div class="content"><a href="{{ contact.website }}" target="_blank">{{ contact.website }}</a></div>
-                </div>
-            {% endif %}
-            {% if contact.address %}
-                <div class="item">
-                    <i class="marker icon"></i><div class="content"><a href="http://maps.google.com/?q={{ contact.address }}" target="_blank">{{ contact.address }}</a></div>
-                </div>
-            {% endif %}
-            </div>
-            {% if contact.tags.all %}
-                <div class="ui divider"></div>
-                {% for tag in contact.tags.all %}
-                <div class="ui small tag label">{{ tag }}</div>
-                {% endfor %}
-            {% endif %}
-        </div>
-    {% endfor %}
-
-    {% include 'workmate/partials/paginator.html' %}
+    <contacts-app>
+        <div class="ui active centered medium text loader">{% trans 'Loading' %}</div>
+    </contacts-app>
 {% endblock %}
 
-{% block extra_js %}{% endblock %}
+{% block extra_js %}
+    <script src="{% static 'workmate/dist/vendor.min.js' %}"></script>
+    <script src="{% static 'workmate/dist/main.min.js' %}"></script>
+{% endblock %}

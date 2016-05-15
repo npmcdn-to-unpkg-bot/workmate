@@ -1,23 +1,15 @@
-/* generic */
-.right.floated {
-    float: right;
-}
-
-.capitalize {
-    text-transform: capitalize;
-}
-
-.ajax-messages {
-    margin-bottom: 14px;
-}
-
+/* generics */
 body {
     min-height: 100%;
 }
 
-.main.container {
+.wm-main {
     padding: 6em 0em 7em;
     min-height: 100%;
+}
+
+.wm-messages {
+    margin-bottom: 14px;
 }
 
 
@@ -26,72 +18,33 @@ body {
     cursor: pointer;
 }
 
-/* main menu modal */
-.menu.modal .close.icon {
+
+/* full screen menu */
+.wm-menu.ui.fullscreen.modal>.close {
     font-size: 1.5em;
     opacity: 0.8;
+    color: #c0cad8;
     cursor: pointer;
+    top: .4rem;
 }
 
-.menu.modal .ui.header {
-    color: #c0cad8;
+.wm-menu.ui.fullscreen.modal>.close:hover {
+    opacity: 1;
 }
 
-.menu.modal .ui.card,
-.menu.modal .ui.cards>.card {
-    background: transparent;
-    border: none !important;
+.wm-menu .ui.header {
     color: #c0cad8;
+}
+.wm-menu-item .ui.header {
+    font-weight: 300;
     opacity: .8;
-    padding-top: 10px;
-    box-shadow: none;
 }
-
-.menu.modal .ui.cards a.card:hover,
-.menu.modal .ui.link.card:hover,
-.menu.modal .ui.link.cards
-.menu.modal .card:hover,
-.menu.modal a.ui.card:hover {
-    cursor: pointer;
-    background: transparent;
-    border: none;
-    box-shadow: none;
-    opacity: .8;
-    -webkit-transform: translateY(-3px);
-    -ms-transform: translateY(-3px);
-    transform: translateY(-3px);
-}
-
-.menu.modal .ui.card>.image,
-.menu.modal .ui.cards>.card>.image {
-    background: none;
-}
-
-.menu.modal .ui.card>.image>.icon,
-.menu.modal .ui.cards>.card>.image>.icon {
-    display: block;
-    width: 100%;
-    height: auto;
-    border-radius: inherit;
-    font-size: 2.5em;
-}
-
-.menu.modal .ui.card>.extra,
-.menu.modal .ui.cards>.card>.extra {
-    text-align: center;
-    border-top: none !important;
-    color: #c0cad8;
-    padding-left: 0;
-    padding-right: 0;
-}
-
-
-.menu.modal .close.icon:hover {
+.wm-menu-item .ui.header:hover {
     opacity: 1;
 }
 
 /* footer */
-.ui.footer.vertical.segment {
+.wm-footer {
     z-index: 101;
     padding: 2em 0 2em 0;
 }

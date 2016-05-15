@@ -1,6 +1,6 @@
 from django.contrib.messages.views import SuccessMessageMixin
 from django.core.urlresolvers import reverse_lazy
-from django.views.generic import ListView, View
+from django.views.generic import TemplateView, View
 from django.views.generic.detail import SingleObjectMixin
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 
@@ -51,17 +51,8 @@ class ContactDelete(LoginRequiredMixin, DeleteMessageMixin, DeleteView):
     success_url = reverse_lazy('contact-list')
 
 
-class ContactList(LoginRequiredMixin, ListView):
-    model = Contact
-    template_name = 'workmate/contacts/index.html'
-    paginate_by = settings.WORKMATE_PAGINATE_BY
-
-    def get_queryset(self):
-        queryset = super(ContactList, self).get_queryset()
-        tag = self.request.GET.get('tag', None)
-        if tag:
-            queryset = queryset.filter(tags__pk=int(tag))
-        return queryset
+class ContactList(LoginRequiredMixin, TemplateView):
+    template_name = 'workmate/contacts/list.html'
 
 
 class ContactUpdate(LoginRequiredMixin, SuccessMessageMixin, UpdateView):

@@ -1,17 +1,23 @@
 (function( workmate, $, undefined ) {
 
     var
-        $actionContactCall = $('*[data-action="contact_call"]'),
-        $ajaxMessages = $('.ajax-messages'),
+        $ajaxMessages = $('.wm-messages'),
+        $contactCall = '[data-action="contact_call"]',
         $dropdown = $('.dropdown'),
-        $menuModal = $('.ui.menu.modal'),
-        $menuPopup = $('.ui.main.menu .popup.item'),
+        $menuModal = $('.wm-menu'),
         $messageClose = '.message .close'
     ;
 
     $.fn.api.settings
         .api = {
-            contact_call: '/contacts/{id}/call/'
+            contact_list        : '/api/v1/contact/',
+            contact_search      : '/api/v1/contact/?query={query}',
+            contact_schema      : '/api/v1/contact/schema/',
+            contact_detail      : '/api/v1/contact/{id}/',
+            contact_call        : '/contacts/{id}/call/',
+            tag_list            : '/api/v1/tag/',
+            tag_schema          : '/api/v1/tag/schema/',
+            tag_detail          : '/api/v1/tag/{id}/'
         }
     ;
 
@@ -24,17 +30,7 @@
         .modal('attach events', '.grid.launch.item')
     ;
     $menuModal
-        .modal('attach events', '.ui.menu.modal .close', 'hide')
-    ;
-
-    $menuPopup
-        .popup({
-            position: 'bottom center',
-            delay: {
-                show: 100,
-                hide: 50
-            }
-        })
+        .modal('attach events', '.wm-menu .close', 'hide')
     ;
 
     $(document)
@@ -46,31 +42,35 @@
         })
     ;
 
-    $actionContactCall
-        .api({
-            action       : $(this).data('action'),
-            urlData      : {
-                id: $(this).data('id')
-            },
-            method       : 'POST',
-            on           : 'click',
-            beforeSend: function(settings) {
-                settings.data.type = $(this).data('type');
-                return settings;
-            },
-            beforeXHR: function(xhr) {
-                xhr.setRequestHeader ("X-CSRFToken", workmate.getCookie('csrftoken'));
-            },
-            onSuccess: function(response, $module, xhr) {
-                if (response.status) {
-                    workmate.createMessage(response.status, response.message);
-                }
-            },
-            onError: function(errorMessage, $module, xhr) {
-                if (xhr.responseJSON.status) {
-                    workmate.createMessage(xhr.responseJSON.status, xhr.responseJSON.message);
-                }
-            }
+    $(document)
+        .on('click', $contactCall, function() {
+            $(this)
+                .api({
+                    action       : 'contact_call',
+                    method       : 'POST',
+                    on           : 'now',
+                    urlData: {
+                        id: $(this).data('id')
+                    },
+                    beforeSend: function(settings) {
+                        settings.data.type = $(this).data('type');
+                        return settings;
+                    },
+                    beforeXHR: function(xhr) {
+                        xhr.setRequestHeader ("X-CSRFToken", workmate.getCookie('csrftoken'));
+                    },
+                    onSuccess: function(response, $module, xhr) {
+                        if (response.status) {
+                            workmate.createMessage(response.status, response.message);
+                        }
+                    },
+                    onError: function(errorMessage, $module, xhr) {
+                        if (xhr.responseJSON.status) {
+                            workmate.createMessage(xhr.responseJSON.status, xhr.responseJSON.message);
+                        }
+                    }
+                })
+            ;
         })
     ;
 

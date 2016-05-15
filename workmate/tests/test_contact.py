@@ -3,10 +3,10 @@ from mock import patch
 
 from django.core.urlresolvers import reverse
 from django.test import override_settings
-from django.views.generic import ListView
+from django.views.generic import TemplateView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 
-from workmate.models import Contact, Tag
+from workmate.models import Contact
 from workmate.models.abstract import SiteAbstract
 from workmate.test_utils.test_case import WorkmateTestCase
 from workmate.tests.mixins import AuthTestMixin
@@ -154,18 +154,7 @@ class ListViewTests(AuthTestMixin, WorkmateTestCase):
         return reverse('contact-list')
 
     def test_is_correct_base_class(self):
-        self.assertTrue(issubclass(ContactList, ListView))
-
-    def test_tag_parameter_filters_the_queryset(self):
-        tag = Tag.objects.create(title='Tag 1')
-        contact1 = Contact.objects.create(first_name='Mr', last_name='Smith')
-        contact1.tags.add(tag)
-        Contact.objects.create(first_name='Mrs', last_name='Smith')
-        self.login()
-        response = self.client.get(reverse('contact-list') + '?tag={}'.format(tag.id))
-        object_list = response.context[-1]['object_list']
-        self.assertEqual(len(object_list), 1)
-        self.assertEqual(object_list[0].id, contact1.id)
+        self.assertTrue(issubclass(ContactList, TemplateView))
 
 
 class CreateViewTests(AuthTestMixin, WorkmateTestCase):
