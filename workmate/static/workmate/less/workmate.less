@@ -1,0 +1,59 @@
+/* generics */
+body {
+    min-height: 100%;
+}
+
+.wm-main {
+    padding: 6em 0em 7em;
+    min-height: 100%;
+}
+
+.wm-messages {
+    margin-bottom: 14px;
+}
+
+
+/* actions */
+[data-action="contact_call"] {
+    cursor: pointer;
+}
+
+
+/* full screen menu */
+.wm-menu.ui {
+
+    &.fullscreen.modal > .close {
+        font-size: 1.5em;
+        opacity: 0.8;
+        color: #c0cad8;
+        cursor: pointer;
+        top: .4rem;
+
+        &:hover {
+            opacity: 1;
+        }
+
+    }
+
+    .ui.header {
+         color: #c0cad8;
+    }
+
+    .wm-menu-item .ui.header {
+        font-weight: 300;
+        opacity: .8;
+
+        &:hover {
+            opacity: 1;
+        }
+
+    }
+
+}
+
+/* footer */
+.wm-footer {
+    z-index: 101;
+    padding: 2em 0 2em 0;
+}
+

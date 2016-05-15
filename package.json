@@ -2,7 +2,9 @@
   "name": "workmate",
   "version": "0.0.1",
   "scripts": {
-    "build:s": "cd workmate/static/semantic && gulp build",
+    "semantic": "cd workmate/static/semantic && gulp build",
+    "workmate:less": "cd workmate/static/workmate && gulp less",
+    "workmate:js": "cd workmate/static/workmate && gulp compressjs",
     "postinstall": "typings install",
     "webpack": "webpack",
     "typings": "typings"
@@ -25,11 +27,13 @@
     "jquery": "2.1.4"
   },
   "devDependencies": {
-    "webpack": "^1.13.0",
+    "gulp": "^3.9.1",
+    "gulp-minify": "^0.0.11",
+    "less": "^2.7.1",
+    "semantic-ui": "^2.1.8",
     "ts-loader": "^0.8.2",
     "typescript": "^1.8.10",
     "typings": "^0.8.1",
-    "gulp": "^3.9.1",
-    "semantic-ui": "^2.1.8"
+    "webpack": "^1.13.0"
   }
 }

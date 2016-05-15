@@ -5,8 +5,8 @@ var CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
 
 module.exports = {
     entry: {
-        'vendor': './workmate/static/workmate/app/vendor.ts',
-        'main': './workmate/static/workmate/app/main.ts'
+        'vendor': './workmate/static/workmate/ng/vendor.ts',
+        'boot': './workmate/static/workmate/ng/boot.ts'
     },
     output: {
         path: './workmate/static/workmate/dist',
