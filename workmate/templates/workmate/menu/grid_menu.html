@@ -4,18 +4,18 @@
 
 <div class="content">
 {% for menu in menu_list %}
-    <h4 class="ui header">{{ menu.grouper }}</h4>
-    <div class="ui inverted segment">
-        <div class="ui eight doubling cards">
+    <h4 class="ui inverted dividing header">{{ menu.grouper }}</h4>
+    <div class="ui grid">
+        <div class="doubling eight column row">
             {% for node in menu.list %}
-            <a class="ui card" href="{{ node.get_absolute_url }}">
-                <div class="image">
-                    <i class="{{ node.icon }} icon"></i>
-                </div>
-                <div class="extra content">
-                    {{ node.get_node_title }}
-                </div>
-            </a>
+            <div class="column">
+                <a class="wm-menu-item" href="{{ node.get_absolute_url }}">
+                    <h5 class="ui center aligned icon header">
+                        <i class="tiny circular {{ node.icon }} icon"></i>
+                        {{ node.get_node_title }}
+                    </h5>
+                </a>
+            </div>
             {% endfor %}
         </div>
     </div>

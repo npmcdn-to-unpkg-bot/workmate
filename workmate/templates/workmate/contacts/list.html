@@ -16,9 +16,8 @@
 {% block right_nav_content %}{% endblock %}
 
 {% block content %}
-    <div class="ui compact main menu">
-        {% show_tags_filter 'contact' 'contact-list' %}
-    </div>
+
+    {% show_tags_filter 'contact' 'contact-list' %}
 
     {% for contact in object_list %}
         <div class="ui padded segment">
