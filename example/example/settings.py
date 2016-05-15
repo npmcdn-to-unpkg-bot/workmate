@@ -36,10 +36,9 @@ INSTALLED_APPS = (
 
     'example',
 
-    'localflavor',
     'reversion',
+    'tastypie',
     'workmate',
-    'workmate_plugin',
 )
 
 MIDDLEWARE_CLASSES = (

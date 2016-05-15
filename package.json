@@ -1,0 +1,39 @@
+{
+  "name": "workmate",
+  "version": "0.0.1",
+  "scripts": {
+    "semantic": "cd workmate/static/semantic && gulp build",
+    "workmate:less": "cd workmate/static/workmate && gulp less",
+    "workmate:js": "cd workmate/static/workmate && gulp compressjs",
+    "postinstall": "typings install",
+    "webpack": "webpack",
+    "typings": "typings"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "@angular/common": "^2.0.0-rc.1",
+    "@angular/compiler": "^2.0.0-rc.1",
+    "@angular/core": "^2.0.0-rc.1",
+    "@angular/http": "^2.0.0-rc.1",
+    "@angular/platform-browser": "^2.0.0-rc.1",
+    "@angular/platform-browser-dynamic": "^2.0.0-rc.1",
+    "@angular/router": "^2.0.0-rc.1",
+    "@angular/router-deprecated": "^2.0.0-rc.1",
+    "es6-promise": "^3.0.2",
+    "es6-shim": "^0.35.0",
+    "rxjs": "5.0.0-beta.6",
+    "reflect-metadata": "^0.1.2",
+    "zone.js": "^0.6.12",
+    "jquery": "2.1.4"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-minify": "^0.0.11",
+    "less": "^2.7.1",
+    "semantic-ui": "^2.1.8",
+    "ts-loader": "^0.8.2",
+    "typescript": "^1.8.10",
+    "typings": "^0.8.1",
+    "webpack": "^1.13.0"
+  }
+}
