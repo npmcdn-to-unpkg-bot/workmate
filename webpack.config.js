@@ -1,6 +1,4 @@
-var path = require('path');
 var webpack = require("webpack");
-var CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
 
 
 module.exports = {
@@ -9,7 +7,7 @@ module.exports = {
         'boot': './workmate/static/workmate/ng/boot.ts'
     },
     output: {
-        path: './workmate/static/workmate/js',
+        path: './workmate/static/workmate/dist',
         filename: '[name].js',
         pathinfo: true
     },
@@ -22,6 +20,7 @@ module.exports = {
         ]
     },
     plugins: [
-        new CommonsChunkPlugin({name: 'vendor', filename: 'vendor.js', minChunks: Infinity})
+        new webpack.optimize.CommonsChunkPlugin({name: 'vendor', filename: 'vendor.js', minChunks: Infinity}),
+        new webpack.optimize.UglifyJsPlugin({sourceMap: false})
     ]
 };
