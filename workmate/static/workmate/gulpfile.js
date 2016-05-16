@@ -9,32 +9,35 @@ var gulp            = require('gulp'),
 var autoprefix = new LessAutoprefix({ browsers: ['last 2 versions'] });
 
 gulp.task('less', function() {
-
-    gulp.src('./less/workmate.less')
+    return gulp.src('less/*.less')
         .pipe(less({
             plugins: [autoprefix]
         }))
-        .pipe(gulp.dest('./dist/'));
+        .pipe(gulp.dest('css'));
+});
 
-    gulp.src('./less/workmate.less')
+gulp.task('copy_css_dist', function () {
+    return gulp.src('css/*.css')
+             .pipe(gulp.dest('dist'));
+});
+
+gulp.task('dist_css', ['copy_css_dist'], function() {
+    return gulp.src('css/*.css')
         .pipe(sourcemaps.init())
-        .pipe(less({
-            plugins: [autoprefix]
-        }))
         .pipe(cssmin())
         .pipe(sourcemaps.write())
         .pipe(rename({
           suffix: '.min'
         }))
-        .pipe(gulp.dest('./dist/'));
-
+        .pipe(gulp.dest('dist'));
 });
 
-gulp.task('js', function() {
+gulp.task('copy_js_dist', function () {
+    return gulp.src('js/*.js')
+             .pipe(gulp.dest('dist'));
+});
 
-    gulp.src('js/workmate.js')
-        .pipe(gulp.dest('dist'));
-
+gulp.task('dist_js', ['copy_js_dist'], function() {
     gulp.src('dist/workmate.js')
         .pipe(uglify('workmate.min.js', {
             outSourceMap: true
@@ -52,5 +55,11 @@ gulp.task('js', function() {
             outSourceMap: true
         }))
         .pipe(gulp.dest('dist'));
-
 });
+
+gulp.task('copy_js_dist', function () {
+    return gulp.src('js/*.js')
+             .pipe(gulp.dest('dist'));
+});
+
+gulp.task('dist', ['dist_css', 'dist_js']);

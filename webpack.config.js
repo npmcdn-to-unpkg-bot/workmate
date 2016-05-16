@@ -9,7 +9,7 @@ module.exports = {
         'boot': './workmate/static/workmate/ng/boot.ts'
     },
     output: {
-        path: './workmate/static/workmate/dist',
+        path: './workmate/static/workmate/js',
         filename: '[name].js',
         pathinfo: true
     },
