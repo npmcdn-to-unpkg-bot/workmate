@@ -5,6 +5,7 @@ import { ContactService }               from '../../services/contact.service';
 import { ContactDetailComponent }       from '../contact-detail/contact-detail.component';
 import { htmlTemplate }                 from './contact-list.component.html';
 
+
 @Component({
     selector: 'contact-list',
     template: htmlTemplate,

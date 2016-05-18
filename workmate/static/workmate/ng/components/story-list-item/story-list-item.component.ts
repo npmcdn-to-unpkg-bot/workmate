@@ -1,25 +1,24 @@
-import { Component }                        from '@angular/core';
+import { Component, Input }                 from '@angular/core';
 
+import { Story }                            from '../../models/story';
+import { StoryDetailComponent }             from '../story-detail/story-detail.component';
 import { htmlTemplate }                     from './story-list-item.component.html';
-
-
-export class Story {
-    id: number;
-    title: string;
-    effort: number;
-}
 
 
 @Component({
     selector: '[story-list-item]',
-    template: htmlTemplate
-
+    template: htmlTemplate,
+    directives: [
+        StoryDetailComponent
+    ]
 })
 
 export class StoryListItemComponent {
-    story: Story = {
-        id: 1,
-        title: 'Some story title',
-        effort: 1
-    };
+    @Input() story: Story;
+
+    open: boolean = false;
+
+    toggle = function() {
+        this.open = !this.open;
+    }
 }

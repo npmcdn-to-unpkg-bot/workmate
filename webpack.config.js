@@ -22,6 +22,7 @@ module.exports = {
     },
     plugins: [
         new webpack.optimize.CommonsChunkPlugin({name: 'vendor', filename: 'vendor.js', minChunks: Infinity}),
+        new webpack.optimize.DedupePlugin(),
         new webpack.optimize.UglifyJsPlugin({sourceMap: false})
     ]
 };
