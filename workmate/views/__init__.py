@@ -1,3 +1,4 @@
+from .agile import AgileIndex
 from .contact import (
     ContactCall,
     ContactCreate,

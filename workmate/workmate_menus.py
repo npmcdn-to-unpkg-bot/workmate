@@ -14,8 +14,9 @@ class MainMenu(Menu):
 
     def get_nodes(self, request):
         node1 = NavigationNode(_('Home'), '/', 1, icon='home', sort_order=1)
-        node2 = NavigationNode(_('Contacts'), reverse('contact-list'), 2, icon='users', sort_order=2)
-        nodes = [node1, node2]
+        node2 = NavigationNode(_('Agile'), reverse('agile-index'), 2, icon='repeat', sort_order=2)
+        node3 = NavigationNode(_('Contacts'), reverse('contact-list'), 2, icon='users', sort_order=3)
+        nodes = [node1, node2, node3]
         return nodes
 
 
