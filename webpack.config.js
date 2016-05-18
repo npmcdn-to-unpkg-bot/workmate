@@ -3,8 +3,9 @@ var webpack = require("webpack");
 
 module.exports = {
     entry: {
-        'vendor': './workmate/static/workmate/ng/vendor.ts',
-        'contacts': './workmate/static/workmate/ng/contacts.ts'
+        'agile': './workmate/static/workmate/ng/agile.ts',
+        'contacts': './workmate/static/workmate/ng/contacts.ts',
+        'vendor': './workmate/static/workmate/ng/vendor.ts'
     },
     output: {
         path: './workmate/static/workmate/dist',
