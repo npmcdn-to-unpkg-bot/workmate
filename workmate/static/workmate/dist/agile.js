@@ -7,7 +7,9 @@ webpackJsonp([ 0 ], {
             return r > 3 && s && Object.defineProperty(e, n, s), s;
         }, o = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, r = n(1), s = n(97), a = n(118), l = n(301), c = n(302), d = n(303), u = function() {
+        }, r = n(1), s = n(97), a = n(118);
+        n(301);
+        var l = n(326), c = n(327), d = n(328), u = function() {
             function t() {}
             return t = i([ r.Component({
                 selector: "agile-app",
@@ -18,7 +20,7 @@ webpackJsonp([ 0 ], {
         }();
         e.AgileComponent = u, a.bootstrap(u);
     },
-    301: function(t, e, n) {
+    326: function(t, e, n) {
         "use strict";
         var i = this && this.__decorate || function(t, e, n, i) {
             var o, r = arguments.length, s = 3 > r ? e : null === i ? i = Object.getOwnPropertyDescriptor(e, n) : i;
@@ -43,7 +45,7 @@ webpackJsonp([ 0 ], {
         }();
         e.StoryService = a;
     },
-    302: function(t, e, n) {
+    327: function(t, e, n) {
         "use strict";
         var i = this && this.__decorate || function(t, e, n, i) {
             var o, r = arguments.length, s = 3 > r ? e : null === i ? i = Object.getOwnPropertyDescriptor(e, n) : i;
@@ -68,7 +70,7 @@ webpackJsonp([ 0 ], {
         }();
         e.TagService = a;
     },
-    303: function(t, e, n) {
+    328: function(t, e, n) {
         "use strict";
         var i = this && this.__decorate || function(t, e, n, i) {
             var o, r = arguments.length, s = 3 > r ? e : null === i ? i = Object.getOwnPropertyDescriptor(e, n) : i;
@@ -76,7 +78,7 @@ webpackJsonp([ 0 ], {
             return r > 3 && s && Object.defineProperty(e, n, s), s;
         }, o = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, r = n(1), s = n(301), a = n(304), l = n(309), c = function() {
+        }, r = n(1), s = n(326), a = n(329), l = n(334), c = function() {
             function t(t) {
                 this.storyService = t, this.newStory = function() {
                     this.stories.push({
@@ -103,7 +105,7 @@ webpackJsonp([ 0 ], {
         }();
         e.StoryListComponent = c;
     },
-    304: function(t, e, n) {
+    329: function(t, e, n) {
         "use strict";
         var i = this && this.__decorate || function(t, e, n, i) {
             var o, r = arguments.length, s = 3 > r ? e : null === i ? i = Object.getOwnPropertyDescriptor(e, n) : i;
@@ -111,7 +113,7 @@ webpackJsonp([ 0 ], {
             return r > 3 && s && Object.defineProperty(e, n, s), s;
         }, o = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, r = n(1), s = n(305), a = n(306), l = n(308), c = function() {
+        }, r = n(1), s = n(330), a = n(331), l = n(333), c = function() {
             function t() {
                 this.open = !1, this.toggle = function() {
                     this.open = !this.open;
@@ -126,7 +128,7 @@ webpackJsonp([ 0 ], {
         }();
         e.StoryListItemComponent = c;
     },
-    305: function(t, e) {
+    330: function(t, e) {
         "use strict";
         var n = function() {
             function t() {}
@@ -134,7 +136,7 @@ webpackJsonp([ 0 ], {
         }();
         e.Story = n;
     },
-    306: function(t, e, n) {
+    331: function(t, e, n) {
         "use strict";
         var i = this && this.__decorate || function(t, e, n, i) {
             var o, r = arguments.length, s = 3 > r ? e : null === i ? i = Object.getOwnPropertyDescriptor(e, n) : i;
@@ -142,7 +144,7 @@ webpackJsonp([ 0 ], {
             return r > 3 && s && Object.defineProperty(e, n, s), s;
         }, o = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, r = n(1), s = n(305), a = n(302), l = n(307), c = function() {
+        }, r = n(1), s = n(330), a = n(327), l = n(332), c = function() {
             function t(t, e) {
                 this.tagService = e, this.addTask = function() {}, this.elementRef = t;
             }
@@ -164,15 +166,15 @@ webpackJsonp([ 0 ], {
         }();
         e.StoryDetailComponent = c;
     },
-    307: function(t, e) {
+    332: function(t, e) {
         "use strict";
-        e.htmlTemplate = '\n    \n    <div class="field">\n        <label>\n            <div class="ui label">ID<div class="detail">{{ story.id }}</div></div>\n        </label>\n        <div class="ui small input">\n            <textarea [(ngModel)]="story.title" rows="2"></textarea>\n        </div>\n    </div>\n    <div class="inline field">\n        <label>Story Type</label>\n        <div class="ui right floated small input">\n            <select class="ui dropdown">\n                <option value="1">Feature</option>\n                <option value="2">Bug</option>\n                <option value="3">Chore</option>\n                <option value="4">Release</option>\n            </select>\n        </div>\n    </div>\n    <div class="ui hidden clearing divider"></div>\n    <div class="inline field">\n        <label>Effort</label>\n        <div class="ui right floated small input">\n            <select [(ngModel)]="story.effort" class="ui dropdown">\n                <option value="0.5">0.5 Points</option>\n                <option value="1">1 Point</option>\n                <option value="2">2 Points</option>\n                <option value="3">3 Points</option>\n                <option value="5">5 Points</option>\n            </select>\n        </div>\n    </div>\n    <div class="ui hidden clearing divider"></div>\n    <div class="inline field">\n        <label>State</label>\n        <div class="ui right floated small input">\n            <select class="ui dropdown">\n                <option value="1">Not Started</option>\n            </select>\n        </div>\n    </div>\n    <div class="ui hidden clearing divider"></div>\n    <div class="inline field">\n        <label>Owner</label>\n        <div class="ui right floated small input">\n            <select class="ui dropdown">\n                <option value="1">Bill</option>\n            </select>\n        </div>\n    </div>\n    <div class="ui hidden clearing divider"></div>  \n    <div class="field">\n        <label>Description</label>\n        <div class="ui small input">\n            <textarea [(ngModel)]="story.description" rows="3"></textarea>\n        </div>\n    </div>\n    <div class="field">\n        <label>Tags</label>\n        <div class="ui small input">\n            <select [(ngModel)]="story.tags" multiple class="ui fluid search dropdown">\n                <option *ngFor="let tag of tags" [value]="tag">{{ tag.title }}</option>\n            </select>\n        </div>    \n    </div>\n    <div class="field">\n        <label>Tasks</label>\n        <div class="ui small fluid input">\n            <div class="ui checkbox">\n                <input type="checkbox">\n                <label></label>\n            </div>\n            <input>\n        </div>\n    </div>\n    <button class="ui right floated mini button">Add Task</button>\n    <div class="ui hidden clearing divider"></div>\n    \n';
+        e.htmlTemplate = '\n    \n    <div class="field">\n        <label>\n            <div class="ui label">ID<div class="detail">{{ story.id }}</div></div>\n        </label>\n        <div class="ui small input">\n            <textarea [(ngModel)]="story.title" rows="2"></textarea>\n        </div>\n    </div>\n    <div class="inline field">\n        <label>Story Type</label>\n        <div class="ui right floated small input">\n            <select class="ui dropdown">\n                <option value="1">Feature</option>\n                <option value="2">Bug</option>\n                <option value="3">Chore</option>\n                <option value="4">Release</option>\n            </select>\n        </div>\n    </div>\n    <div class="ui hidden clearing divider"></div>\n    <div class="inline field">\n        <label>Effort</label>\n        <div class="ui right floated small input">\n            <select [(ngModel)]="story.effort" class="ui dropdown">\n                <option value="0.5">0.5 Points</option>\n                <option value="1">1 Point</option>\n                <option value="2">2 Points</option>\n                <option value="3">3 Points</option>\n                <option value="5">5 Points</option>\n            </select>\n        </div>\n    </div>\n    <div class="ui hidden clearing divider"></div>\n    <div class="inline field">\n        <label>State</label>\n        <div class="ui right floated small input">\n            <select class="ui dropdown">\n                <option value="1">Not Started</option>\n            </select>\n        </div>\n    </div>\n    <div class="ui hidden clearing divider"></div>\n    <div class="inline field">\n        <label>Owner</label>\n        <div class="ui right floated small input">\n            <select class="ui dropdown">\n                <option value="1">Bill</option>\n            </select>\n        </div>\n    </div>\n    <div class="ui hidden clearing divider"></div>  \n    <div class="field">\n        <label>Description</label>\n        <div class="ui small input">\n            <textarea [(ngModel)]="story.description" rows="3"></textarea>\n        </div>\n    </div>\n    <div class="field">\n        <label>Tags</label>\n        <div class="ui small input">\n            <select [(ngModel)]="story.tags" multiple class="ui fluid search dropdown">\n                <option *ngFor="let tag of tags" [value]="tag.id">{{ tag.title }}</option>\n            </select>\n        </div>    \n    </div>\n    <div class="field">\n        <label>Tasks</label>\n        <div class="ui small fluid input">\n            <div class="ui checkbox">\n                <input type="checkbox">\n                <label></label>\n            </div>\n            <input>\n        </div>\n    </div>\n    <button class="ui right floated mini button">Add Task</button>\n    <div class="ui hidden clearing divider"></div>\n    \n';
     },
-    308: function(t, e) {
+    333: function(t, e) {
         "use strict";
         e.htmlTemplate = '\n\n    <div class="item">\n        <div class="content">\n            <p (click)="toggle()">{{ story.title }}</p>\n            <div class="extra">\n                <div class="ui label"><i class="star icon"></i>{{ story.effort }}</div>\n                <div class="ui label" *ngFor="let tag of story.tags">{{ tag.title }}</div>\n                <button class="ui right floated mini button">Start</button>\n            </div>\n        </div>\n    </div>\n    <div class="ui secondary form segment" *ngIf="open" story-detail [story]="story"></div>\n';
     },
-    309: function(t, e) {
+    334: function(t, e) {
         "use strict";
         e.htmlTemplate = '\n\n    <div class="ui segment">\n        <button class="ui mini compact right floated icon button" (click)="newStory()"><i class="plus icon"></i></button>\n        <p>{{ title }}</p>\n    </div>\n    <div class="ui segment" *ngFor="let story of stories" story-list-item [story]="story"></div>\n    \n';
     }

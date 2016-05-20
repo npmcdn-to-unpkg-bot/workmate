@@ -64,9 +64,9 @@ gulp.task('move-js', function() {
 
 gulp.task('compress-js', function() {
     return gulp.src(['dist/*.js', '!dist/**.min.js'])
-    .pipe(sourcemaps.init())
+    //.pipe(sourcemaps.init())
     .pipe(uglify())
     .pipe(rename({suffix: '.min'}))
-    .pipe(sourcemaps.write('./'))
+    //.pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('dist'));
 });
