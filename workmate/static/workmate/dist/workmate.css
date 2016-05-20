@@ -9,6 +9,10 @@ body {
 .wm-messages {
   margin-bottom: 14px;
 }
+/* position */
+.floated.right {
+  float: right;
+}
 /* actions */
 [data-action="contact_call"] {
   cursor: pointer;

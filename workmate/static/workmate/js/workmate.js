@@ -2,8 +2,9 @@
 
     var
         $ajaxMessages = $('.wm-messages'),
+        $checkbox = $('.ui.checkbox'),
         $contactCall = '[data-action="contact_call"]',
-        $dropdown = $('.dropdown'),
+        $dropdown = $('.ui.dropdown'),
         $menuModal = $('.wm-menu'),
         $messageClose = '.message .close'
     ;
@@ -19,6 +20,10 @@
             tag_schema          : '/api/v1/tag/schema/',
             tag_detail          : '/api/v1/tag/{id}/'
         }
+    ;
+
+    $checkbox
+        .checkbox()
     ;
 
     $dropdown
