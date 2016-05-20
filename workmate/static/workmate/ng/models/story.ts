@@ -1,8 +1,11 @@
+import { Tag }                      from './tag';
+
+
 export class Story {
     id: number;
-    title: string;
-    effort: number;
     description: string;
-    tags: number[];
-    tasks: string[];
+    effort: number;
+    tags: Tag[];
+    title: string;
+    
 }

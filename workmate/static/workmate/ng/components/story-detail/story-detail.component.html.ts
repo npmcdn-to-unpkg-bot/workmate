@@ -60,10 +60,8 @@ export const htmlTemplate = `
     <div class="field">
         <label>Tags</label>
         <div class="ui small input">
-            <select multiple="" class="ui fluid search dropdown">
-                <option value="1">Tag 1</option>
-                <option value="2">Tag 2</option>
-                <option value="3">Tag 3</option>
+            <select [(ngModel)]="story.tags" multiple class="ui fluid search dropdown">
+                <option *ngFor="let tag of tags" [value]="tag.id">{{ tag.title }}</option>
             </select>
         </div>    
     </div>

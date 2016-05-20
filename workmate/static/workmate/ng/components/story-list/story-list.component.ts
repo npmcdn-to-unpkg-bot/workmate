@@ -21,6 +21,7 @@ import { htmlTemplate }                     from './story-list.component.html';
 export class StoryListComponent implements OnInit {
     @Input() title: string;
 
+    errorMessage: string;
     stories: Story [];
 
     constructor(
@@ -28,7 +29,10 @@ export class StoryListComponent implements OnInit {
     ) {}
 
     getStories() {
-        this.storyService.getStories().then(stories => this.stories = stories);
+        this.storyService.getStories()
+            .then(
+                stories => this.stories = stories,
+                error =>  this.errorMessage = <any>error);
     }
 
     ngOnInit() {

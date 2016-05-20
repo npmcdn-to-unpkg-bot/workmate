@@ -7,7 +7,7 @@ webpackJsonp([ 1 ], {
             return o > 3 && i && Object.defineProperty(e, n, i), i;
         }, a = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, o = n(1), i = n(289), r = n(97), s = n(310), l = n(311), d = function() {
+        }, o = n(1), i = n(97), r = n(118), s = n(310), l = n(311), d = function() {
             function t() {}
             return t = c([ o.Component({
                 selector: "contacts-app",
@@ -26,7 +26,7 @@ webpackJsonp([ 1 ], {
             return o > 3 && i && Object.defineProperty(e, n, i), i;
         }, a = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, o = n(1), i = n(289), r = function() {
+        }, o = n(1), i = n(97), r = function() {
             function t(t) {
                 this.http = t, this.contactsUrl = "api/v1/contact";
             }

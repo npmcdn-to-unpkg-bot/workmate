@@ -1,6 +1,9 @@
 import { Component }                        from '@angular/core';
+import { HTTP_PROVIDERS }                   from '@angular/http';
 import { bootstrap }                        from '@angular/platform-browser-dynamic';
 
+import { StoryService }                     from './services/story.service';
+import { TagService }                       from './services/tag.service';
 import { StoryListComponent }               from './components/story-list/story-list.component'
 
 
@@ -18,7 +21,12 @@ import { StoryListComponent }               from './components/story-list/story-
     `,
     directives: [
         StoryListComponent
-    ]
+    ],
+    providers: [
+        HTTP_PROVIDERS,
+        StoryService,
+        TagService
+    ],
 })
 
 export class AgileComponent {}

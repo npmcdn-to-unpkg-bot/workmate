@@ -1,19 +1,19 @@
 import { Injectable }               from '@angular/core';
 import { Http, Response }           from '@angular/http';
 
-import { Story }                  from '../models/story';
+import { Tag }                      from '../models/tag';
 
 
 @Injectable()
-export class StoryService {
+export class TagService {
 
     constructor (private http: Http) {}
 
-    private storiesUrl = 'api/v1/story';
+    private tagsUrl = 'api/v1/tag';
 
-    getStories(): Promise<Story[]> {
+    getTags(): Promise<Tag[]> {
         return this.http
-            .get(this.storiesUrl)
+            .get(this.tagsUrl)
             .toPromise()
             .then(this.extractData)
             .catch(this.handleError);
