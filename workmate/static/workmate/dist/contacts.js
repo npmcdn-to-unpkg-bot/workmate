@@ -28,7 +28,7 @@ webpackJsonp([ 1 ], {
             return o > 3 && i && Object.defineProperty(e, n, i), i;
         }, a = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, o = n(1), i = n(97), r = function() {
+        }, o = n(1), i = n(97), r = n(35), s = function() {
             function t(t) {
                 this.http = t, this.contactsUrl = "api/v1/contact";
             }
@@ -36,19 +36,19 @@ webpackJsonp([ 1 ], {
                 var e = new i.URLSearchParams();
                 return e.set("query", t), e.set("format", "json"), this.http.get(this.contactsUrl, {
                     search: e
-                }).toPromise().then(this.extractData).catch(this.handleError);
+                }).map(this.extractData).catch(this.handleError);
             }, t.prototype.getContact = function(t) {
-                return this.http.get(this.contactsUrl + "/" + t).toPromise().then(this.extractData).catch(this.handleError);
+                return this.http.get(this.contactsUrl + "/" + t).map(this.extractData).catch(this.handleError);
             }, t.prototype.extractData = function(t) {
                 if (t.status < 200 || t.status >= 300) throw new Error("Bad response status: " + t.status);
                 var e = t.json();
                 return e.object || e.objects || {};
             }, t.prototype.handleError = function(t) {
                 var e = t.message || "Server error";
-                return console.error(e), Promise.reject(e);
+                return console.error(e), r.Observable.throw(e);
             }, t = c([ o.Injectable(), a("design:paramtypes", [ i.Http ]) ], t);
         }();
-        e.ContactService = r;
+        e.ContactService = s;
     },
     337: function(t, e, n) {
         "use strict";
@@ -64,7 +64,7 @@ webpackJsonp([ 1 ], {
             }
             return t.prototype.search = function(t) {
                 var e = this;
-                this.contactService.search(t).then(function(t) {
+                this.contactService.search(t).subscribe(function(t) {
                     return e.contacts = t;
                 }, function(t) {
                     return e.errorMessage = t;

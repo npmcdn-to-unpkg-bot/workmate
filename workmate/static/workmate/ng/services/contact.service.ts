@@ -3,6 +3,9 @@ import { Http, Response, URLSearchParams }      from '@angular/http';
 
 import { Contact }                              from '../models/contact';
 
+import { Observable }                           from 'rxjs/Observable';
+
+
 @Injectable()
 export class ContactService {
 
@@ -10,7 +13,7 @@ export class ContactService {
 
     private contactsUrl = 'api/v1/contact';
 
-    search (term: string): Promise<Contact[]> {
+    search (term: string): Observable<Contact[]> {
 
         var params = new URLSearchParams();
 
@@ -19,17 +22,15 @@ export class ContactService {
 
         return this.http
             .get(this.contactsUrl, { search: params })
-            .toPromise()
-            .then(this.extractData)
+            .map(this.extractData)
             .catch(this.handleError);
     }
 
-    getContact (id: number): Promise<Contact> {
+    getContact (id: number): Observable<Contact> {
 
         return this.http
             .get(this.contactsUrl + '/' + id)
-            .toPromise()
-            .then(this.extractData)
+            .map(this.extractData)
             .catch(this.handleError);
     }
 
@@ -44,6 +45,6 @@ export class ContactService {
     private handleError (error: any) {
         let errMsg = error.message || 'Server error';
         console.error(errMsg);
-        return Promise.reject(errMsg);
+        return Observable.throw(errMsg);
     }
 }

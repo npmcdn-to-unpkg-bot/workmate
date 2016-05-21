@@ -26,7 +26,7 @@ export class ContactListComponent implements OnInit {
 
     search (term: string) {
         this.contactService.search(term)
-            .then(
+            .subscribe(
                 contacts => this.contacts = contacts,
                 error =>  this.errorMessage = <any>error);
     }

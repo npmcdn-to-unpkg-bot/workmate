@@ -3,6 +3,8 @@ import { Http, Response }           from '@angular/http';
 
 import { Tag }                      from '../models/tag';
 
+import { Observable }               from 'rxjs/Observable';
+
 
 @Injectable()
 export class TagService {
@@ -11,11 +13,10 @@ export class TagService {
 
     private tagsUrl = 'api/v1/tag';
 
-    getTags(): Promise<Tag[]> {
+    getTags(): Observable<Tag[]> {
         return this.http
             .get(this.tagsUrl)
-            .toPromise()
-            .then(this.extractData)
+            .map(this.extractData)
             .catch(this.handleError);
     }
 
@@ -30,7 +31,7 @@ export class TagService {
     private handleError (error: any) {
         let errMsg = error.message || 'Server error';
         console.error(errMsg);
-        return Promise.reject(errMsg);
+        return Observable.throw(errMsg);
     }
 
 }

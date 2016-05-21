@@ -11,9 +11,6 @@ import { htmlTemplate }                     from './story-list.component.html';
     template: htmlTemplate,
     directives: [
         StoryListItemComponent
-    ],
-    providers: [
-        StoryService
     ]
 
 })
@@ -22,7 +19,7 @@ export class StoryListComponent implements OnInit {
     @Input() title: string;
 
     errorMessage: string;
-    stories: Story [];
+    stories: Story[];
 
     constructor(
         private storyService: StoryService
@@ -30,7 +27,7 @@ export class StoryListComponent implements OnInit {
 
     getStories() {
         this.storyService.getStories()
-            .then(
+            .subscribe(
                 stories => this.stories = stories,
                 error =>  this.errorMessage = <any>error);
     }
@@ -40,6 +37,8 @@ export class StoryListComponent implements OnInit {
     }
 
     newStory = function () {
-        this.stories.push({ id: this.stories.length + 1, title: 'New story'})
+        let newStory = new Story();
+        newStory.title = 'New story';
+        this.stories.push(newStory)
     }
 }

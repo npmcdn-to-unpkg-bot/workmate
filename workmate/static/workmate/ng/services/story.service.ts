@@ -2,7 +2,9 @@ import { Injectable }                                       from '@angular/core'
 import { Http, Response }                                   from '@angular/http';
 
 import { ExRequestOptions }                                 from '../transportBoxes/exRequestOptions';
-import { Story }                                            from '../models/story';
+import { Story, StoryState, StoryType }                     from '../models/story';
+
+import { Observable }                                       from 'rxjs/Observable';
 
 
 @Injectable()
@@ -11,24 +13,43 @@ export class StoryService {
     constructor (private http: Http) {}
 
     private storiesUrl = '/api/v1/story/';
+    private statesUrl = '/api/v1/story_state/';
+    private typesUrl = '/api/v1/story_type/';
 
-    getStories(): Promise<Story[]> {
+    getStories(): Observable<Story[]> {
         return this.http
             .get(this.storiesUrl)
-            .toPromise()
-            .then(this.extractData)
+            .map(this.extractData)
             .catch(this.handleError);
     }
 
-    saveStory(story: Story): Promise<Story> {
+    getStates(): Observable<StoryState[]> {
+        return this.http
+            .get(this.statesUrl)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
+    getTypes(): Observable<StoryType[]> {
+        return this.http
+            .get(this.typesUrl)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
+    saveStory(story: Story): Observable<Story> {
         let body = JSON.stringify(story);
         let options = new ExRequestOptions();
         options.appendHeaders('Content-Type', 'application/json');
-
-        return this.http.put(this.storiesUrl + story.id + '/', body, options)
-                        .toPromise()
-                        .then(this.extractData)
-                        .catch(this.handleError);
+        if (story.id) {
+            return this.http.put(this.storiesUrl + story.id + '/', body, options)
+                            .map(this.extractData)
+                            .catch(this.handleError);
+        } else {
+            return this.http.post(this.storiesUrl, body, options)
+                            .map(this.extractData)
+                            .catch(this.handleError);
+        }
     }
 
     private extractData(res: Response) {
@@ -42,7 +63,7 @@ export class StoryService {
     private handleError (error: any) {
         let errMsg = error.message || 'Server error';
         console.error(errMsg);
-        return Promise.reject(errMsg);
+        return Observable.throw(errMsg);
     }
 
 }
