@@ -16,5 +16,5 @@ class ContactForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(ContactForm, self).__init__(*args, **kwargs)
-        self.fields['state'].widget.attrs['class'] = 'search dropdown'
-        self.fields['tags'].widget.attrs['class'] = 'search dropdown'
+        self.fields['state'].widget.attrs['class'] = 'ui search dropdown'
+        self.fields['tags'].widget.attrs['class'] = 'ui search dropdown'

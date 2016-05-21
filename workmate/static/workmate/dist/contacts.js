@@ -9,7 +9,7 @@ webpackJsonp([ 1 ], {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
         }, o = n(1), i = n(97), r = n(118);
         n(301);
-        var s = n(335), l = n(336), d = function() {
+        var s = n(336), l = n(337), d = function() {
             function t() {}
             return t = c([ o.Component({
                 selector: "contacts-app",
@@ -20,7 +20,7 @@ webpackJsonp([ 1 ], {
         }();
         e.ContactsComponent = d, r.bootstrap(d);
     },
-    335: function(t, e, n) {
+    336: function(t, e, n) {
         "use strict";
         var c = this && this.__decorate || function(t, e, n, c) {
             var a, o = arguments.length, i = 3 > o ? e : null === c ? c = Object.getOwnPropertyDescriptor(e, n) : c;
@@ -50,7 +50,7 @@ webpackJsonp([ 1 ], {
         }();
         e.ContactService = r;
     },
-    336: function(t, e, n) {
+    337: function(t, e, n) {
         "use strict";
         var c = this && this.__decorate || function(t, e, n, c) {
             var a, o = arguments.length, i = 3 > o ? e : null === c ? c = Object.getOwnPropertyDescriptor(e, n) : c;
@@ -58,7 +58,7 @@ webpackJsonp([ 1 ], {
             return o > 3 && i && Object.defineProperty(e, n, i), i;
         }, a = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, o = n(1), i = n(335), r = n(337), s = n(340), l = function() {
+        }, o = n(1), i = n(336), r = n(338), s = n(341), l = function() {
             function t(t) {
                 this.contactService = t;
             }
@@ -81,7 +81,7 @@ webpackJsonp([ 1 ], {
         }();
         e.ContactListComponent = l;
     },
-    337: function(t, e, n) {
+    338: function(t, e, n) {
         "use strict";
         var c = this && this.__decorate || function(t, e, n, c) {
             var a, o = arguments.length, i = 3 > o ? e : null === c ? c = Object.getOwnPropertyDescriptor(e, n) : c;
@@ -89,7 +89,7 @@ webpackJsonp([ 1 ], {
             return o > 3 && i && Object.defineProperty(e, n, i), i;
         }, a = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, o = n(1), i = n(338), r = n(339), s = function() {
+        }, o = n(1), i = n(339), r = n(340), s = function() {
             function t() {}
             return c([ o.Input(), a("design:type", i.Contact) ], t.prototype, "contact", void 0), 
             t = c([ o.Component({
@@ -99,7 +99,7 @@ webpackJsonp([ 1 ], {
         }();
         e.ContactDetailComponent = s;
     },
-    338: function(t, e) {
+    339: function(t, e) {
         "use strict";
         var n = function() {
             function t() {}
@@ -107,11 +107,11 @@ webpackJsonp([ 1 ], {
         }();
         e.Contact = n;
     },
-    339: function(t, e) {
+    340: function(t, e) {
         "use strict";
         e.htmlTemplate = '\n\n    <div class="ui padded segment">\n    \n        <h4 class="ui header">\n            <a href="{{ contact.absolute_url }}">{{ contact.name }}</a>\n        </h4>\n    \n        <p *ngIf="contact.notes">{{ contact.notes }}</p>\n    \n        <div class="ui relaxed middle aligned list">\n            <div class="item" *ngIf="contact.mobile_number">\n                <i class="circular mobile icon"></i>\n                <div class="content">\n                    <span>{{ contact.mobile_number }}</span>\n                    <i [attr.data-id]="contact.id" class="teal link large call icon" data-action="contact_call" data-type="mobile_number"></i>\n                </div>\n            </div>\n            <div class="item" *ngIf="contact.home_number">\n                <i class="circular home icon"></i>\n                <div class="content">\n                    <span data-bind="text: home_number">{{ contact.home_number }}</span>\n                    <i [attr.data-id]="contact.id" class="teal link large call icon" data-action="contact_call" data-type="home_number"></i>\n                </div>\n            </div>\n            <div class="item" *ngIf="contact.work_number">\n                <i class="circular building icon"></i>\n                <div class="content">\n                    <span data-bind="text: work_number">{{ contact.work_number }}</span>\n                    <i [attr.data-id]="contact.id" class="teal link large call icon" data-action="contact_call" data-type="work_number"></i>\n                </div>\n            </div>\n            <div class="item" *ngIf="contact.email_address">\n                <i class="circular at icon"></i>\n                <div class="content">\n                    <a href="mailto:{{ contact.email_address }}">{{ contact.email_address }}</a>\n                </div>\n            </div>\n            <div class="item" *ngIf="contact.website">\n                <i class="circular world icon"></i>\n                <div class="content">\n                    <a href="{{ contact.website }}" target="_blank">{{ contact.website }}</a>\n                </div>\n            </div>\n            <div class="item" *ngIf="contact.address">\n                <i class="circular marker icon"></i>\n                <div class="content">\n                    <a href="http://maps.google.com/?q={{ contact.address }}" target="_blank" >{{ contact.address }}</a>\n                </div>\n            </div>\n        </div>\n        <div class="ui divider" *ngIf="contact.tags.length > 0"></div>\n        <div class="ui small tag label" *ngFor="let tag of contact.tags">{{ tag.title }}</div>\n    \n    </div>\n';
     },
-    340: function(t, e) {
+    341: function(t, e) {
         "use strict";
         e.htmlTemplate = '\n\n    <div class="ui search">\n        <div class="ui icon input">\n            <input #term (keyup)="search(term.value)" class="prompt" placeholder="Search...">\n            <i class="search icon"></i>\n        </div>\n    </div>\n    \n    <div class="ui hidden clearing divider"></div>\n    \n    <ul class="ui list">\n      <li *ngFor="let contact of contacts">\n          <a href="javascript:void(0)" (click)="onSelect(contact)">{{ contact.name }}</a>\n      </li>\n    </ul>\n    \n    <contact-detail *ngIf="selectedContact" [contact]="selectedContact"></contact-detail>\n    \n    <div class="error" *ngIf="errorMessage">{{errorMessage}}</div>\n    \n';
     }

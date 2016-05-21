@@ -21,6 +21,7 @@ class ContactResource(ModelResource):
     class Meta:
         authentication = SessionAuthentication()
         authorization = Authorization()
+        always_return_data = True
         detail_allowed_methods = ['get', 'post', 'put', 'delete']
         include_absolute_url = True
         list_allowed_methods = ['get', 'post']

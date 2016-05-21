@@ -1,7 +1,8 @@
-import { Injectable }               from '@angular/core';
-import { Http, Response }           from '@angular/http';
+import { Injectable }                                       from '@angular/core';
+import { Http, Response }                                   from '@angular/http';
 
-import { Story }                  from '../models/story';
+import { ExRequestOptions }                                 from '../transportBoxes/exRequestOptions';
+import { Story }                                            from '../models/story';
 
 
 @Injectable()
@@ -9,7 +10,7 @@ export class StoryService {
 
     constructor (private http: Http) {}
 
-    private storiesUrl = 'api/v1/story';
+    private storiesUrl = '/api/v1/story/';
 
     getStories(): Promise<Story[]> {
         return this.http
@@ -17,6 +18,17 @@ export class StoryService {
             .toPromise()
             .then(this.extractData)
             .catch(this.handleError);
+    }
+
+    saveStory(story: Story): Promise<Story> {
+        let body = JSON.stringify(story);
+        let options = new ExRequestOptions();
+        options.appendHeaders('Content-Type', 'application/json');
+
+        return this.http.put(this.storiesUrl + story.id + '/', body, options)
+                        .toPromise()
+                        .then(this.extractData)
+                        .catch(this.handleError);
     }
 
     private extractData(res: Response) {

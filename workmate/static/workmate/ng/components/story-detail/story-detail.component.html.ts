@@ -25,10 +25,10 @@ export const htmlTemplate = `
         <div class="ui right floated small input">
             <select [(ngModel)]="story.effort" class="ui dropdown">
                 <option value="0.5">0.5 Points</option>
-                <option value="1">1 Point</option>
-                <option value="2">2 Points</option>
-                <option value="3">3 Points</option>
-                <option value="5">5 Points</option>
+                <option value="1.0">1 Point</option>
+                <option value="2.0">2 Points</option>
+                <option value="3.0">3 Points</option>
+                <option value="5.0">5 Points</option>
             </select>
         </div>
     </div>
@@ -60,8 +60,8 @@ export const htmlTemplate = `
     <div class="field">
         <label>Tags</label>
         <div class="ui small input">
-            <select [(ngModel)]="story.tags" multiple class="ui fluid search dropdown">
-                <option *ngFor="let tag of tags" [value]="tag.id">{{ tag.title }}</option>
+            <select #tagselect class="ui fluid dropdown" multiple (change)="changeTags($event.target)" style="display:none;">
+                <option *ngFor="let tag of tags" [value]="tag.id" [attr.selected]="isTagSelected(tag)">{{ tag.title }}</option>
             </select>
         </div>    
     </div>
@@ -76,6 +76,8 @@ export const htmlTemplate = `
         </div>
     </div>
     <button class="ui right floated mini button">Add Task</button>
+    <div class="ui hidden clearing divider"></div>
+    <button class="ui right floated primary button" (click)="saveStory()">Save</button>
     <div class="ui hidden clearing divider"></div>
     
 `

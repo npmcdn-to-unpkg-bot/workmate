@@ -10,6 +10,7 @@ class TagResource(ModelResource):
     class Meta:
         authentication = SessionAuthentication()
         authorization = Authorization()
+        always_return_data = True
         detail_allowed_methods = ['get', 'post', 'put', 'delete']
         list_allowed_methods = ['get', 'post']
         queryset = Tag.onsite.all()
