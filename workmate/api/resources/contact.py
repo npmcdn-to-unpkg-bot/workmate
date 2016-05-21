@@ -4,30 +4,21 @@ import operator
 from django.db.models import Q
 
 from tastypie import fields
-from tastypie.authentication import SessionAuthentication
-from tastypie.authorization import Authorization
-from tastypie.resources import ModelResource
-from tastypie.serializers import Serializer
 
+from .mixins import DefaultResourceMixin
 from .tag import TagResource
 from workmate.models import Contact
 
 
-class ContactResource(ModelResource):
+class ContactResource(DefaultResourceMixin):
     address = fields.CharField(attribute='address', readonly=True, default='')
     name = fields.CharField(attribute='name', readonly=True)
     tags = fields.ToManyField(TagResource, 'tags', null=True, full=True)
 
-    class Meta:
-        authentication = SessionAuthentication()
-        authorization = Authorization()
-        always_return_data = True
-        detail_allowed_methods = ['get', 'post', 'put', 'delete']
+    class Meta(DefaultResourceMixin.Meta):
         include_absolute_url = True
-        list_allowed_methods = ['get', 'post']
         queryset = Contact.onsite.all().prefetch_related('tags')
         resource_name = 'contact'
-        serializer = Serializer()
 
     def apply_filters(self, request, applicable_filters):
         base_object_list = super(ContactResource, self).apply_filters(request, applicable_filters)

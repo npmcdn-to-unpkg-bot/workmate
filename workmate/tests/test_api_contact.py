@@ -197,7 +197,7 @@ class ContactResourceTests(WorkmateAPITestCase):
         new_data['first_name'] = 'Updated: Mr'
 
         self.assertEqual(Contact.objects.count(), 1)
-        self.assertHttpAccepted(
+        self.assertHttpOK(
             self.api_client.put(
                 self.detail_url,
                 format='json',
