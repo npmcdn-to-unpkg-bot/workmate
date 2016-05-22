@@ -6,6 +6,8 @@ import { StoryService }                                         from '../../serv
 import { TagService }                                           from '../../services/tag.service';
 import { htmlTemplate }                                         from './story-detail.component.html';
 
+import { Observable }                                           from 'rxjs/Observable';
+
 declare var jQuery: any;
 
 
@@ -19,13 +21,12 @@ export class StoryDetailComponent implements OnInit {
     
     @ViewChild('tagselect') tagSelect:ElementRef;
 
-    savedStory: Story;
-    states: StoryState[];
-    tags: Tag[];
-    types: StoryType[];
     elementRef: ElementRef;
     errorMessage: string;
-    selectedTags: Tag[];
+    selectedState: StoryState[];
+    states: Observable<StoryState[]>;
+    tags: Tag[];
+    types: StoryType[];
 
     constructor(
         elementRef: ElementRef,
@@ -40,44 +41,27 @@ export class StoryDetailComponent implements OnInit {
         this.story.tasks.push(newTask)
     }
 
-    getStates() {
-        this.storyService.getStates()
-            .subscribe(
-                states => this.states = states,
-                error =>  this.errorMessage = <any>error);
-    }
-
-    getTags() {
-        this.tagService.getTags()
-            .subscribe(
-                tags => this.tags = tags,
-                error =>  this.errorMessage = <any>error);
-    }
-
-    getTypes() {
-        this.storyService.getTypes()
-            .subscribe(
-                types => this.types = types,
-                error =>  this.errorMessage = <any>error);
-    }
-
     saveStory() {
-        this.storyService.saveStory(this.story)
-            .subscribe(
-                story => this.story = story,
-                error =>  this.errorMessage = <any>error);
+        if (this.story.id) {
+            this.storyService.update(this.story);
+        } else {
+            this.storyService.create(this.story);
+        }
     }
 
     ngOnInit() {
-        this.getStates();
-        this.getTags();
-        this.getTypes();
+        this.tagService.tags$.subscribe(tags => { this.tags = tags; });
+        this.storyService.types$.subscribe(types => { this.types = types; });
+        this.states = this.storyService.states$;
+        this.storyService.loadAllStates();
+        this.storyService.loadAllTypes();
+        this.tagService.loadAll();
     }
 
     ngAfterViewInit() {
         setTimeout(() => {
             jQuery(this.elementRef.nativeElement).find('.ui.checkbox').checkbox({});
-            jQuery(this.elementRef.nativeElement).find('.ui.dropdown').dropdown({});
+            jQuery(this.elementRef.nativeElement).find('.ui.dropdown.multi').dropdown({});
         }, 100);
     }
 
@@ -93,15 +77,15 @@ export class StoryDetailComponent implements OnInit {
     }
 
     changeTags(selectElement: any) {
-        this.selectedTags = [];
+        let selectedTags: Tag[] = [];
         for (var i = 0; i < selectElement.options.length; i++) {
             var optionElement = selectElement.options[i];
             var optionModel = this.tags[i];
             if (optionElement.selected == true) {
-                this.selectedTags.push(optionModel)
+                selectedTags.push(optionModel)
             }
         }
-        this.story.tags = this.selectedTags;
+        this.story.tags = selectedTags;
     }
 
 }

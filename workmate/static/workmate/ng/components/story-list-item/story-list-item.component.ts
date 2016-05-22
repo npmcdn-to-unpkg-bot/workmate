@@ -8,9 +8,7 @@ import { htmlTemplate }                     from './story-list-item.component.ht
 @Component({
     selector: '[story-list-item]',
     template: htmlTemplate,
-    directives: [
-        StoryDetailComponent
-    ]
+    directives: [StoryDetailComponent]
 })
 
 export class StoryListItemComponent {

@@ -10,7 +10,7 @@ export const htmlTemplate = `
     <div class="ui hidden clearing divider"></div>
     
     <ul class="ui list">
-      <li *ngFor="let contact of contacts">
+      <li *ngFor="let contact of contacts | async">
           <a href="javascript:void(0)" (click)="onSelect(contact)">{{ contact.name }}</a>
       </li>
     </ul>

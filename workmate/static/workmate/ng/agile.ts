@@ -30,7 +30,7 @@ import { StoryListComponent }               from './components/story-list/story-
         provide(RequestOptions, {useClass: ExRequestOptions}),
         StoryService,
         TagService
-    ],
+    ]
 })
 
 export class AgileComponent {}

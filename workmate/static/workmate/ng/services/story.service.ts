@@ -5,51 +5,106 @@ import { ExRequestOptions }                                 from '../transportBo
 import { Story, StoryState, StoryType }                     from '../models/story';
 
 import { Observable }                                       from 'rxjs/Observable';
+import { Observer }                                         from 'rxjs/Observer';
 
 
 @Injectable()
 export class StoryService {
 
-    constructor (private http: Http) {}
+    states$: Observable<StoryState[]>;
+    stories$: Observable<Story[]>;
+    types$: Observable<StoryType[]>;
 
-    private storiesUrl = '/api/v1/story/';
-    private statesUrl = '/api/v1/story_state/';
-    private typesUrl = '/api/v1/story_type/';
+    private _statesObserver: Observer<StoryState[]>;
+    private _storiesObserver: Observer<Story[]>;
+    private _typesObserver: Observer<StoryType[]>;
 
-    getStories(): Observable<Story[]> {
-        return this.http
-            .get(this.storiesUrl)
-            .map(this.extractData)
-            .catch(this.handleError);
+    private _dataStore: { states: StoryState[], stories: Story[], types: StoryType[] };
+
+    private postOptions = new ExRequestOptions();
+
+    constructor (private _http: Http) {
+        this._dataStore = { states: [], stories: [], types: [] };
+        this.states$ = new Observable<StoryState[]>((observer:any) => this._statesObserver = observer).share();
+        this.stories$ = new Observable<Story[]>((observer:any) => this._storiesObserver = observer).share();
+        this.types$ = new Observable<StoryType[]>((observer:any) => this._typesObserver = observer).share();
+        this.postOptions.appendHeaders('Content-Type', 'application/json');
     }
 
-    getStates(): Observable<StoryState[]> {
-        return this.http
-            .get(this.statesUrl)
+    private baseUrl = '/api/v1/story/';
+
+    loadAll() {
+        this._http.get(this.baseUrl)
             .map(this.extractData)
-            .catch(this.handleError);
+            .subscribe(data => {
+                this._dataStore.stories = data;
+                this._storiesObserver.next(this._dataStore.stories);
+            }, this.handleError
+        );
+    }
+    
+    load(id: any) {
+        this._http.get(`${this.baseUrl}${id}/`)
+            .map(this.extractData)
+            .subscribe(data => {
+                let found = false;
+                this._dataStore.stories.forEach((item, index) => {
+                    if(item.id === data.id) {
+                        this._dataStore.stories[index] = data;
+                        found = true;
+                    }
+                });
+                if (!found) {
+                    this._dataStore.stories.push(data);
+                }
+                this._storiesObserver.next(this._dataStore.stories);
+            }, this.handleError
+        );
     }
 
-    getTypes(): Observable<StoryType[]> {
-        return this.http
-            .get(this.typesUrl)
+    loadAllStates() {
+        this._http.get('/api/v1/story_state/')
             .map(this.extractData)
-            .catch(this.handleError);
+            .subscribe(data => {
+                this._dataStore.states = data;
+                this._statesObserver.next(this._dataStore.states);
+            }, this.handleError
+        );
     }
 
-    saveStory(story: Story): Observable<Story> {
-        let body = JSON.stringify(story);
-        let options = new ExRequestOptions();
-        options.appendHeaders('Content-Type', 'application/json');
-        if (story.id) {
-            return this.http.put(this.storiesUrl + story.id + '/', body, options)
-                            .map(this.extractData)
-                            .catch(this.handleError);
-        } else {
-            return this.http.post(this.storiesUrl, body, options)
-                            .map(this.extractData)
-                            .catch(this.handleError);
-        }
+    loadAllTypes() {
+        this._http.get('/api/v1/story_type/')
+            .map(this.extractData)
+            .subscribe(data => {
+                this._dataStore.types = data;
+                this._typesObserver.next(this._dataStore.types);
+            }, this.handleError
+        );
+    }
+
+    create(object: Story) {
+        let body = JSON.stringify(object);
+        this._http.post(this.baseUrl, body, this.postOptions)
+            .map(this.extractData)
+            .subscribe(data => {
+                this._dataStore.stories.push(data);
+                this._storiesObserver.next(this._dataStore.stories);
+            }, this.handleError
+        );
+    }
+
+    update(object: Story) {
+        let body = JSON.stringify(object);
+        this._http.put(`${this.baseUrl}${object.id}/`, body, this.postOptions)
+            .map(this.extractData)
+            .subscribe(data => {
+                this._dataStore.stories.forEach((story, i) => {
+                    if (story.id === data.id) {
+                        this._dataStore.stories[i] = data; }
+                    });
+                this._storiesObserver.next(this._dataStore.stories);
+            }, this.handleError
+        );
     }
 
     private extractData(res: Response) {
@@ -57,7 +112,7 @@ export class StoryService {
             throw new Error('Bad response status: ' + res.status);
         }
         let body = res.json();
-        return body.object || body.objects || { };
+        return body.object || body.objects || body || { };
     }
 
     private handleError (error: any) {

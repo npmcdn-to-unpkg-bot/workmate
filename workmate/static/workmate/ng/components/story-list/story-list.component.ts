@@ -5,40 +5,34 @@ import { StoryService }                     from '../../services/story.service';
 import { StoryListItemComponent }           from '../story-list-item/story-list-item.component'
 import { htmlTemplate }                     from './story-list.component.html';
 
+import { Observable }                       from 'rxjs/Observable';
+
 
 @Component({
     selector: '[story-list]',
     template: htmlTemplate,
-    directives: [
-        StoryListItemComponent
-    ]
-
+    directives: [StoryListItemComponent]
 })
 
 export class StoryListComponent implements OnInit {
     @Input() title: string;
 
     errorMessage: string;
-    stories: Story[];
+    stories: Observable<Story[]>;
+    toggleNew: boolean = false;
+    newStory: Story;
+    opened: boolean = false;
 
-    constructor(
-        private storyService: StoryService
-    ) {}
-
-    getStories() {
-        this.storyService.getStories()
-            .subscribe(
-                stories => this.stories = stories,
-                error =>  this.errorMessage = <any>error);
-    }
+    constructor(private storyService: StoryService) {}
 
     ngOnInit() {
-        this.getStories();
+        this.stories = this.storyService.stories$;
+        this.storyService.loadAll();
     }
 
-    newStory = function () {
-        let newStory = new Story();
-        newStory.title = 'New story';
-        this.stories.push(newStory)
+    createNew = function () {
+        this.newStory = new Story();
+        this.newStory.title = 'New Story...';
+        this.opened = true;
     }
 }
