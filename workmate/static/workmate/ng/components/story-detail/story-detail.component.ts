@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, ViewChild }      from '@angular/core';
+import { Component, ElementRef, Input, OnInit }                 from '@angular/core';
 
 import { Story, StoryState, StoryType, StoryTask }              from '../../models/story';
 import { Tag }                                                  from '../../models/tag';
@@ -18,23 +18,17 @@ declare var jQuery: any;
 
 export class StoryDetailComponent implements OnInit {
     @Input() story: Story;
-    
-    @ViewChild('tagselect') tagSelect:ElementRef;
 
-    elementRef: ElementRef;
     errorMessage: string;
-    selectedState: StoryState[];
     states: Observable<StoryState[]>;
-    tags: Tag[];
-    types: StoryType[];
+    tags: Observable<Tag[]>;
+    types: Observable<StoryType[]>;
 
     constructor(
-        elementRef: ElementRef,
+        private elementRef: ElementRef,
         private storyService: StoryService,
         private tagService: TagService
-    ) {
-        this.elementRef = elementRef;
-    }
+    ) {}
 
     addTask() {
         let newTask = new StoryTask();
@@ -50,8 +44,8 @@ export class StoryDetailComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.tagService.tags$.subscribe(tags => { this.tags = tags; });
-        this.storyService.types$.subscribe(types => { this.types = types; });
+        this.tags = this.tagService.tags$;
+        this.types = this.storyService.types$;
         this.states = this.storyService.states$;
         this.storyService.loadAllStates();
         this.storyService.loadAllTypes();
@@ -61,31 +55,40 @@ export class StoryDetailComponent implements OnInit {
     ngAfterViewInit() {
         setTimeout(() => {
             jQuery(this.elementRef.nativeElement).find('.ui.checkbox').checkbox({});
-            jQuery(this.elementRef.nativeElement).find('.ui.dropdown.multi').dropdown({});
-        }, 100);
+            jQuery(this.elementRef.nativeElement).find('.ui.dropdown').dropdown({});
+        }, 0);
     }
 
-    isTagSelected(tag: Tag) {
-        if (!this.story.tags) {
-            return;
+    addSelectedObject($event:any, model:any, choice:any) {
+        $event.stopPropagation();
+        let found = false;
+        for (var i = 0; i < model.length; i++) {
+            if(model[i].id === choice.id) {
+                found = true;
+                break;
+            }
         }
-        for (var i = 0; i < this.story.tags.length; i++) {
-            if (this.story.tags[i].id === tag.id) {
-                return 'selected';
+        if (!found) {
+            model.push(choice);
+        }
+    }
+
+    removeSelectedObject($event:any, model:any, choice:any) {
+        $event.stopPropagation();
+        for (var i = 0; i < model.length; i++) {
+            if(model[i].id === choice.id) {
+                model.splice(i, 1);
+                break;
             }
         }
     }
 
-    changeTags(selectElement: any) {
-        let selectedTags: Tag[] = [];
-        for (var i = 0; i < selectElement.options.length; i++) {
-            var optionElement = selectElement.options[i];
-            var optionModel = this.tags[i];
-            if (optionElement.selected == true) {
-                selectedTags.push(optionModel)
+    isSelected(model:any, item:any) {
+        for (var i = 0; i < model.length; i++) {
+            if(model[i].id === item.id) {
+                return true;
             }
         }
-        this.story.tags = selectedTags;
     }
 
 }

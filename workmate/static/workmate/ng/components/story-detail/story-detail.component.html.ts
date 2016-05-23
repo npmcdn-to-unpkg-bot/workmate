@@ -11,9 +11,12 @@ export const htmlTemplate = `
     <div class="inline field">
         <label>Type</label>
         <div class="ui right floated small input">
-            <select class="ui dropdown" [(ngModel)]="story.type">
-                <option *ngFor="let type of types" [ngValue]="type" [attr.selected]="type.id==story.type.id ? 'selected' : null">{{ type.title }}</option>
-            </select>
+            <div class="ui selection dropdown">
+                <i class="dropdown icon"></i><div class="text">{{story.type.title}}</div>
+                <div class="menu transition hidden">
+                    <div class="item" *ngFor="let type of types | async" (click)="story.type=type">{{type.title}}</div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="ui hidden clearing divider"></div>
@@ -31,11 +34,14 @@ export const htmlTemplate = `
     </div>
     <div class="ui hidden clearing divider"></div>
     <div class="inline field">
-        <label>State</label> {{story.state.title}}
+        <label>State</label>
         <div class="ui right floated small input">
-            <select class="ui dropdown" [(ngModel)]="story.state">
-                <option *ngFor="let state of states | async" [ngValue]="state" [attr.selected]="state.id==story.state.id ? 'selected' : null">{{ state.title }}</option>
-            </select>
+            <div class="ui selection dropdown">
+                <i class="dropdown icon"></i><div class="text">{{story.state.title}}</div>
+                <div class="menu transition hidden">
+                    <div class="item" *ngFor="let state of states | async" (click)="story.state=state">{{state.title}}</div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="ui hidden clearing divider"></div>  
@@ -48,9 +54,14 @@ export const htmlTemplate = `
     <div class="field">
         <label>Tags</label>
         <div class="ui small input">
-            <select #tagselect class="ui fluid dropdown multi" multiple (change)="changeTags($event.target)" style="display:none;">
-                <option *ngFor="let tag of tags" [value]="tag.id" [attr.selected]="isTagSelected(tag)">{{ tag.title }}</option>
-            </select>
+            <div class="ui fluid dropdown selection multiple">
+                <i class="dropdown icon"></i>
+                <a class="ui label transition visible" *ngFor="let tag of story.tags">{{tag.title}}<i class="delete icon" (click)="removeSelectedObject($event, story.tags, tag)"></i></a>
+                <div class="text"></div>
+                <div class="menu">
+                    <div class="item" [ngClass]="{filtered: isSelected(story.tags, tag)}" *ngFor="let tag of tags | async" (click)="addSelectedObject($event, story.tags, tag)">{{tag.title}}</div>
+                </div>
+            </div>
         </div>    
     </div>
     <div class="field">
