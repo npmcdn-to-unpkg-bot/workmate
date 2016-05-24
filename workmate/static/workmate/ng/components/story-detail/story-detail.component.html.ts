@@ -76,7 +76,8 @@ export const htmlTemplate = `
     </div>
     <button class="ui right floated mini button" (click)="addTask()">Add Task</button>
     <div class="ui hidden clearing divider"></div>
-    <button class="ui right floated primary button" (click)="saveStory()">Save</button>
+    <button *ngIf="story.id" class="ui secondary button" (click)="delete()">Delete</button>
+    <button class="ui right floated primary button" (click)="save()">Save</button>
     <div class="ui hidden clearing divider"></div>
     
 `

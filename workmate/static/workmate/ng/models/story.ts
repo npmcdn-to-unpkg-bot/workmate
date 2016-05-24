@@ -22,12 +22,20 @@ export class StoryState {
 
 export class Story {
     id: number;
+    title: string;
     description: string;
     effort: number;
     state: StoryState;
     tags: Tag[];
     tasks: StoryTask[];
-    title: string;
     type: StoryType;
     resource_uri: string;
+
+    constructor() {
+        this.title = 'New Story';
+        this.state = new StoryState();
+        this.tags = [];
+        this.tasks = [];
+        this.type = new StoryType();
+    }
 }

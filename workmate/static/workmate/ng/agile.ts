@@ -6,6 +6,8 @@ import './imports/rxjs.ts';
 
 import { ExRequestOptions }                 from './transportBoxes/exRequestOptions';
 import { StoryService }                     from './services/story.service';
+import { StoryStateService }                from './services/story-state.service';
+import { StoryTypeService }                 from './services/story-type.service';
 import { TagService }                       from './services/tag.service';
 import { StoryListComponent }               from './components/story-list/story-list.component'
 
@@ -13,14 +15,7 @@ import { StoryListComponent }               from './components/story-list/story-
 @Component({
     selector: 'agile-app',
     template: `
-        <div class="ui equal width grid">
-            <div class="column">
-                <div class="ui raised segments" story-list [title]="'Backlog'"></div>
-            </div>
-            <div class="column">
-                <div class="ui raised segments" story-list [title]="'Icebox'"></div>
-            </div>
-        </div>
+        <story-list></story-list>
     `,
     directives: [
         StoryListComponent
@@ -29,10 +24,14 @@ import { StoryListComponent }               from './components/story-list/story-
         HTTP_PROVIDERS,
         provide(RequestOptions, {useClass: ExRequestOptions}),
         StoryService,
+        StoryStateService,
+        StoryTypeService,
         TagService
     ]
 })
 
-export class AgileComponent {}
+export class AgileComponent {
+    
+}
 
 bootstrap(AgileComponent);

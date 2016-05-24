@@ -3,6 +3,8 @@ import { Component, ElementRef, Input, OnInit }                 from '@angular/c
 import { Story, StoryState, StoryType, StoryTask }              from '../../models/story';
 import { Tag }                                                  from '../../models/tag';
 import { StoryService }                                         from '../../services/story.service';
+import { StoryStateService }                                    from '../../services/story-state.service';
+import { StoryTypeService }                                     from '../../services/story-type.service';
 import { TagService }                                           from '../../services/tag.service';
 import { htmlTemplate }                                         from './story-detail.component.html';
 
@@ -27,6 +29,8 @@ export class StoryDetailComponent implements OnInit {
     constructor(
         private elementRef: ElementRef,
         private storyService: StoryService,
+        private storyStateService: StoryStateService,
+        private storyTypeService: StoryTypeService,
         private tagService: TagService
     ) {}
 
@@ -35,7 +39,7 @@ export class StoryDetailComponent implements OnInit {
         this.story.tasks.push(newTask)
     }
 
-    saveStory() {
+    save() {
         if (this.story.id) {
             this.storyService.update(this.story);
         } else {
@@ -43,12 +47,18 @@ export class StoryDetailComponent implements OnInit {
         }
     }
 
+    delete() {
+        if (this.story.id) {
+            this.storyService.delete(this.story.id);
+        }
+    }
+
     ngOnInit() {
-        this.tags = this.tagService.tags$;
-        this.types = this.storyService.types$;
-        this.states = this.storyService.states$;
-        this.storyService.loadAllStates();
-        this.storyService.loadAllTypes();
+        this.tags = this.tagService.objects$;
+        this.types = this.storyTypeService.objects$;
+        this.states = this.storyStateService.objects$;
+        this.storyStateService.loadAll();
+        this.storyTypeService.loadAll();
         this.tagService.loadAll();
     }
 

@@ -23,7 +23,7 @@ export class ContactListComponent implements OnInit {
     selectedContact: Contact;
 
     ngOnInit() {
-        this.contacts = this.contactService.contacts$;
+        this.contacts = this.contactService.objects$;
         this.contactService.loadAll();
     }
 

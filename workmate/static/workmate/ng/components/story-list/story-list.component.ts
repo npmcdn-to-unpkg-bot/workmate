@@ -1,4 +1,4 @@
-import { Component, Input, OnInit }         from '@angular/core';
+import { Component, OnInit }                from '@angular/core';
 
 import { Story }                            from '../../models/story';
 import { StoryService }                     from '../../services/story.service';
@@ -9,13 +9,12 @@ import { Observable }                       from 'rxjs/Observable';
 
 
 @Component({
-    selector: '[story-list]',
+    selector: 'story-list',
     template: htmlTemplate,
     directives: [StoryListItemComponent]
 })
 
 export class StoryListComponent implements OnInit {
-    @Input() title: string;
 
     errorMessage: string;
     stories: Observable<Story[]>;
@@ -23,16 +22,17 @@ export class StoryListComponent implements OnInit {
     newStory: Story;
     opened: boolean = false;
 
-    constructor(private storyService: StoryService) {}
+    constructor(
+        private storyService: StoryService
+    ) {}
 
     ngOnInit() {
-        this.stories = this.storyService.stories$;
+        this.stories = this.storyService.objects$;
         this.storyService.loadAll();
     }
 
     createNew = function () {
         this.newStory = new Story();
-        this.newStory.title = 'New Story...';
         this.opened = true;
     }
 }
