@@ -6,6 +6,8 @@ import { Story }                                            from '../models/stor
 import { Observable }                                       from 'rxjs/Observable';
 import { Observer }                                         from 'rxjs/Observer';
 
+declare var jQuery: any;
+
 
 export class FakeObject {
     id: number
@@ -60,18 +62,18 @@ export class BaseService {
 
     create(object: any) {
         let body = JSON.stringify(object);
-        this._http.post(this._baseUrl, body, this._postOptions)
+        return this._http.post(this._baseUrl, body, this._postOptions)
             .map(this.extractData)
             .subscribe(data => {
                 this._dataStore.objects.push(data);
                 this._dataObserver.next(this._dataStore.objects);
-            }, this.handleError
+            }, this.handleError, this.handleCompleted
         );
     }
 
     update(object: any) {
         let body = JSON.stringify(object);
-        this._http.put(`${this._baseUrl}${object.id}/`, body, this._postOptions)
+        return this._http.put(`${this._baseUrl}${object.id}/`, body, this._postOptions)
             .map(this.extractData)
             .subscribe(data => {
                 this._dataStore.objects.forEach((item, i) => {
@@ -79,7 +81,7 @@ export class BaseService {
                         this._dataStore.objects[i] = data; }
                     });
                 this._dataObserver.next(this._dataStore.objects);
-            }, this.handleError
+            }, this.handleError, this.handleCompleted
         );
     }
 
@@ -90,7 +92,7 @@ export class BaseService {
                     if (item.id === id) { this._dataStore.objects.splice(i, 1); }
                 });
                 this._dataObserver.next(this._dataStore.objects);
-            }, this.handleError
+            }, this.handleError, this.handleCompleted
         );
     }
 
@@ -102,9 +104,16 @@ export class BaseService {
         return body.object || body.objects || body || { };
     }
 
+    protected handleCompleted () {
+        var message = jQuery('<div class="ui success message"><i class="close icon"></i></div>');
+        message.append('<div class="header capitalize">success</div>');
+        message.append('<p>Completed successfully</p>');
+        jQuery('.wm-messages').append(message);
+    }
+
     protected handleError (error: any) {
+        console.log(error);
         let errMsg = error.message || 'Server error';
-        console.error(errMsg);
         return Observable.throw(errMsg);
     }
 

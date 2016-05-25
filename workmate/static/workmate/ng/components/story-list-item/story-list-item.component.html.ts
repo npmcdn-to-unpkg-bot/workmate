@@ -2,7 +2,7 @@ export const htmlTemplate = `
 
     <div class="item">
         <div class="content">
-            <p (click)="toggle()">{{ story.title }}</p>
+            <p class="cursor-pointer" (click)="toggle()">{{ story.title }}</p>
             <div class="extra">
                 <div class="ui label"><i class="star icon"></i>{{ story.effort }}</div>
                 <div class="ui label" *ngFor="let tag of story.tags">{{ tag.title }}</div>
