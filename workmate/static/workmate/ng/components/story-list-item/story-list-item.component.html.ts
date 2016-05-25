@@ -10,5 +10,5 @@ export const htmlTemplate = `
             </div>
         </div>
     </div>
-    <div class="ui secondary form segment" *ngIf="open" story-detail [story]="story"></div>
+    <div class="ui secondary form segment" *ngIf="opened" story-detail [story]="story"></div>
 `

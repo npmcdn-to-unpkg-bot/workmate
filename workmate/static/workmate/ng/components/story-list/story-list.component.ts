@@ -2,6 +2,7 @@ import { Component, OnInit }                from '@angular/core';
 
 import { Story }                            from '../../models/story';
 import { StoryService }                     from '../../services/story.service';
+import { StoryDetailComponent }             from '../story-detail/story-detail.component'
 import { StoryListItemComponent }           from '../story-list-item/story-list-item.component'
 import { htmlTemplate }                     from './story-list.component.html';
 
@@ -11,16 +12,17 @@ import { Observable }                       from 'rxjs/Observable';
 @Component({
     selector: 'story-list',
     template: htmlTemplate,
-    directives: [StoryListItemComponent]
+    directives: [StoryDetailComponent, StoryListItemComponent]
 })
 
 export class StoryListComponent implements OnInit {
 
     errorMessage: string;
     stories: Observable<Story[]>;
-    toggleNew: boolean = false;
-    newStory: Story;
-    opened: boolean = false;
+    newBacklogStory: Story;
+    newBacklogOpened: boolean = false;
+    newIceboxStory: Story;
+    newIceboxOpened: boolean = false;
 
     constructor(
         private storyService: StoryService
@@ -31,8 +33,13 @@ export class StoryListComponent implements OnInit {
         this.storyService.loadAll();
     }
 
-    createNew = function () {
-        this.newStory = new Story();
-        this.opened = true;
+    createNew = function (backlog: boolean) {
+        if(backlog) {
+            this.newBacklogStory = new Story();
+            this.newBacklogOpened = !this.newBacklogOpened;
+        } else {
+            this.newIceboxStory = new Story();
+            this.newIceboxOpened = !this.newIceboxOpened;
+        }
     }
 }

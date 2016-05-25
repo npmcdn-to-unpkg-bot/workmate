@@ -32,7 +32,7 @@ export class Story {
     resource_uri: string;
 
     constructor() {
-        this.title = 'New Story';
+        this.title = '';
         this.state = new StoryState();
         this.tags = [];
         this.tasks = [];
