@@ -64,7 +64,6 @@ export class StoryDetailComponent implements OnInit {
 
     ngAfterViewInit() {
         setTimeout(() => {
-            jQuery(this.elementRef.nativeElement).find('.ui.checkbox').checkbox({});
             jQuery(this.elementRef.nativeElement).find('.ui.dropdown').dropdown({});
         }, 0);
     }

@@ -66,12 +66,11 @@ export const htmlTemplate = `
     </div>
     <div class="field">
         <label>Tasks</label>
-        <div class="ui small fluid input" *ngFor="let task of story.tasks">
-            <div class="ui checkbox">
-                <input type="checkbox" [(ngModel)]="task.completed">
-                <label></label>
+        <div class="field" *ngFor="let task of story.tasks">
+            <div class="ui small fluid left icon input">
+                <i class="inverted circular checkmark link icon" [ngClass]="{'green': task.completed}" (click)="task.completed = !task.completed"></i>
+                <input [(ngModel)]="task.description">
             </div>
-            <input [(ngModel)]="task.description">
         </div>
     </div>
     <button class="ui right floated mini button" (click)="addTask()">Add Task</button>
