@@ -1,21 +1,19 @@
 (function(global) {
 
-    var ngVer = '@2.0.0-rc.1'; // lock in the angular package version; do not let it float to current!
+    var ngVer = '@2.0.0-rc.1';
 
-    //map tells the System loader where to look for things
     var  map = {
-        'app':                        '/static/workmate/ng',
+        'app':                              '/static/workmate/ng',
 
-        '@angular':                   'https://npmcdn.com/@angular', // sufficient if we didn't pin the version
-        'rxjs':                       'https://npmcdn.com/rxjs@5.0.0-beta.6',
-        'ts':                         'https://npmcdn.com/plugin-typescript@4.0.10/lib/plugin.js',
-        'typescript':                 'https://npmcdn.com/typescript@1.8.10/lib/typescript.js',
+        '@angular':                         'https://npmcdn.com/@angular',
+        'rxjs':                             'https://npmcdn.com/rxjs@5.0.0-beta.6',
+        'ts':                               'https://npmcdn.com/plugin-typescript@4.0.10/lib/plugin.js',
+        'typescript':                       'https://npmcdn.com/typescript@1.8.10/lib/typescript.js',
     };
 
-    //packages tells the System loader how to load when no filename and/or no extension
     var packages = {
-        'app':                        { main: 'agile.ts',  defaultExtension: 'ts' },
-        'rxjs':                       { defaultExtension: 'js' }
+        'app':                          { defaultExtension: 'ts' },
+        'rxjs':                         { defaultExtension: 'js' }
     };
 
     var ngPackageNames = [
