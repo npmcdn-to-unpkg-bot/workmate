@@ -2,23 +2,23 @@ webpackJsonp([ 1 ], {
     0: function(t, e, n) {
         "use strict";
         var a = this && this.__decorate || function(t, e, n, a) {
-            var c, o = arguments.length, i = 3 > o ? e : null === a ? a = Object.getOwnPropertyDescriptor(e, n) : a;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) i = Reflect.decorate(t, e, n, a); else for (var r = t.length - 1; r >= 0; r--) (c = t[r]) && (i = (3 > o ? c(i) : o > 3 ? c(e, n, i) : c(e, n)) || i);
-            return o > 3 && i && Object.defineProperty(e, n, i), i;
+            var c, i = arguments.length, o = 3 > i ? e : null === a ? a = Object.getOwnPropertyDescriptor(e, n) : a;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) o = Reflect.decorate(t, e, n, a); else for (var s = t.length - 1; s >= 0; s--) (c = t[s]) && (o = (3 > i ? c(o) : i > 3 ? c(e, n, o) : c(e, n)) || o);
+            return i > 3 && o && Object.defineProperty(e, n, o), o;
         }, c = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, o = n(1), i = n(97), r = n(118);
+        }, i = n(1), o = n(97), s = n(118);
         n(301);
-        var s = n(344), l = n(345), d = function() {
+        var r = n(344), d = n(345), l = function() {
             function t() {}
-            return t = a([ o.Component({
+            return t = a([ i.Component({
                 selector: "contacts-app",
                 template: "\n      <contact-list></contact-list>\n    ",
-                directives: [ l.ContactListComponent ],
-                providers: [ i.HTTP_PROVIDERS, s.ContactService ]
+                directives: [ d.ContactListComponent ],
+                providers: [ o.HTTP_PROVIDERS, r.ContactService ]
             }), c("design:paramtypes", []) ], t);
         }();
-        e.ContactsComponent = d, r.bootstrap(d);
+        e.ContactsComponent = l, s.bootstrap(l);
     },
     331: function(t, e, n) {
         "use strict";
@@ -29,12 +29,12 @@ webpackJsonp([ 1 ], {
             for (var a in e) e.hasOwnProperty(a) && (t[a] = e[a]);
             t.prototype = null === e ? Object.create(e) : (n.prototype = e.prototype, new n());
         }, c = this && this.__decorate || function(t, e, n, a) {
-            var c, o = arguments.length, i = 3 > o ? e : null === a ? a = Object.getOwnPropertyDescriptor(e, n) : a;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) i = Reflect.decorate(t, e, n, a); else for (var r = t.length - 1; r >= 0; r--) (c = t[r]) && (i = (3 > o ? c(i) : o > 3 ? c(e, n, i) : c(e, n)) || i);
-            return o > 3 && i && Object.defineProperty(e, n, i), i;
-        }, o = this && this.__metadata || function(t, e) {
+            var c, i = arguments.length, o = 3 > i ? e : null === a ? a = Object.getOwnPropertyDescriptor(e, n) : a;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) o = Reflect.decorate(t, e, n, a); else for (var s = t.length - 1; s >= 0; s--) (c = t[s]) && (o = (3 > i ? c(o) : i > 3 ? c(e, n, o) : c(e, n)) || o);
+            return i > 3 && o && Object.defineProperty(e, n, o), o;
+        }, i = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, i = n(1), r = n(97), s = function(t) {
+        }, o = n(1), s = n(97), r = function(t) {
             function e() {
                 t.call(this), this.headers.append("X-CSRFToken", this.getCookie("csrftoken"));
             }
@@ -43,18 +43,18 @@ webpackJsonp([ 1 ], {
                 return 2 == n.length ? n.pop().split(";").shift() : void 0;
             }, e.prototype.appendHeaders = function(t, e) {
                 this.headers.append(t, e);
-            }, e = c([ i.Injectable(), o("design:paramtypes", []) ], e);
-        }(r.BaseRequestOptions);
-        e.ExRequestOptions = s;
+            }, e = c([ o.Injectable(), i("design:paramtypes", []) ], e);
+        }(s.BaseRequestOptions);
+        e.ExRequestOptions = r;
     },
     333: function(t, e, n) {
         "use strict";
-        var a = n(331), c = n(35), o = function() {
+        var a = n(331), c = n(35), i = function() {
             function t() {}
             return t;
         }();
-        e.FakeObject = o;
-        var i = function() {
+        e.FakeObject = i;
+        var o = function() {
             function t(t) {
                 var e = this;
                 this._http = t, this._baseUrl = "", this._postOptions = new a.ExRequestOptions(), 
@@ -110,7 +110,7 @@ webpackJsonp([ 1 ], {
                 return c.Observable.throw(e);
             }, t;
         }();
-        e.BaseService = i;
+        e.BaseService = o;
     },
     344: function(t, e, n) {
         "use strict";
@@ -121,38 +121,38 @@ webpackJsonp([ 1 ], {
             for (var a in e) e.hasOwnProperty(a) && (t[a] = e[a]);
             t.prototype = null === e ? Object.create(e) : (n.prototype = e.prototype, new n());
         }, c = this && this.__decorate || function(t, e, n, a) {
-            var c, o = arguments.length, i = 3 > o ? e : null === a ? a = Object.getOwnPropertyDescriptor(e, n) : a;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) i = Reflect.decorate(t, e, n, a); else for (var r = t.length - 1; r >= 0; r--) (c = t[r]) && (i = (3 > o ? c(i) : o > 3 ? c(e, n, i) : c(e, n)) || i);
-            return o > 3 && i && Object.defineProperty(e, n, i), i;
-        }, o = this && this.__metadata || function(t, e) {
+            var c, i = arguments.length, o = 3 > i ? e : null === a ? a = Object.getOwnPropertyDescriptor(e, n) : a;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) o = Reflect.decorate(t, e, n, a); else for (var s = t.length - 1; s >= 0; s--) (c = t[s]) && (o = (3 > i ? c(o) : i > 3 ? c(e, n, o) : c(e, n)) || o);
+            return i > 3 && o && Object.defineProperty(e, n, o), o;
+        }, i = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, i = n(1), r = n(97), s = n(333), l = n(35), d = function(t) {
+        }, o = n(1), s = n(97), r = n(333), d = n(35), l = function(t) {
             function e(e) {
                 var n = this;
-                t.call(this, e), this._http = e, this._baseUrl = "/api/v1/contact/", this.objects$ = new l.Observable(function(t) {
+                t.call(this, e), this._http = e, this._baseUrl = "/api/v1/contact/", this.objects$ = new d.Observable(function(t) {
                     return n._dataObserver = t;
                 }).share();
             }
             return a(e, t), e.prototype.search = function(t) {
-                var e = this, n = new r.URLSearchParams();
+                var e = this, n = new s.URLSearchParams();
                 n.set("query", t), n.set("format", "json"), this._http.get(this._baseUrl, {
                     search: n
                 }).map(this.extractData).subscribe(function(t) {
                     e._dataStore.objects = t, e._dataObserver.next(e._dataStore.objects);
                 }, this.handleError);
-            }, e = c([ i.Injectable(), o("design:paramtypes", [ r.Http ]) ], e);
-        }(s.BaseService);
-        e.ContactService = d;
+            }, e = c([ o.Injectable(), i("design:paramtypes", [ s.Http ]) ], e);
+        }(r.BaseService);
+        e.ContactService = l;
     },
     345: function(t, e, n) {
         "use strict";
         var a = this && this.__decorate || function(t, e, n, a) {
-            var c, o = arguments.length, i = 3 > o ? e : null === a ? a = Object.getOwnPropertyDescriptor(e, n) : a;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) i = Reflect.decorate(t, e, n, a); else for (var r = t.length - 1; r >= 0; r--) (c = t[r]) && (i = (3 > o ? c(i) : o > 3 ? c(e, n, i) : c(e, n)) || i);
-            return o > 3 && i && Object.defineProperty(e, n, i), i;
+            var c, i = arguments.length, o = 3 > i ? e : null === a ? a = Object.getOwnPropertyDescriptor(e, n) : a;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) o = Reflect.decorate(t, e, n, a); else for (var s = t.length - 1; s >= 0; s--) (c = t[s]) && (o = (3 > i ? c(o) : i > 3 ? c(e, n, o) : c(e, n)) || o);
+            return i > 3 && o && Object.defineProperty(e, n, o), o;
         }, c = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, o = n(1), i = n(344), r = n(346), s = n(349), l = function() {
+        }, i = n(1), o = n(344), s = n(346), r = n(349), d = function() {
             function t(t) {
                 this.contactService = t;
             }
@@ -162,31 +162,31 @@ webpackJsonp([ 1 ], {
                 this.contactService.search(t);
             }, t.prototype.onSelect = function(t) {
                 this.selectedContact = t;
-            }, t = a([ o.Component({
+            }, t = a([ i.Component({
                 selector: "contact-list",
-                template: s.htmlTemplate,
-                directives: [ r.ContactDetailComponent ]
-            }), c("design:paramtypes", [ i.ContactService ]) ], t);
+                template: r.htmlTemplate,
+                directives: [ s.ContactDetailComponent ]
+            }), c("design:paramtypes", [ o.ContactService ]) ], t);
         }();
-        e.ContactListComponent = l;
+        e.ContactListComponent = d;
     },
     346: function(t, e, n) {
         "use strict";
         var a = this && this.__decorate || function(t, e, n, a) {
-            var c, o = arguments.length, i = 3 > o ? e : null === a ? a = Object.getOwnPropertyDescriptor(e, n) : a;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) i = Reflect.decorate(t, e, n, a); else for (var r = t.length - 1; r >= 0; r--) (c = t[r]) && (i = (3 > o ? c(i) : o > 3 ? c(e, n, i) : c(e, n)) || i);
-            return o > 3 && i && Object.defineProperty(e, n, i), i;
+            var c, i = arguments.length, o = 3 > i ? e : null === a ? a = Object.getOwnPropertyDescriptor(e, n) : a;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) o = Reflect.decorate(t, e, n, a); else for (var s = t.length - 1; s >= 0; s--) (c = t[s]) && (o = (3 > i ? c(o) : i > 3 ? c(e, n, o) : c(e, n)) || o);
+            return i > 3 && o && Object.defineProperty(e, n, o), o;
         }, c = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, o = n(1), i = n(347), r = n(348), s = function() {
+        }, i = n(1), o = n(347), s = n(348), r = function() {
             function t() {}
-            return a([ o.Input(), c("design:type", i.Contact) ], t.prototype, "contact", void 0), 
-            t = a([ o.Component({
+            return a([ i.Input(), c("design:type", o.Contact) ], t.prototype, "contact", void 0), 
+            t = a([ i.Component({
                 selector: "contact-detail",
-                template: r.htmlTemplate
+                template: s.htmlTemplate
             }), c("design:paramtypes", []) ], t);
         }();
-        e.ContactDetailComponent = s;
+        e.ContactDetailComponent = r;
     },
     347: function(t, e) {
         "use strict";
@@ -198,10 +198,10 @@ webpackJsonp([ 1 ], {
     },
     348: function(t, e) {
         "use strict";
-        e.htmlTemplate = '\n\n    <div class="ui padded segment">\n    \n        <h4 class="ui header">\n            <a href="{{ contact.absolute_url }}">{{ contact.name }}</a>\n        </h4>\n    \n        <p *ngIf="contact.notes">{{ contact.notes }}</p>\n    \n        <div class="ui relaxed middle aligned list">\n            <div class="item" *ngIf="contact.mobile_number">\n                <i class="circular mobile icon"></i>\n                <div class="content">\n                    <span>{{ contact.mobile_number }}</span>\n                    <i [attr.data-id]="contact.id" class="teal link large call icon" data-action="contact_call" data-type="mobile_number"></i>\n                </div>\n            </div>\n            <div class="item" *ngIf="contact.home_number">\n                <i class="circular home icon"></i>\n                <div class="content">\n                    <span data-bind="text: home_number">{{ contact.home_number }}</span>\n                    <i [attr.data-id]="contact.id" class="teal link large call icon" data-action="contact_call" data-type="home_number"></i>\n                </div>\n            </div>\n            <div class="item" *ngIf="contact.work_number">\n                <i class="circular building icon"></i>\n                <div class="content">\n                    <span data-bind="text: work_number">{{ contact.work_number }}</span>\n                    <i [attr.data-id]="contact.id" class="teal link large call icon" data-action="contact_call" data-type="work_number"></i>\n                </div>\n            </div>\n            <div class="item" *ngIf="contact.email_address">\n                <i class="circular at icon"></i>\n                <div class="content">\n                    <a href="mailto:{{ contact.email_address }}">{{ contact.email_address }}</a>\n                </div>\n            </div>\n            <div class="item" *ngIf="contact.website">\n                <i class="circular world icon"></i>\n                <div class="content">\n                    <a href="{{ contact.website }}" target="_blank">{{ contact.website }}</a>\n                </div>\n            </div>\n            <div class="item" *ngIf="contact.address">\n                <i class="circular marker icon"></i>\n                <div class="content">\n                    <a href="http://maps.google.com/?q={{ contact.address }}" target="_blank" >{{ contact.address }}</a>\n                </div>\n            </div>\n        </div>\n        <div class="ui divider" *ngIf="contact.tags.length > 0"></div>\n        <div class="ui small tag label" *ngFor="let tag of contact.tags">{{ tag.title }}</div>\n    \n    </div>\n';
+        e.htmlTemplate = '\n    \n    <h1 class="ui header">\n        <i class="user icon"></i>\n        <div class="content">\n            <a href="{{ contact.absolute_url }}">{{ contact.name }}</a>\n            \n        </div>\n    </h1>\n    \n    <div class="ui divider"></div>\n    \n    <button *ngIf="contact.mobile_number" class="ui basic tiny icon button" [attr.data-id]="contact.id" data-action="contact_call" data-type="mobile_number">\n        <i class="call icon"></i>\n        Call on Mobile\n    </button>\n    <button *ngIf="contact.home_number" class="ui basic tiny icon button" [attr.data-id]="contact.id" data-action="contact_call" data-type="home_number">\n        <i class="call icon"></i>\n        Call at Home\n    </button>\n    <button *ngIf="contact.work_number" class="ui basic tiny icon button" [attr.data-id]="contact.id" data-action="contact_call" data-type="work_number">\n        <i class="call icon"></i>\n        Call at Work\n    </button>\n    \n    <div class="ui hidden divider"></div>\n    \n    <p *ngIf="contact.notes">{{ contact.notes }}</p>\n\n    <div class="ui relaxed middle aligned list">\n        <div class="item" *ngIf="contact.mobile_number">\n            <i class="circular mobile icon"></i>\n            <div class="content">\n                <span>{{ contact.mobile_number }}</span>\n            </div>\n        </div>\n        <div class="item" *ngIf="contact.home_number">\n            <i class="circular home icon"></i>\n            <div class="content">\n                <span>{{ contact.home_number }}</span>\n            </div>\n        </div>\n        <div class="item" *ngIf="contact.work_number">\n            <i class="circular building icon"></i>\n            <div class="content">\n                <span>{{ contact.work_number }}</span>\n            </div>\n        </div>\n        <div class="item" *ngIf="contact.email_address">\n            <i class="circular at icon"></i>\n            <div class="content">\n                <a href="mailto:{{ contact.email_address }}">{{ contact.email_address }}</a>\n            </div>\n        </div>\n        <div class="item" *ngIf="contact.website">\n            <i class="circular world icon"></i>\n            <div class="content">\n                <a href="{{ contact.website }}" target="_blank">{{ contact.website }}</a>\n            </div>\n        </div>\n        <div class="item" *ngIf="contact.address">\n            <i class="circular marker icon"></i>\n            <div class="content">\n                <a href="http://maps.google.com/?q={{ contact.address }}" target="_blank" >{{ contact.address }}</a>\n            </div>\n        </div>\n    </div>\n    <div class="ui divider" *ngIf="contact.tags.length > 0"></div>\n    <div class="ui small tag label" *ngFor="let tag of contact.tags">{{ tag.title }}</div>\n    \n';
     },
     349: function(t, e) {
         "use strict";
-        e.htmlTemplate = '\n\n    <div class="ui search">\n        <div class="ui icon input">\n            <input #term (keyup)="search(term.value)" class="prompt" placeholder="Search...">\n            <i class="search icon"></i>\n        </div>\n    </div>\n    \n    <div class="ui hidden clearing divider"></div>\n    \n    <ul class="ui list">\n      <li *ngFor="let contact of contacts | async">\n          <a href="javascript:void(0)" (click)="onSelect(contact)">{{ contact.name }}</a>\n      </li>\n    </ul>\n    \n    <contact-detail *ngIf="selectedContact" [contact]="selectedContact"></contact-detail>\n    \n    <div class="error" *ngIf="errorMessage">{{errorMessage}}</div>\n    \n';
+        e.htmlTemplate = '\n\n<div class="ui divided grid">\n    <div class="six wide column">\n        <div class="ui basic segment">\n            <div class="item">\n                <div class="ui fluid icon input">\n                    <input #term (keyup)="search(term.value)" class="prompt" placeholder="Search...">\n                    <i class="search icon"></i>\n                </div>\n            </div>\n            <div class="ui divided link items">\n                <div class="item" *ngFor="let contact of contacts | async" (click)="onSelect(contact)">\n                    <div class="ui tiny image">\n                      <img src="http://semantic-ui.com/images/wireframe/image.png">\n                    </div>\n                    <div class="middle aligned content">\n                        <div class="header">{{ contact.name }}</div>\n                        <div class="meta">\n                            <span>{{ contact.email_address }}</span>\n                        </div>\n                    </div>\n                </div>    \n            </div>\n        </div>\n    </div>\n    <div class="ten wide column">\n        <div class="ui basic segment">\n            <contact-detail *ngIf="selectedContact" [contact]="selectedContact"></contact-detail>\n        </div>\n    </div>\n</div>\n    \n';
     }
 });
