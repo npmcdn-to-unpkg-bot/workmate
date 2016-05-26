@@ -1,7 +1,6 @@
 import { Http, Response }                                   from '@angular/http';
 
 import { ExRequestOptions }                                 from '../transportBoxes/exRequestOptions';
-import { Story }                                            from '../models/story';
 
 import { Observable }                                       from 'rxjs/Observable';
 import { Observer }                                         from 'rxjs/Observer';
@@ -27,18 +26,22 @@ export class BaseService {
 
     constructor (protected _http: Http) {
         this._dataStore = { objects: [] };
-        this.objects$ = new Observable<Story[]>((observer:any) => this._dataObserver = observer).share();
+        this.objects$ = new Observable<FakeObject[]>((observer:any) => this._dataObserver = observer).share();
         this._postOptions.appendHeaders('Content-Type', 'application/json');
     }
 
     loadAll() {
-        this._http.get(this._baseUrl)
-            .map(this.extractData)
-            .subscribe(data => {
-                this._dataStore.objects = data;
-                this._dataObserver.next(this._dataStore.objects);
-            }, this.handleError
-        );
+        if (typeof this._dataStore === 'undefined' || this._dataStore.objects.length == 0) {
+            this._http.get(this._baseUrl)
+                .map(this.extractData)
+                .subscribe(data => {
+                    this._dataStore.objects = data;
+                    this._dataObserver.next(this._dataStore.objects);
+                }, this.handleError
+            );
+        } else {
+            this._dataObserver.next(this._dataStore.objects);
+        }
     }
 
     load(id: number) {

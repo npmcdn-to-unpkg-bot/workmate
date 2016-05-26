@@ -14,7 +14,7 @@ export const htmlTemplate = `
             <div class="ui selection dropdown">
                 <i class="dropdown icon"></i><div class="text">{{story.type.title}}</div>
                 <div class="menu transition hidden">
-                    <div class="item" *ngFor="let type of types | async" (click)="story.type=type">{{type.title}}</div>
+                    <div class="item" *ngFor="let type of types" (click)="story.type=type">{{type.title}}</div>
                 </div>
             </div>
         </div>
@@ -39,7 +39,7 @@ export const htmlTemplate = `
             <div class="ui selection dropdown">
                 <i class="dropdown icon"></i><div class="text">{{story.state.title}}</div>
                 <div class="menu transition hidden">
-                    <div class="item" *ngFor="let state of states | async" (click)="story.state=state">{{state.title}}</div>
+                    <div class="item" *ngFor="let state of states" (click)="story.state=state">{{state.title}}</div>
                 </div>
             </div>
         </div>
@@ -59,7 +59,7 @@ export const htmlTemplate = `
                 <a class="ui label transition visible" *ngFor="let tag of story.tags">{{tag.title}}<i class="delete icon" (click)="removeSelectedObject($event, story.tags, tag)"></i></a>
                 <div class="text"></div>
                 <div class="menu">
-                    <div class="item" [ngClass]="{filtered: isSelected(story.tags, tag)}" *ngFor="let tag of tags | async" (click)="addSelectedObject($event, story.tags, tag)">{{tag.title}}</div>
+                    <div class="item" [ngClass]="{filtered: isSelected(story.tags, tag)}" *ngFor="let tag of tags" (click)="addSelectedObject($event, story.tags, tag)">{{tag.title}}</div>
                 </div>
             </div>
         </div>    

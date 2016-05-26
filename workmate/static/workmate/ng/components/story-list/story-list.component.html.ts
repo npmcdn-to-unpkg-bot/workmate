@@ -10,7 +10,7 @@ export const htmlTemplate = `
                     <p>Backlog</p>
                 </div>
                 <div class="ui secondary form segment" *ngIf="newBacklogOpened" story-detail [story]="newBacklogStory"></div>
-                <div class="ui segment" *ngFor="let story of stories | async" story-list-item [story]="story"></div>
+                <div class="ui segment" *ngFor="let story of stories" story-list-item [story]="story"></div>
             </div>
         </div>
         <div class="column">
@@ -22,7 +22,7 @@ export const htmlTemplate = `
                     <p>Icebox</p>
                 </div>
                 <div class="ui secondary form segment" *ngIf="newIceboxOpened" story-detail [story]="newIceboxStory"></div>
-                <div class="ui segment" *ngFor="let story of stories | async" story-list-item [story]="story"></div>
+                <div class="ui segment" *ngFor="let story of stories" story-list-item [story]="story"></div>
             </div>
         </div>
     </div>

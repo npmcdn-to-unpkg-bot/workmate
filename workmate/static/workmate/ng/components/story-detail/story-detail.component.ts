@@ -8,8 +8,6 @@ import { StoryTypeService }                                     from '../../serv
 import { TagService }                                           from '../../services/tag.service';
 import { htmlTemplate }                                         from './story-detail.component.html';
 
-import { Observable }                                           from 'rxjs/Observable';
-
 declare var jQuery: any;
 
 
@@ -21,10 +19,9 @@ declare var jQuery: any;
 export class StoryDetailComponent implements OnInit {
     @Input() story: Story;
 
-    errorMessage: string;
-    states: Observable<StoryState[]>;
-    tags: Observable<Tag[]>;
-    types: Observable<StoryType[]>;
+    states: StoryState[];
+    tags: Tag[];
+    types: StoryType[];
 
     constructor(
         private elementRef: ElementRef,
@@ -54,9 +51,9 @@ export class StoryDetailComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.tags = this.tagService.objects$;
-        this.types = this.storyTypeService.objects$;
-        this.states = this.storyStateService.objects$;
+        this.storyTypeService.objects$.subscribe(objects => this.types = objects);
+        this.storyStateService.objects$.subscribe(objects => this.states = objects);
+        this.tagService.objects$.subscribe(objects => this.tags = objects);
         this.storyStateService.loadAll();
         this.storyTypeService.loadAll();
         this.tagService.loadAll();

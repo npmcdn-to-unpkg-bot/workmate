@@ -93,9 +93,9 @@ webpackJsonp([ 0 ], {
             }
             return t.prototype.loadAll = function() {
                 var t = this;
-                this._http.get(this._baseUrl).map(this.extractData).subscribe(function(e) {
+                "undefined" == typeof this._dataStore || 0 == this._dataStore.objects.length ? this._http.get(this._baseUrl).map(this.extractData).subscribe(function(e) {
                     t._dataStore.objects = e, t._dataObserver.next(t._dataStore.objects);
-                }, this.handleError);
+                }, this.handleError) : this._dataObserver.next(this._dataStore.objects);
             }, t.prototype.load = function(t) {
                 var e = this;
                 this._http.get("" + this._baseUrl + t + "/").map(this.extractData).subscribe(function(t) {
@@ -222,22 +222,33 @@ webpackJsonp([ 0 ], {
             return s > 3 && r && Object.defineProperty(e, i, r), r;
         }, o = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, s = i(1), r = i(338), a = i(332), c = i(339), l = i(341), d = i(343), p = function() {
-            function t(t) {
-                this.storyService = t, this.newBacklogOpened = !1, this.newIceboxOpened = !1, this.createNew = function(t) {
+        }, s = i(1), r = i(338), a = i(332), c = i(334), l = i(335), d = i(336), p = i(339), u = i(341), f = i(343), v = function() {
+            function t(t, e, i, n) {
+                this.storyService = t, this.storyStateService = e, this.storyTypeService = i, this.tagService = n, 
+                this.newBacklogOpened = !1, this.newIceboxOpened = !1, this.createNew = function(t) {
                     t ? (this.newBacklogStory = new r.Story(), this.newBacklogOpened = !this.newBacklogOpened) : (this.newIceboxStory = new r.Story(), 
                     this.newIceboxOpened = !this.newIceboxOpened);
                 };
             }
             return t.prototype.ngOnInit = function() {
-                this.stories = this.storyService.objects$, this.storyService.loadAll();
+                var t = this;
+                this.storyService.objects$.subscribe(function(e) {
+                    return t.stories = e;
+                }), this.storyStateService.objects$.subscribe(function(e) {
+                    return t.states = e;
+                }), this.storyTypeService.objects$.subscribe(function(e) {
+                    return t.types = e;
+                }), this.tagService.objects$.subscribe(function(e) {
+                    return t.tags = e;
+                }), this.storyService.loadAll(), this.storyStateService.loadAll(), this.storyTypeService.loadAll(), 
+                this.tagService.loadAll();
             }, t = n([ s.Component({
                 selector: "story-list",
-                template: d.htmlTemplate,
-                directives: [ c.StoryDetailComponent, l.StoryListItemComponent ]
-            }), o("design:paramtypes", [ a.StoryService ]) ], t);
+                template: f.htmlTemplate,
+                directives: [ p.StoryDetailComponent, u.StoryListItemComponent ]
+            }), o("design:paramtypes", [ a.StoryService, c.StoryStateService, l.StoryTypeService, d.TagService ]) ], t);
         }();
-        e.StoryListComponent = p;
+        e.StoryListComponent = v;
     },
     338: function(t, e) {
         "use strict";
@@ -285,9 +296,14 @@ webpackJsonp([ 0 ], {
             }, t.prototype.delete = function() {
                 this.story.id && this.storyService.delete(this.story.id);
             }, t.prototype.ngOnInit = function() {
-                this.tags = this.tagService.objects$, this.types = this.storyTypeService.objects$, 
-                this.states = this.storyStateService.objects$, this.storyStateService.loadAll(), 
-                this.storyTypeService.loadAll(), this.tagService.loadAll();
+                var t = this;
+                this.storyTypeService.objects$.subscribe(function(e) {
+                    return t.types = e;
+                }), this.storyStateService.objects$.subscribe(function(e) {
+                    return t.states = e;
+                }), this.tagService.objects$.subscribe(function(e) {
+                    return t.tags = e;
+                }), this.storyStateService.loadAll(), this.storyTypeService.loadAll(), this.tagService.loadAll();
             }, t.prototype.ngAfterViewInit = function() {
                 var t = this;
                 setTimeout(function() {
@@ -317,7 +333,7 @@ webpackJsonp([ 0 ], {
     },
     340: function(t, e) {
         "use strict";
-        e.htmlTemplate = '\n    \n    <div class="field">\n        <label>\n            <div class="ui label">ID<div class="detail">{{ story.id }}</div></div>\n        </label>\n        <div class="ui small input">\n            <textarea [(ngModel)]="story.title" rows="2"></textarea>\n        </div>\n    </div>\n    <div class="inline field">\n        <label>Type</label>\n        <div class="ui right floated small input">\n            <div class="ui selection dropdown">\n                <i class="dropdown icon"></i><div class="text">{{story.type.title}}</div>\n                <div class="menu transition hidden">\n                    <div class="item" *ngFor="let type of types | async" (click)="story.type=type">{{type.title}}</div>\n                </div>\n            </div>\n        </div>\n    </div>\n    <div class="ui hidden clearing divider"></div>\n    <div class="inline field">\n        <label>Effort</label>\n        <div class="ui right floated small input">\n            <select [(ngModel)]="story.effort" class="ui dropdown">\n                <option value="0.5">0.5 Points</option>\n                <option value="1.0">1 Point</option>\n                <option value="2.0">2 Points</option>\n                <option value="3.0">3 Points</option>\n                <option value="5.0">5 Points</option>\n            </select>\n        </div>\n    </div>\n    <div class="ui hidden clearing divider"></div>\n    <div class="inline field">\n        <label>State</label>\n        <div class="ui right floated small input">\n            <div class="ui selection dropdown">\n                <i class="dropdown icon"></i><div class="text">{{story.state.title}}</div>\n                <div class="menu transition hidden">\n                    <div class="item" *ngFor="let state of states | async" (click)="story.state=state">{{state.title}}</div>\n                </div>\n            </div>\n        </div>\n    </div>\n    <div class="ui hidden clearing divider"></div>  \n    <div class="field">\n        <label>Description</label>\n        <div class="ui small input">\n            <textarea [(ngModel)]="story.description" rows="3"></textarea>\n        </div>\n    </div>\n    <div class="field">\n        <label>Tags</label>\n        <div class="ui small input">\n            <div class="ui fluid dropdown selection multiple">\n                <i class="dropdown icon"></i>\n                <a class="ui label transition visible" *ngFor="let tag of story.tags">{{tag.title}}<i class="delete icon" (click)="removeSelectedObject($event, story.tags, tag)"></i></a>\n                <div class="text"></div>\n                <div class="menu">\n                    <div class="item" [ngClass]="{filtered: isSelected(story.tags, tag)}" *ngFor="let tag of tags | async" (click)="addSelectedObject($event, story.tags, tag)">{{tag.title}}</div>\n                </div>\n            </div>\n        </div>    \n    </div>\n    <div class="field">\n        <label>Tasks</label>\n        <div class="field" *ngFor="let task of story.tasks">\n            <div class="ui small fluid left icon input">\n                <i class="inverted circular checkmark link icon" [ngClass]="{\'green\': task.completed}" (click)="task.completed = !task.completed"></i>\n                <input [(ngModel)]="task.description">\n            </div>\n        </div>\n    </div>\n    <button class="ui right floated mini button" (click)="addTask()">Add Task</button>\n    <div class="ui hidden clearing divider"></div>\n    <button *ngIf="story.id" class="ui secondary button" (click)="delete()">Delete</button>\n    <button class="ui right floated primary button" (click)="save()">Save</button>\n    <div class="ui hidden clearing divider"></div>\n    \n';
+        e.htmlTemplate = '\n    \n    <div class="field">\n        <label>\n            <div class="ui label">ID<div class="detail">{{ story.id }}</div></div>\n        </label>\n        <div class="ui small input">\n            <textarea [(ngModel)]="story.title" rows="2"></textarea>\n        </div>\n    </div>\n    <div class="inline field">\n        <label>Type</label>\n        <div class="ui right floated small input">\n            <div class="ui selection dropdown">\n                <i class="dropdown icon"></i><div class="text">{{story.type.title}}</div>\n                <div class="menu transition hidden">\n                    <div class="item" *ngFor="let type of types" (click)="story.type=type">{{type.title}}</div>\n                </div>\n            </div>\n        </div>\n    </div>\n    <div class="ui hidden clearing divider"></div>\n    <div class="inline field">\n        <label>Effort</label>\n        <div class="ui right floated small input">\n            <select [(ngModel)]="story.effort" class="ui dropdown">\n                <option value="0.5">0.5 Points</option>\n                <option value="1.0">1 Point</option>\n                <option value="2.0">2 Points</option>\n                <option value="3.0">3 Points</option>\n                <option value="5.0">5 Points</option>\n            </select>\n        </div>\n    </div>\n    <div class="ui hidden clearing divider"></div>\n    <div class="inline field">\n        <label>State</label>\n        <div class="ui right floated small input">\n            <div class="ui selection dropdown">\n                <i class="dropdown icon"></i><div class="text">{{story.state.title}}</div>\n                <div class="menu transition hidden">\n                    <div class="item" *ngFor="let state of states" (click)="story.state=state">{{state.title}}</div>\n                </div>\n            </div>\n        </div>\n    </div>\n    <div class="ui hidden clearing divider"></div>  \n    <div class="field">\n        <label>Description</label>\n        <div class="ui small input">\n            <textarea [(ngModel)]="story.description" rows="3"></textarea>\n        </div>\n    </div>\n    <div class="field">\n        <label>Tags</label>\n        <div class="ui small input">\n            <div class="ui fluid dropdown selection multiple">\n                <i class="dropdown icon"></i>\n                <a class="ui label transition visible" *ngFor="let tag of story.tags">{{tag.title}}<i class="delete icon" (click)="removeSelectedObject($event, story.tags, tag)"></i></a>\n                <div class="text"></div>\n                <div class="menu">\n                    <div class="item" [ngClass]="{filtered: isSelected(story.tags, tag)}" *ngFor="let tag of tags" (click)="addSelectedObject($event, story.tags, tag)">{{tag.title}}</div>\n                </div>\n            </div>\n        </div>    \n    </div>\n    <div class="field">\n        <label>Tasks</label>\n        <div class="field" *ngFor="let task of story.tasks">\n            <div class="ui small fluid left icon input">\n                <i class="inverted circular checkmark link icon" [ngClass]="{\'green\': task.completed}" (click)="task.completed = !task.completed"></i>\n                <input [(ngModel)]="task.description">\n            </div>\n        </div>\n    </div>\n    <button class="ui right floated mini button" (click)="addTask()">Add Task</button>\n    <div class="ui hidden clearing divider"></div>\n    <button *ngIf="story.id" class="ui secondary button" (click)="delete()">Delete</button>\n    <button class="ui right floated primary button" (click)="save()">Save</button>\n    <div class="ui hidden clearing divider"></div>\n    \n';
     },
     341: function(t, e, i) {
         "use strict";
@@ -348,6 +364,6 @@ webpackJsonp([ 0 ], {
     },
     343: function(t, e) {
         "use strict";
-        e.htmlTemplate = '\n\n    <div class="ui equal width grid">\n        <div class="column">\n            <div class="ui raised segments">\n                <div class="ui segment">\n                    <button class="ui mini compact right floated icon button" (click)="createNew(true)">\n                        <i class="plus icon"></i>\n                    </button>\n                    <p>Backlog</p>\n                </div>\n                <div class="ui secondary form segment" *ngIf="newBacklogOpened" story-detail [story]="newBacklogStory"></div>\n                <div class="ui segment" *ngFor="let story of stories | async" story-list-item [story]="story"></div>\n            </div>\n        </div>\n        <div class="column">\n            <div class="ui raised segments">\n                <div class="ui segment">\n                    <button class="ui mini compact right floated icon button" (click)="createNew(false)">\n                        <i class="plus icon"></i>\n                    </button>\n                    <p>Icebox</p>\n                </div>\n                <div class="ui secondary form segment" *ngIf="newIceboxOpened" story-detail [story]="newIceboxStory"></div>\n                <div class="ui segment" *ngFor="let story of stories | async" story-list-item [story]="story"></div>\n            </div>\n        </div>\n    </div>\n\n';
+        e.htmlTemplate = '\n\n    <div class="ui equal width grid">\n        <div class="column">\n            <div class="ui raised segments">\n                <div class="ui segment">\n                    <button class="ui mini compact right floated icon button" (click)="createNew(true)">\n                        <i class="plus icon"></i>\n                    </button>\n                    <p>Backlog</p>\n                </div>\n                <div class="ui secondary form segment" *ngIf="newBacklogOpened" story-detail [story]="newBacklogStory"></div>\n                <div class="ui segment" *ngFor="let story of stories" story-list-item [story]="story"></div>\n            </div>\n        </div>\n        <div class="column">\n            <div class="ui raised segments">\n                <div class="ui segment">\n                    <button class="ui mini compact right floated icon button" (click)="createNew(false)">\n                        <i class="plus icon"></i>\n                    </button>\n                    <p>Icebox</p>\n                </div>\n                <div class="ui secondary form segment" *ngIf="newIceboxOpened" story-detail [story]="newIceboxStory"></div>\n                <div class="ui segment" *ngFor="let story of stories" story-list-item [story]="story"></div>\n            </div>\n        </div>\n    </div>\n\n';
     }
 });

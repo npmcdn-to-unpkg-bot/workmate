@@ -66,9 +66,9 @@ webpackJsonp([ 1 ], {
             }
             return t.prototype.loadAll = function() {
                 var t = this;
-                this._http.get(this._baseUrl).map(this.extractData).subscribe(function(e) {
+                "undefined" == typeof this._dataStore || 0 == this._dataStore.objects.length ? this._http.get(this._baseUrl).map(this.extractData).subscribe(function(e) {
                     t._dataStore.objects = e, t._dataObserver.next(t._dataStore.objects);
-                }, this.handleError);
+                }, this.handleError) : this._dataObserver.next(this._dataStore.objects);
             }, t.prototype.load = function(t) {
                 var e = this;
                 this._http.get("" + this._baseUrl + t + "/").map(this.extractData).subscribe(function(t) {
