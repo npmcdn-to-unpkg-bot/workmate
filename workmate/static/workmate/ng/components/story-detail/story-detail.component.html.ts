@@ -12,7 +12,7 @@ export const htmlTemplate = `
         <label>Type</label>
         <div class="ui right floated small input">
             <div class="ui selection dropdown">
-                <i class="dropdown icon"></i><div class="text">{{story.type.title}}</div>
+                <i class="dropdown icon"></i><div class="text">{{story.type?.title}}</div>
                 <div class="menu transition hidden">
                     <div class="item" *ngFor="let type of types" (click)="story.type=type">{{type.title}}</div>
                 </div>
@@ -37,7 +37,7 @@ export const htmlTemplate = `
         <label>State</label>
         <div class="ui right floated small input">
             <div class="ui selection dropdown">
-                <i class="dropdown icon"></i><div class="text">{{story.state.title}}</div>
+                <i class="dropdown icon"></i><div class="text">{{story.state?.title}}</div>
                 <div class="menu transition hidden">
                     <div class="item" *ngFor="let state of states" (click)="story.state=state">{{state.title}}</div>
                 </div>

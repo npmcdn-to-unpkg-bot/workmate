@@ -106,8 +106,9 @@ webpackJsonp([ 1 ], {
                 jQuery(".wm-messages").append(t);
             }, t.prototype.handleError = function(t) {
                 console.log(t);
-                var e = t.message || "Server error";
-                return c.Observable.throw(e);
+                var e = JSON.parse(t._body), n = e.error_message || "Unknown server error occured, please see the console for more info", a = jQuery('<div class="ui error message"><i class="close icon"></i></div>');
+                return a.append('<div class="header capitalize">error</div>'), a.append("<p>" + n + "</p>"), 
+                jQuery(".wm-messages").append(a), c.Observable.throw(n);
             }, t;
         }();
         e.BaseService = o;

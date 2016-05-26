@@ -81,8 +81,9 @@ export class BaseService {
             .subscribe(data => {
                 this._dataStore.objects.forEach((item, i) => {
                     if (item.id === data.id) {
-                        this._dataStore.objects[i] = data; }
-                    });
+                        this._dataStore.objects[i] = data;
+                    }
+                });
                 this._dataObserver.next(this._dataStore.objects);
             }, this.handleError, this.handleCompleted
         );
@@ -90,9 +91,11 @@ export class BaseService {
 
     delete(id: number) {
         this._http.delete(`${this._baseUrl}${id}/`)
-            .subscribe(response => {
+            .subscribe(res => {
                 this._dataStore.objects.forEach((item, i) => {
-                    if (item.id === id) { this._dataStore.objects.splice(i, 1); }
+                    if (item.id === id) {
+                        this._dataStore.objects.splice(i, 1);
+                    }
                 });
                 this._dataObserver.next(this._dataStore.objects);
             }, this.handleError, this.handleCompleted
@@ -116,7 +119,12 @@ export class BaseService {
 
     protected handleError (error: any) {
         console.log(error);
-        let errMsg = error.message || 'Server error';
+        let body = JSON.parse(error._body);
+        let errMsg = body['error_message'] || 'Unknown server error occured, please see the console for more info';
+        var message = jQuery('<div class="ui error message"><i class="close icon"></i></div>');
+        message.append('<div class="header capitalize">error</div>');
+        message.append('<p>' + errMsg + '</p>');
+        jQuery('.wm-messages').append(message);
         return Observable.throw(errMsg);
     }
 

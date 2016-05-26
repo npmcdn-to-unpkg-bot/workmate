@@ -32,10 +32,10 @@ export class Story {
     resource_uri: string;
 
     constructor() {
-        this.title = '';
-        this.state = new StoryState();
+        this.title = 'New Story';
+        this.state = null;
         this.tags = [];
         this.tasks = [];
-        this.type = new StoryType();
+        this.type = null;
     }
 }
