@@ -2,6 +2,7 @@ import { Injectable }                                       from '@angular/core'
 import { Http, URLSearchParams }                            from '@angular/http';
 
 import { Contact }                                          from '../models/contact';
+import { AlertService }                                     from './alert.service';
 import { BaseService }                                      from './base.service';
 
 import { Observable }                                       from 'rxjs/Observable';
@@ -17,8 +18,10 @@ export class ContactService extends BaseService {
     protected _dataStore: { objects: Contact[] };
     protected _baseUrl = '/api/v1/contact/';
 
-    constructor (protected _http: Http) {
-        super(_http);
+    constructor (
+            protected _http: Http,
+            protected _alertService: AlertService) {
+        super(_http, _alertService);
         this.objects$ = new Observable<Contact[]>((observer:any) => this._dataObserver = observer).share();
     }
 

@@ -2,6 +2,7 @@ import { Injectable }                                       from '@angular/core'
 import { Http }                                             from '@angular/http';
 
 import { StoryType }                                        from '../models/story';
+import { AlertService }                                     from './alert.service';
 import { BaseService }                                      from './base.service';
 
 import { Observable }                                       from 'rxjs/Observable';
@@ -17,8 +18,10 @@ export class StoryTypeService extends BaseService {
     protected _dataStore: { objects: StoryType[] };
     protected _baseUrl = '/api/v1/story_type/';
 
-    constructor (protected _http: Http) {
-        super(_http);
+    constructor (
+            protected _http: Http,
+            protected _alertService: AlertService) {
+        super(_http, _alertService);
         this.objects$ = new Observable<StoryType[]>((observer:any) => this._dataObserver = observer).share();
     }
 

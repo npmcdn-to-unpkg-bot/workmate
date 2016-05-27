@@ -1,6 +1,7 @@
 import { Http, Response }                                   from '@angular/http';
 
 import { ExRequestOptions }                                 from '../transportBoxes/exRequestOptions';
+import { Alert, AlertService }                              from './alert.service';
 
 import { Observable }                                       from 'rxjs/Observable';
 import { Observer }                                         from 'rxjs/Observer';
@@ -24,10 +25,13 @@ export class BaseService {
     // params that do not require overriding
     protected _postOptions = new ExRequestOptions();
 
-    constructor (protected _http: Http) {
+    constructor (
+        protected _http: Http,
+        protected _alertService: AlertService) {
+
+        this._postOptions.appendHeaders('Content-Type', 'application/json');
         this._dataStore = { objects: [] };
         this.objects$ = new Observable<FakeObject[]>((observer:any) => this._dataObserver = observer).share();
-        this._postOptions.appendHeaders('Content-Type', 'application/json');
     }
 
     loadAll() {
@@ -37,7 +41,7 @@ export class BaseService {
                 .subscribe(data => {
                     this._dataStore.objects = data;
                     this._dataObserver.next(this._dataStore.objects);
-                }, this.handleError
+                }, err => this.handleError(err)
             );
         } else {
             this._dataObserver.next(this._dataStore.objects);
@@ -59,7 +63,7 @@ export class BaseService {
                     this._dataStore.objects.push(data);
                 }
                 this._dataObserver.next(this._dataStore.objects);
-            }, this.handleError
+            }, err => this.handleError(err)
         );
     }
 
@@ -70,7 +74,7 @@ export class BaseService {
             .subscribe(data => {
                 this._dataStore.objects.push(data);
                 this._dataObserver.next(this._dataStore.objects);
-            }, this.handleError, this.handleCompleted
+            }, err => this.handleError(err), () => this.handleCompleted()
         );
     }
 
@@ -85,7 +89,7 @@ export class BaseService {
                     }
                 });
                 this._dataObserver.next(this._dataStore.objects);
-            }, this.handleError, this.handleCompleted
+            }, err => this.handleError(err), () => this.handleCompleted()
         );
     }
 
@@ -98,7 +102,7 @@ export class BaseService {
                     }
                 });
                 this._dataObserver.next(this._dataStore.objects);
-            }, this.handleError, this.handleCompleted
+            }, err => this.handleError(err), () => this.handleCompleted()
         );
     }
 
@@ -111,21 +115,21 @@ export class BaseService {
     }
 
     protected handleCompleted () {
-        var message = jQuery('<div class="ui success message"><i class="close icon"></i></div>');
-        message.append('<div class="header capitalize">success</div>');
-        message.append('<p>Completed successfully</p>');
-        jQuery('.wm-messages').append(message);
+        this.createAlert('success', 'Completed successfully');
     }
 
     protected handleError (error: any) {
-        console.log(error);
         let body = JSON.parse(error._body);
-        let errMsg = body['error_message'] || 'Unknown server error occured, please see the console for more info';
-        var message = jQuery('<div class="ui error message"><i class="close icon"></i></div>');
-        message.append('<div class="header capitalize">error</div>');
-        message.append('<p>' + errMsg + '</p>');
-        jQuery('.wm-messages').append(message);
+        let errMsg = body['error_message'] || 'An unknown server error occurred.';
+        this.createAlert('error', errMsg);
         return Observable.throw(errMsg);
+    }
+
+    protected createAlert(type: string, msg: string) {
+        let alert = new Alert();
+        alert.type = type;
+        alert.message = msg;
+        this._alertService.createAlert(alert);
     }
 
 }
