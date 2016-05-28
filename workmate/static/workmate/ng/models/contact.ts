@@ -3,6 +3,7 @@ import { Tag }                      from './tag';
 
 export class Contact {
     absolute_url: string;
+    address: string;
     address_line_1: string;
     address_line_2: string;
     city: string;

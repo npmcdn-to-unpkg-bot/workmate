@@ -84,32 +84,6 @@ class ContactResourceTests(WorkmateAPITestCase):
             authentication=self.get_credentials())
         self.assertValidXMLResponse(resp)
 
-    def test_get_list_search_first_name(self):
-        resp = self.api_client.get(
-            self.list_url + '?query=mr',
-            format='json',
-            authentication=self.get_credentials())
-        self.assertValidJSONResponse(resp)
-        self.assertEqual(len(self.deserialize(resp)['objects']), 1)
-        self.assertEqual(self.deserialize(resp)['objects'][0]['id'], self.existing_object.pk)
-
-    def test_get_list_search_last_name(self):
-        resp = self.api_client.get(
-            self.list_url + '?query=smi',
-            format='json',
-            authentication=self.get_credentials())
-        self.assertValidJSONResponse(resp)
-        self.assertEqual(len(self.deserialize(resp)['objects']), 1)
-        self.assertEqual(self.deserialize(resp)['objects'][0]['id'], self.existing_object.pk)
-
-    def test_get_list_search_no_result(self):
-        resp = self.api_client.get(
-            self.list_url + '?query=foo',
-            format='json',
-            authentication=self.get_credentials())
-        self.assertValidJSONResponse(resp)
-        self.assertEqual(len(self.deserialize(resp)['objects']), 0)
-
     def test_get_detail_unauthenticated(self):
         self.assertHttpUnauthorized(self.api_client.get(self.detail_url, format='json'))
 

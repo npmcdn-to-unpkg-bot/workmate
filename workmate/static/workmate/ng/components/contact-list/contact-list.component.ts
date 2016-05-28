@@ -4,31 +4,26 @@ import { Contact }                      from '../../models/contact';
 import { ContactService }               from '../../services/contact.service';
 import { ContactDetailComponent }       from '../contact-detail/contact-detail.component';
 import { htmlTemplate }                 from './contact-list.component.html';
-
-import { Observable }                   from 'rxjs/Observable';
+import { ContactSearchPipe }            from '../../pipes/contact-search-pipe.ts';
 
 
 @Component({
     selector: 'contact-list',
     template: htmlTemplate,
     directives: [ContactDetailComponent],
+    pipes: [ContactSearchPipe]
 })
 
 export class ContactListComponent implements OnInit {
 
     constructor(private contactService: ContactService) {}
 
-    contacts: Observable<Contact[]>;
-    errorMessage: string;
+    contacts: Contact[];
     selectedContact: Contact;
 
     ngOnInit() {
-        this.contacts = this.contactService.objects$;
+        this.contactService.objects$.subscribe(objects => this.contacts = objects);
         this.contactService.loadAll();
-    }
-
-    search (term: string) {
-        this.contactService.search(term);
     }
 
     onSelect(contact: Contact) {

@@ -25,18 +25,5 @@ export class ContactService extends BaseService {
         this.objects$ = new Observable<Contact[]>((observer:any) => this._dataObserver = observer).share();
     }
 
-    search(term: string) {
-        var params = new URLSearchParams();
-        params.set('query', term);
-        params.set('format', 'json');
-        this._http.get(this._baseUrl, { search: params })
-            .map(this.extractData)
-            .subscribe(data => {
-                this._dataStore.objects = data;
-                this._dataObserver.next(this._dataStore.objects);
-            }, this.handleError
-        );
-    }
-
 }
 

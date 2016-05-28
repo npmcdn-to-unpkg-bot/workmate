@@ -5,12 +5,12 @@ export const htmlTemplate = `
         <div class="ui basic segment">
             <div class="item">
                 <div class="ui fluid icon input">
-                    <input #term (keyup)="search(term.value)" class="prompt" placeholder="Search...">
+                    <input #searchTerm class="prompt" placeholder="Search..." (keyup)="0">
                     <i class="search icon"></i>
                 </div>
             </div>
             <div class="ui divided link items">
-                <div class="item" *ngFor="let contact of contacts | async" (click)="onSelect(contact)">
+                <div class="item" *ngFor="let contact of contacts | contactSearch : searchTerm.value" (click)="onSelect(contact)">
                     <div class="ui tiny image">
                       <img src="http://semantic-ui.com/images/wireframe/image.png">
                     </div>

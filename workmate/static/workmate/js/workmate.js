@@ -11,14 +11,13 @@
 
     $.fn.api.settings
         .api = {
-            contact_list        : '/api/v1/contact/',
-            contact_search      : '/api/v1/contact/?query={query}',
-            contact_schema      : '/api/v1/contact/schema/',
-            contact_detail      : '/api/v1/contact/{id}/',
             contact_call        : '/contacts/{id}/call/',
+            contact_detail      : '/api/v1/contact/{id}/',
+            contact_list        : '/api/v1/contact/',
+            contact_schema      : '/api/v1/contact/schema/',
+            tag_detail          : '/api/v1/tag/{id}/',
             tag_list            : '/api/v1/tag/',
-            tag_schema          : '/api/v1/tag/schema/',
-            tag_detail          : '/api/v1/tag/{id}/'
+            tag_schema          : '/api/v1/tag/schema/'
         }
     ;
 
