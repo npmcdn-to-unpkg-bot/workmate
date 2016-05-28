@@ -3,6 +3,8 @@ from tastypie.resources import ModelResource
 
 from .mixins import DefaultResourceMixin
 from .tag import TagResource
+from workmate.api.validation import ModelFormValidation
+from workmate.forms import StoryForm
 from workmate.models import Story, StoryState, StoryTask, StoryType
 
 
@@ -35,5 +37,9 @@ class StoryResource(ModelResource):
     state = fields.ForeignKey(StoryStateResource, 'state', full=True)
 
     class Meta(DefaultResourceMixin.Meta):
-        queryset = Story.onsite.all().select_related('type', 'state').prefetch_related('tags')
+        queryset = Story.onsite.all().select_related('state', 'type').prefetch_related('tags', 'tasks')
         resource_name = 'story'
+
+        @property
+        def validation(self):
+            return ModelFormValidation(form_class=StoryForm, resource=StoryResource)

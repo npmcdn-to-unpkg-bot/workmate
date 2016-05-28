@@ -162,7 +162,9 @@ webpackJsonp([ 1 ], {
             }, t.prototype.handleCompleted = function() {
                 this.createAlert("success", "Completed successfully");
             }, t.prototype.handleError = function(t) {
-                var e = JSON.parse(t._body), n = e.error_message || "An unknown server error occurred.";
+                var e = JSON.parse(t._body);
+                console.log(e);
+                var n = e.error_message || "An unknown server error occurred.";
                 return this.createAlert("error", n), i.Observable.throw(n);
             }, t.prototype.createAlert = function(t, e) {
                 var n = new o.Alert();
