@@ -2,23 +2,23 @@ webpackJsonp([ 1 ], {
     0: function(t, e, n) {
         "use strict";
         var a = this && this.__decorate || function(t, e, n, a) {
-            var o, i = arguments.length, c = 3 > i ? e : null === a ? a = Object.getOwnPropertyDescriptor(e, n) : a;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) c = Reflect.decorate(t, e, n, a); else for (var r = t.length - 1; r >= 0; r--) (o = t[r]) && (c = (3 > i ? o(c) : i > 3 ? o(e, n, c) : o(e, n)) || c);
-            return i > 3 && c && Object.defineProperty(e, n, c), c;
-        }, o = this && this.__metadata || function(t, e) {
+            var i, o = arguments.length, c = 3 > o ? e : null === a ? a = Object.getOwnPropertyDescriptor(e, n) : a;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) c = Reflect.decorate(t, e, n, a); else for (var r = t.length - 1; r >= 0; r--) (i = t[r]) && (c = (3 > o ? i(c) : o > 3 ? i(e, n, c) : i(e, n)) || c);
+            return o > 3 && c && Object.defineProperty(e, n, c), c;
+        }, i = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, i = n(1), c = n(97), r = n(118);
+        }, o = n(1), c = n(97), r = n(118);
         n(301);
         var s = n(331), l = n(332), d = n(346), u = n(338), f = n(347), p = function() {
             function t() {}
-            return t = a([ i.Component({
+            return t = a([ o.Component({
                 selector: "contacts-app",
                 template: '\n        <div class="wm-messages"><alert></alert></div>\n        <contact-list></contact-list>\n    ',
                 directives: [ u.AlertComponent, f.ContactListComponent ],
-                providers: [ c.HTTP_PROVIDERS, i.provide(c.RequestOptions, {
+                providers: [ c.HTTP_PROVIDERS, o.provide(c.RequestOptions, {
                     useClass: s.ExRequestOptions
                 }), l.AlertService, d.ContactService ]
-            }), o("design:paramtypes", []) ], t);
+            }), i("design:paramtypes", []) ], t);
         }();
         e.ContactsComponent = p, r.bootstrap(p);
     },
@@ -30,11 +30,11 @@ webpackJsonp([ 1 ], {
             }
             for (var a in e) e.hasOwnProperty(a) && (t[a] = e[a]);
             t.prototype = null === e ? Object.create(e) : (n.prototype = e.prototype, new n());
-        }, o = this && this.__decorate || function(t, e, n, a) {
-            var o, i = arguments.length, c = 3 > i ? e : null === a ? a = Object.getOwnPropertyDescriptor(e, n) : a;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) c = Reflect.decorate(t, e, n, a); else for (var r = t.length - 1; r >= 0; r--) (o = t[r]) && (c = (3 > i ? o(c) : i > 3 ? o(e, n, c) : o(e, n)) || c);
-            return i > 3 && c && Object.defineProperty(e, n, c), c;
-        }, i = this && this.__metadata || function(t, e) {
+        }, i = this && this.__decorate || function(t, e, n, a) {
+            var i, o = arguments.length, c = 3 > o ? e : null === a ? a = Object.getOwnPropertyDescriptor(e, n) : a;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) c = Reflect.decorate(t, e, n, a); else for (var r = t.length - 1; r >= 0; r--) (i = t[r]) && (c = (3 > o ? i(c) : o > 3 ? i(e, n, c) : i(e, n)) || c);
+            return o > 3 && c && Object.defineProperty(e, n, c), c;
+        }, o = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
         }, c = n(1), r = n(97), s = function(t) {
             function e() {
@@ -45,21 +45,22 @@ webpackJsonp([ 1 ], {
                 return 2 == n.length ? n.pop().split(";").shift() : void 0;
             }, e.prototype.appendHeaders = function(t, e) {
                 this.headers.append(t, e);
-            }, e = o([ c.Injectable(), i("design:paramtypes", []) ], e);
+            }, e = i([ c.Injectable(), o("design:paramtypes", []) ], e);
         }(r.BaseRequestOptions);
         e.ExRequestOptions = s;
     },
     332: function(t, e, n) {
         "use strict";
         var a = this && this.__decorate || function(t, e, n, a) {
-            var o, i = arguments.length, c = 3 > i ? e : null === a ? a = Object.getOwnPropertyDescriptor(e, n) : a;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) c = Reflect.decorate(t, e, n, a); else for (var r = t.length - 1; r >= 0; r--) (o = t[r]) && (c = (3 > i ? o(c) : i > 3 ? o(e, n, c) : o(e, n)) || c);
-            return i > 3 && c && Object.defineProperty(e, n, c), c;
-        }, o = this && this.__metadata || function(t, e) {
+            var i, o = arguments.length, c = 3 > o ? e : null === a ? a = Object.getOwnPropertyDescriptor(e, n) : a;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) c = Reflect.decorate(t, e, n, a); else for (var r = t.length - 1; r >= 0; r--) (i = t[r]) && (c = (3 > o ? i(c) : o > 3 ? i(e, n, c) : i(e, n)) || c);
+            return o > 3 && c && Object.defineProperty(e, n, c), c;
+        }, i = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, i = n(1), c = n(35), r = function() {
-            function t() {
-                this.type = "info", this.dismissable = !0, this.dismissOnTimeout = 5e3;
+        }, o = n(1), c = n(35), r = function() {
+            function t(t, e, n, a) {
+                this.dismissable = !0, this.dismissOnTimeout = 5e3, this.type = t, this.message = e, 
+                this.dismissable = n || this.dismissable, this.dismissOnTimeout = a || this.dismissOnTimeout;
             }
             return t;
         }();
@@ -86,48 +87,51 @@ webpackJsonp([ 1 ], {
                 }), this._dataObserver.next(this._dataStore.alerts);
             }, t.prototype.getNextId = function() {
                 return this.nextId++;
-            }, t = a([ i.Injectable(), o("design:paramtypes", []) ], t);
+            }, t = a([ o.Injectable(), i("design:paramtypes", []) ], t);
         }();
         e.AlertService = s;
     },
     334: function(t, e, n) {
         "use strict";
-        var a = n(331), o = n(332), i = n(35), c = function() {
-            function t() {}
-            return t;
-        }();
-        e.FakeObject = c;
-        var r = function() {
+        var a = n(331), i = n(332), o = n(35), c = function() {
             function t(t, e) {
                 var n = this;
                 this._http = t, this._alertService = e, this._baseUrl = "", this._postOptions = new a.ExRequestOptions(), 
-                this._postOptions.appendHeaders("Content-Type", "application/json"), this._dataStore = {
-                    objects: []
-                }, this.objects$ = new i.Observable(function(t) {
-                    return n._dataObserver = t;
-                }).share();
+                this._dataStore = {
+                    objects: [],
+                    meta: {}
+                }, this.meta$ = new o.Observable(function(t) {
+                    return n._metaObserver = t;
+                }).share(), this._postOptions.appendHeaders("Content-Type", "application/json");
             }
-            return t.prototype.loadAll = function() {
+            return t.prototype.loadMeta = function() {
                 var t = this;
-                "undefined" == typeof this._dataStore || 0 == this._dataStore.objects.length ? this._http.get(this._baseUrl).map(this.extractData).subscribe(function(e) {
-                    t._dataStore.objects = e, t._dataObserver.next(t._dataStore.objects);
+                "undefined" == typeof this._dataStore || 0 == Object.keys(this._dataStore.meta).length ? this._http.get(this._baseUrl + "schema/").map(this.extractData).subscribe(function(e) {
+                    t._dataStore.meta = e, t._metaObserver.next(t._dataStore.meta);
                 }, function(e) {
                     return t.handleError(e);
-                }) : this._dataObserver.next(this._dataStore.objects);
+                }) : this._metaObserver.next(this._dataStore.meta);
+            }, t.prototype.loadAll = function() {
+                var t = this;
+                "undefined" == typeof this._dataStore || 0 == this._dataStore.objects.length ? this._http.get(this._baseUrl).map(this.extractData).subscribe(function(e) {
+                    t._dataStore.objects = e, t._objectsObserver.next(t._dataStore.objects);
+                }, function(e) {
+                    return t.handleError(e);
+                }) : this._objectsObserver.next(this._dataStore.objects);
             }, t.prototype.load = function(t) {
                 var e = this;
                 this._http.get("" + this._baseUrl + t + "/").map(this.extractData).subscribe(function(t) {
                     var n = !1;
-                    e._dataStore.objects.forEach(function(a, o) {
-                        a.id === t.id && (e._dataStore.objects[o] = t, n = !0);
-                    }), n || e._dataStore.objects.push(t), e._dataObserver.next(e._dataStore.objects);
+                    e._dataStore.objects.forEach(function(a, i) {
+                        a.id === t.id && (e._dataStore.objects[i] = t, n = !0);
+                    }), n || e._dataStore.objects.push(t), e._objectsObserver.next(e._dataStore.objects);
                 }, function(t) {
                     return e.handleError(t);
                 });
             }, t.prototype.create = function(t) {
                 var e = this, n = JSON.stringify(t);
                 return this._http.post(this._baseUrl, n, this._postOptions).map(this.extractData).subscribe(function(t) {
-                    e._dataStore.objects.push(t), e._dataObserver.next(e._dataStore.objects);
+                    e._dataStore.objects.push(t), e._objectsObserver.next(e._dataStore.objects);
                 }, function(t) {
                     return e.handleError(t);
                 }, function() {
@@ -138,7 +142,7 @@ webpackJsonp([ 1 ], {
                 return this._http.put("" + this._baseUrl + t.id + "/", n, this._postOptions).map(this.extractData).subscribe(function(t) {
                     e._dataStore.objects.forEach(function(n, a) {
                         n.id === t.id && (e._dataStore.objects[a] = t);
-                    }), e._dataObserver.next(e._dataStore.objects);
+                    }), e._objectsObserver.next(e._dataStore.objects);
                 }, function(t) {
                     return e.handleError(t);
                 }, function() {
@@ -149,7 +153,7 @@ webpackJsonp([ 1 ], {
                 this._http.delete("" + this._baseUrl + t + "/").subscribe(function(n) {
                     e._dataStore.objects.forEach(function(n, a) {
                         n.id === t && e._dataStore.objects.splice(a, 1);
-                    }), e._dataObserver.next(e._dataStore.objects);
+                    }), e._objectsObserver.next(e._dataStore.objects);
                 }, function(t) {
                     return e.handleError(t);
                 }, function() {
@@ -162,26 +166,23 @@ webpackJsonp([ 1 ], {
             }, t.prototype.handleCompleted = function() {
                 this.createAlert("success", "Completed successfully");
             }, t.prototype.handleError = function(t) {
-                var e = JSON.parse(t._body);
-                console.log(e);
-                var n = e.error_message || "An unknown server error occurred.";
-                return this.createAlert("error", n), i.Observable.throw(n);
+                var e = JSON.parse(t._body), n = e.error_message || "An unknown server error occurred.";
+                return this.createAlert("error", n), o.Observable.throw(n);
             }, t.prototype.createAlert = function(t, e) {
-                var n = new o.Alert();
-                n.type = t, n.message = e, this._alertService.createAlert(n);
+                this._alertService.createAlert(new i.Alert(t, e));
             }, t;
         }();
-        e.BaseService = r;
+        e.BaseService = c;
     },
     338: function(t, e, n) {
         "use strict";
         var a = this && this.__decorate || function(t, e, n, a) {
-            var o, i = arguments.length, c = 3 > i ? e : null === a ? a = Object.getOwnPropertyDescriptor(e, n) : a;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) c = Reflect.decorate(t, e, n, a); else for (var r = t.length - 1; r >= 0; r--) (o = t[r]) && (c = (3 > i ? o(c) : i > 3 ? o(e, n, c) : o(e, n)) || c);
-            return i > 3 && c && Object.defineProperty(e, n, c), c;
-        }, o = this && this.__metadata || function(t, e) {
+            var i, o = arguments.length, c = 3 > o ? e : null === a ? a = Object.getOwnPropertyDescriptor(e, n) : a;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) c = Reflect.decorate(t, e, n, a); else for (var r = t.length - 1; r >= 0; r--) (i = t[r]) && (c = (3 > o ? i(c) : o > 3 ? i(e, n, c) : i(e, n)) || c);
+            return o > 3 && c && Object.defineProperty(e, n, c), c;
+        }, i = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, i = n(1), c = n(332), r = '\n    <div class="ui {{ alert.type }} message" *ngFor="let alert of alerts">\n        <i class="close icon" *ngIf="alert.dismissable"></i><div class="header capitalize">{{ alert.type }}</div>\n        <p>{{ alert.message }}</p>\n    </div>\n  ', s = function() {
+        }, o = n(1), c = n(332), r = '\n    <div class="ui {{ alert.type }} message" *ngFor="let alert of alerts">\n        <i class="close icon" *ngIf="alert.dismissable"></i><div class="header capitalize">{{ alert.type }}</div>\n        <p>{{ alert.message }}</p>\n    </div>\n  ', s = function() {
             function t(t) {
                 this.alertService = t;
             }
@@ -190,10 +191,10 @@ webpackJsonp([ 1 ], {
                 this.alertService.alerts$.subscribe(function(e) {
                     return t.alerts = e;
                 });
-            }, t = a([ i.Component({
+            }, t = a([ o.Component({
                 selector: "alert",
                 template: r
-            }), o("design:paramtypes", [ c.AlertService ]) ], t);
+            }), i("design:paramtypes", [ c.AlertService ]) ], t);
         }();
         e.AlertComponent = s;
     },
@@ -205,33 +206,33 @@ webpackJsonp([ 1 ], {
             }
             for (var a in e) e.hasOwnProperty(a) && (t[a] = e[a]);
             t.prototype = null === e ? Object.create(e) : (n.prototype = e.prototype, new n());
-        }, o = this && this.__decorate || function(t, e, n, a) {
-            var o, i = arguments.length, c = 3 > i ? e : null === a ? a = Object.getOwnPropertyDescriptor(e, n) : a;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) c = Reflect.decorate(t, e, n, a); else for (var r = t.length - 1; r >= 0; r--) (o = t[r]) && (c = (3 > i ? o(c) : i > 3 ? o(e, n, c) : o(e, n)) || c);
-            return i > 3 && c && Object.defineProperty(e, n, c), c;
-        }, i = this && this.__metadata || function(t, e) {
+        }, i = this && this.__decorate || function(t, e, n, a) {
+            var i, o = arguments.length, c = 3 > o ? e : null === a ? a = Object.getOwnPropertyDescriptor(e, n) : a;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) c = Reflect.decorate(t, e, n, a); else for (var r = t.length - 1; r >= 0; r--) (i = t[r]) && (c = (3 > o ? i(c) : o > 3 ? i(e, n, c) : i(e, n)) || c);
+            return o > 3 && c && Object.defineProperty(e, n, c), c;
+        }, o = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
         }, c = n(1), r = n(97), s = n(332), l = n(334), d = n(35), u = function(t) {
             function e(e, n) {
                 var a = this;
                 t.call(this, e, n), this._http = e, this._alertService = n, this._baseUrl = "/api/v1/contact/", 
                 this.objects$ = new d.Observable(function(t) {
-                    return a._dataObserver = t;
+                    return a._objectsObserver = t;
                 }).share();
             }
-            return a(e, t), e = o([ c.Injectable(), i("design:paramtypes", [ r.Http, s.AlertService ]) ], e);
+            return a(e, t), e = i([ c.Injectable(), o("design:paramtypes", [ r.Http, s.AlertService ]) ], e);
         }(l.BaseService);
         e.ContactService = u;
     },
     347: function(t, e, n) {
         "use strict";
         var a = this && this.__decorate || function(t, e, n, a) {
-            var o, i = arguments.length, c = 3 > i ? e : null === a ? a = Object.getOwnPropertyDescriptor(e, n) : a;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) c = Reflect.decorate(t, e, n, a); else for (var r = t.length - 1; r >= 0; r--) (o = t[r]) && (c = (3 > i ? o(c) : i > 3 ? o(e, n, c) : o(e, n)) || c);
-            return i > 3 && c && Object.defineProperty(e, n, c), c;
-        }, o = this && this.__metadata || function(t, e) {
+            var i, o = arguments.length, c = 3 > o ? e : null === a ? a = Object.getOwnPropertyDescriptor(e, n) : a;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) c = Reflect.decorate(t, e, n, a); else for (var r = t.length - 1; r >= 0; r--) (i = t[r]) && (c = (3 > o ? i(c) : o > 3 ? i(e, n, c) : i(e, n)) || c);
+            return o > 3 && c && Object.defineProperty(e, n, c), c;
+        }, i = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, i = n(1), c = n(346), r = n(348), s = n(351), l = n(352), d = function() {
+        }, o = n(1), c = n(346), r = n(348), s = n(351), l = n(352), d = function() {
             function t(t) {
                 this.contactService = t;
             }
@@ -242,30 +243,30 @@ webpackJsonp([ 1 ], {
                 }), this.contactService.loadAll();
             }, t.prototype.onSelect = function(t) {
                 this.selectedContact = t;
-            }, t = a([ i.Component({
+            }, t = a([ o.Component({
                 selector: "contact-list",
                 template: s.htmlTemplate,
                 directives: [ r.ContactDetailComponent ],
                 pipes: [ l.ContactSearchPipe ]
-            }), o("design:paramtypes", [ c.ContactService ]) ], t);
+            }), i("design:paramtypes", [ c.ContactService ]) ], t);
         }();
         e.ContactListComponent = d;
     },
     348: function(t, e, n) {
         "use strict";
         var a = this && this.__decorate || function(t, e, n, a) {
-            var o, i = arguments.length, c = 3 > i ? e : null === a ? a = Object.getOwnPropertyDescriptor(e, n) : a;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) c = Reflect.decorate(t, e, n, a); else for (var r = t.length - 1; r >= 0; r--) (o = t[r]) && (c = (3 > i ? o(c) : i > 3 ? o(e, n, c) : o(e, n)) || c);
-            return i > 3 && c && Object.defineProperty(e, n, c), c;
-        }, o = this && this.__metadata || function(t, e) {
+            var i, o = arguments.length, c = 3 > o ? e : null === a ? a = Object.getOwnPropertyDescriptor(e, n) : a;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) c = Reflect.decorate(t, e, n, a); else for (var r = t.length - 1; r >= 0; r--) (i = t[r]) && (c = (3 > o ? i(c) : o > 3 ? i(e, n, c) : i(e, n)) || c);
+            return o > 3 && c && Object.defineProperty(e, n, c), c;
+        }, i = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, i = n(1), c = n(349), r = n(350), s = function() {
+        }, o = n(1), c = n(349), r = n(350), s = function() {
             function t() {}
-            return a([ i.Input(), o("design:type", c.Contact) ], t.prototype, "contact", void 0), 
-            t = a([ i.Component({
+            return a([ o.Input(), i("design:type", c.Contact) ], t.prototype, "contact", void 0), 
+            t = a([ o.Component({
                 selector: "contact-detail",
                 template: r.htmlTemplate
-            }), o("design:paramtypes", []) ], t);
+            }), i("design:paramtypes", []) ], t);
         }();
         e.ContactDetailComponent = s;
     },
@@ -288,12 +289,12 @@ webpackJsonp([ 1 ], {
     352: function(t, e, n) {
         "use strict";
         var a = this && this.__decorate || function(t, e, n, a) {
-            var o, i = arguments.length, c = 3 > i ? e : null === a ? a = Object.getOwnPropertyDescriptor(e, n) : a;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) c = Reflect.decorate(t, e, n, a); else for (var r = t.length - 1; r >= 0; r--) (o = t[r]) && (c = (3 > i ? o(c) : i > 3 ? o(e, n, c) : o(e, n)) || c);
-            return i > 3 && c && Object.defineProperty(e, n, c), c;
-        }, o = this && this.__metadata || function(t, e) {
+            var i, o = arguments.length, c = 3 > o ? e : null === a ? a = Object.getOwnPropertyDescriptor(e, n) : a;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) c = Reflect.decorate(t, e, n, a); else for (var r = t.length - 1; r >= 0; r--) (i = t[r]) && (c = (3 > o ? i(c) : o > 3 ? i(e, n, c) : i(e, n)) || c);
+            return o > 3 && c && Object.defineProperty(e, n, c), c;
+        }, i = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, i = n(1), c = function() {
+        }, o = n(1), c = function() {
             function t() {}
             return t.prototype.transform = function(t, e) {
                 if (0 == e.length) return t;
@@ -303,9 +304,9 @@ webpackJsonp([ 1 ], {
                         return -1 != e.name.toLocaleLowerCase().indexOf(t) || -1 != e.email_address.toLocaleLowerCase().indexOf(t) || -1 != e.address.toLocaleLowerCase().indexOf(t) || -1 != e.home_number.toLocaleLowerCase().indexOf(t) || -1 != e.mobile_number.toLocaleLowerCase().indexOf(t) || -1 != e.work_number.toLocaleLowerCase().indexOf(t) || -1 != e.website.toLocaleLowerCase().indexOf(t);
                     });
                 }), a;
-            }, t = a([ i.Pipe({
+            }, t = a([ o.Pipe({
                 name: "contactSearch"
-            }), o("design:paramtypes", []) ], t);
+            }), i("design:paramtypes", []) ], t);
         }();
         e.ContactSearchPipe = c;
     }

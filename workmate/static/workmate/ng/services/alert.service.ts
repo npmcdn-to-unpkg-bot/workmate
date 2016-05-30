@@ -6,10 +6,18 @@ import { Observer }                                         from 'rxjs/Observer'
 
 export class Alert {
     id: number;
-    type: string = 'info';
+    type: string;
     message: string;
     dismissable: boolean = true;
     dismissOnTimeout: number = 5000;
+
+    constructor(type: string, message: string, dismissable?: boolean, dismissOnTimeout?: number) {
+        this.type = type;
+        this.message = message;
+        this.dismissable = dismissable || this.dismissable;
+        this.dismissOnTimeout = dismissOnTimeout || this.dismissOnTimeout;
+    }
+
 }
 
 @Injectable()

@@ -9,12 +9,12 @@ webpackJsonp([ 0 ], {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
         }, o = i(1), s = i(97), a = i(118);
         i(301);
-        var c = i(331), l = i(332), d = i(333), u = i(335), p = i(336), f = i(337), v = i(338), h = i(339), y = function() {
+        var c = i(331), l = i(332), d = i(333), u = i(335), p = i(336), f = i(337), h = i(338), v = i(339), y = function() {
             function t() {}
             return t = n([ o.Component({
                 selector: "agile-app",
                 template: '\n        <div class="wm-messages"><alert></alert></div>\n        <story-list></story-list>\n    ',
-                directives: [ h.StoryListComponent, v.AlertComponent ],
+                directives: [ v.StoryListComponent, h.AlertComponent ],
                 providers: [ s.HTTP_PROVIDERS, o.provide(s.RequestOptions, {
                     useClass: c.ExRequestOptions
                 }), l.AlertService, d.StoryService, u.StoryStateService, p.StoryTypeService, f.TagService ]
@@ -58,8 +58,9 @@ webpackJsonp([ 0 ], {
         }, r = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
         }, o = i(1), s = i(35), a = function() {
-            function t() {
-                this.type = "info", this.dismissable = !0, this.dismissOnTimeout = 5e3;
+            function t(t, e, i, n) {
+                this.dismissable = !0, this.dismissOnTimeout = 5e3, this.type = t, this.message = e, 
+                this.dismissable = i || this.dismissable, this.dismissOnTimeout = n || this.dismissOnTimeout;
             }
             return t;
         }();
@@ -109,7 +110,7 @@ webpackJsonp([ 0 ], {
                 var n = this;
                 t.call(this, e, i), this._http = e, this._alertService = i, this._baseUrl = "/api/v1/story/", 
                 this.objects$ = new d.Observable(function(t) {
-                    return n._dataObserver = t;
+                    return n._objectsObserver = t;
                 }).share();
             }
             return n(e, t), e = r([ s.Injectable(), o("design:paramtypes", [ a.Http, c.AlertService ]) ], e);
@@ -119,41 +120,44 @@ webpackJsonp([ 0 ], {
     334: function(t, e, i) {
         "use strict";
         var n = i(331), r = i(332), o = i(35), s = function() {
-            function t() {}
-            return t;
-        }();
-        e.FakeObject = s;
-        var a = function() {
             function t(t, e) {
                 var i = this;
                 this._http = t, this._alertService = e, this._baseUrl = "", this._postOptions = new n.ExRequestOptions(), 
-                this._postOptions.appendHeaders("Content-Type", "application/json"), this._dataStore = {
-                    objects: []
-                }, this.objects$ = new o.Observable(function(t) {
-                    return i._dataObserver = t;
-                }).share();
+                this._dataStore = {
+                    objects: [],
+                    meta: {}
+                }, this.meta$ = new o.Observable(function(t) {
+                    return i._metaObserver = t;
+                }).share(), this._postOptions.appendHeaders("Content-Type", "application/json");
             }
-            return t.prototype.loadAll = function() {
+            return t.prototype.loadMeta = function() {
                 var t = this;
-                "undefined" == typeof this._dataStore || 0 == this._dataStore.objects.length ? this._http.get(this._baseUrl).map(this.extractData).subscribe(function(e) {
-                    t._dataStore.objects = e, t._dataObserver.next(t._dataStore.objects);
+                "undefined" == typeof this._dataStore || 0 == Object.keys(this._dataStore.meta).length ? this._http.get(this._baseUrl + "schema/").map(this.extractData).subscribe(function(e) {
+                    t._dataStore.meta = e, t._metaObserver.next(t._dataStore.meta);
                 }, function(e) {
                     return t.handleError(e);
-                }) : this._dataObserver.next(this._dataStore.objects);
+                }) : this._metaObserver.next(this._dataStore.meta);
+            }, t.prototype.loadAll = function() {
+                var t = this;
+                "undefined" == typeof this._dataStore || 0 == this._dataStore.objects.length ? this._http.get(this._baseUrl).map(this.extractData).subscribe(function(e) {
+                    t._dataStore.objects = e, t._objectsObserver.next(t._dataStore.objects);
+                }, function(e) {
+                    return t.handleError(e);
+                }) : this._objectsObserver.next(this._dataStore.objects);
             }, t.prototype.load = function(t) {
                 var e = this;
                 this._http.get("" + this._baseUrl + t + "/").map(this.extractData).subscribe(function(t) {
                     var i = !1;
                     e._dataStore.objects.forEach(function(n, r) {
                         n.id === t.id && (e._dataStore.objects[r] = t, i = !0);
-                    }), i || e._dataStore.objects.push(t), e._dataObserver.next(e._dataStore.objects);
+                    }), i || e._dataStore.objects.push(t), e._objectsObserver.next(e._dataStore.objects);
                 }, function(t) {
                     return e.handleError(t);
                 });
             }, t.prototype.create = function(t) {
                 var e = this, i = JSON.stringify(t);
                 return this._http.post(this._baseUrl, i, this._postOptions).map(this.extractData).subscribe(function(t) {
-                    e._dataStore.objects.push(t), e._dataObserver.next(e._dataStore.objects);
+                    e._dataStore.objects.push(t), e._objectsObserver.next(e._dataStore.objects);
                 }, function(t) {
                     return e.handleError(t);
                 }, function() {
@@ -164,7 +168,7 @@ webpackJsonp([ 0 ], {
                 return this._http.put("" + this._baseUrl + t.id + "/", i, this._postOptions).map(this.extractData).subscribe(function(t) {
                     e._dataStore.objects.forEach(function(i, n) {
                         i.id === t.id && (e._dataStore.objects[n] = t);
-                    }), e._dataObserver.next(e._dataStore.objects);
+                    }), e._objectsObserver.next(e._dataStore.objects);
                 }, function(t) {
                     return e.handleError(t);
                 }, function() {
@@ -175,7 +179,7 @@ webpackJsonp([ 0 ], {
                 this._http.delete("" + this._baseUrl + t + "/").subscribe(function(i) {
                     e._dataStore.objects.forEach(function(i, n) {
                         i.id === t && e._dataStore.objects.splice(n, 1);
-                    }), e._dataObserver.next(e._dataStore.objects);
+                    }), e._objectsObserver.next(e._dataStore.objects);
                 }, function(t) {
                     return e.handleError(t);
                 }, function() {
@@ -188,16 +192,13 @@ webpackJsonp([ 0 ], {
             }, t.prototype.handleCompleted = function() {
                 this.createAlert("success", "Completed successfully");
             }, t.prototype.handleError = function(t) {
-                var e = JSON.parse(t._body);
-                console.log(e);
-                var i = e.error_message || "An unknown server error occurred.";
+                var e = JSON.parse(t._body), i = e.error_message || "An unknown server error occurred.";
                 return this.createAlert("error", i), o.Observable.throw(i);
             }, t.prototype.createAlert = function(t, e) {
-                var i = new r.Alert();
-                i.type = t, i.message = e, this._alertService.createAlert(i);
+                this._alertService.createAlert(new r.Alert(t, e));
             }, t;
         }();
-        e.BaseService = a;
+        e.BaseService = s;
     },
     335: function(t, e, i) {
         "use strict";
@@ -218,7 +219,7 @@ webpackJsonp([ 0 ], {
                 var n = this;
                 t.call(this, e, i), this._http = e, this._alertService = i, this._baseUrl = "/api/v1/story_state/", 
                 this.objects$ = new d.Observable(function(t) {
-                    return n._dataObserver = t;
+                    return n._objectsObserver = t;
                 }).share();
             }
             return n(e, t), e = r([ s.Injectable(), o("design:paramtypes", [ a.Http, c.AlertService ]) ], e);
@@ -244,7 +245,7 @@ webpackJsonp([ 0 ], {
                 var n = this;
                 t.call(this, e, i), this._http = e, this._alertService = i, this._baseUrl = "/api/v1/story_type/", 
                 this.objects$ = new d.Observable(function(t) {
-                    return n._dataObserver = t;
+                    return n._objectsObserver = t;
                 }).share();
             }
             return n(e, t), e = r([ s.Injectable(), o("design:paramtypes", [ a.Http, c.AlertService ]) ], e);
@@ -270,7 +271,7 @@ webpackJsonp([ 0 ], {
                 var n = this;
                 t.call(this, e, i), this._http = e, this._alertService = i, this._baseUrl = "/api/v1/tag/", 
                 this.objects$ = new d.Observable(function(t) {
-                    return n._dataObserver = t;
+                    return n._objectsObserver = t;
                 }).share();
             }
             return n(e, t), e = r([ s.Injectable(), o("design:paramtypes", [ a.Http, c.AlertService ]) ], e);
@@ -309,7 +310,7 @@ webpackJsonp([ 0 ], {
             return o > 3 && s && Object.defineProperty(e, i, s), s;
         }, r = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, o = i(1), s = i(340), a = i(333), c = i(335), l = i(336), d = i(337), u = i(341), p = i(343), f = i(345), v = function() {
+        }, o = i(1), s = i(340), a = i(333), c = i(335), l = i(336), d = i(337), u = i(341), p = i(343), f = i(345), h = function() {
             function t(t, e, i, n) {
                 this.storyService = t, this.storyStateService = e, this.storyTypeService = i, this.tagService = n, 
                 this.newBacklogOpened = !1, this.newIceboxOpened = !1, this.createNew = function(t) {
@@ -335,7 +336,7 @@ webpackJsonp([ 0 ], {
                 directives: [ u.StoryDetailComponent, p.StoryListItemComponent ]
             }), r("design:paramtypes", [ a.StoryService, c.StoryStateService, l.StoryTypeService, d.TagService ]) ], t);
         }();
-        e.StoryListComponent = v;
+        e.StoryListComponent = h;
     },
     340: function(t, e) {
         "use strict";

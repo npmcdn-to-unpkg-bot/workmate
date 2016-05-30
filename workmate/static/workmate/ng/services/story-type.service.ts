@@ -14,15 +14,13 @@ export class StoryTypeService extends BaseService {
 
     objects$: Observable<StoryType[]>;
 
-    protected _dataObserver: Observer<StoryType[]>;
-    protected _dataStore: { objects: StoryType[] };
+    protected _objectsObserver: Observer<StoryType[]>;
+    protected _dataStore: { objects: StoryType[], meta: Object };
     protected _baseUrl = '/api/v1/story_type/';
 
-    constructor (
-            protected _http: Http,
-            protected _alertService: AlertService) {
+    constructor (protected _http: Http, protected _alertService: AlertService) {
         super(_http, _alertService);
-        this.objects$ = new Observable<StoryType[]>((observer:any) => this._dataObserver = observer).share();
+        this.objects$ = new Observable<StoryType[]>((observer:any) => this._objectsObserver = observer).share();
     }
 
 }

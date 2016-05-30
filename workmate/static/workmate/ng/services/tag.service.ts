@@ -14,15 +14,13 @@ export class TagService extends BaseService {
 
     objects$: Observable<Tag[]>;
 
-    protected _dataObserver: Observer<Tag[]>;
-    protected _dataStore: { objects: Tag[] };
+    protected _objectsObserver: Observer<Tag[]>;
+    protected _dataStore: { objects: Tag[], meta: Object };
     protected _baseUrl = '/api/v1/tag/';
 
-    constructor (
-            protected _http: Http,
-            protected _alertService: AlertService) {
+    constructor (protected _http: Http, protected _alertService: AlertService) {
         super(_http, _alertService);
-        this.objects$ = new Observable<Tag[]>((observer:any) => this._dataObserver = observer).share();
+        this.objects$ = new Observable<Tag[]>((observer:any) => this._objectsObserver = observer).share();
     }
 
 }

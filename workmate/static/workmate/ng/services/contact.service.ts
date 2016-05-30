@@ -14,15 +14,13 @@ export class ContactService extends BaseService {
 
     objects$: Observable<Contact[]>;
 
-    protected _dataObserver: Observer<Contact[]>;
-    protected _dataStore: { objects: Contact[] };
+    protected _objectsObserver: Observer<Contact[]>;
+    protected _dataStore: { objects: Contact[], meta: Object };
     protected _baseUrl = '/api/v1/contact/';
 
-    constructor (
-            protected _http: Http,
-            protected _alertService: AlertService) {
+    constructor (protected _http: Http, protected _alertService: AlertService) {
         super(_http, _alertService);
-        this.objects$ = new Observable<Contact[]>((observer:any) => this._dataObserver = observer).share();
+        this.objects$ = new Observable<Contact[]>((observer:any) => this._objectsObserver = observer).share();
     }
 
 }

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from tastypie.fields import RelatedField
+from tastypie.fields import RelatedField, ToManyField
 from tastypie.resources import ModelResource
 from tastypie.validation import FormValidation
 
@@ -26,7 +26,15 @@ class ModelFormValidation(FormValidation):
             if not issubclass(rel_field.__class__, RelatedField):
                 continue
             if name in data and data[name]:
-                resource_uri = (data[name] if not rel_field.full else data[name]['resource_uri'])
-                pk = self._get_pk_from_resource_uri(rel_field, resource_uri)
-                kwargs['data'][name] = pk
+                if issubclass(rel_field.__class__, ToManyField):
+                    pks = []
+                    for item in data[name]:
+                        resource_uri = (item if not rel_field.full else item.get('resource_uri'))
+                        if resource_uri:
+                            pks.append(self._get_pk_from_resource_uri(rel_field, resource_uri))
+                    kwargs['data'][name] = pks
+                else:
+                    resource_uri = (data[name] if not rel_field.full else data[name].get('resource_uri'))
+                    pk = self._get_pk_from_resource_uri(rel_field, resource_uri)
+                    kwargs['data'][name] = pk
         return kwargs

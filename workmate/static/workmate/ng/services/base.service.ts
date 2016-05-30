@@ -9,29 +9,36 @@ import { Observer }                                         from 'rxjs/Observer'
 declare var jQuery: any;
 
 
-export class FakeObject {
-    id: number
-}
-
 export class BaseService {
 
-    // params that require overriding
-    objects$: Observable<FakeObject[]>;
+    meta$: Observable<Object>;
+    objects$: Observable<any[]>;
 
-    protected _dataObserver: Observer<FakeObject[]>;
-    protected _dataStore: { objects: FakeObject[] };
+    protected _metaObserver: Observer<Object>;
+    protected _objectsObserver: Observer<any[]>;
+    protected _dataStore: { objects: any[], meta: Object };
     protected _baseUrl = '';
 
-    // params that do not require overriding
     protected _postOptions = new ExRequestOptions();
 
-    constructor (
-        protected _http: Http,
-        protected _alertService: AlertService) {
-
+    constructor (protected _http: Http, protected _alertService: AlertService) {
+        this._dataStore = { objects: [], meta: {} };
+        this.meta$ = new Observable<Object>((observer:any) => this._metaObserver = observer).share();
         this._postOptions.appendHeaders('Content-Type', 'application/json');
-        this._dataStore = { objects: [] };
-        this.objects$ = new Observable<FakeObject[]>((observer:any) => this._dataObserver = observer).share();
+    }
+
+    loadMeta() {
+        if (typeof this._dataStore === 'undefined' || Object.keys(this._dataStore.meta).length == 0) {
+            this._http.get(`${this._baseUrl}schema/`)
+                .map(this.extractData)
+                .subscribe(data => {
+                    this._dataStore.meta = data;
+                    this._metaObserver.next(this._dataStore.meta);
+                }, err => this.handleError(err)
+            );
+        } else {
+            this._metaObserver.next(this._dataStore.meta);
+        }
     }
 
     loadAll() {
@@ -40,11 +47,11 @@ export class BaseService {
                 .map(this.extractData)
                 .subscribe(data => {
                     this._dataStore.objects = data;
-                    this._dataObserver.next(this._dataStore.objects);
+                    this._objectsObserver.next(this._dataStore.objects);
                 }, err => this.handleError(err)
             );
         } else {
-            this._dataObserver.next(this._dataStore.objects);
+            this._objectsObserver.next(this._dataStore.objects);
         }
     }
 
@@ -62,7 +69,7 @@ export class BaseService {
                 if (!found) {
                     this._dataStore.objects.push(data);
                 }
-                this._dataObserver.next(this._dataStore.objects);
+                this._objectsObserver.next(this._dataStore.objects);
             }, err => this.handleError(err)
         );
     }
@@ -73,7 +80,7 @@ export class BaseService {
             .map(this.extractData)
             .subscribe(data => {
                 this._dataStore.objects.push(data);
-                this._dataObserver.next(this._dataStore.objects);
+                this._objectsObserver.next(this._dataStore.objects);
             }, err => this.handleError(err), () => this.handleCompleted()
         );
     }
@@ -88,7 +95,7 @@ export class BaseService {
                         this._dataStore.objects[i] = data;
                     }
                 });
-                this._dataObserver.next(this._dataStore.objects);
+                this._objectsObserver.next(this._dataStore.objects);
             }, err => this.handleError(err), () => this.handleCompleted()
         );
     }
@@ -101,7 +108,7 @@ export class BaseService {
                         this._dataStore.objects.splice(i, 1);
                     }
                 });
-                this._dataObserver.next(this._dataStore.objects);
+                this._objectsObserver.next(this._dataStore.objects);
             }, err => this.handleError(err), () => this.handleCompleted()
         );
     }
@@ -125,11 +132,8 @@ export class BaseService {
         return Observable.throw(errMsg);
     }
 
-    protected createAlert(type: string, msg: string) {
-        let alert = new Alert();
-        alert.type = type;
-        alert.message = msg;
-        this._alertService.createAlert(alert);
+    protected createAlert(type: string, message: string) {
+        this._alertService.createAlert(new Alert(type, message));
     }
 
 }
