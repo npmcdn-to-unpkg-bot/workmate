@@ -9,10 +9,24 @@ import { Observable }                                       from 'rxjs/Observabl
 import { Observer }                                         from 'rxjs/Observer';
 
 
+interface EffortChoice {
+  value:string;
+  label:string;
+}
+
+
 @Injectable()
 export class StoryService extends BaseService {
 
     objects$: Observable<Story[]>;
+
+    effortChoices: EffortChoice[] = [
+        {value: '0.5', label: '0.5 Points'},
+        {value: '1.0', label: '1 Point'},
+        {value: '2.0', label: '2 Points'},
+        {value: '3.0', label: '3 Points'},
+        {value: '5.0', label: '5 Points'}
+    ];
 
     protected _objectsObserver: Observer<Story[]>;
     protected _dataStore: { objects: Story[], meta: Object };

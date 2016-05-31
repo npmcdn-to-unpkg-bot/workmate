@@ -1,19 +1,23 @@
-import { Component, ElementRef, Input, OnInit }                 from '@angular/core';
+import { Component, Input, OnInit }                                         from '@angular/core';
 
-import { Story, StoryState, StoryType, StoryTask }              from '../../models/story';
-import { Tag }                                                  from '../../models/tag';
-import { StoryService }                                         from '../../services/story.service';
-import { StoryStateService }                                    from '../../services/story-state.service';
-import { StoryTypeService }                                     from '../../services/story-type.service';
-import { TagService }                                           from '../../services/tag.service';
-import { htmlTemplate }                                         from './story-detail.component.html';
-
-declare var jQuery: any;
+import { Story, StoryState, StoryType, StoryTask }                          from '../../models/story';
+import { Tag }                                                              from '../../models/tag';
+import { SMSelect }                                                         from '../../controls/sm-select/sm-select.component';
+import { SMSelectMultiple }                                                 from '../../controls/sm-select-multiple/sm-select-multiple.component';
+import { StoryService }                                                     from '../../services/story.service';
+import { StoryStateService }                                                from '../../services/story-state.service';
+import { StoryTypeService }                                                 from '../../services/story-type.service';
+import { TagService }                                                       from '../../services/tag.service';
+import { htmlTemplate }                                                     from './story-detail.component.html';
 
 
 @Component({
     selector: '[story-detail]',
-    template: htmlTemplate
+    template: htmlTemplate,
+	directives: [
+        SMSelect,
+        SMSelectMultiple
+    ]
 })
 
 export class StoryDetailComponent implements OnInit {
@@ -24,7 +28,6 @@ export class StoryDetailComponent implements OnInit {
     types: StoryType[];
 
     constructor(
-        private elementRef: ElementRef,
         private storyService: StoryService,
         private storyStateService: StoryStateService,
         private storyTypeService: StoryTypeService,
@@ -57,44 +60,6 @@ export class StoryDetailComponent implements OnInit {
         this.storyStateService.loadAll();
         this.storyTypeService.loadAll();
         this.tagService.loadAll();
-    }
-
-    ngAfterViewInit() {
-        setTimeout(() => {
-            jQuery(this.elementRef.nativeElement).find('.ui.dropdown').dropdown({});
-        }, 0);
-    }
-
-    addSelectedObject($event:any, model:any, choice:any) {
-        $event.stopPropagation();
-        let found = false;
-        for (var i = 0; i < model.length; i++) {
-            if(model[i].id === choice.id) {
-                found = true;
-                break;
-            }
-        }
-        if (!found) {
-            model.push(choice);
-        }
-    }
-
-    removeSelectedObject($event:any, model:any, choice:any) {
-        $event.stopPropagation();
-        for (var i = 0; i < model.length; i++) {
-            if(model[i].id === choice.id) {
-                model.splice(i, 1);
-                break;
-            }
-        }
-    }
-
-    isSelected(model:any, item:any) {
-        for (var i = 0; i < model.length; i++) {
-            if(model[i].id === item.id) {
-                return true;
-            }
-        }
     }
 
 }

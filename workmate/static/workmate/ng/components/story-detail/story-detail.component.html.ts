@@ -1,5 +1,5 @@
 export const htmlTemplate = `
-    
+
     <div class="field">
         <label>
             <div class="ui label">ID<div class="detail">{{ story.id }}</div></div>
@@ -10,39 +10,17 @@ export const htmlTemplate = `
     </div>
     <div class="inline field">
         <label>Type</label>
-        <div class="ui right floated small input">
-            <div class="ui selection dropdown">
-                <i class="dropdown icon"></i><div class="text">{{story.type?.title}}</div>
-                <div class="menu transition hidden">
-                    <div class="item" *ngFor="let type of types" (click)="story.type=type">{{type.title}}</div>
-                </div>
-            </div>
-        </div>
+        <div sm-select class="ui right floated small input" [(ngModel)]="story.type" [choices]="types" [choiceLabel]="'title'"></div>
     </div>
     <div class="ui hidden clearing divider"></div>
     <div class="inline field">
         <label>Effort</label>
-        <div class="ui right floated small input">
-            <select [(ngModel)]="story.effort" class="ui dropdown">
-                <option value="0.5">0.5 Points</option>
-                <option value="1.0">1 Point</option>
-                <option value="2.0">2 Points</option>
-                <option value="3.0">3 Points</option>
-                <option value="5.0">5 Points</option>
-            </select>
-        </div>
+        <div sm-select class="ui right floated small input" [(ngModel)]="story.effort" [choices]="storyService.effortChoices" [choiceLabel]="'label'" [choiceValue]="'value'"></div>
     </div>
     <div class="ui hidden clearing divider"></div>
     <div class="inline field">
         <label>State</label>
-        <div class="ui right floated small input">
-            <div class="ui selection dropdown">
-                <i class="dropdown icon"></i><div class="text">{{story.state?.title}}</div>
-                <div class="menu transition hidden">
-                    <div class="item" *ngFor="let state of states" (click)="story.state=state">{{state.title}}</div>
-                </div>
-            </div>
-        </div>
+        <div sm-select class="ui right floated small input" [(ngModel)]="story.state" [choices]="states" [choiceLabel]="'title'"></div>
     </div>
     <div class="ui hidden clearing divider"></div>  
     <div class="field">
@@ -53,16 +31,7 @@ export const htmlTemplate = `
     </div>
     <div class="field">
         <label>Tags</label>
-        <div class="ui small input">
-            <div class="ui fluid dropdown selection multiple">
-                <i class="dropdown icon"></i>
-                <a class="ui label transition visible" *ngFor="let tag of story.tags">{{tag.title}}<i class="delete icon" (click)="removeSelectedObject($event, story.tags, tag)"></i></a>
-                <div class="text"></div>
-                <div class="menu">
-                    <div class="item" [ngClass]="{filtered: isSelected(story.tags, tag)}" *ngFor="let tag of tags" (click)="addSelectedObject($event, story.tags, tag)">{{tag.title}}</div>
-                </div>
-            </div>
-        </div>    
+        <div sm-select-multiple class="ui small input" [(ngModel)]="story.tags" [choices]="tags" [choiceLabel]="'title'" [addedClass]="'fluid'"></div>
     </div>
     <div class="field">
         <label>Tasks</label>
@@ -78,5 +47,4 @@ export const htmlTemplate = `
     <button *ngIf="story.id" class="ui secondary button" (click)="delete()">Delete</button>
     <button class="ui right floated primary button" (click)="save()">Save</button>
     <div class="ui hidden clearing divider"></div>
-    
 `
