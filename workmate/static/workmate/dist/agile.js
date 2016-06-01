@@ -2,22 +2,22 @@ webpackJsonp([ 0 ], {
     0: function(t, e, i) {
         "use strict";
         var n = this && this.__decorate || function(t, e, i, n) {
-            var o, r = arguments.length, s = 3 > r ? e : null === n ? n = Object.getOwnPropertyDescriptor(e, i) : n;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) s = Reflect.decorate(t, e, i, n); else for (var c = t.length - 1; c >= 0; c--) (o = t[c]) && (s = (3 > r ? o(s) : r > 3 ? o(e, i, s) : o(e, i)) || s);
-            return r > 3 && s && Object.defineProperty(e, i, s), s;
+            var o, s = arguments.length, r = 3 > s ? e : null === n ? n = Object.getOwnPropertyDescriptor(e, i) : n;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) r = Reflect.decorate(t, e, i, n); else for (var c = t.length - 1; c >= 0; c--) (o = t[c]) && (r = (3 > s ? o(r) : s > 3 ? o(e, i, r) : o(e, i)) || r);
+            return s > 3 && r && Object.defineProperty(e, i, r), r;
         }, o = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, r = i(1), s = i(97), c = i(118);
+        }, s = i(1), r = i(97), c = i(118);
         i(301);
-        var a = i(331), l = i(332), u = i(333), d = i(336), p = i(337), f = i(338), h = i(339), v = i(340), y = function() {
+        var a = i(331), l = i(332), d = i(333), u = i(336), p = i(337), f = i(338), h = i(339), v = i(340), y = function() {
             function t() {}
-            return t = n([ r.Component({
+            return t = n([ s.Component({
                 selector: "agile-app",
                 template: '\n        <div class="wm-messages"><alert></alert></div>\n        <story-list></story-list>\n    ',
                 directives: [ v.StoryListComponent, h.AlertComponent ],
-                providers: [ s.HTTP_PROVIDERS, r.provide(s.RequestOptions, {
+                providers: [ r.HTTP_PROVIDERS, s.provide(r.RequestOptions, {
                     useClass: a.ExRequestOptions
-                }), l.AlertService, u.StoryService, d.StoryStateService, p.StoryTypeService, f.TagService ]
+                }), l.AlertService, d.StoryService, u.StoryStateService, p.StoryTypeService, f.TagService ]
             }), o("design:paramtypes", []) ], t);
         }();
         e.AgileComponent = y, c.bootstrap(y);
@@ -31,12 +31,12 @@ webpackJsonp([ 0 ], {
             for (var n in e) e.hasOwnProperty(n) && (t[n] = e[n]);
             t.prototype = null === e ? Object.create(e) : (i.prototype = e.prototype, new i());
         }, o = this && this.__decorate || function(t, e, i, n) {
-            var o, r = arguments.length, s = 3 > r ? e : null === n ? n = Object.getOwnPropertyDescriptor(e, i) : n;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) s = Reflect.decorate(t, e, i, n); else for (var c = t.length - 1; c >= 0; c--) (o = t[c]) && (s = (3 > r ? o(s) : r > 3 ? o(e, i, s) : o(e, i)) || s);
-            return r > 3 && s && Object.defineProperty(e, i, s), s;
-        }, r = this && this.__metadata || function(t, e) {
+            var o, s = arguments.length, r = 3 > s ? e : null === n ? n = Object.getOwnPropertyDescriptor(e, i) : n;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) r = Reflect.decorate(t, e, i, n); else for (var c = t.length - 1; c >= 0; c--) (o = t[c]) && (r = (3 > s ? o(r) : s > 3 ? o(e, i, r) : o(e, i)) || r);
+            return s > 3 && r && Object.defineProperty(e, i, r), r;
+        }, s = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, s = i(1), c = i(97), a = function(t) {
+        }, r = i(1), c = i(97), a = function(t) {
             function e() {
                 t.call(this), this.headers.append("X-CSRFToken", this.getCookie("csrftoken"));
             }
@@ -45,24 +45,24 @@ webpackJsonp([ 0 ], {
                 return 2 == i.length ? i.pop().split(";").shift() : void 0;
             }, e.prototype.appendHeaders = function(t, e) {
                 this.headers.append(t, e);
-            }, e = o([ s.Injectable(), r("design:paramtypes", []) ], e);
+            }, e = o([ r.Injectable(), s("design:paramtypes", []) ], e);
         }(c.BaseRequestOptions);
         e.ExRequestOptions = a;
     },
     332: function(t, e, i) {
         "use strict";
         var n = this && this.__decorate || function(t, e, i, n) {
-            var o, r = arguments.length, s = 3 > r ? e : null === n ? n = Object.getOwnPropertyDescriptor(e, i) : n;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) s = Reflect.decorate(t, e, i, n); else for (var c = t.length - 1; c >= 0; c--) (o = t[c]) && (s = (3 > r ? o(s) : r > 3 ? o(e, i, s) : o(e, i)) || s);
-            return r > 3 && s && Object.defineProperty(e, i, s), s;
+            var o, s = arguments.length, r = 3 > s ? e : null === n ? n = Object.getOwnPropertyDescriptor(e, i) : n;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) r = Reflect.decorate(t, e, i, n); else for (var c = t.length - 1; c >= 0; c--) (o = t[c]) && (r = (3 > s ? o(r) : s > 3 ? o(e, i, r) : o(e, i)) || r);
+            return s > 3 && r && Object.defineProperty(e, i, r), r;
         }, o = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, r = i(1), s = i(35), c = function() {
+        }, s = i(1), r = i(35), c = function() {
             function t() {
                 var t = this;
                 this.nextId = 1, this._dataStore = {
                     alerts: []
-                }, this.alerts$ = new s.Observable(function(e) {
+                }, this.alerts$ = new r.Observable(function(e) {
                     return t._dataObserver = e;
                 }).share();
             }
@@ -79,7 +79,7 @@ webpackJsonp([ 0 ], {
                 }), this._dataObserver.next(this._dataStore.alerts);
             }, t.prototype.getNextId = function() {
                 return this.nextId++;
-            }, t = n([ r.Injectable(), o("design:paramtypes", []) ], t);
+            }, t = n([ s.Injectable(), o("design:paramtypes", []) ], t);
         }();
         e.AlertService = c;
     },
@@ -92,12 +92,12 @@ webpackJsonp([ 0 ], {
             for (var n in e) e.hasOwnProperty(n) && (t[n] = e[n]);
             t.prototype = null === e ? Object.create(e) : (i.prototype = e.prototype, new i());
         }, o = this && this.__decorate || function(t, e, i, n) {
-            var o, r = arguments.length, s = 3 > r ? e : null === n ? n = Object.getOwnPropertyDescriptor(e, i) : n;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) s = Reflect.decorate(t, e, i, n); else for (var c = t.length - 1; c >= 0; c--) (o = t[c]) && (s = (3 > r ? o(s) : r > 3 ? o(e, i, s) : o(e, i)) || s);
-            return r > 3 && s && Object.defineProperty(e, i, s), s;
-        }, r = this && this.__metadata || function(t, e) {
+            var o, s = arguments.length, r = 3 > s ? e : null === n ? n = Object.getOwnPropertyDescriptor(e, i) : n;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) r = Reflect.decorate(t, e, i, n); else for (var c = t.length - 1; c >= 0; c--) (o = t[c]) && (r = (3 > s ? o(r) : s > 3 ? o(e, i, r) : o(e, i)) || r);
+            return s > 3 && r && Object.defineProperty(e, i, r), r;
+        }, s = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, s = i(1), c = i(97), a = i(332), l = i(334), u = i(35), d = function(t) {
+        }, r = i(1), c = i(97), a = i(332), l = i(334), d = i(35), u = function(t) {
             function e(e, i) {
                 var n = this;
                 t.call(this, e, i), this._http = e, this._alertService = i, this.effortChoices = [ {
@@ -115,24 +115,24 @@ webpackJsonp([ 0 ], {
                 }, {
                     value: "5.0",
                     label: "5 Points"
-                } ], this._baseUrl = "/api/v1/story/", this.objects$ = new u.Observable(function(t) {
+                } ], this._baseUrl = "/api/v1/story/", this.objects$ = new d.Observable(function(t) {
                     return n._objectsObserver = t;
                 }).share();
             }
-            return n(e, t), e = o([ s.Injectable(), r("design:paramtypes", [ c.Http, a.AlertService ]) ], e);
+            return n(e, t), e = o([ r.Injectable(), s("design:paramtypes", [ c.Http, a.AlertService ]) ], e);
         }(l.BaseService);
-        e.StoryService = d;
+        e.StoryService = u;
     },
     334: function(t, e, i) {
         "use strict";
-        var n = i(331), o = i(335), r = i(35), s = function() {
+        var n = i(331), o = i(335), s = i(35), r = function() {
             function t(t, e) {
                 var i = this;
                 this._http = t, this._alertService = e, this._baseUrl = "", this._postOptions = new n.ExRequestOptions(), 
                 this._dataStore = {
                     objects: [],
                     meta: {}
-                }, this.meta$ = new r.Observable(function(t) {
+                }, this.meta$ = new s.Observable(function(t) {
                     return i._metaObserver = t;
                 }).share(), this._postOptions.appendHeaders("Content-Type", "application/json");
             }
@@ -199,7 +199,7 @@ webpackJsonp([ 0 ], {
                 this.createAlert("success", "Completed successfully");
             }, t.prototype.handleError = function(t) {
                 var e = JSON.parse(t._body), i = e.error_message || "An unknown server error occurred.";
-                return this.createAlert("error", i), r.Observable.throw(i);
+                return this.createAlert("error", i), s.Observable.throw(i);
             }, t.prototype.createAlert = function(t, e) {
                 this._alertService.createAlert(new o.Alert({
                     type: t,
@@ -207,7 +207,7 @@ webpackJsonp([ 0 ], {
                 }));
             }, t;
         }();
-        e.BaseService = s;
+        e.BaseService = r;
     },
     335: function(t, e) {
         "use strict";
@@ -229,22 +229,22 @@ webpackJsonp([ 0 ], {
             for (var n in e) e.hasOwnProperty(n) && (t[n] = e[n]);
             t.prototype = null === e ? Object.create(e) : (i.prototype = e.prototype, new i());
         }, o = this && this.__decorate || function(t, e, i, n) {
-            var o, r = arguments.length, s = 3 > r ? e : null === n ? n = Object.getOwnPropertyDescriptor(e, i) : n;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) s = Reflect.decorate(t, e, i, n); else for (var c = t.length - 1; c >= 0; c--) (o = t[c]) && (s = (3 > r ? o(s) : r > 3 ? o(e, i, s) : o(e, i)) || s);
-            return r > 3 && s && Object.defineProperty(e, i, s), s;
-        }, r = this && this.__metadata || function(t, e) {
+            var o, s = arguments.length, r = 3 > s ? e : null === n ? n = Object.getOwnPropertyDescriptor(e, i) : n;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) r = Reflect.decorate(t, e, i, n); else for (var c = t.length - 1; c >= 0; c--) (o = t[c]) && (r = (3 > s ? o(r) : s > 3 ? o(e, i, r) : o(e, i)) || r);
+            return s > 3 && r && Object.defineProperty(e, i, r), r;
+        }, s = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, s = i(1), c = i(97), a = i(332), l = i(334), u = i(35), d = function(t) {
+        }, r = i(1), c = i(97), a = i(332), l = i(334), d = i(35), u = function(t) {
             function e(e, i) {
                 var n = this;
                 t.call(this, e, i), this._http = e, this._alertService = i, this._baseUrl = "/api/v1/story_state/", 
-                this.objects$ = new u.Observable(function(t) {
+                this.objects$ = new d.Observable(function(t) {
                     return n._objectsObserver = t;
                 }).share();
             }
-            return n(e, t), e = o([ s.Injectable(), r("design:paramtypes", [ c.Http, a.AlertService ]) ], e);
+            return n(e, t), e = o([ r.Injectable(), s("design:paramtypes", [ c.Http, a.AlertService ]) ], e);
         }(l.BaseService);
-        e.StoryStateService = d;
+        e.StoryStateService = u;
     },
     337: function(t, e, i) {
         "use strict";
@@ -255,22 +255,22 @@ webpackJsonp([ 0 ], {
             for (var n in e) e.hasOwnProperty(n) && (t[n] = e[n]);
             t.prototype = null === e ? Object.create(e) : (i.prototype = e.prototype, new i());
         }, o = this && this.__decorate || function(t, e, i, n) {
-            var o, r = arguments.length, s = 3 > r ? e : null === n ? n = Object.getOwnPropertyDescriptor(e, i) : n;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) s = Reflect.decorate(t, e, i, n); else for (var c = t.length - 1; c >= 0; c--) (o = t[c]) && (s = (3 > r ? o(s) : r > 3 ? o(e, i, s) : o(e, i)) || s);
-            return r > 3 && s && Object.defineProperty(e, i, s), s;
-        }, r = this && this.__metadata || function(t, e) {
+            var o, s = arguments.length, r = 3 > s ? e : null === n ? n = Object.getOwnPropertyDescriptor(e, i) : n;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) r = Reflect.decorate(t, e, i, n); else for (var c = t.length - 1; c >= 0; c--) (o = t[c]) && (r = (3 > s ? o(r) : s > 3 ? o(e, i, r) : o(e, i)) || r);
+            return s > 3 && r && Object.defineProperty(e, i, r), r;
+        }, s = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, s = i(1), c = i(97), a = i(332), l = i(334), u = i(35), d = function(t) {
+        }, r = i(1), c = i(97), a = i(332), l = i(334), d = i(35), u = function(t) {
             function e(e, i) {
                 var n = this;
                 t.call(this, e, i), this._http = e, this._alertService = i, this._baseUrl = "/api/v1/story_type/", 
-                this.objects$ = new u.Observable(function(t) {
+                this.objects$ = new d.Observable(function(t) {
                     return n._objectsObserver = t;
                 }).share();
             }
-            return n(e, t), e = o([ s.Injectable(), r("design:paramtypes", [ c.Http, a.AlertService ]) ], e);
+            return n(e, t), e = o([ r.Injectable(), s("design:paramtypes", [ c.Http, a.AlertService ]) ], e);
         }(l.BaseService);
-        e.StoryTypeService = d;
+        e.StoryTypeService = u;
     },
     338: function(t, e, i) {
         "use strict";
@@ -281,32 +281,32 @@ webpackJsonp([ 0 ], {
             for (var n in e) e.hasOwnProperty(n) && (t[n] = e[n]);
             t.prototype = null === e ? Object.create(e) : (i.prototype = e.prototype, new i());
         }, o = this && this.__decorate || function(t, e, i, n) {
-            var o, r = arguments.length, s = 3 > r ? e : null === n ? n = Object.getOwnPropertyDescriptor(e, i) : n;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) s = Reflect.decorate(t, e, i, n); else for (var c = t.length - 1; c >= 0; c--) (o = t[c]) && (s = (3 > r ? o(s) : r > 3 ? o(e, i, s) : o(e, i)) || s);
-            return r > 3 && s && Object.defineProperty(e, i, s), s;
-        }, r = this && this.__metadata || function(t, e) {
+            var o, s = arguments.length, r = 3 > s ? e : null === n ? n = Object.getOwnPropertyDescriptor(e, i) : n;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) r = Reflect.decorate(t, e, i, n); else for (var c = t.length - 1; c >= 0; c--) (o = t[c]) && (r = (3 > s ? o(r) : s > 3 ? o(e, i, r) : o(e, i)) || r);
+            return s > 3 && r && Object.defineProperty(e, i, r), r;
+        }, s = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, s = i(1), c = i(97), a = i(332), l = i(334), u = i(35), d = function(t) {
+        }, r = i(1), c = i(97), a = i(332), l = i(334), d = i(35), u = function(t) {
             function e(e, i) {
                 var n = this;
                 t.call(this, e, i), this._http = e, this._alertService = i, this._baseUrl = "/api/v1/tag/", 
-                this.objects$ = new u.Observable(function(t) {
+                this.objects$ = new d.Observable(function(t) {
                     return n._objectsObserver = t;
                 }).share();
             }
-            return n(e, t), e = o([ s.Injectable(), r("design:paramtypes", [ c.Http, a.AlertService ]) ], e);
+            return n(e, t), e = o([ r.Injectable(), s("design:paramtypes", [ c.Http, a.AlertService ]) ], e);
         }(l.BaseService);
-        e.TagService = d;
+        e.TagService = u;
     },
     339: function(t, e, i) {
         "use strict";
         var n = this && this.__decorate || function(t, e, i, n) {
-            var o, r = arguments.length, s = 3 > r ? e : null === n ? n = Object.getOwnPropertyDescriptor(e, i) : n;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) s = Reflect.decorate(t, e, i, n); else for (var c = t.length - 1; c >= 0; c--) (o = t[c]) && (s = (3 > r ? o(s) : r > 3 ? o(e, i, s) : o(e, i)) || s);
-            return r > 3 && s && Object.defineProperty(e, i, s), s;
+            var o, s = arguments.length, r = 3 > s ? e : null === n ? n = Object.getOwnPropertyDescriptor(e, i) : n;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) r = Reflect.decorate(t, e, i, n); else for (var c = t.length - 1; c >= 0; c--) (o = t[c]) && (r = (3 > s ? o(r) : s > 3 ? o(e, i, r) : o(e, i)) || r);
+            return s > 3 && r && Object.defineProperty(e, i, r), r;
         }, o = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, r = i(1), s = i(332), c = '\n    <div class="ui {{ alert.type }} message" *ngFor="let alert of alerts">\n        <i class="close icon" *ngIf="alert.dismissable"></i><div class="header capitalize">{{ alert.type }}</div>\n        <p>{{ alert.message }}</p>\n    </div>\n  ', a = function() {
+        }, s = i(1), r = i(332), c = '\n    <div class="ui {{ alert.type }} message" *ngFor="let alert of alerts">\n        <i class="close icon" *ngIf="alert.dismissable"></i><div class="header capitalize">{{ alert.type }}</div>\n        <p>{{ alert.message }}</p>\n    </div>\n  ', a = function() {
             function t(t) {
                 this.alertService = t;
             }
@@ -315,30 +315,30 @@ webpackJsonp([ 0 ], {
                 this.alertService.alerts$.subscribe(function(e) {
                     return t.alerts = e;
                 });
-            }, t = n([ r.Component({
+            }, t = n([ s.Component({
                 selector: "alert",
                 template: c
-            }), o("design:paramtypes", [ s.AlertService ]) ], t);
+            }), o("design:paramtypes", [ r.AlertService ]) ], t);
         }();
         e.AlertComponent = a;
     },
     340: function(t, e, i) {
         "use strict";
         var n = this && this.__decorate || function(t, e, i, n) {
-            var o, r = arguments.length, s = 3 > r ? e : null === n ? n = Object.getOwnPropertyDescriptor(e, i) : n;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) s = Reflect.decorate(t, e, i, n); else for (var c = t.length - 1; c >= 0; c--) (o = t[c]) && (s = (3 > r ? o(s) : r > 3 ? o(e, i, s) : o(e, i)) || s);
-            return r > 3 && s && Object.defineProperty(e, i, s), s;
+            var o, s = arguments.length, r = 3 > s ? e : null === n ? n = Object.getOwnPropertyDescriptor(e, i) : n;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) r = Reflect.decorate(t, e, i, n); else for (var c = t.length - 1; c >= 0; c--) (o = t[c]) && (r = (3 > s ? o(r) : s > 3 ? o(e, i, r) : o(e, i)) || r);
+            return s > 3 && r && Object.defineProperty(e, i, r), r;
         }, o = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, r = i(1), s = i(341), c = i(333), a = i(336), l = i(337), u = i(338), d = i(342), p = i(349), f = i(351), h = function() {
+        }, s = i(1), r = i(341), c = i(333), a = i(336), l = i(337), d = i(338), u = i(342), p = i(349), f = i(351), h = function() {
             function t(t, e, i, n) {
                 this.storyService = t, this.storyStateService = e, this.storyTypeService = i, this.tagService = n, 
                 this.newBacklogOpened = !1, this.newIceboxOpened = !1, this.createNew = function(t) {
-                    t ? (this.newBacklogStory = new s.Story({
+                    t ? (this.newBacklogStory = new r.Story({
                         title: "New Story",
                         state: null,
                         type: null
-                    }), this.newBacklogOpened = !this.newBacklogOpened) : (this.newIceboxStory = new s.Story({
+                    }), this.newBacklogOpened = !this.newBacklogOpened) : (this.newIceboxStory = new r.Story({
                         title: "New Story",
                         state: null,
                         type: null
@@ -357,11 +357,11 @@ webpackJsonp([ 0 ], {
                     return t.tags = e;
                 }), this.storyService.loadAll(), this.storyStateService.loadAll(), this.storyTypeService.loadAll(), 
                 this.tagService.loadAll();
-            }, t = n([ r.Component({
+            }, t = n([ s.Component({
                 selector: "story-list",
                 template: f.htmlTemplate,
-                directives: [ d.StoryDetailComponent, p.StoryListItemComponent ]
-            }), o("design:paramtypes", [ c.StoryService, a.StoryStateService, l.StoryTypeService, u.TagService ]) ], t);
+                directives: [ u.StoryDetailComponent, p.StoryListItemComponent ]
+            }), o("design:paramtypes", [ c.StoryService, a.StoryStateService, l.StoryTypeService, d.TagService ]) ], t);
         }();
         e.StoryListComponent = h;
     },
@@ -379,17 +379,17 @@ webpackJsonp([ 0 ], {
     342: function(t, e, i) {
         "use strict";
         var n = this && this.__decorate || function(t, e, i, n) {
-            var o, r = arguments.length, s = 3 > r ? e : null === n ? n = Object.getOwnPropertyDescriptor(e, i) : n;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) s = Reflect.decorate(t, e, i, n); else for (var c = t.length - 1; c >= 0; c--) (o = t[c]) && (s = (3 > r ? o(s) : r > 3 ? o(e, i, s) : o(e, i)) || s);
-            return r > 3 && s && Object.defineProperty(e, i, s), s;
+            var o, s = arguments.length, r = 3 > s ? e : null === n ? n = Object.getOwnPropertyDescriptor(e, i) : n;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) r = Reflect.decorate(t, e, i, n); else for (var c = t.length - 1; c >= 0; c--) (o = t[c]) && (r = (3 > s ? o(r) : s > 3 ? o(e, i, r) : o(e, i)) || r);
+            return s > 3 && r && Object.defineProperty(e, i, r), r;
         }, o = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, r = i(1), s = i(343), c = i(344), a = i(346), l = i(333), u = i(336), d = i(337), p = i(338), f = i(348), h = function() {
+        }, s = i(1), r = i(343), c = i(344), a = i(346), l = i(333), d = i(336), u = i(337), p = i(338), f = i(348), h = function() {
             function t(t, e, i, n) {
                 this.storyService = t, this.storyStateService = e, this.storyTypeService = i, this.tagService = n;
             }
             return t.prototype.addTask = function() {
-                var t = new s.StoryTask({
+                var t = new r.StoryTask({
                     completed: !1,
                     description: ""
                 });
@@ -407,11 +407,11 @@ webpackJsonp([ 0 ], {
                 }), this.tagService.objects$.subscribe(function(e) {
                     return t.tags = e;
                 }), this.storyStateService.loadAll(), this.storyTypeService.loadAll(), this.tagService.loadAll();
-            }, n([ r.Input(), o("design:type", Object) ], t.prototype, "story", void 0), t = n([ r.Component({
+            }, n([ s.Input(), o("design:type", Object) ], t.prototype, "story", void 0), t = n([ s.Component({
                 selector: "[story-detail]",
                 template: f.htmlTemplate,
                 directives: [ c.SMSelect, a.SMSelectMultiple ]
-            }), o("design:paramtypes", [ l.StoryService, u.StoryStateService, d.StoryTypeService, p.TagService ]) ], t);
+            }), o("design:paramtypes", [ l.StoryService, d.StoryStateService, u.StoryTypeService, p.TagService ]) ], t);
         }();
         e.StoryDetailComponent = h;
     },
@@ -428,161 +428,122 @@ webpackJsonp([ 0 ], {
     344: function(t, e, i) {
         "use strict";
         var n = this && this.__decorate || function(t, e, i, n) {
-            var o, r = arguments.length, s = 3 > r ? e : null === n ? n = Object.getOwnPropertyDescriptor(e, i) : n;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) s = Reflect.decorate(t, e, i, n); else for (var c = t.length - 1; c >= 0; c--) (o = t[c]) && (s = (3 > r ? o(s) : r > 3 ? o(e, i, s) : o(e, i)) || s);
-            return r > 3 && s && Object.defineProperty(e, i, s), s;
+            var o, s = arguments.length, r = 3 > s ? e : null === n ? n = Object.getOwnPropertyDescriptor(e, i) : n;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) r = Reflect.decorate(t, e, i, n); else for (var c = t.length - 1; c >= 0; c--) (o = t[c]) && (r = (3 > s ? o(r) : s > 3 ? o(e, i, r) : o(e, i)) || r);
+            return s > 3 && r && Object.defineProperty(e, i, r), r;
         }, o = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, r = i(1), s = i(202), c = i(345), a = function() {}, l = new r.Provider(s.NG_VALUE_ACCESSOR, {
-            useExisting: r.forwardRef(function() {
-                return u;
-            }),
-            multi: !0
-        }), u = function() {
-            function t(t) {
-                this.elementRef = t, this._value = "", this._onTouchedCallback = a, this._onChangeCallback = a;
+        }, s = i(1), r = i(202), c = i(345), a = function() {
+            function t(t, e) {
+                this.elementRef = t, this.vm = e, e.valueAccessor = this;
             }
-            return Object.defineProperty(t.prototype, "value", {
-                get: function() {
-                    return this._value;
-                },
-                set: function(t) {
-                    if (t !== this._value) {
-                        var e = this.choiceValue ? t[this.choiceValue] : t;
-                        this._value = e, this._onChangeCallback(e);
-                    }
-                },
-                enumerable: !0,
-                configurable: !0
-            }), t.prototype.ngOnInit = function() {
+            return t.prototype.ngOnInit = function() {
                 var t = this;
                 setTimeout(function() {
                     jQuery(t.elementRef.nativeElement).find(".ui.dropdown").dropdown({});
                 }, 0);
-            }, t.prototype.getChoiceLabel = function(t) {
-                var e = this, i = t;
-                return t && this.choiceLabel && this.choiceValue ? this.choices.forEach(function(n) {
-                    (t && t[e.choiceValue] == n[e.choiceValue] || t == n[e.choiceValue]) && (i = n[e.choiceLabel]);
-                }) : t && this.choiceLabel && (i = t[this.choiceLabel]), i;
+            }, t.prototype.getTextLabel = function(t) {
+                if (t) {
+                    if (this.textLabel && this.boundValueAttr) for (var e = 0; e < this.choices.length; e++) if (t[this.boundValueAttr] == this.choices[e][this.boundValueAttr] || t == this.choices[e][this.boundValueAttr]) return this.choices[e][this.textLabel];
+                    return t[this.textLabel] || t;
+                }
+            }, t.prototype.onSelect = function(t) {
+                var e = t[this.boundValueAttr] || t;
+                this.writeValue(e), this.vm.viewToModelUpdate(e);
             }, t.prototype.writeValue = function(t) {
-                this._value = t;
+                this.selectedItem = t;
             }, t.prototype.registerOnChange = function(t) {
-                this._onChangeCallback = t;
+                this.onChange = t;
             }, t.prototype.registerOnTouched = function(t) {
-                this._onTouchedCallback = t;
-            }, n([ r.Input(), o("design:type", Object) ], t.prototype, "choices", void 0), n([ r.Input(), o("design:type", String) ], t.prototype, "choiceLabel", void 0), 
-            n([ r.Input(), o("design:type", String) ], t.prototype, "choiceValue", void 0), 
-            t = n([ r.Component({
+                this.onTouched = t;
+            }, n([ s.Input(), o("design:type", Object) ], t.prototype, "choices", void 0), n([ s.Input(), o("design:type", String) ], t.prototype, "textLabel", void 0), 
+            n([ s.Input(), o("design:type", String) ], t.prototype, "boundValueAttr", void 0), 
+            t = n([ s.Component({
                 selector: "[sm-select], sm-select",
-                template: c.htmlTemplate,
-                directives: [ s.CORE_DIRECTIVES ],
-                providers: [ l ]
-            }), o("design:paramtypes", [ r.ElementRef ]) ], t);
+                template: c.htmlTemplate
+            }), o("design:paramtypes", [ s.ElementRef, r.NgModel ]) ], t);
         }();
-        e.SMSelect = u;
+        e.SMSelect = a;
     },
     345: function(t, e) {
         "use strict";
-        e.htmlTemplate = '\n    \n    <div class="ui selection dropdown">\n        <i class="dropdown icon"></i><div class="text">{{getChoiceLabel(value, choiceLabel)}}</div>\n        <div class="menu transition hidden">\n            <div class="item" *ngFor="let choice of choices" (click)="value=choice">{{getChoiceLabel(choice, choiceLabel)}}</div>\n        </div>\n    </div>\n';
+        e.htmlTemplate = '\n    \n    <div class="ui selection dropdown">\n        <i class="dropdown icon"></i><div class="text">{{getTextLabel(selectedItem)}}</div>\n        <div class="menu transition hidden">\n            <div class="item" *ngFor="let choice of choices" (click)="onSelect(choice)">{{getTextLabel(choice)}}</div>\n        </div>\n    </div>\n';
     },
     346: function(t, e, i) {
         "use strict";
         var n = this && this.__decorate || function(t, e, i, n) {
-            var o, r = arguments.length, s = 3 > r ? e : null === n ? n = Object.getOwnPropertyDescriptor(e, i) : n;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) s = Reflect.decorate(t, e, i, n); else for (var c = t.length - 1; c >= 0; c--) (o = t[c]) && (s = (3 > r ? o(s) : r > 3 ? o(e, i, s) : o(e, i)) || s);
-            return r > 3 && s && Object.defineProperty(e, i, s), s;
+            var o, s = arguments.length, r = 3 > s ? e : null === n ? n = Object.getOwnPropertyDescriptor(e, i) : n;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) r = Reflect.decorate(t, e, i, n); else for (var c = t.length - 1; c >= 0; c--) (o = t[c]) && (r = (3 > s ? o(r) : s > 3 ? o(e, i, r) : o(e, i)) || r);
+            return s > 3 && r && Object.defineProperty(e, i, r), r;
         }, o = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, r = i(1), s = i(202), c = i(347), a = function() {}, l = new r.Provider(s.NG_VALUE_ACCESSOR, {
-            useExisting: r.forwardRef(function() {
-                return u;
-            }),
-            multi: !0
-        }), u = function() {
-            function t(t) {
-                this.elementRef = t, this._value = [], this._onTouchedCallback = a, this._onChangeCallback = a;
+        }, s = i(1), r = i(202), c = i(347), a = function() {
+            function t(t, e) {
+                this.elementRef = t, this.selectedItems = [], this.vm = e, e.valueAccessor = this;
             }
-            return Object.defineProperty(t.prototype, "value", {
-                get: function() {
-                    return this._value;
-                },
-                set: function(t) {
-                    if (t !== this._value) {
-                        var e = this.choiceValue ? t[this.choiceValue] : t;
-                        this._value = e, this._onChangeCallback(e);
-                    }
-                },
-                enumerable: !0,
-                configurable: !0
-            }), t.prototype.ngOnInit = function() {
+            return t.prototype.ngOnInit = function() {
                 var t = this;
                 setTimeout(function() {
                     jQuery(t.elementRef.nativeElement).find(".ui.dropdown").dropdown({});
                 }, 0);
-            }, t.prototype.getChoiceLabel = function(t) {
-                var e = this, i = t;
-                return t && this.choiceLabel && this.choiceValue ? this.choices.forEach(function(n) {
-                    (t && t[e.choiceValue] == n[e.choiceValue] || t == n[e.choiceValue]) && (i = n[e.choiceLabel]);
-                }) : t && this.choiceLabel && (i = t[this.choiceLabel]), i;
-            }, t.prototype.addSelectedObject = function(t, e, i) {
+            }, t.prototype.getTextLabel = function(t) {
+                return t[this.textLabel] || t;
+            }, t.prototype.onSelect = function(t, e) {
                 t.stopPropagation();
-                for (var n = !1, o = 0; o < e.length; o++) if (e[o].id === i.id) {
-                    n = !0;
+                for (var i = !1, n = 0; n < this.selectedItems.length; n++) if (this.selectedItems[n].id === e.id) {
+                    i = !0;
                     break;
                 }
-                n || e.push(i);
-            }, t.prototype.removeSelectedObject = function(t, e, i) {
+                i || (this.selectedItems.push(e), this.vm.viewToModelUpdate(this.selectedItems));
+            }, t.prototype.onRemove = function(t, e) {
                 t.stopPropagation();
-                for (var n = 0; n < e.length; n++) if (e[n].id === i.id) {
-                    e.splice(n, 1);
+                for (var i = 0; i < this.selectedItems.length; i++) if (this.selectedItems[i].id === e.id) {
+                    this.selectedItems.splice(i, 1), this.vm.viewToModelUpdate(this.selectedItems);
                     break;
                 }
-            }, t.prototype.isSelected = function(t, e) {
-                for (var i = 0; i < t.length; i++) if (t[i].id === e.id) return !0;
+            }, t.prototype.isSelected = function(t) {
+                for (var e = 0; e < this.selectedItems.length; e++) if (this.selectedItems[e].id === t.id) return !0;
             }, t.prototype.writeValue = function(t) {
-                this._value = t;
+                this.selectedItems = t;
             }, t.prototype.registerOnChange = function(t) {
-                this._onChangeCallback = t;
+                this.onChange = t;
             }, t.prototype.registerOnTouched = function(t) {
-                this._onTouchedCallback = t;
-            }, n([ r.Input(), o("design:type", Object) ], t.prototype, "choices", void 0), n([ r.Input(), o("design:type", String) ], t.prototype, "choiceLabel", void 0), 
-            n([ r.Input(), o("design:type", String) ], t.prototype, "choiceValue", void 0), 
-            n([ r.Input(), o("design:type", String) ], t.prototype, "addedClass", void 0), t = n([ r.Component({
+                this.onTouched = t;
+            }, n([ s.Input(), o("design:type", Object) ], t.prototype, "choices", void 0), n([ s.Input(), o("design:type", String) ], t.prototype, "textLabel", void 0), 
+            n([ s.Input(), o("design:type", String) ], t.prototype, "addedClass", void 0), t = n([ s.Component({
                 selector: "[sm-select-multiple], sm-select-multiple",
-                template: c.htmlTemplate,
-                directives: [ s.CORE_DIRECTIVES ],
-                providers: [ l ]
-            }), o("design:paramtypes", [ r.ElementRef ]) ], t);
+                template: c.htmlTemplate
+            }), o("design:paramtypes", [ s.ElementRef, r.NgModel ]) ], t);
         }();
-        e.SMSelectMultiple = u;
+        e.SMSelectMultiple = a;
     },
     347: function(t, e) {
         "use strict";
-        e.htmlTemplate = '\n    \n    <div class="ui selection dropdown multiple {{addedClass}}">\n        <i class="dropdown icon"></i>\n        <a class="ui label transition visible" *ngFor="let choice of value">{{getChoiceLabel(choice, choiceLabel)}}<i class="delete icon" (click)="removeSelectedObject($event, value, choice)"></i></a>\n        <div class="text"></div>\n        <div class="menu">\n            <div class="item" [ngClass]="{filtered: isSelected(value, choice)}" *ngFor="let choice of choices" (click)="addSelectedObject($event, value, choice)">{{getChoiceLabel(choice, choiceLabel)}}</div>\n        </div>\n    </div>\n';
+        e.htmlTemplate = '\n    \n    <div class="ui selection dropdown multiple {{addedClass}}">\n        <i class="dropdown icon"></i>\n        <a class="ui label transition visible" *ngFor="let choice of selectedItems">{{getTextLabel(choice)}}<i class="delete icon" (click)="onRemove($event, choice)"></i></a>\n        <div class="text"></div>\n        <div class="menu">\n            <div class="item" [ngClass]="{filtered: isSelected(choice)}" *ngFor="let choice of choices" (click)="onSelect($event, choice)">{{getTextLabel(choice, choiceLabel)}}</div>\n        </div>\n    </div>\n';
     },
     348: function(t, e) {
         "use strict";
-        e.htmlTemplate = '\n\n    <div class="field">\n        <label>\n            <div class="ui label">ID<div class="detail">{{ story.id }}</div></div>\n        </label>\n        <div class="ui small input">\n            <textarea [(ngModel)]="story.title" rows="2"></textarea>\n        </div>\n    </div>\n    <div class="inline field">\n        <label>Type</label>\n        <div sm-select class="ui right floated small input" [(ngModel)]="story.type" [choices]="types" [choiceLabel]="\'title\'"></div>\n    </div>\n    <div class="ui hidden clearing divider"></div>\n    <div class="inline field">\n        <label>Effort</label>\n        <div sm-select class="ui right floated small input" [(ngModel)]="story.effort" [choices]="storyService.effortChoices" [choiceLabel]="\'label\'" [choiceValue]="\'value\'"></div>\n    </div>\n    <div class="ui hidden clearing divider"></div>\n    <div class="inline field">\n        <label>State</label>\n        <div sm-select class="ui right floated small input" [(ngModel)]="story.state" [choices]="states" [choiceLabel]="\'title\'"></div>\n    </div>\n    <div class="ui hidden clearing divider"></div>  \n    <div class="field">\n        <label>Description</label>\n        <div class="ui small input">\n            <textarea [(ngModel)]="story.description" rows="3"></textarea>\n        </div>\n    </div>\n    <div class="field">\n        <label>Tags</label>\n        <div sm-select-multiple class="ui small input" [(ngModel)]="story.tags" [choices]="tags" [choiceLabel]="\'title\'" [addedClass]="\'fluid\'"></div>\n    </div>\n    <div class="field">\n        <label>Tasks</label>\n        <div class="field" *ngFor="let task of story.tasks">\n            <div class="ui small fluid left icon input">\n                <i class="inverted circular checkmark link icon" [ngClass]="{\'green\': task.completed}" (click)="task.completed = !task.completed"></i>\n                <input [(ngModel)]="task.description">\n            </div>\n        </div>\n    </div>\n    <button class="ui right floated mini button" (click)="addTask()">Add Task</button>\n    <div class="ui hidden clearing divider"></div>\n    <button *ngIf="story.id" class="ui secondary button" (click)="delete()">Delete</button>\n    <button class="ui right floated primary button" (click)="save()">Save</button>\n    <div class="ui hidden clearing divider"></div>\n';
+        e.htmlTemplate = '\n\n    <div class="field">\n        <label>\n            <div class="ui label">ID<div class="detail">{{ story.id }}</div></div>\n        </label>\n        <div class="ui small input">\n            <textarea [(ngModel)]="story.title" rows="2"></textarea>\n        </div>\n    </div>\n    <div class="inline field">\n        <label>Type</label>\n        <div sm-select class="ui right floated small input" [(ngModel)]="story.type" [choices]="types" [textLabel]="\'title\'"></div>\n    </div>\n    <div class="ui hidden clearing divider"></div>\n    <div class="inline field">\n        <label>Effort</label>\n        <div sm-select class="ui right floated small input" [(ngModel)]="story.effort" [choices]="storyService.effortChoices" [textLabel]="\'label\'" [boundValueAttr]="\'value\'"></div>\n    </div>\n    <div class="ui hidden clearing divider"></div>\n    <div class="inline field">\n        <label>State</label>\n        <div sm-select class="ui right floated small input" [(ngModel)]="story.state" [choices]="states" [textLabel]="\'title\'"></div>\n    </div>\n    <div class="ui hidden clearing divider"></div>  \n    <div class="field">\n        <label>Description</label>\n        <div class="ui small input">\n            <textarea [(ngModel)]="story.description" rows="3"></textarea>\n        </div>\n    </div>\n    <div class="field">\n        <label>Tags</label>\n        <div sm-select-multiple class="ui small input" [(ngModel)]="story.tags" [choices]="tags" [textLabel]="\'title\'" [addedClass]="\'fluid\'"></div>\n    </div>\n    <div class="field">\n        <label>Tasks</label>\n        <div class="field" *ngFor="let task of story.tasks">\n            <div class="ui small fluid left icon input">\n                <i class="inverted circular checkmark link icon" [ngClass]="{\'green\': task.completed}" (click)="task.completed = !task.completed"></i>\n                <input [(ngModel)]="task.description">\n            </div>\n        </div>\n    </div>\n    <button class="ui right floated mini button" (click)="addTask()">Add Task</button>\n    <div class="ui hidden clearing divider"></div>\n    <button *ngIf="story.id" class="ui secondary button" (click)="delete()">Delete</button>\n    <button class="ui right floated primary button" (click)="save()">Save</button>\n    <div class="ui hidden clearing divider"></div>\n';
     },
     349: function(t, e, i) {
         "use strict";
         var n = this && this.__decorate || function(t, e, i, n) {
-            var o, r = arguments.length, s = 3 > r ? e : null === n ? n = Object.getOwnPropertyDescriptor(e, i) : n;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) s = Reflect.decorate(t, e, i, n); else for (var c = t.length - 1; c >= 0; c--) (o = t[c]) && (s = (3 > r ? o(s) : r > 3 ? o(e, i, s) : o(e, i)) || s);
-            return r > 3 && s && Object.defineProperty(e, i, s), s;
+            var o, s = arguments.length, r = 3 > s ? e : null === n ? n = Object.getOwnPropertyDescriptor(e, i) : n;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) r = Reflect.decorate(t, e, i, n); else for (var c = t.length - 1; c >= 0; c--) (o = t[c]) && (r = (3 > s ? o(r) : s > 3 ? o(e, i, r) : o(e, i)) || r);
+            return s > 3 && r && Object.defineProperty(e, i, r), r;
         }, o = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, r = i(1), s = i(342), c = i(350), a = function() {
+        }, s = i(1), r = i(342), c = i(350), a = function() {
             function t() {
                 this.opened = !1, this.toggle = function() {
                     this.opened = !this.opened;
                 };
             }
-            return n([ r.Input(), o("design:type", Object) ], t.prototype, "story", void 0), 
-            t = n([ r.Component({
+            return n([ s.Input(), o("design:type", Object) ], t.prototype, "story", void 0), 
+            t = n([ s.Component({
                 selector: "[story-list-item]",
                 template: c.htmlTemplate,
-                directives: [ s.StoryDetailComponent ]
+                directives: [ r.StoryDetailComponent ]
             }), o("design:paramtypes", []) ], t);
         }();
         e.StoryListItemComponent = a;

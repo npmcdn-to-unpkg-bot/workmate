@@ -1,54 +1,32 @@
-import { Component, ElementRef, Input, OnInit, Provider, forwardRef }   from "@angular/core";
-import { ControlValueAccessor, NG_VALUE_ACCESSOR, CORE_DIRECTIVES }     from "@angular/common";
+import { Component, ElementRef, Input, OnInit }     from "@angular/core";
+import { ControlValueAccessor, NgModel }            from "@angular/common";
 
-import { htmlTemplate }                                                 from './sm-select.component.html';
-
-
-const noop = () => {};
-
-const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR = new Provider(
-    NG_VALUE_ACCESSOR, {
-        useExisting: forwardRef(() => SMSelect),
-        multi: true
-    }
-);
+import { htmlTemplate }                             from './sm-select.component.html';
 
 declare var jQuery: any;
 
+
 @Component({
     selector: '[sm-select], sm-select',
-    template: htmlTemplate,
-    directives: [
-        CORE_DIRECTIVES
-    ],
-    providers: [
-        CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR
-    ]
+    template: htmlTemplate
 })
 
 export class SMSelect implements ControlValueAccessor, OnInit {
 
     @Input() choices: any;
-    @Input() choiceLabel: string;
-    @Input() choiceValue: string;
+    @Input() textLabel: string;
+    @Input() boundValueAttr: string;
 
-    private _value: any = '';
+    private selectedItem: any;
 
-    private _onTouchedCallback: (_:any) => void = noop;
+    private onChange: Function;
+    private onTouched: Function;
+    private vm: NgModel;
 
-    private _onChangeCallback: (_:any) => void = noop;
-
-    get value(): any { return this._value; };
-
-    set value(value: any) {
-        if (value !== this._value) {
-            let v = this.choiceValue ? value[this.choiceValue] : value;
-            this._value = v;
-            this._onChangeCallback(v);
-        }
+    constructor(private elementRef: ElementRef, vm: NgModel) {
+        this.vm = vm;
+        vm.valueAccessor = this;
     }
-
-    constructor(private elementRef: ElementRef) {}
 
     ngOnInit() {
         setTimeout(() => {
@@ -56,30 +34,38 @@ export class SMSelect implements ControlValueAccessor, OnInit {
         }, 0);
     }
 
-    getChoiceLabel(choice: any) {
-        let label = choice;
-        if (choice && this.choiceLabel && this.choiceValue) {
-            this.choices.forEach((item: any) => {
-                if (choice && choice[this.choiceValue] == item[this.choiceValue] || choice == item[this.choiceValue]) {
-                    label = item[this.choiceLabel];
-                }
-            });
-        } else if (choice && this.choiceLabel) {
-            label = choice[this.choiceLabel];
+    getTextLabel(choice: any) {
+        if (!choice) {
+            return;
         }
-        return label;
+        if (this.textLabel && this.boundValueAttr) {
+            for (var i = 0; i < this.choices.length; i++) {
+                if (choice[this.boundValueAttr] == this.choices[i][this.boundValueAttr] || choice == this.choices[i][this.boundValueAttr]) {
+                    return this.choices[i][this.textLabel];
+                }
+            }
+        }
+        return choice[this.textLabel] || choice;
+    }
+
+    onSelect(item: any) {
+        let value = item[this.boundValueAttr] || item;
+        this.writeValue(value);
+        this.vm.viewToModelUpdate(value);
     }
 
     writeValue(value: any) {
-      this._value = value;
+        this.selectedItem = value;
     }
 
-    registerOnChange(fn: any) {
-      this._onChangeCallback = fn;
+    public registerOnChange(fn: (_: any) => {}): void {
+        this.onChange = fn;
     }
 
-    registerOnTouched(fn: any) {
-      this._onTouchedCallback = fn;
+    public registerOnTouched(fn: () => {}): void {
+        this.onTouched = fn;
     }
+
+
 
 }

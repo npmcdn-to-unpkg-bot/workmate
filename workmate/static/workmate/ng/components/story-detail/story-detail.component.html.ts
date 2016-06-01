@@ -10,17 +10,17 @@ export const htmlTemplate = `
     </div>
     <div class="inline field">
         <label>Type</label>
-        <div sm-select class="ui right floated small input" [(ngModel)]="story.type" [choices]="types" [choiceLabel]="'title'"></div>
+        <div sm-select class="ui right floated small input" [(ngModel)]="story.type" [choices]="types" [textLabel]="'title'"></div>
     </div>
     <div class="ui hidden clearing divider"></div>
     <div class="inline field">
         <label>Effort</label>
-        <div sm-select class="ui right floated small input" [(ngModel)]="story.effort" [choices]="storyService.effortChoices" [choiceLabel]="'label'" [choiceValue]="'value'"></div>
+        <div sm-select class="ui right floated small input" [(ngModel)]="story.effort" [choices]="storyService.effortChoices" [textLabel]="'label'" [boundValueAttr]="'value'"></div>
     </div>
     <div class="ui hidden clearing divider"></div>
     <div class="inline field">
         <label>State</label>
-        <div sm-select class="ui right floated small input" [(ngModel)]="story.state" [choices]="states" [choiceLabel]="'title'"></div>
+        <div sm-select class="ui right floated small input" [(ngModel)]="story.state" [choices]="states" [textLabel]="'title'"></div>
     </div>
     <div class="ui hidden clearing divider"></div>  
     <div class="field">
@@ -31,7 +31,7 @@ export const htmlTemplate = `
     </div>
     <div class="field">
         <label>Tags</label>
-        <div sm-select-multiple class="ui small input" [(ngModel)]="story.tags" [choices]="tags" [choiceLabel]="'title'" [addedClass]="'fluid'"></div>
+        <div sm-select-multiple class="ui small input" [(ngModel)]="story.tags" [choices]="tags" [textLabel]="'title'" [addedClass]="'fluid'"></div>
     </div>
     <div class="field">
         <label>Tasks</label>
