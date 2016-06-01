@@ -1,6 +1,6 @@
 import { Component, Input }                 from '@angular/core';
 
-import { Story }                            from '../../models/story';
+import { iStory }                           from '../../models/story';
 import { StoryDetailComponent }             from '../story-detail/story-detail.component';
 import { htmlTemplate }                     from './story-list-item.component.html';
 
@@ -12,7 +12,7 @@ import { htmlTemplate }                     from './story-list-item.component.ht
 })
 
 export class StoryListItemComponent {
-    @Input() story: Story;
+    @Input() story: iStory;
     opened: boolean = false;
 
     toggle = function() {

@@ -1,7 +1,7 @@
 import { Component, OnInit }                            from '@angular/core';
 
-import { Story, StoryState, StoryType }                 from '../../models/story';
-import { Tag }                                          from '../../models/tag';
+import { iStory, Story, iStoryState, iStoryType }       from '../../models/story';
+import { iTag }                                         from '../../models/tag';
 import { StoryService }                                 from '../../services/story.service';
 import { StoryStateService }                            from '../../services/story-state.service';
 import { StoryTypeService }                             from '../../services/story-type.service';
@@ -19,10 +19,10 @@ import { htmlTemplate }                                 from './story-list.compo
 
 export class StoryListComponent implements OnInit {
 
-    stories: Story[];
-    states: StoryState[];
-    tags: Tag[];
-    types: StoryType[];
+    stories: iStory[];
+    states: iStoryState[];
+    tags: iTag[];
+    types: iStoryType[];
     newBacklogStory: Story;
     newBacklogOpened: boolean = false;
     newIceboxStory: Story;
@@ -49,10 +49,18 @@ export class StoryListComponent implements OnInit {
 
     createNew = function (backlog: boolean) {
         if(backlog) {
-            this.newBacklogStory = new Story();
+            this.newBacklogStory = new Story({
+                title: 'New Story',
+                state: null,
+                type: null
+            });
             this.newBacklogOpened = !this.newBacklogOpened;
         } else {
-            this.newIceboxStory = new Story();
+            this.newIceboxStory = new Story({
+                title: 'New Story',
+                state: null,
+                type: null
+            });
             this.newIceboxOpened = !this.newIceboxOpened;
         }
     }

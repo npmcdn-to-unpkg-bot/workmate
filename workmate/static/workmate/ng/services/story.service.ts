@@ -1,7 +1,7 @@
 import { Injectable }                                       from '@angular/core';
 import { Http }                                             from '@angular/http';
 
-import { Story }                                            from '../models/story';
+import { iStory }                                           from '../models/story';
 import { AlertService }                                     from './alert.service';
 import { BaseService }                                      from './base.service';
 
@@ -18,7 +18,7 @@ interface EffortChoice {
 @Injectable()
 export class StoryService extends BaseService {
 
-    objects$: Observable<Story[]>;
+    objects$: Observable<iStory[]>;
 
     effortChoices: EffortChoice[] = [
         {value: '0.5', label: '0.5 Points'},
@@ -28,13 +28,13 @@ export class StoryService extends BaseService {
         {value: '5.0', label: '5 Points'}
     ];
 
-    protected _objectsObserver: Observer<Story[]>;
-    protected _dataStore: { objects: Story[], meta: Object };
+    protected _objectsObserver: Observer<iStory[]>;
+    protected _dataStore: { objects: iStory[], meta: Object };
     protected _baseUrl = '/api/v1/story/';
 
     constructor (protected _http: Http, protected _alertService: AlertService) {
         super(_http, _alertService);
-        this.objects$ = new Observable<Story[]>((observer:any) => this._objectsObserver = observer).share();
+        this.objects$ = new Observable<iStory[]>((observer:any) => this._objectsObserver = observer).share();
     }
 
 }

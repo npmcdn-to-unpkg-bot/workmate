@@ -1,6 +1,6 @@
 import { Component, Input }               from '@angular/core';
 
-import { Contact }                        from '../../models/contact';
+import { iContact }                       from '../../models/contact';
 import { htmlTemplate }                   from './contact-detail.component.html';
 
 @Component({
@@ -10,6 +10,6 @@ import { htmlTemplate }                   from './contact-detail.component.html'
 
 export class ContactDetailComponent {
 
-    @Input() contact: Contact;
+    @Input() contact: iContact;
 
 }

@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform }                  from "@angular/core";
 
-import { Contact }                              from '../models/contact';
+import { iContact }                             from '../models/contact';
 
 
 @Pipe({
@@ -14,7 +14,7 @@ export class ContactSearchPipe implements PipeTransform {
         let output = value;
         filters.forEach((item, i) => {
             output = output.filter(
-                (contact:Contact) => (
+                (contact:iContact) => (
                     contact.name.toLocaleLowerCase().indexOf(item) != -1 ||
                     contact.email_address.toLocaleLowerCase().indexOf(item) != -1 ||
                     contact.address.toLocaleLowerCase().indexOf(item) != -1 ||

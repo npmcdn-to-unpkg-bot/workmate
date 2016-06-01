@@ -1,7 +1,7 @@
 import { Component, Input, OnInit }                                         from '@angular/core';
 
-import { Story, StoryState, StoryType, StoryTask }                          from '../../models/story';
-import { Tag }                                                              from '../../models/tag';
+import { iStory, iStoryState, iStoryType, StoryTask }                       from '../../models/story';
+import { iTag }                                                             from '../../models/tag';
 import { SMSelect }                                                         from '../../controls/sm-select/sm-select.component';
 import { SMSelectMultiple }                                                 from '../../controls/sm-select-multiple/sm-select-multiple.component';
 import { StoryService }                                                     from '../../services/story.service';
@@ -21,11 +21,11 @@ import { htmlTemplate }                                                     from
 })
 
 export class StoryDetailComponent implements OnInit {
-    @Input() story: Story;
+    @Input() story: iStory;
 
-    states: StoryState[];
-    tags: Tag[];
-    types: StoryType[];
+    states: iStoryState[];
+    tags: iTag[];
+    types: iStoryType[];
 
     constructor(
         private storyService: StoryService,
@@ -35,7 +35,10 @@ export class StoryDetailComponent implements OnInit {
     ) {}
 
     addTask() {
-        let newTask = new StoryTask();
+        let newTask = new StoryTask({
+            completed: false,
+            description: ''
+        });
         this.story.tasks.push(newTask)
     }
 

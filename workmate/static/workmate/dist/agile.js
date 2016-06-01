@@ -9,7 +9,7 @@ webpackJsonp([ 0 ], {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
         }, r = i(1), s = i(97), c = i(118);
         i(301);
-        var a = i(331), l = i(332), u = i(333), d = i(335), f = i(336), p = i(337), h = i(338), v = i(339), y = function() {
+        var a = i(331), l = i(332), u = i(333), d = i(335), p = i(336), f = i(337), h = i(338), v = i(339), y = function() {
             function t() {}
             return t = n([ r.Component({
                 selector: "agile-app",
@@ -17,7 +17,7 @@ webpackJsonp([ 0 ], {
                 directives: [ v.StoryListComponent, h.AlertComponent ],
                 providers: [ s.HTTP_PROVIDERS, r.provide(s.RequestOptions, {
                     useClass: a.ExRequestOptions
-                }), l.AlertService, u.StoryService, d.StoryStateService, f.StoryTypeService, p.TagService ]
+                }), l.AlertService, u.StoryService, d.StoryStateService, p.StoryTypeService, f.TagService ]
             }), o("design:paramtypes", []) ], t);
         }();
         e.AgileComponent = y, c.bootstrap(y);
@@ -324,12 +324,19 @@ webpackJsonp([ 0 ], {
             return r > 3 && s && Object.defineProperty(e, i, s), s;
         }, o = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, r = i(1), s = i(340), c = i(333), a = i(335), l = i(336), u = i(337), d = i(341), f = i(347), p = i(349), h = function() {
+        }, r = i(1), s = i(340), c = i(333), a = i(335), l = i(336), u = i(337), d = i(341), p = i(347), f = i(349), h = function() {
             function t(t, e, i, n) {
                 this.storyService = t, this.storyStateService = e, this.storyTypeService = i, this.tagService = n, 
                 this.newBacklogOpened = !1, this.newIceboxOpened = !1, this.createNew = function(t) {
-                    t ? (this.newBacklogStory = new s.Story(), this.newBacklogOpened = !this.newBacklogOpened) : (this.newIceboxStory = new s.Story(), 
-                    this.newIceboxOpened = !this.newIceboxOpened);
+                    t ? (this.newBacklogStory = new s.Story({
+                        title: "New Story",
+                        state: null,
+                        type: null
+                    }), this.newBacklogOpened = !this.newBacklogOpened) : (this.newIceboxStory = new s.Story({
+                        title: "New Story",
+                        state: null,
+                        type: null
+                    }), this.newIceboxOpened = !this.newIceboxOpened);
                 };
             }
             return t.prototype.ngOnInit = function() {
@@ -346,8 +353,8 @@ webpackJsonp([ 0 ], {
                 this.tagService.loadAll();
             }, t = n([ r.Component({
                 selector: "story-list",
-                template: p.htmlTemplate,
-                directives: [ d.StoryDetailComponent, f.StoryListItemComponent ]
+                template: f.htmlTemplate,
+                directives: [ d.StoryDetailComponent, p.StoryListItemComponent ]
             }), o("design:paramtypes", [ c.StoryService, a.StoryStateService, l.StoryTypeService, u.TagService ]) ], t);
         }();
         e.StoryListComponent = h;
@@ -355,23 +362,30 @@ webpackJsonp([ 0 ], {
     340: function(t, e) {
         "use strict";
         var i = function() {
-            function t() {}
+            function t(t) {
+                this.completed = t.completed, this.description = t.description;
+            }
             return t;
         }();
         e.StoryTask = i;
         var n = function() {
-            function t() {}
+            function t(t) {
+                this.title = t.title;
+            }
             return t;
         }();
         e.StoryType = n;
         var o = function() {
-            function t() {}
+            function t(t) {
+                this.title = t.title;
+            }
             return t;
         }();
         e.StoryState = o;
         var r = function() {
-            function t() {
-                this.title = "New Story", this.state = null, this.tags = [], this.tasks = [], this.type = null;
+            function t(t) {
+                this.title = t.title || "New Story", this.description = t.description, this.state = t.state, 
+                this.tags = t.tags || [], this.tasks = t.tasks || [], this.type = t.type;
             }
             return t;
         }();
@@ -385,12 +399,15 @@ webpackJsonp([ 0 ], {
             return r > 3 && s && Object.defineProperty(e, i, s), s;
         }, o = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, r = i(1), s = i(340), c = i(342), a = i(344), l = i(333), u = i(335), d = i(336), f = i(337), p = i(346), h = function() {
+        }, r = i(1), s = i(340), c = i(342), a = i(344), l = i(333), u = i(335), d = i(336), p = i(337), f = i(346), h = function() {
             function t(t, e, i, n) {
                 this.storyService = t, this.storyStateService = e, this.storyTypeService = i, this.tagService = n;
             }
             return t.prototype.addTask = function() {
-                var t = new s.StoryTask();
+                var t = new s.StoryTask({
+                    completed: !1,
+                    description: ""
+                });
                 this.story.tasks.push(t);
             }, t.prototype.save = function() {
                 this.story.id ? this.storyService.update(this.story) : this.storyService.create(this.story);
@@ -405,11 +422,11 @@ webpackJsonp([ 0 ], {
                 }), this.tagService.objects$.subscribe(function(e) {
                     return t.tags = e;
                 }), this.storyStateService.loadAll(), this.storyTypeService.loadAll(), this.tagService.loadAll();
-            }, n([ r.Input(), o("design:type", s.Story) ], t.prototype, "story", void 0), t = n([ r.Component({
+            }, n([ r.Input(), o("design:type", Object) ], t.prototype, "story", void 0), t = n([ r.Component({
                 selector: "[story-detail]",
-                template: p.htmlTemplate,
+                template: f.htmlTemplate,
                 directives: [ c.SMSelect, a.SMSelectMultiple ]
-            }), o("design:paramtypes", [ l.StoryService, u.StoryStateService, d.StoryTypeService, f.TagService ]) ], t);
+            }), o("design:paramtypes", [ l.StoryService, u.StoryStateService, d.StoryTypeService, p.TagService ]) ], t);
         }();
         e.StoryDetailComponent = h;
     },
@@ -560,20 +577,20 @@ webpackJsonp([ 0 ], {
             return r > 3 && s && Object.defineProperty(e, i, s), s;
         }, o = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, r = i(1), s = i(340), c = i(341), a = i(348), l = function() {
+        }, r = i(1), s = i(341), c = i(348), a = function() {
             function t() {
                 this.opened = !1, this.toggle = function() {
                     this.opened = !this.opened;
                 };
             }
-            return n([ r.Input(), o("design:type", s.Story) ], t.prototype, "story", void 0), 
+            return n([ r.Input(), o("design:type", Object) ], t.prototype, "story", void 0), 
             t = n([ r.Component({
                 selector: "[story-list-item]",
-                template: a.htmlTemplate,
-                directives: [ c.StoryDetailComponent ]
+                template: c.htmlTemplate,
+                directives: [ s.StoryDetailComponent ]
             }), o("design:paramtypes", []) ], t);
         }();
-        e.StoryListItemComponent = l;
+        e.StoryListItemComponent = a;
     },
     348: function(t, e) {
         "use strict";

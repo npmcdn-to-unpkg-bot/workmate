@@ -1,6 +1,6 @@
 import { Component, OnInit }            from '@angular/core';
 
-import { Contact }                      from '../../models/contact';
+import { iContact }                     from '../../models/contact';
 import { ContactService }               from '../../services/contact.service';
 import { ContactDetailComponent }       from '../contact-detail/contact-detail.component';
 import { htmlTemplate }                 from './contact-list.component.html';
@@ -18,15 +18,15 @@ export class ContactListComponent implements OnInit {
 
     constructor(private contactService: ContactService) {}
 
-    contacts: Contact[];
-    selectedContact: Contact;
+    contacts: iContact[];
+    selectedContact: iContact;
 
     ngOnInit() {
         this.contactService.objects$.subscribe(objects => this.contacts = objects);
         this.contactService.loadAll();
     }
 
-    onSelect(contact: Contact) {
+    onSelect(contact: iContact) {
         this.selectedContact = contact;
     }
 

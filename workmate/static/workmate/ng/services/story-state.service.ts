@@ -1,7 +1,7 @@
 import { Injectable }                                       from '@angular/core';
 import { Http }                                             from '@angular/http';
 
-import { StoryState }                                       from '../models/story';
+import { iStoryState }                                       from '../models/story';
 import { AlertService }                                     from './alert.service';
 import { BaseService }                                      from './base.service';
 
@@ -12,15 +12,15 @@ import { Observer }                                         from 'rxjs/Observer'
 @Injectable()
 export class StoryStateService extends BaseService {
 
-    objects$: Observable<StoryState[]>;
+    objects$: Observable<iStoryState[]>;
 
-    protected _objectsObserver: Observer<StoryState[]>;
-    protected _dataStore: { objects: StoryState[], meta: Object };
+    protected _objectsObserver: Observer<iStoryState[]>;
+    protected _dataStore: { objects: iStoryState[], meta: Object };
     protected _baseUrl = '/api/v1/story_state/';
 
     constructor (protected _http: Http, protected _alertService: AlertService) {
         super(_http, _alertService);
-        this.objects$ = new Observable<StoryState[]>((observer:any) => this._objectsObserver = observer).share();
+        this.objects$ = new Observable<iStoryState[]>((observer:any) => this._objectsObserver = observer).share();
     }
 
 }

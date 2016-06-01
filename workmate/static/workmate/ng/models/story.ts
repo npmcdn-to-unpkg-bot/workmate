@@ -1,41 +1,78 @@
-import { Tag }                      from './tag';
+import { iTag }                      from './tag';
 
 
-export class StoryTask {
-    id: number;
-    completed: boolean;
+export interface iStoryTask {
+    id?: number;
+    completed?: boolean;
     description: string;
-    resource_uri: string;
+    resource_uri?: string;
 }
 
-export class StoryType {
-    id: number;
+export class StoryTask implements iStoryTask {
+    completed: boolean;
+    description: string;
+
+    constructor(options: iStoryTask) {
+        this.completed = options.completed;
+        this.description = options.description;
+    }
+}
+
+export interface iStoryType {
+    id?: number;
     title: string;
-    resource_uri: string;
+    resource_uri?: string;
+}
+
+export class StoryType implements iStoryType {
+    title: string;
+
+    constructor(options: iStoryType) {
+        this.title = options.title;
+    }
+}
+
+export interface iStoryState {
+    id?: number;
+    title: string;
+    resource_uri?: string;
 }
 
 export class StoryState {
-    id: number;
     title: string;
-    resource_uri: string;
+
+    constructor(options: iStoryType) {
+        this.title = options.title;
+    }
 }
 
-export class Story {
-    id: number;
+export interface iStory {
+    id?: number;
+    title: string;
+    description?: string;
+    effort?: number;
+    state: iStoryState;
+    tags?: iTag[];
+    tasks?: iStoryTask[];
+    type: iStoryType;
+    resource_uri?: string;
+}
+
+export class Story implements iStory {
     title: string;
     description: string;
     effort: number;
-    state: StoryState;
-    tags: Tag[];
-    tasks: StoryTask[];
-    type: StoryType;
-    resource_uri: string;
+    state: iStoryState;
+    tags: iTag[];
+    tasks: iStoryTask[];
+    type: iStoryType;
 
-    constructor() {
-        this.title = 'New Story';
-        this.state = null;
-        this.tags = [];
-        this.tasks = [];
-        this.type = null;
+    constructor(options: iStory) {
+        this.title = options.title || 'New Story';
+        this.description = options.description;
+        this.state = options.state;
+        this.tags = options.tags || [];
+        this.tasks = options.tasks || [];
+        this.type = options.type;
     }
 }
