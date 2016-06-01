@@ -1,7 +1,7 @@
 import { Injectable }                                       from '@angular/core';
 import { Http }                                             from '@angular/http';
 
-import { iStoryType }                                        from '../models/story';
+import { iStoryType }                                       from '../interfaces/story_type';
 import { AlertService }                                     from './alert.service';
 import { BaseService }                                      from './base.service';
 

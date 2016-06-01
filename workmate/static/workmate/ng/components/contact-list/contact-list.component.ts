@@ -1,6 +1,6 @@
 import { Component, OnInit }            from '@angular/core';
 
-import { iContact }                     from '../../models/contact';
+import { iContact }                     from '../../interfaces/contact';
 import { ContactService }               from '../../services/contact.service';
 import { ContactDetailComponent }       from '../contact-detail/contact-detail.component';
 import { htmlTemplate }                 from './contact-list.component.html';

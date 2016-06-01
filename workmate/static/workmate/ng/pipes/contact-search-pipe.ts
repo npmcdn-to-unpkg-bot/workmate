@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform }                  from "@angular/core";
 
-import { iContact }                             from '../models/contact';
+import { iContact }                             from '../interfaces/contact';
 
 
 @Pipe({

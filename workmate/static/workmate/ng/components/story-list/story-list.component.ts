@@ -1,7 +1,9 @@
 import { Component, OnInit }                            from '@angular/core';
 
-import { iStory, Story, iStoryState, iStoryType }       from '../../models/story';
-import { iTag }                                         from '../../models/tag';
+import { iStory, Story }                                from '../../interfaces/story';
+import { iStoryState }                                  from '../../interfaces/story_state';
+import { iStoryType }                                   from '../../interfaces/story_type';
+import { iTag }                                         from '../../interfaces/tag';
 import { StoryService }                                 from '../../services/story.service';
 import { StoryStateService }                            from '../../services/story-state.service';
 import { StoryTypeService }                             from '../../services/story-type.service';

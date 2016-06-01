@@ -1,6 +1,6 @@
 import { Component, Input }                 from '@angular/core';
 
-import { iStory }                           from '../../models/story';
+import { iStory }                           from '../../interfaces/story';
 import { StoryDetailComponent }             from '../story-detail/story-detail.component';
 import { htmlTemplate }                     from './story-list-item.component.html';
 

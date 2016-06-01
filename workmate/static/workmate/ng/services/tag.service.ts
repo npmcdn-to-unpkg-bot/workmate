@@ -1,7 +1,7 @@
 import { Injectable }                                       from '@angular/core';
 import { Http }                                             from '@angular/http';
 
-import { iTag }                                             from '../models/tag';
+import { iTag }                                             from '../interfaces/tag';
 import { AlertService }                                     from './alert.service';
 import { BaseService }                                      from './base.service';
 

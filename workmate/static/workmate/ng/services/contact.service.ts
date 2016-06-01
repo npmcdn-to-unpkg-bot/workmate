@@ -1,7 +1,7 @@
 import { Injectable }                                       from '@angular/core';
 import { Http, URLSearchParams }                            from '@angular/http';
 
-import { iContact }                                         from '../models/contact';
+import { iContact }                                         from '../interfaces/contact';
 import { AlertService }                                     from './alert.service';
 import { BaseService }                                      from './base.service';
 

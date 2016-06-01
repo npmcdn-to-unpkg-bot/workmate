@@ -1,7 +1,8 @@
 import { Http, Response }                                   from '@angular/http';
 
 import { ExRequestOptions }                                 from '../transportBoxes/exRequestOptions';
-import { Alert, AlertService }                              from './alert.service';
+import { Alert }                                            from '../interfaces/alert';
+import { AlertService }                                     from './alert.service';
 
 import { Observable }                                       from 'rxjs/Observable';
 import { Observer }                                         from 'rxjs/Observer';
@@ -133,7 +134,7 @@ export class BaseService {
     }
 
     protected createAlert(type: string, message: string) {
-        this._alertService.createAlert(new Alert(type, message));
+        this._alertService.createAlert(new Alert({type: type, message: message}));
     }
 
 }

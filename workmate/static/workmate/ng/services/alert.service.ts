@@ -1,40 +1,25 @@
 import { Injectable }                                       from '@angular/core';
 
+import { iAlert }                                           from '../interfaces/alert';
 import { Observable }                                       from 'rxjs/Observable';
 import { Observer }                                         from 'rxjs/Observer';
 
 
-export class Alert {
-    id: number;
-    type: string;
-    message: string;
-    dismissable: boolean = true;
-    dismissOnTimeout: number = 5000;
-
-    constructor(type: string, message: string, dismissable?: boolean, dismissOnTimeout?: number) {
-        this.type = type;
-        this.message = message;
-        this.dismissable = dismissable || this.dismissable;
-        this.dismissOnTimeout = dismissOnTimeout || this.dismissOnTimeout;
-    }
-
-}
-
 @Injectable()
 export class AlertService {
 
-    alerts$: Observable<Alert[]>;
+    alerts$: Observable<iAlert[]>;
 
-    private _dataObserver: Observer<Alert[]>;
-    private _dataStore: { alerts: Alert[] };
+    private _dataObserver: Observer<iAlert[]>;
+    private _dataStore: { alerts: iAlert[] };
     private nextId: number = 1;
 
     constructor () {
         this._dataStore = { alerts: [] };
-        this.alerts$ = new Observable<Alert[]>((observer:any) => this._dataObserver = observer).share();
+        this.alerts$ = new Observable<iAlert[]>((observer:any) => this._dataObserver = observer).share();
     }
 
-    createAlert(alert: Alert) {
+    createAlert(alert: iAlert) {
         alert.id = this.getNextId();
         this._dataStore.alerts.push(alert);
         this._dataObserver.next(this._dataStore.alerts);
@@ -43,7 +28,7 @@ export class AlertService {
         }
     }
 
-    closeAlert(alert: Alert) {
+    closeAlert(alert: iAlert) {
         this._dataStore.alerts.forEach((item, i) => {
             if (item.id === alert.id) {
                 this._dataStore.alerts.splice(i, 1);

@@ -1,7 +1,10 @@
 import { Component, Input, OnInit }                                         from '@angular/core';
 
-import { iStory, iStoryState, iStoryType, StoryTask }                       from '../../models/story';
-import { iTag }                                                             from '../../models/tag';
+import { iStory }                                                           from '../../interfaces/story';
+import { iStoryState }                                                      from '../../interfaces/story_state';
+import { iStoryType }                                                       from '../../interfaces/story_type';
+import { iTag }                                                             from '../../interfaces/tag';
+import { StoryTask }                                                        from '../../interfaces/story_task';
 import { SMSelect }                                                         from '../../controls/sm-select/sm-select.component';
 import { SMSelectMultiple }                                                 from '../../controls/sm-select-multiple/sm-select-multiple.component';
 import { StoryService }                                                     from '../../services/story.service';

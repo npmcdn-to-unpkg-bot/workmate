@@ -1,6 +1,7 @@
 import { Component, OnInit }                            from '@angular/core';
 
-import { Alert, AlertService }                          from '../../services/alert.service';
+import { iAlert }                                       from '../../interfaces/alert';
+import { AlertService }                                 from '../../services/alert.service';
 
 
 const ALERT_TEMPLATE = `
@@ -17,7 +18,7 @@ const ALERT_TEMPLATE = `
 
 export class AlertComponent implements OnInit {
 
-    alerts: Alert[];
+    alerts: iAlert[];
 
     constructor(
         private alertService: AlertService
