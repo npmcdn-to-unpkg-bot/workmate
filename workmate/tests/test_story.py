@@ -38,6 +38,11 @@ class StoryModelTests(WorkmateTestCase):
         field = Story._meta.get_field("tags")
         self.assertTrue(field.blank)
 
+    def test_icebox(self):
+        field = Story._meta.get_field("icebox")
+        self.assertTrue(field.blank)
+        self.assertTrue(field.default)
+
     def test_str_method(self):
         tag = Story(title='Some Story')
         self.assertEqual(tag.__str__(), 'Some Story')

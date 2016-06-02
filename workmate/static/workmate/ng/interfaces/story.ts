@@ -29,7 +29,7 @@ export class Story implements iStory {
 
     constructor(options: iStory) {
         this.description = options.description;
-        this.icebox = options.icebox || true;
+        this.icebox = options.icebox;
         this.title = options.title;
         this.state = options.state;
         this.tags = options.tags || [];

@@ -26,7 +26,8 @@ class StoryResourceTests(WorkmateAPITestCase):
             type=self.type,
             state=self.state,
             effort='1.0',
-            description='Description'
+            description='Description',
+            icebox=True
         )
 
         self.list_url = '/api/v1/story/'.format(self.existing_object.pk)
@@ -53,6 +54,7 @@ class StoryResourceTests(WorkmateAPITestCase):
         self.assertEqual(self.deserialize(resp)['objects'][0], {
             'description': self.existing_object.description,
             'effort': self.existing_object.effort,
+            'icebox': self.existing_object.icebox,
             'id': self.existing_object.pk,
             'resource_uri': '/api/v1/story/{0}/'.format(self.existing_object.pk),
             'state': self.serialized_state,
@@ -82,6 +84,7 @@ class StoryResourceTests(WorkmateAPITestCase):
             self.deserialize(resp), [
                 'description',
                 'effort',
+                'icebox',
                 'id',
                 'resource_uri',
                 'state',
@@ -89,6 +92,7 @@ class StoryResourceTests(WorkmateAPITestCase):
                 'tasks',
                 'title',
                 'type'])
+        self.assertEqual(self.deserialize(resp)['icebox'], self.existing_object.icebox)
         self.assertEqual(self.deserialize(resp)['description'], self.existing_object.description)
         self.assertEqual(self.deserialize(resp)['effort'], self.existing_object.effort)
         self.assertEqual(self.deserialize(resp)['title'], self.existing_object.title)

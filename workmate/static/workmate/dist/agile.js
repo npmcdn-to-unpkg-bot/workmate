@@ -381,7 +381,7 @@ webpackJsonp([ 0 ], {
         "use strict";
         var n = function() {
             function t(t) {
-                this.description = t.description, this.icebox = t.icebox || !0, this.title = t.title, 
+                this.description = t.description, this.icebox = t.icebox, this.title = t.title, 
                 this.state = t.state, this.tags = t.tags || [], this.tasks = t.tasks || [], this.type = t.type;
             }
             return t;
