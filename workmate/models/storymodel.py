@@ -48,6 +48,7 @@ class Story(SiteAbstract):
     effort = models.DecimalField(decimal_places=1, max_digits=2, null=True, blank=True)
     description = models.TextField(null=True, blank=True)
     tags = models.ManyToManyField(Tag, blank=True)
+    icebox = models.BooleanField(default=True)
 
     class Meta:
         ordering = ('title',)

@@ -6,28 +6,31 @@ import { iTag }                         from './tag';
 
 export interface iStory {
     id?: number;
-    title: string;
     description?: string;
     effort?: number;
+    icebox?: boolean;
     state: iStoryState;
     tags?: iTag[];
     tasks?: iStoryTask[];
+    title: string;
     type: iStoryType;
     resource_uri?: string;
 }
 
 export class Story implements iStory {
-    title: string;
     description: string;
     effort: number;
+    icebox: boolean;
     state: iStoryState;
     tags: iTag[];
     tasks: iStoryTask[];
+    title: string;
     type: iStoryType;
 
     constructor(options: iStory) {
-        this.title = options.title;
         this.description = options.description;
+        this.icebox = options.icebox || true;
+        this.title = options.title;
         this.state = options.state;
         this.tags = options.tags || [];
         this.tasks = options.tasks || [];

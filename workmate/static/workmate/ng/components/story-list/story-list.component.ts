@@ -8,15 +8,19 @@ import { StoryService }                                 from '../../services/sto
 import { StoryStateService }                            from '../../services/story-state.service';
 import { StoryTypeService }                             from '../../services/story-type.service';
 import { TagService }                                   from '../../services/tag.service';
+import { FilterPipe }                                   from '../../pipes/filter-pipe';
 import { StoryDetailComponent }                         from '../story-detail/story-detail.component'
 import { StoryListItemComponent }                       from '../story-list-item/story-list-item.component'
 import { htmlTemplate }                                 from './story-list.component.html';
 
+import { Dragula, DragulaService }                      from 'ng2-dragula/ng2-dragula';
 
 @Component({
     selector: 'story-list',
     template: htmlTemplate,
-    directives: [StoryDetailComponent, StoryListItemComponent]
+    directives: [Dragula, StoryDetailComponent, StoryListItemComponent],
+    viewProviders: [DragulaService],
+    pipes: [FilterPipe]
 })
 
 export class StoryListComponent implements OnInit {
@@ -35,7 +39,8 @@ export class StoryListComponent implements OnInit {
         private storyService: StoryService,
         private storyStateService: StoryStateService,
         private storyTypeService: StoryTypeService,
-        private tagService: TagService
+        private tagService: TagService,
+        private dragulaService: DragulaService
     ) {}
 
     ngOnInit() {
@@ -47,23 +52,41 @@ export class StoryListComponent implements OnInit {
         this.storyStateService.loadAll();
         this.storyTypeService.loadAll();
         this.tagService.loadAll();
+
+        this.dragulaService.drop.subscribe((value:any) => {
+            console.log(value);
+            this.onDrop(value.slice(1));
+        });
     }
 
     createNew = function (backlog: boolean) {
         if(backlog) {
             this.newBacklogStory = new Story({
-                title: 'New Story',
+                icebox: false,
                 state: null,
+                title: 'New Story',
                 type: null
             });
             this.newBacklogOpened = !this.newBacklogOpened;
         } else {
             this.newIceboxStory = new Story({
-                title: 'New Story',
+                icebox: true,
                 state: null,
+                title: 'New Story',
                 type: null
             });
             this.newIceboxOpened = !this.newIceboxOpened;
         }
+    };
+
+    private onDrop(args:any) {
+        let [e, el] = args;
+        let data_id = e.attributes['data-id'].value;
+        let story = this.stories.find(item => item.id == data_id);
+        let icebox = e.parentElement.attributes['data-list'].value == 'icebox';
+        story.icebox = icebox;
+        this.storyService.update(story);
     }
+
+    
 }
