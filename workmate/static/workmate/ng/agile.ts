@@ -17,8 +17,8 @@ import { StoryListComponent }               from './components/story-list/story-
 @Component({
     selector: 'agile-app',
     template: `
-        <div class="wm-messages"><alert></alert></div>
         <story-list></story-list>
+        <div class="wm-messages ui sticky bottom fixed"><alert></alert></div>
     `,
     directives: [
         StoryListComponent,

@@ -2,25 +2,25 @@ webpackJsonp([ 1 ], {
     0: function(t, e, n) {
         "use strict";
         var a = this && this.__decorate || function(t, e, n, a) {
-            var i, o = arguments.length, c = 3 > o ? e : null === a ? a = Object.getOwnPropertyDescriptor(e, n) : a;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) c = Reflect.decorate(t, e, n, a); else for (var r = t.length - 1; r >= 0; r--) (i = t[r]) && (c = (3 > o ? i(c) : o > 3 ? i(e, n, c) : i(e, n)) || c);
-            return o > 3 && c && Object.defineProperty(e, n, c), c;
+            var i, o = arguments.length, r = 3 > o ? e : null === a ? a = Object.getOwnPropertyDescriptor(e, n) : a;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) r = Reflect.decorate(t, e, n, a); else for (var c = t.length - 1; c >= 0; c--) (i = t[c]) && (r = (3 > o ? i(r) : o > 3 ? i(e, n, r) : i(e, n)) || r);
+            return o > 3 && r && Object.defineProperty(e, n, r), r;
         }, i = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, o = n(1), c = n(97), r = n(118);
+        }, o = n(1), r = n(97), c = n(118);
         n(301);
         var s = n(330), l = n(331), d = n(366), u = n(338), f = n(367), p = function() {
             function t() {}
             return t = a([ o.Component({
                 selector: "contacts-app",
-                template: '\n        <div class="wm-messages"><alert></alert></div>\n        <contact-list></contact-list>\n    ',
+                template: '\n        <contact-list></contact-list>\n        <div class="wm-messages ui sticky bottom fixed"><alert></alert></div>\n    ',
                 directives: [ u.AlertComponent, f.ContactListComponent ],
-                providers: [ c.HTTP_PROVIDERS, o.provide(c.RequestOptions, {
+                providers: [ r.HTTP_PROVIDERS, o.provide(r.RequestOptions, {
                     useClass: s.ExRequestOptions
                 }), l.AlertService, d.ContactService ]
             }), i("design:paramtypes", []) ], t);
         }();
-        e.ContactsComponent = p, r.bootstrap(p);
+        e.ContactsComponent = p, c.bootstrap(p);
     },
     330: function(t, e, n) {
         "use strict";
@@ -31,12 +31,12 @@ webpackJsonp([ 1 ], {
             for (var a in e) e.hasOwnProperty(a) && (t[a] = e[a]);
             t.prototype = null === e ? Object.create(e) : (n.prototype = e.prototype, new n());
         }, i = this && this.__decorate || function(t, e, n, a) {
-            var i, o = arguments.length, c = 3 > o ? e : null === a ? a = Object.getOwnPropertyDescriptor(e, n) : a;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) c = Reflect.decorate(t, e, n, a); else for (var r = t.length - 1; r >= 0; r--) (i = t[r]) && (c = (3 > o ? i(c) : o > 3 ? i(e, n, c) : i(e, n)) || c);
-            return o > 3 && c && Object.defineProperty(e, n, c), c;
+            var i, o = arguments.length, r = 3 > o ? e : null === a ? a = Object.getOwnPropertyDescriptor(e, n) : a;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) r = Reflect.decorate(t, e, n, a); else for (var c = t.length - 1; c >= 0; c--) (i = t[c]) && (r = (3 > o ? i(r) : o > 3 ? i(e, n, r) : i(e, n)) || r);
+            return o > 3 && r && Object.defineProperty(e, n, r), r;
         }, o = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, c = n(1), r = n(97), s = function(t) {
+        }, r = n(1), c = n(97), s = function(t) {
             function e() {
                 t.call(this), this.headers.append("X-CSRFToken", this.getCookie("csrftoken"));
             }
@@ -45,33 +45,35 @@ webpackJsonp([ 1 ], {
                 return 2 == n.length ? n.pop().split(";").shift() : void 0;
             }, e.prototype.appendHeaders = function(t, e) {
                 this.headers.append(t, e);
-            }, e = i([ c.Injectable(), o("design:paramtypes", []) ], e);
-        }(r.BaseRequestOptions);
+            }, e = i([ r.Injectable(), o("design:paramtypes", []) ], e);
+        }(c.BaseRequestOptions);
         e.ExRequestOptions = s;
     },
     331: function(t, e, n) {
         "use strict";
         var a = this && this.__decorate || function(t, e, n, a) {
-            var i, o = arguments.length, c = 3 > o ? e : null === a ? a = Object.getOwnPropertyDescriptor(e, n) : a;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) c = Reflect.decorate(t, e, n, a); else for (var r = t.length - 1; r >= 0; r--) (i = t[r]) && (c = (3 > o ? i(c) : o > 3 ? i(e, n, c) : i(e, n)) || c);
-            return o > 3 && c && Object.defineProperty(e, n, c), c;
+            var i, o = arguments.length, r = 3 > o ? e : null === a ? a = Object.getOwnPropertyDescriptor(e, n) : a;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) r = Reflect.decorate(t, e, n, a); else for (var c = t.length - 1; c >= 0; c--) (i = t[c]) && (r = (3 > o ? i(r) : o > 3 ? i(e, n, r) : i(e, n)) || r);
+            return o > 3 && r && Object.defineProperty(e, n, r), r;
         }, i = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, o = n(1), c = n(35), r = function() {
+        }, o = n(1), r = n(35), c = function() {
             function t() {
                 var t = this;
                 this.nextId = 1, this._dataStore = {
                     alerts: []
-                }, this.alerts$ = new c.Observable(function(e) {
+                }, this.alerts$ = new r.Observable(function(e) {
                     return t._dataObserver = e;
                 }).share();
             }
             return t.prototype.createAlert = function(t) {
                 var e = this;
                 t.id = this.getNextId(), this._dataStore.alerts.push(t), this._dataObserver.next(this._dataStore.alerts), 
-                t.dismissOnTimeout > 0 && setTimeout(function() {
+                "error" == t.type ? setTimeout(function() {
                     return e.closeAlert(t);
-                }, t.dismissOnTimeout);
+                }, t.dismissErrorTimeout) : setTimeout(function() {
+                    return e.closeAlert(t);
+                }, t.dismissDefaultTimeout);
             }, t.prototype.closeAlert = function(t) {
                 var e = this;
                 this._dataStore.alerts.forEach(function(n, a) {
@@ -81,11 +83,11 @@ webpackJsonp([ 1 ], {
                 return this.nextId++;
             }, t = a([ o.Injectable(), i("design:paramtypes", []) ], t);
         }();
-        e.AlertService = r;
+        e.AlertService = c;
     },
     333: function(t, e, n) {
         "use strict";
-        var a = n(330), i = n(334), o = n(35), c = function() {
+        var a = n(330), i = n(334), o = n(35), r = function() {
             function t(t, e) {
                 var n = this;
                 this._http = t, this._alertService = e, this._baseUrl = "", this._postOptions = new a.ExRequestOptions(), 
@@ -167,14 +169,14 @@ webpackJsonp([ 1 ], {
                 }));
             }, t;
         }();
-        e.BaseService = c;
+        e.BaseService = r;
     },
     334: function(t, e) {
         "use strict";
         var n = function() {
             function t(t) {
-                this.type = t.type, this.message = t.message, this.dismissable = t.dismissable || !0, 
-                this.dismissOnTimeout = t.dismissOnTimeout || 5e3;
+                this.type = t.type, this.message = t.message, this.dismissable = null == t.dismissable ? !0 : t.dismissable, 
+                this.dismissDefaultTimeout = t.dismissDefaultTimeout || 5e3, this.dismissErrorTimeout = t.dismissErrorTimeout || 1e4;
             }
             return t;
         }();
@@ -183,12 +185,12 @@ webpackJsonp([ 1 ], {
     338: function(t, e, n) {
         "use strict";
         var a = this && this.__decorate || function(t, e, n, a) {
-            var i, o = arguments.length, c = 3 > o ? e : null === a ? a = Object.getOwnPropertyDescriptor(e, n) : a;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) c = Reflect.decorate(t, e, n, a); else for (var r = t.length - 1; r >= 0; r--) (i = t[r]) && (c = (3 > o ? i(c) : o > 3 ? i(e, n, c) : i(e, n)) || c);
-            return o > 3 && c && Object.defineProperty(e, n, c), c;
+            var i, o = arguments.length, r = 3 > o ? e : null === a ? a = Object.getOwnPropertyDescriptor(e, n) : a;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) r = Reflect.decorate(t, e, n, a); else for (var c = t.length - 1; c >= 0; c--) (i = t[c]) && (r = (3 > o ? i(r) : o > 3 ? i(e, n, r) : i(e, n)) || r);
+            return o > 3 && r && Object.defineProperty(e, n, r), r;
         }, i = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, o = n(1), c = n(331), r = '\n    <div class="ui {{ alert.type }} message" *ngFor="let alert of alerts">\n        <i class="close icon" *ngIf="alert.dismissable"></i><div class="header capitalize">{{ alert.type }}</div>\n        <p>{{ alert.message }}</p>\n    </div>\n  ', s = function() {
+        }, o = n(1), r = n(331), c = '\n    <div class="ui {{ alert.type }} message" *ngFor="let alert of alerts">\n        <i class="close icon" *ngIf="alert.dismissable"></i><div class="header capitalize">{{ alert.type }}</div>\n        <p>{{ alert.message }}</p>\n    </div>\n  ', s = function() {
             function t(t) {
                 this.alertService = t;
             }
@@ -199,8 +201,8 @@ webpackJsonp([ 1 ], {
                 });
             }, t = a([ o.Component({
                 selector: "alert",
-                template: r
-            }), i("design:paramtypes", [ c.AlertService ]) ], t);
+                template: c
+            }), i("design:paramtypes", [ r.AlertService ]) ], t);
         }();
         e.AlertComponent = s;
     },
@@ -213,12 +215,12 @@ webpackJsonp([ 1 ], {
             for (var a in e) e.hasOwnProperty(a) && (t[a] = e[a]);
             t.prototype = null === e ? Object.create(e) : (n.prototype = e.prototype, new n());
         }, i = this && this.__decorate || function(t, e, n, a) {
-            var i, o = arguments.length, c = 3 > o ? e : null === a ? a = Object.getOwnPropertyDescriptor(e, n) : a;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) c = Reflect.decorate(t, e, n, a); else for (var r = t.length - 1; r >= 0; r--) (i = t[r]) && (c = (3 > o ? i(c) : o > 3 ? i(e, n, c) : i(e, n)) || c);
-            return o > 3 && c && Object.defineProperty(e, n, c), c;
+            var i, o = arguments.length, r = 3 > o ? e : null === a ? a = Object.getOwnPropertyDescriptor(e, n) : a;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) r = Reflect.decorate(t, e, n, a); else for (var c = t.length - 1; c >= 0; c--) (i = t[c]) && (r = (3 > o ? i(r) : o > 3 ? i(e, n, r) : i(e, n)) || r);
+            return o > 3 && r && Object.defineProperty(e, n, r), r;
         }, o = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, c = n(1), r = n(97), s = n(331), l = n(333), d = n(35), u = function(t) {
+        }, r = n(1), c = n(97), s = n(331), l = n(333), d = n(35), u = function(t) {
             function e(e, n) {
                 var a = this;
                 t.call(this, e, n), this._http = e, this._alertService = n, this._baseUrl = "/api/v1/contact/", 
@@ -226,19 +228,19 @@ webpackJsonp([ 1 ], {
                     return a._objectsObserver = t;
                 }).share();
             }
-            return a(e, t), e = i([ c.Injectable(), o("design:paramtypes", [ r.Http, s.AlertService ]) ], e);
+            return a(e, t), e = i([ r.Injectable(), o("design:paramtypes", [ c.Http, s.AlertService ]) ], e);
         }(l.BaseService);
         e.ContactService = u;
     },
     367: function(t, e, n) {
         "use strict";
         var a = this && this.__decorate || function(t, e, n, a) {
-            var i, o = arguments.length, c = 3 > o ? e : null === a ? a = Object.getOwnPropertyDescriptor(e, n) : a;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) c = Reflect.decorate(t, e, n, a); else for (var r = t.length - 1; r >= 0; r--) (i = t[r]) && (c = (3 > o ? i(c) : o > 3 ? i(e, n, c) : i(e, n)) || c);
-            return o > 3 && c && Object.defineProperty(e, n, c), c;
+            var i, o = arguments.length, r = 3 > o ? e : null === a ? a = Object.getOwnPropertyDescriptor(e, n) : a;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) r = Reflect.decorate(t, e, n, a); else for (var c = t.length - 1; c >= 0; c--) (i = t[c]) && (r = (3 > o ? i(r) : o > 3 ? i(e, n, r) : i(e, n)) || r);
+            return o > 3 && r && Object.defineProperty(e, n, r), r;
         }, i = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, o = n(1), c = n(366), r = n(368), s = n(370), l = n(371), d = function() {
+        }, o = n(1), r = n(366), c = n(368), s = n(370), l = n(371), d = function() {
             function t(t) {
                 this.contactService = t;
             }
@@ -252,29 +254,29 @@ webpackJsonp([ 1 ], {
             }, t = a([ o.Component({
                 selector: "contact-list",
                 template: s.htmlTemplate,
-                directives: [ r.ContactDetailComponent ],
+                directives: [ c.ContactDetailComponent ],
                 pipes: [ l.ContactSearchPipe ]
-            }), i("design:paramtypes", [ c.ContactService ]) ], t);
+            }), i("design:paramtypes", [ r.ContactService ]) ], t);
         }();
         e.ContactListComponent = d;
     },
     368: function(t, e, n) {
         "use strict";
         var a = this && this.__decorate || function(t, e, n, a) {
-            var i, o = arguments.length, c = 3 > o ? e : null === a ? a = Object.getOwnPropertyDescriptor(e, n) : a;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) c = Reflect.decorate(t, e, n, a); else for (var r = t.length - 1; r >= 0; r--) (i = t[r]) && (c = (3 > o ? i(c) : o > 3 ? i(e, n, c) : i(e, n)) || c);
-            return o > 3 && c && Object.defineProperty(e, n, c), c;
+            var i, o = arguments.length, r = 3 > o ? e : null === a ? a = Object.getOwnPropertyDescriptor(e, n) : a;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) r = Reflect.decorate(t, e, n, a); else for (var c = t.length - 1; c >= 0; c--) (i = t[c]) && (r = (3 > o ? i(r) : o > 3 ? i(e, n, r) : i(e, n)) || r);
+            return o > 3 && r && Object.defineProperty(e, n, r), r;
         }, i = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, o = n(1), c = n(369), r = function() {
+        }, o = n(1), r = n(369), c = function() {
             function t() {}
             return a([ o.Input(), i("design:type", Object) ], t.prototype, "contact", void 0), 
             t = a([ o.Component({
                 selector: "contact-detail",
-                template: c.htmlTemplate
+                template: r.htmlTemplate
             }), i("design:paramtypes", []) ], t);
         }();
-        e.ContactDetailComponent = r;
+        e.ContactDetailComponent = c;
     },
     369: function(t, e) {
         "use strict";
@@ -287,12 +289,12 @@ webpackJsonp([ 1 ], {
     371: function(t, e, n) {
         "use strict";
         var a = this && this.__decorate || function(t, e, n, a) {
-            var i, o = arguments.length, c = 3 > o ? e : null === a ? a = Object.getOwnPropertyDescriptor(e, n) : a;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) c = Reflect.decorate(t, e, n, a); else for (var r = t.length - 1; r >= 0; r--) (i = t[r]) && (c = (3 > o ? i(c) : o > 3 ? i(e, n, c) : i(e, n)) || c);
-            return o > 3 && c && Object.defineProperty(e, n, c), c;
+            var i, o = arguments.length, r = 3 > o ? e : null === a ? a = Object.getOwnPropertyDescriptor(e, n) : a;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) r = Reflect.decorate(t, e, n, a); else for (var c = t.length - 1; c >= 0; c--) (i = t[c]) && (r = (3 > o ? i(r) : o > 3 ? i(e, n, r) : i(e, n)) || r);
+            return o > 3 && r && Object.defineProperty(e, n, r), r;
         }, i = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, o = n(1), c = function() {
+        }, o = n(1), r = function() {
             function t() {}
             return t.prototype.transform = function(t, e) {
                 if (0 == e.length) return t;
@@ -307,6 +309,6 @@ webpackJsonp([ 1 ], {
                 pure: !1
             }), i("design:paramtypes", []) ], t);
         }();
-        e.ContactSearchPipe = c;
+        e.ContactSearchPipe = r;
     }
 });

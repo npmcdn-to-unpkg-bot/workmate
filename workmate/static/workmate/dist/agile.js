@@ -13,7 +13,7 @@ webpackJsonp([ 0 ], {
             function t() {}
             return t = i([ o.Component({
                 selector: "agile-app",
-                template: '\n        <div class="wm-messages"><alert></alert></div>\n        <story-list></story-list>\n    ',
+                template: '\n        <story-list></story-list>\n        <div class="wm-messages ui sticky bottom fixed"><alert></alert></div>\n    ',
                 directives: [ h.StoryListComponent, v.AlertComponent ],
                 providers: [ s.HTTP_PROVIDERS, o.provide(s.RequestOptions, {
                     useClass: a.ExRequestOptions
@@ -69,9 +69,11 @@ webpackJsonp([ 0 ], {
             return t.prototype.createAlert = function(t) {
                 var e = this;
                 t.id = this.getNextId(), this._dataStore.alerts.push(t), this._dataObserver.next(this._dataStore.alerts), 
-                t.dismissOnTimeout > 0 && setTimeout(function() {
+                "error" == t.type ? setTimeout(function() {
                     return e.closeAlert(t);
-                }, t.dismissOnTimeout);
+                }, t.dismissErrorTimeout) : setTimeout(function() {
+                    return e.closeAlert(t);
+                }, t.dismissDefaultTimeout);
             }, t.prototype.closeAlert = function(t) {
                 var e = this;
                 this._dataStore.alerts.forEach(function(n, i) {
@@ -213,8 +215,8 @@ webpackJsonp([ 0 ], {
         "use strict";
         var n = function() {
             function t(t) {
-                this.type = t.type, this.message = t.message, this.dismissable = t.dismissable || !0, 
-                this.dismissOnTimeout = t.dismissOnTimeout || 5e3;
+                this.type = t.type, this.message = t.message, this.dismissable = null == t.dismissable ? !0 : t.dismissable, 
+                this.dismissDefaultTimeout = t.dismissDefaultTimeout || 5e3, this.dismissErrorTimeout = t.dismissErrorTimeout || 1e4;
             }
             return t;
         }();
@@ -594,7 +596,7 @@ webpackJsonp([ 0 ], {
     },
     351: function(t, e) {
         "use strict";
-        e.htmlTemplate = '\n\n    <div class="ui equal width grid">\n        <div class="column">\n            <div class="ui segment">\n                <button class="ui mini compact right floated icon button" (click)="createNew(true)">\n                    <i class="plus icon"></i>\n                </button>\n                <p>Backlog</p>\n            </div>\n            <div class="ui secondary form segment" *ngIf="newBacklogOpened" story-detail [story]="newBacklogStory"></div>\n            <div class="ui raised segments" style="min-height: 50px;" [dragula]=\'"first-bag"\' [attr.data-list]="\'backlog\'">\n                <div class="ui segment" *ngFor="let story of (stories | filter : {icebox: false})" [attr.data-id]="story.id" story-list-item [story]="story"></div>\n            </div>\n        </div>\n        <div class="column">\n            <div class="ui segment">\n                <button class="ui mini compact right floated icon button" (click)="createNew(false)">\n                    <i class="plus icon"></i>\n                </button>\n                <p>Icebox</p>\n            </div>\n            <div class="ui secondary form segment" *ngIf="newIceboxOpened" story-detail [story]="newIceboxStory"></div>\n            <div class="ui raised segments" [dragula]=\'"first-bag"\' style="min-height: 50px;" [attr.data-list]="\'icebox\'">\n                <div class="ui segment" *ngFor="let story of stories | filter : {icebox: true}" [attr.data-id]="story.id" story-list-item [story]="story"></div>\n            </div>\n        </div>\n    </div>\n\n';
+        e.htmlTemplate = '\n\n    <div class="ui equal width grid">\n        <div class="column">\n            <div class="ui segment">\n                <button class="ui mini compact right floated icon button" (click)="createNew(true)">\n                    <i class="plus icon"></i>\n                </button>\n                <p>Backlog</p>\n            </div>\n            <div class="ui secondary form segment" *ngIf="newBacklogOpened" story-detail [story]="newBacklogStory"></div>\n            <div class="ui raised segments" style="min-height: 50px;" [dragula]=\'"first-bag"\' [attr.data-list]="\'backlog\'">\n                <div class="ui segment" *ngFor="let story of stories | filter : {icebox: false}" [attr.data-id]="story.id" story-list-item [story]="story"></div>\n            </div>\n        </div>\n        <div class="column">\n            <div class="ui segment">\n                <button class="ui mini compact right floated icon button" (click)="createNew(false)">\n                    <i class="plus icon"></i>\n                </button>\n                <p>Icebox</p>\n            </div>\n            <div class="ui secondary form segment" *ngIf="newIceboxOpened" story-detail [story]="newIceboxStory"></div>\n            <div class="ui raised segments" [dragula]=\'"first-bag"\' style="min-height: 50px;" [attr.data-list]="\'icebox\'">\n                <div class="ui segment" *ngFor="let story of stories | filter : {icebox: true}" [attr.data-id]="story.id" story-list-item [story]="story"></div>\n            </div>\n        </div>\n    </div>\n\n';
     },
     352: function(t, e, n) {
         "use strict";

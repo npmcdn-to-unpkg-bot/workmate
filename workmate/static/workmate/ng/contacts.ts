@@ -14,8 +14,8 @@ import { ContactListComponent }             from './components/contact-list/cont
 @Component({
     selector: 'contacts-app',
     template: `
-        <div class="wm-messages"><alert></alert></div>
         <contact-list></contact-list>
+        <div class="wm-messages ui sticky bottom fixed"><alert></alert></div>
     `,
     directives: [
         AlertComponent,

@@ -6,7 +6,9 @@
         $contactCall = '[data-action="contact_call"]',
         $dropdown = $('.ui.dropdown'),
         $menuModal = $('.wm-menu'),
-        $messageClose = '.message .close'
+        $messageClose = '.message .close',
+        $messageDefaultTimeout = 5000,
+        $messageErrorTimeout = 10000
     ;
 
     $.fn.api.settings
@@ -83,6 +85,11 @@
         message.append('<div class="header capitalize">' + status + '</div>');
         message.append('<p>' + messageText + '</p>');
         $ajaxMessages.append(message);
+        if (status == 'error') {
+            setTimeout(function(){ message.closest('.message').transition('fade') }, $messageErrorTimeout);
+        } else {
+            setTimeout(function(){ message.closest('.message').transition('fade') }, $messageDefaultTimeout);
+        }
     };
 
     workmate.getCookie = function (name) {

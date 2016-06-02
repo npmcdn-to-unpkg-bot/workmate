@@ -24,9 +24,10 @@
         </div>
 
         <div class="wm-main ui container">
-            {% include 'workmate/partials/messages.html' %}
             {% block content %}{% endblock %}
         </div>
+
+        {% include 'workmate/partials/messages.html' %}
 
         {% include 'workmate/partials/footer.html' %}
 

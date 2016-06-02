@@ -7,7 +7,8 @@ body {
   min-height: 100%;
 }
 .wm-messages {
-  margin-bottom: 14px;
+  right: 10px !important;
+  bottom: 10px !important;
 }
 .cursor-pointer {
   cursor: pointer;
