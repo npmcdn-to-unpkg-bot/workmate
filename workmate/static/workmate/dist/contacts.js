@@ -303,7 +303,8 @@ webpackJsonp([ 1 ], {
                     });
                 }), a;
             }, t = a([ o.Pipe({
-                name: "contactSearch"
+                name: "contactSearch",
+                pure: !1
             }), i("design:paramtypes", []) ], t);
         }();
         e.ContactSearchPipe = c;

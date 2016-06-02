@@ -410,7 +410,8 @@ webpackJsonp([ 0 ], {
                 }
                 return t;
             }, t = i([ o.Pipe({
-                name: "filter"
+                name: "filter",
+                pure: !1
             }), r("design:paramtypes", []) ], t);
         }();
         e.FilterPipe = s;
@@ -593,7 +594,7 @@ webpackJsonp([ 0 ], {
     },
     351: function(t, e) {
         "use strict";
-        e.htmlTemplate = '\n\n    <div class="ui equal width grid">\n        <div class="column">\n            <div class="ui segment">\n                <button class="ui mini compact right floated icon button" (click)="createNew(true)">\n                    <i class="plus icon"></i>\n                </button>\n                <p>Backlog</p>\n            </div>\n            <div class="ui secondary form segment" *ngIf="newBacklogOpened" story-detail [story]="newBacklogStory"></div>\n            <div class="ui raised segments" style="min-height: 50px;" [dragula]=\'"first-bag"\' [attr.data-list]="\'backlog\'">\n                <div class="ui segment" *ngFor="let story of stories | filter : {icebox: false}" [attr.data-id]="story.id" story-list-item [story]="story"></div>\n            </div>\n        </div>\n        <div class="column">\n            <div class="ui segment">\n                <button class="ui mini compact right floated icon button" (click)="createNew(false)">\n                    <i class="plus icon"></i>\n                </button>\n                <p>Icebox</p>\n            </div>\n            <div class="ui secondary form segment" *ngIf="newIceboxOpened" story-detail [story]="newIceboxStory"></div>\n            <div class="ui raised segments" [dragula]=\'"first-bag"\' style="min-height: 50px;" [attr.data-list]="\'icebox\'">\n                <div class="ui segment" *ngFor="let story of stories | filter : {icebox: true}" [attr.data-id]="story.id" story-list-item [story]="story"></div>\n            </div>\n        </div>\n    </div>\n\n';
+        e.htmlTemplate = '\n\n    <div class="ui equal width grid">\n        <div class="column">\n            <div class="ui segment">\n                <button class="ui mini compact right floated icon button" (click)="createNew(true)">\n                    <i class="plus icon"></i>\n                </button>\n                <p>Backlog</p>\n            </div>\n            <div class="ui secondary form segment" *ngIf="newBacklogOpened" story-detail [story]="newBacklogStory"></div>\n            <div class="ui raised segments" style="min-height: 50px;" [dragula]=\'"first-bag"\' [attr.data-list]="\'backlog\'">\n                <div class="ui segment" *ngFor="let story of (stories | filter : {icebox: false})" [attr.data-id]="story.id" story-list-item [story]="story"></div>\n            </div>\n        </div>\n        <div class="column">\n            <div class="ui segment">\n                <button class="ui mini compact right floated icon button" (click)="createNew(false)">\n                    <i class="plus icon"></i>\n                </button>\n                <p>Icebox</p>\n            </div>\n            <div class="ui secondary form segment" *ngIf="newIceboxOpened" story-detail [story]="newIceboxStory"></div>\n            <div class="ui raised segments" [dragula]=\'"first-bag"\' style="min-height: 50px;" [attr.data-list]="\'icebox\'">\n                <div class="ui segment" *ngFor="let story of stories | filter : {icebox: true}" [attr.data-id]="story.id" story-list-item [story]="story"></div>\n            </div>\n        </div>\n    </div>\n\n';
     },
     352: function(t, e, n) {
         "use strict";

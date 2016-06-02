@@ -4,7 +4,8 @@ import { iContact }                             from '../interfaces/contact';
 
 
 @Pipe({
-    name: "contactSearch"
+    name: "contactSearch",
+    pure: false
 })
 
 export class ContactSearchPipe implements PipeTransform {
