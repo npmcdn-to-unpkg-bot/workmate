@@ -5,7 +5,7 @@ import { AlertService }                                 from '../../services/ale
 
 
 const ALERT_TEMPLATE = `
-    <div class="ui {{ alert.type }} message" *ngFor="let alert of alerts">
+    <div class="ui {{ alert.type }} message" *ngFor="let alert of _alerts">
         <i class="close icon" *ngIf="alert.dismissable"></i><div class="header capitalize">{{ alert.type }}</div>
         <p>{{ alert.message }}</p>
     </div>
@@ -18,14 +18,14 @@ const ALERT_TEMPLATE = `
 
 export class AlertComponent implements OnInit {
 
-    alerts: iAlert[];
+    _alerts: iAlert[];
 
     constructor(
-        private alertService: AlertService
+        private _AlertService: AlertService
     ) {}
 
     ngOnInit() {
-        this.alertService.alerts$.subscribe(alerts => this.alerts = alerts);
+        this._AlertService.alerts$.subscribe(alerts => this._alerts = alerts);
     }
 
 }

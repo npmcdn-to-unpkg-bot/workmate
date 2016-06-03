@@ -19,8 +19,8 @@ export class ContactService extends BaseService {
     protected _baseUrl = '/api/v1/contact/';
     protected _resourceName = 'contact';
 
-    constructor (protected _http: Http, protected _alertService: AlertService) {
-        super(_http, _alertService);
+    constructor (protected _http: Http, protected _AlertService: AlertService) {
+        super(_http, _AlertService);
         this.objects$ = new Observable<iContact[]>((observer:any) => this._objectsObserver = observer).share();
     }
 

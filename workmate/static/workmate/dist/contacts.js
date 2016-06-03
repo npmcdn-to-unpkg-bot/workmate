@@ -60,11 +60,11 @@ webpackJsonp([ 1 ], {
         }, o = n(1), r = n(35), c = function() {
             function t() {
                 var t = this;
-                this.nextId = 1, this._dataStore = {
-                    alerts: []
-                }, this.alerts$ = new r.Observable(function(e) {
+                this._nextId = 1, this.alerts$ = new r.Observable(function(e) {
                     return t._dataObserver = e;
-                }).share();
+                }).share(), this._dataStore = {
+                    alerts: []
+                };
             }
             return t.prototype.createAlert = function(t) {
                 var e = this;
@@ -80,7 +80,7 @@ webpackJsonp([ 1 ], {
                     n.id === t.id && e._dataStore.alerts.splice(a, 1);
                 }), this._dataObserver.next(this._dataStore.alerts);
             }, t.prototype.getNextId = function() {
-                return this.nextId++;
+                return this._nextId++;
             }, t = a([ o.Injectable(), i("design:paramtypes", []) ], t);
         }();
         e.AlertService = c;
@@ -90,13 +90,13 @@ webpackJsonp([ 1 ], {
         var a = n(330), i = n(334), o = n(35), r = function() {
             function t(t, e) {
                 var n = this;
-                this._http = t, this._alertService = e, this._baseUrl = "", this._resourceName = "", 
-                this._postOptions = new a.ExRequestOptions(), this._dataStore = {
+                this._http = t, this._AlertService = e, this._baseUrl = "", this._resourceName = "", 
+                this._postOptions = new a.ExRequestOptions(), this.meta$ = new o.Observable(function(t) {
+                    return n._metaObserver = t;
+                }).share(), this._dataStore = {
                     objects: [],
                     meta: {}
-                }, this.meta$ = new o.Observable(function(t) {
-                    return n._metaObserver = t;
-                }).share(), this._postOptions.appendHeaders("Content-Type", "application/json");
+                }, this._postOptions.appendHeaders("Content-Type", "application/json");
             }
             return t.prototype.loadMeta = function() {
                 var t = this;
@@ -165,7 +165,7 @@ webpackJsonp([ 1 ], {
                 a = "The data failed validation, please fix any issues and re-submit.") : a = n.error_message || "An unknown server error occurred.", 
                 this.createAlert("error", a), o.Observable.throw(a);
             }, t.prototype.createAlert = function(t, e) {
-                this._alertService.createAlert(new i.Alert({
+                this._AlertService.createAlert(new i.Alert({
                     type: t,
                     message: e
                 }));
@@ -192,14 +192,14 @@ webpackJsonp([ 1 ], {
             return o > 3 && r && Object.defineProperty(e, n, r), r;
         }, i = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, o = n(1), r = n(331), c = '\n    <div class="ui {{ alert.type }} message" *ngFor="let alert of alerts">\n        <i class="close icon" *ngIf="alert.dismissable"></i><div class="header capitalize">{{ alert.type }}</div>\n        <p>{{ alert.message }}</p>\n    </div>\n  ', s = function() {
+        }, o = n(1), r = n(331), c = '\n    <div class="ui {{ alert.type }} message" *ngFor="let alert of _alerts">\n        <i class="close icon" *ngIf="alert.dismissable"></i><div class="header capitalize">{{ alert.type }}</div>\n        <p>{{ alert.message }}</p>\n    </div>\n  ', s = function() {
             function t(t) {
-                this.alertService = t;
+                this._AlertService = t;
             }
             return t.prototype.ngOnInit = function() {
                 var t = this;
-                this.alertService.alerts$.subscribe(function(e) {
-                    return t.alerts = e;
+                this._AlertService.alerts$.subscribe(function(e) {
+                    return t._alerts = e;
                 });
             }, t = a([ o.Component({
                 selector: "alert",
@@ -225,7 +225,7 @@ webpackJsonp([ 1 ], {
         }, r = n(1), c = n(97), s = n(331), l = n(333), d = n(35), u = function(t) {
             function e(e, n) {
                 var a = this;
-                t.call(this, e, n), this._http = e, this._alertService = n, this._baseUrl = "/api/v1/contact/", 
+                t.call(this, e, n), this._http = e, this._AlertService = n, this._baseUrl = "/api/v1/contact/", 
                 this._resourceName = "contact", this.objects$ = new d.Observable(function(t) {
                     return a._objectsObserver = t;
                 }).share();
@@ -244,15 +244,15 @@ webpackJsonp([ 1 ], {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
         }, o = n(1), r = n(366), c = n(368), s = n(370), l = n(371), d = function() {
             function t(t) {
-                this.contactService = t;
+                this._ContactService = t;
             }
             return t.prototype.ngOnInit = function() {
                 var t = this;
-                this.contactService.objects$.subscribe(function(e) {
-                    return t.contacts = e;
-                }), this.contactService.loadAll();
+                this._ContactService.objects$.subscribe(function(e) {
+                    return t._contacts = e;
+                }), this._ContactService.loadAll();
             }, t.prototype.onSelect = function(t) {
-                this.selectedContact = t;
+                this._selectedContact = t;
             }, t = a([ o.Component({
                 selector: "contact-list",
                 template: s.htmlTemplate,
@@ -286,7 +286,7 @@ webpackJsonp([ 1 ], {
     },
     370: function(t, e) {
         "use strict";
-        e.htmlTemplate = '\n\n<div class="ui divided grid">\n    <div class="six wide column">\n        <div class="ui basic segment">\n            <div class="item">\n                <div class="ui fluid icon input">\n                    <input #searchTerm class="prompt" placeholder="Search..." (keyup)="0">\n                    <i class="search icon"></i>\n                </div>\n            </div>\n            <div class="ui divided link items">\n                <div class="item" *ngFor="let contact of contacts | contactSearch : searchTerm.value" (click)="onSelect(contact)">\n                    <div class="ui tiny image">\n                      <img src="http://semantic-ui.com/images/wireframe/image.png">\n                    </div>\n                    <div class="middle aligned content">\n                        <div class="header">{{ contact.name }}</div>\n                        <div class="meta">\n                            <span>{{ contact.email_address }}</span>\n                        </div>\n                    </div>\n                </div>    \n            </div>\n        </div>\n    </div>\n    <div class="ten wide column">\n        <div class="ui basic segment">\n            <contact-detail *ngIf="selectedContact" [contact]="selectedContact"></contact-detail>\n        </div>\n    </div>\n</div>\n    \n';
+        e.htmlTemplate = '\n\n<div class="ui divided grid">\n    <div class="six wide column">\n        <div class="ui basic segment">\n            <div class="item">\n                <div class="ui fluid icon input">\n                    <input #searchTerm class="prompt" placeholder="Search..." (keyup)="0">\n                    <i class="search icon"></i>\n                </div>\n            </div>\n            <div class="ui divided link items">\n                <div class="item" *ngFor="let contact of _contacts | contactSearch : searchTerm.value" (click)="onSelect(contact)">\n                    <div class="ui tiny image">\n                      <img src="http://semantic-ui.com/images/wireframe/image.png">\n                    </div>\n                    <div class="middle aligned content">\n                        <div class="header">{{ contact.name }}</div>\n                        <div class="meta">\n                            <span>{{ contact.email_address }}</span>\n                        </div>\n                    </div>\n                </div>    \n            </div>\n        </div>\n    </div>\n    <div class="ten wide column">\n        <div class="ui basic segment">\n            <contact-detail *ngIf="_selectedContact" [contact]="_selectedContact"></contact-detail>\n        </div>\n    </div>\n</div>\n    \n';
     },
     371: function(t, e, n) {
         "use strict";

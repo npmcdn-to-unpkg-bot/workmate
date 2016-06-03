@@ -16,18 +16,18 @@ import { ContactSearchPipe }            from '../../pipes/contact-search-pipe.ts
 
 export class ContactListComponent implements OnInit {
 
-    constructor(private contactService: ContactService) {}
+    constructor(private _ContactService: ContactService) {}
 
-    contacts: iContact[];
-    selectedContact: iContact;
+    _contacts: iContact[];
+    _selectedContact: iContact;
 
     ngOnInit() {
-        this.contactService.objects$.subscribe(objects => this.contacts = objects);
-        this.contactService.loadAll();
+        this._ContactService.objects$.subscribe(objects => this._contacts = objects);
+        this._ContactService.loadAll();
     }
 
     onSelect(contact: iContact) {
-        this.selectedContact = contact;
+        this._selectedContact = contact;
     }
 
 }

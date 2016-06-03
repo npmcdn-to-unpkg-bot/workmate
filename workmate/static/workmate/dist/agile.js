@@ -60,11 +60,11 @@ webpackJsonp([ 0 ], {
         }, o = n(1), s = n(35), a = function() {
             function t() {
                 var t = this;
-                this.nextId = 1, this._dataStore = {
-                    alerts: []
-                }, this.alerts$ = new s.Observable(function(e) {
+                this._nextId = 1, this.alerts$ = new s.Observable(function(e) {
                     return t._dataObserver = e;
-                }).share();
+                }).share(), this._dataStore = {
+                    alerts: []
+                };
             }
             return t.prototype.createAlert = function(t) {
                 var e = this;
@@ -80,7 +80,7 @@ webpackJsonp([ 0 ], {
                     n.id === t.id && e._dataStore.alerts.splice(i, 1);
                 }), this._dataObserver.next(this._dataStore.alerts);
             }, t.prototype.getNextId = function() {
-                return this.nextId++;
+                return this._nextId++;
             }, t = i([ o.Injectable(), r("design:paramtypes", []) ], t);
         }();
         e.AlertService = a;
@@ -102,7 +102,7 @@ webpackJsonp([ 0 ], {
         }, s = n(1), a = n(97), c = n(331), l = n(333), u = n(35), d = function(t) {
             function e(e, n) {
                 var i = this;
-                t.call(this, e, n), this._http = e, this._alertService = n, this.effortChoices = [ {
+                t.call(this, e, n), this._http = e, this._AlertService = n, this.effortChoices = [ {
                     value: "0.5",
                     label: "0.5 Points"
                 }, {
@@ -130,13 +130,13 @@ webpackJsonp([ 0 ], {
         var i = n(330), r = n(334), o = n(35), s = function() {
             function t(t, e) {
                 var n = this;
-                this._http = t, this._alertService = e, this._baseUrl = "", this._resourceName = "", 
-                this._postOptions = new i.ExRequestOptions(), this._dataStore = {
+                this._http = t, this._AlertService = e, this._baseUrl = "", this._resourceName = "", 
+                this._postOptions = new i.ExRequestOptions(), this.meta$ = new o.Observable(function(t) {
+                    return n._metaObserver = t;
+                }).share(), this._dataStore = {
                     objects: [],
                     meta: {}
-                }, this.meta$ = new o.Observable(function(t) {
-                    return n._metaObserver = t;
-                }).share(), this._postOptions.appendHeaders("Content-Type", "application/json");
+                }, this._postOptions.appendHeaders("Content-Type", "application/json");
             }
             return t.prototype.loadMeta = function() {
                 var t = this;
@@ -205,7 +205,7 @@ webpackJsonp([ 0 ], {
                 i = "The data failed validation, please fix any issues and re-submit.") : i = n.error_message || "An unknown server error occurred.", 
                 this.createAlert("error", i), o.Observable.throw(i);
             }, t.prototype.createAlert = function(t, e) {
-                this._alertService.createAlert(new r.Alert({
+                this._AlertService.createAlert(new r.Alert({
                     type: t,
                     message: e
                 }));
@@ -241,7 +241,7 @@ webpackJsonp([ 0 ], {
         }, s = n(1), a = n(97), c = n(331), l = n(333), u = n(35), d = function(t) {
             function e(e, n) {
                 var i = this;
-                t.call(this, e, n), this._http = e, this._alertService = n, this._baseUrl = "/api/v1/story_state/", 
+                t.call(this, e, n), this._http = e, this._AlertService = n, this._baseUrl = "/api/v1/story_state/", 
                 this._resourceName = "story_state", this.objects$ = new u.Observable(function(t) {
                     return i._objectsObserver = t;
                 }).share();
@@ -267,7 +267,7 @@ webpackJsonp([ 0 ], {
         }, s = n(1), a = n(97), c = n(331), l = n(333), u = n(35), d = function(t) {
             function e(e, n) {
                 var i = this;
-                t.call(this, e, n), this._http = e, this._alertService = n, this._baseUrl = "/api/v1/story_type/", 
+                t.call(this, e, n), this._http = e, this._AlertService = n, this._baseUrl = "/api/v1/story_type/", 
                 this._resourceName = "story_type", this.objects$ = new u.Observable(function(t) {
                     return i._objectsObserver = t;
                 }).share();
@@ -293,7 +293,7 @@ webpackJsonp([ 0 ], {
         }, s = n(1), a = n(97), c = n(331), l = n(333), u = n(35), d = function(t) {
             function e(e, n) {
                 var i = this;
-                t.call(this, e, n), this._http = e, this._alertService = n, this._baseUrl = "/api/v1/tag/", 
+                t.call(this, e, n), this._http = e, this._AlertService = n, this._baseUrl = "/api/v1/tag/", 
                 this._resourceName = "tag", this.objects$ = new u.Observable(function(t) {
                     return i._objectsObserver = t;
                 }).share();
@@ -310,14 +310,14 @@ webpackJsonp([ 0 ], {
             return o > 3 && s && Object.defineProperty(e, n, s), s;
         }, r = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, o = n(1), s = n(331), a = '\n    <div class="ui {{ alert.type }} message" *ngFor="let alert of alerts">\n        <i class="close icon" *ngIf="alert.dismissable"></i><div class="header capitalize">{{ alert.type }}</div>\n        <p>{{ alert.message }}</p>\n    </div>\n  ', c = function() {
+        }, o = n(1), s = n(331), a = '\n    <div class="ui {{ alert.type }} message" *ngFor="let alert of _alerts">\n        <i class="close icon" *ngIf="alert.dismissable"></i><div class="header capitalize">{{ alert.type }}</div>\n        <p>{{ alert.message }}</p>\n    </div>\n  ', c = function() {
             function t(t) {
-                this.alertService = t;
+                this._AlertService = t;
             }
             return t.prototype.ngOnInit = function() {
                 var t = this;
-                this.alertService.alerts$.subscribe(function(e) {
-                    return t.alerts = e;
+                this._AlertService.alerts$.subscribe(function(e) {
+                    return t._alerts = e;
                 });
             }, t = i([ o.Component({
                 selector: "alert",
@@ -336,41 +336,41 @@ webpackJsonp([ 0 ], {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
         }, o = n(1), s = n(340), a = n(332), c = n(335), l = n(336), u = n(337), d = n(341), f = n(342), p = n(349), v = n(351), h = n(352), m = function() {
             function t(t, e, n, i, r) {
-                this.storyService = t, this.storyStateService = e, this.storyTypeService = n, this.tagService = i, 
-                this.dragulaService = r, this.newBacklogOpened = !1, this.newIceboxOpened = !1, 
+                this._StoryService = t, this._StoryStateService = e, this._StoryTypeService = n, 
+                this._TagService = i, this._DragulaService = r, this._newBacklogOpened = !1, this._newIceboxOpened = !1, 
                 this.createNew = function(t) {
-                    t ? (this.newBacklogStory = new s.Story({
+                    t ? (this._newBacklogStory = new s.Story({
                         icebox: !1,
                         state: null,
                         title: "New Story",
                         type: null
-                    }), this.newBacklogOpened = !this.newBacklogOpened) : (this.newIceboxStory = new s.Story({
+                    }), this._newBacklogOpened = !this._newBacklogOpened) : (this._newIceboxStory = new s.Story({
                         icebox: !0,
                         state: null,
                         title: "New Story",
                         type: null
-                    }), this.newIceboxOpened = !this.newIceboxOpened);
+                    }), this._newIceboxOpened = !this._newIceboxOpened);
                 };
             }
             return t.prototype.ngOnInit = function() {
                 var t = this;
-                this.storyService.objects$.subscribe(function(e) {
-                    return t.stories = e;
-                }), this.storyStateService.objects$.subscribe(function(e) {
-                    return t.states = e;
-                }), this.storyTypeService.objects$.subscribe(function(e) {
-                    return t.types = e;
-                }), this.tagService.objects$.subscribe(function(e) {
-                    return t.tags = e;
-                }), this.storyService.loadAll(), this.storyStateService.loadAll(), this.storyTypeService.loadAll(), 
-                this.tagService.loadAll(), this.dragulaService.drop.subscribe(function(e) {
-                    console.log(e), t.onDrop(e.slice(1));
+                this._StoryService.objects$.subscribe(function(e) {
+                    return t._stories = e;
+                }), this._StoryStateService.objects$.subscribe(function(e) {
+                    return t._states = e;
+                }), this._StoryTypeService.objects$.subscribe(function(e) {
+                    return t._types = e;
+                }), this._TagService.objects$.subscribe(function(e) {
+                    return t._tags = e;
+                }), this._StoryService.loadAll(), this._StoryStateService.loadAll(), this._StoryTypeService.loadAll(), 
+                this._TagService.loadAll(), this._DragulaService.drop.subscribe(function(e) {
+                    t.onDrop(e.slice(1));
                 });
             }, t.prototype.onDrop = function(t) {
-                var e = t[0], n = (t[1], e.attributes["data-id"].value), i = this.stories.find(function(t) {
+                var e = t[0], n = (t[1], e.attributes["data-id"].value), i = this._stories.find(function(t) {
                     return t.id == n;
                 }), r = "icebox" == e.parentElement.attributes["data-list"].value;
-                i.icebox = r, this.storyService.update(i);
+                i.icebox = r, this._StoryService.update(i);
             }, t = i([ o.Component({
                 selector: "story-list",
                 template: v.htmlTemplate,
@@ -430,7 +430,8 @@ webpackJsonp([ 0 ], {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
         }, o = n(1), s = n(343), a = n(344), c = n(346), l = n(332), u = n(335), d = n(336), f = n(337), p = n(348), v = function() {
             function t(t, e, n, i) {
-                this.storyService = t, this.storyStateService = e, this.storyTypeService = n, this.tagService = i;
+                this._StoryService = t, this._StoryStateService = e, this._StoryTypeService = n, 
+                this._TagService = i;
             }
             return t.prototype.addTask = function() {
                 var t = new s.StoryTask({
@@ -439,18 +440,18 @@ webpackJsonp([ 0 ], {
                 });
                 this.story.tasks.push(t);
             }, t.prototype.save = function() {
-                this.story.id ? this.storyService.update(this.story) : this.storyService.create(this.story);
+                this.story.id ? this._StoryService.update(this.story) : this._StoryService.create(this.story);
             }, t.prototype.delete = function() {
-                this.story.id && this.storyService.delete(this.story.id);
+                this.story.id && this._StoryService.delete(this.story.id);
             }, t.prototype.ngOnInit = function() {
                 var t = this;
-                this.storyTypeService.objects$.subscribe(function(e) {
-                    return t.types = e;
-                }), this.storyStateService.objects$.subscribe(function(e) {
-                    return t.states = e;
-                }), this.tagService.objects$.subscribe(function(e) {
-                    return t.tags = e;
-                }), this.storyStateService.loadAll(), this.storyTypeService.loadAll(), this.tagService.loadAll();
+                this._StoryTypeService.objects$.subscribe(function(e) {
+                    return t._types = e;
+                }), this._StoryStateService.objects$.subscribe(function(e) {
+                    return t._states = e;
+                }), this._TagService.objects$.subscribe(function(e) {
+                    return t._tags = e;
+                }), this._StoryStateService.loadAll(), this._StoryTypeService.loadAll(), this._TagService.loadAll();
             }, i([ o.Input(), r("design:type", Object) ], t.prototype, "story", void 0), t = i([ o.Component({
                 selector: "[story-detail]",
                 template: p.htmlTemplate,
@@ -479,12 +480,12 @@ webpackJsonp([ 0 ], {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
         }, o = n(1), s = n(202), a = n(345), c = function() {
             function t(t, e) {
-                this.elementRef = t, this.vm = e, e.valueAccessor = this;
+                this._elementRef = t, this._vm = e, e.valueAccessor = this;
             }
             return t.prototype.ngOnInit = function() {
                 var t = this;
                 setTimeout(function() {
-                    jQuery(t.elementRef.nativeElement).find(".ui.dropdown").dropdown({});
+                    jQuery(t._elementRef.nativeElement).find(".ui.dropdown").dropdown({});
                 }, 0);
             }, t.prototype.getTextLabel = function(t) {
                 if (t) {
@@ -493,13 +494,13 @@ webpackJsonp([ 0 ], {
                 }
             }, t.prototype.onSelect = function(t) {
                 var e = t[this.boundValueAttr] || t;
-                this.writeValue(e), this.vm.viewToModelUpdate(e);
+                this.writeValue(e), this._vm.viewToModelUpdate(e);
             }, t.prototype.writeValue = function(t) {
-                this.selectedItem = t;
+                this._selectedItem = t;
             }, t.prototype.registerOnChange = function(t) {
-                this.onChange = t;
+                this._onChange = t;
             }, t.prototype.registerOnTouched = function(t) {
-                this.onTouched = t;
+                this._onTouched = t;
             }, i([ o.Input(), r("design:type", Object) ], t.prototype, "choices", void 0), i([ o.Input(), r("design:type", String) ], t.prototype, "textLabel", void 0), 
             i([ o.Input(), r("design:type", String) ], t.prototype, "boundValueAttr", void 0), 
             t = i([ o.Component({
@@ -511,7 +512,7 @@ webpackJsonp([ 0 ], {
     },
     345: function(t, e) {
         "use strict";
-        e.htmlTemplate = '\n    \n    <div class="ui selection dropdown">\n        <i class="dropdown icon"></i><div class="text">{{getTextLabel(selectedItem)}}</div>\n        <div class="menu transition hidden">\n            <div class="item" *ngFor="let choice of choices" (click)="onSelect(choice)">{{getTextLabel(choice)}}</div>\n        </div>\n    </div>\n';
+        e.htmlTemplate = '\n    \n    <div class="ui selection dropdown">\n        <i class="dropdown icon"></i><div class="text">{{getTextLabel(_selectedItem)}}</div>\n        <div class="menu transition hidden">\n            <div class="item" *ngFor="let choice of choices" (click)="onSelect(choice)">{{getTextLabel(choice)}}</div>\n        </div>\n    </div>\n';
     },
     346: function(t, e, n) {
         "use strict";
@@ -523,36 +524,36 @@ webpackJsonp([ 0 ], {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
         }, o = n(1), s = n(202), a = n(347), c = function() {
             function t(t, e) {
-                this.elementRef = t, this.selectedItems = [], this.vm = e, e.valueAccessor = this;
+                this._elementRef = t, this._selectedItems = [], this._vm = e, e.valueAccessor = this;
             }
             return t.prototype.ngOnInit = function() {
                 var t = this;
                 setTimeout(function() {
-                    jQuery(t.elementRef.nativeElement).find(".ui.dropdown").dropdown({});
+                    jQuery(t._elementRef.nativeElement).find(".ui.dropdown").dropdown({});
                 }, 0);
             }, t.prototype.getTextLabel = function(t) {
                 return t[this.textLabel] || t;
             }, t.prototype.onSelect = function(t, e) {
                 t.stopPropagation();
-                for (var n = !1, i = 0; i < this.selectedItems.length; i++) if (this.selectedItems[i].id === e.id) {
+                for (var n = !1, i = 0; i < this._selectedItems.length; i++) if (this._selectedItems[i].id === e.id) {
                     n = !0;
                     break;
                 }
-                n || (this.selectedItems.push(e), this.vm.viewToModelUpdate(this.selectedItems));
+                n || (this._selectedItems.push(e), this._vm.viewToModelUpdate(this._selectedItems));
             }, t.prototype.onRemove = function(t, e) {
                 t.stopPropagation();
-                for (var n = 0; n < this.selectedItems.length; n++) if (this.selectedItems[n].id === e.id) {
-                    this.selectedItems.splice(n, 1), this.vm.viewToModelUpdate(this.selectedItems);
+                for (var n = 0; n < this._selectedItems.length; n++) if (this._selectedItems[n].id === e.id) {
+                    this._selectedItems.splice(n, 1), this._vm.viewToModelUpdate(this._selectedItems);
                     break;
                 }
             }, t.prototype.isSelected = function(t) {
-                for (var e = 0; e < this.selectedItems.length; e++) if (this.selectedItems[e].id === t.id) return !0;
+                for (var e = 0; e < this._selectedItems.length; e++) if (this._selectedItems[e].id === t.id) return !0;
             }, t.prototype.writeValue = function(t) {
-                this.selectedItems = t;
+                this._selectedItems = t;
             }, t.prototype.registerOnChange = function(t) {
-                this.onChange = t;
+                this._onChange = t;
             }, t.prototype.registerOnTouched = function(t) {
-                this.onTouched = t;
+                this._onTouched = t;
             }, i([ o.Input(), r("design:type", Object) ], t.prototype, "choices", void 0), i([ o.Input(), r("design:type", String) ], t.prototype, "textLabel", void 0), 
             i([ o.Input(), r("design:type", String) ], t.prototype, "addedClass", void 0), t = i([ o.Component({
                 selector: "[sm-select-multiple], sm-select-multiple",
@@ -563,11 +564,11 @@ webpackJsonp([ 0 ], {
     },
     347: function(t, e) {
         "use strict";
-        e.htmlTemplate = '\n    \n    <div class="ui selection dropdown multiple {{addedClass}}">\n        <i class="dropdown icon"></i>\n        <a class="ui label transition visible" *ngFor="let choice of selectedItems">{{getTextLabel(choice)}}<i class="delete icon" (click)="onRemove($event, choice)"></i></a>\n        <div class="text"></div>\n        <div class="menu">\n            <div class="item" [ngClass]="{filtered: isSelected(choice)}" *ngFor="let choice of choices" (click)="onSelect($event, choice)">{{getTextLabel(choice, choiceLabel)}}</div>\n        </div>\n    </div>\n';
+        e.htmlTemplate = '\n    \n    <div class="ui selection dropdown multiple {{addedClass}}">\n        <i class="dropdown icon"></i>\n        <a class="ui label transition visible" *ngFor="let choice of _selectedItems">{{getTextLabel(choice)}}<i class="delete icon" (click)="onRemove($event, choice)"></i></a>\n        <div class="text"></div>\n        <div class="menu">\n            <div class="item" [ngClass]="{filtered: isSelected(choice)}" *ngFor="let choice of choices" (click)="onSelect($event, choice)">{{getTextLabel(choice, choiceLabel)}}</div>\n        </div>\n    </div>\n';
     },
     348: function(t, e) {
         "use strict";
-        e.htmlTemplate = '\n\n    <div class="field" [ngClass]="{\'error\': story._validation_errors?.title}">\n        <label>\n            <div class="ui label">ID<div class="detail">{{ story.id }}</div></div>\n        </label>\n        <div class="ui small input">\n            <textarea [(ngModel)]="story.title" rows="2"></textarea>\n        </div>\n    </div>\n    <div class="inline field" [ngClass]="{\'error\': story._validation_errors?.type}">\n        <label>Type</label>\n        <div sm-select class="ui right floated small input" [(ngModel)]="story.type" [choices]="types" [textLabel]="\'title\'"></div>\n    </div>\n    <div class="ui hidden clearing divider"></div>\n    <div class="inline field" [ngClass]="{\'error\': story._validation_errors?.effort}">\n        <label>Effort</label>\n        <div sm-select class="ui right floated small input" [(ngModel)]="story.effort" [choices]="storyService.effortChoices" [textLabel]="\'label\'" [boundValueAttr]="\'value\'"></div>\n    </div>\n    <div class="ui hidden clearing divider"></div>\n    <div class="inline field" [ngClass]="{\'error\': story._validation_errors?.state}">\n        <label>State</label>\n        <div sm-select class="ui right floated small input" [(ngModel)]="story.state" [choices]="states" [textLabel]="\'title\'"></div>\n    </div>\n    <div class="ui hidden clearing divider"></div>  \n    <div class="field" [ngClass]="{\'error\': story._validation_errors?.description}">\n        <label>Description</label>\n        <div class="ui small input">\n            <textarea [(ngModel)]="story.description" rows="3"></textarea>\n        </div>\n    </div>\n    <div class="field" [ngClass]="{\'error\': story._validation_errors?.tags}">\n        <label>Tags</label>\n        <div sm-select-multiple class="ui small input" [(ngModel)]="story.tags" [choices]="tags" [textLabel]="\'title\'" [addedClass]="\'fluid\'"></div>\n    </div>\n    <div class="field" [ngClass]="{\'error\': story._validation_errors?.tasks}">\n        <label>Tasks</label>\n        <div class="field" *ngFor="let task of story.tasks">\n            <div class="ui small fluid left icon input">\n                <i class="inverted circular checkmark link icon" [ngClass]="{\'green\': task.completed}" (click)="task.completed = !task.completed"></i>\n                <input [(ngModel)]="task.description">\n            </div>\n        </div>\n    </div>\n    <button class="ui right floated mini button" (click)="addTask()">Add Task</button>\n    <div class="ui hidden clearing divider"></div>\n    <button *ngIf="story.id" class="ui secondary button" (click)="delete()">Delete</button>\n    <button class="ui right floated primary button" (click)="save()">Save</button>\n    <div class="ui hidden clearing divider"></div>\n';
+        e.htmlTemplate = '\n\n    <div class="field" [ngClass]="{\'error\': story._validation_errors?.title}">\n        <label>\n            <div class="ui label">ID<div class="detail">{{ story.id }}</div></div>\n        </label>\n        <div class="ui small input">\n            <textarea [(ngModel)]="story.title" rows="2"></textarea>\n        </div>\n    </div>\n    <div class="inline field" [ngClass]="{\'error\': story._validation_errors?.type}">\n        <label>Type</label>\n        <div sm-select class="ui right floated small input" [(ngModel)]="story.type" [choices]="_types" [textLabel]="\'title\'"></div>\n    </div>\n    <div class="ui hidden clearing divider"></div>\n    <div class="inline field" [ngClass]="{\'error\': story._validation_errors?.effort}">\n        <label>Effort</label>\n        <div sm-select class="ui right floated small input" [(ngModel)]="story.effort" [choices]="_StoryService.effortChoices" [textLabel]="\'label\'" [boundValueAttr]="\'value\'"></div>\n    </div>\n    <div class="ui hidden clearing divider"></div>\n    <div class="inline field" [ngClass]="{\'error\': story._validation_errors?.state}">\n        <label>State</label>\n        <div sm-select class="ui right floated small input" [(ngModel)]="story.state" [choices]="_states" [textLabel]="\'title\'"></div>\n    </div>\n    <div class="ui hidden clearing divider"></div>  \n    <div class="field" [ngClass]="{\'error\': story._validation_errors?.description}">\n        <label>Description</label>\n        <div class="ui small input">\n            <textarea [(ngModel)]="story.description" rows="3"></textarea>\n        </div>\n    </div>\n    <div class="field" [ngClass]="{\'error\': story._validation_errors?.tags}">\n        <label>Tags</label>\n        <div sm-select-multiple class="ui small input" [(ngModel)]="story.tags" [choices]="_tags" [textLabel]="\'title\'" [addedClass]="\'fluid\'"></div>\n    </div>\n    <div class="field" [ngClass]="{\'error\': story._validation_errors?.tasks}">\n        <label>Tasks</label>\n        <div class="field" *ngFor="let task of story.tasks">\n            <div class="ui small fluid left icon input">\n                <i class="inverted circular checkmark link icon" [ngClass]="{\'green\': task.completed}" (click)="task.completed = !task.completed"></i>\n                <input [(ngModel)]="task.description">\n            </div>\n        </div>\n    </div>\n    <button class="ui right floated mini button" (click)="addTask()">Add Task</button>\n    <div class="ui hidden clearing divider"></div>\n    <button *ngIf="story.id" class="ui secondary button" (click)="delete()">Delete</button>\n    <button class="ui right floated primary button" (click)="save()">Save</button>\n    <div class="ui hidden clearing divider"></div>\n';
     },
     349: function(t, e, n) {
         "use strict";
@@ -579,8 +580,8 @@ webpackJsonp([ 0 ], {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
         }, o = n(1), s = n(342), a = n(350), c = function() {
             function t() {
-                this.opened = !1, this.toggle = function() {
-                    this.opened = !this.opened;
+                this._opened = !1, this.toggle = function() {
+                    this._opened = !this._opened;
                 };
             }
             return i([ o.Input(), r("design:type", Object) ], t.prototype, "story", void 0), 
@@ -594,11 +595,11 @@ webpackJsonp([ 0 ], {
     },
     350: function(t, e) {
         "use strict";
-        e.htmlTemplate = '\n\n    <div class="item">\n        <div class="content">\n            <p class="cursor-pointer" (click)="toggle()">{{ story.title }}</p>\n            <div class="extra">\n                <div class="ui label"><i class="star icon"></i>{{ story.effort }}</div>\n                <div class="ui label" *ngFor="let tag of story.tags">{{ tag.title }}</div>\n                <button class="ui right floated mini button">Start</button>\n            </div>\n        </div>\n    </div>\n    <div class="ui secondary form segment" *ngIf="opened" story-detail [story]="story"></div>\n';
+        e.htmlTemplate = '\n\n    <div class="item">\n        <div class="content">\n            <p class="cursor-pointer" (click)="toggle()">{{ story.title }}</p>\n            <div class="extra">\n                <div class="ui label"><i class="star icon"></i>{{ story.effort }}</div>\n                <div class="ui label" *ngFor="let tag of story.tags">{{ tag.title }}</div>\n                <button class="ui right floated mini button">Start</button>\n            </div>\n        </div>\n    </div>\n    <div class="ui secondary form segment" *ngIf="_opened" story-detail [story]="story"></div>\n';
     },
     351: function(t, e) {
         "use strict";
-        e.htmlTemplate = '\n\n    <div class="ui equal width grid">\n        <div class="column">\n            <div class="ui segment">\n                <button class="ui mini compact right floated icon button" (click)="createNew(true)">\n                    <i class="plus icon"></i>\n                </button>\n                <p>Backlog</p>\n            </div>\n            <div class="ui secondary form segment" *ngIf="newBacklogOpened" story-detail [story]="newBacklogStory"></div>\n            <div class="ui raised segments" style="min-height: 50px;" [dragula]=\'"first-bag"\' [attr.data-list]="\'backlog\'">\n                <div class="ui segment" *ngFor="let story of stories | filter : {icebox: false}" [attr.data-id]="story.id" story-list-item [story]="story"></div>\n            </div>\n        </div>\n        <div class="column">\n            <div class="ui segment">\n                <button class="ui mini compact right floated icon button" (click)="createNew(false)">\n                    <i class="plus icon"></i>\n                </button>\n                <p>Icebox</p>\n            </div>\n            <div class="ui secondary form segment" *ngIf="newIceboxOpened" story-detail [story]="newIceboxStory"></div>\n            <div class="ui raised segments" [dragula]=\'"first-bag"\' style="min-height: 50px;" [attr.data-list]="\'icebox\'">\n                <div class="ui segment" *ngFor="let story of stories | filter : {icebox: true}" [attr.data-id]="story.id" story-list-item [story]="story"></div>\n            </div>\n        </div>\n    </div>\n\n';
+        e.htmlTemplate = '\n\n    <div class="ui equal width grid">\n        <div class="column">\n            <div class="ui segment">\n                <button class="ui mini compact right floated icon button" (click)="createNew(true)">\n                    <i class="plus icon"></i>\n                </button>\n                <p>Backlog</p>\n            </div>\n            <div class="ui secondary form segment" *ngIf="_newBacklogOpened" story-detail [story]="_newBacklogStory"></div>\n            <div class="ui raised segments" style="min-height: 50px;" [dragula]=\'"first-bag"\' [attr.data-list]="\'backlog\'">\n                <div class="ui segment" *ngFor="let story of _stories | filter : {icebox: false}" [attr.data-id]="story.id" story-list-item [story]="story"></div>\n            </div>\n        </div>\n        <div class="column">\n            <div class="ui segment">\n                <button class="ui mini compact right floated icon button" (click)="createNew(false)">\n                    <i class="plus icon"></i>\n                </button>\n                <p>Icebox</p>\n            </div>\n            <div class="ui secondary form segment" *ngIf="_newIceboxOpened" story-detail [story]="_newIceboxStory"></div>\n            <div class="ui raised segments" [dragula]=\'"first-bag"\' style="min-height: 50px;" [attr.data-list]="\'icebox\'">\n                <div class="ui segment" *ngFor="let story of _stories | filter : {icebox: true}" [attr.data-id]="story.id" story-list-item [story]="story"></div>\n            </div>\n        </div>\n    </div>\n\n';
     },
     352: function(t, e, n) {
         "use strict";

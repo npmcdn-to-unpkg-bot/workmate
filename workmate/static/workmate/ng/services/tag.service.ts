@@ -19,8 +19,8 @@ export class TagService extends BaseService {
     protected _baseUrl = '/api/v1/tag/';
     protected _resourceName = 'tag';
 
-    constructor (protected _http: Http, protected _alertService: AlertService) {
-        super(_http, _alertService);
+    constructor (protected _http: Http, protected _AlertService: AlertService) {
+        super(_http, _AlertService);
         this.objects$ = new Observable<iTag[]>((observer:any) => this._objectsObserver = observer).share();
     }
 

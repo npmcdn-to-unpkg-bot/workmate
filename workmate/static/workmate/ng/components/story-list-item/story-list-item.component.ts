@@ -13,9 +13,10 @@ import { htmlTemplate }                     from './story-list-item.component.ht
 
 export class StoryListItemComponent {
     @Input() story: iStory;
-    opened: boolean = false;
+
+    _opened: boolean = false;
 
     toggle = function() {
-        this.opened = !this.opened;
+        this._opened = !this._opened;
     }
 }

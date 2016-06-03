@@ -15,7 +15,7 @@
         'atoa':                             'https://npmcdn.com/atoa',
         'rxjs':                             'https://npmcdn.com/rxjs@5.0.0-beta.6',
         'ts':                               'https://npmcdn.com/plugin-typescript@4.0.10/lib/plugin.js',
-        'typescript':                       'https://npmcdn.com/typescript@1.8.10/lib/typescript.js',
+        'typescript':                       'https://npmcdn.com/typescript@1.8.10/lib/typescript.js'
     };
 
     var packages = {

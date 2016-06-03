@@ -19,8 +19,8 @@ export class StoryTypeService extends BaseService {
     protected _baseUrl = '/api/v1/story_type/';
     protected _resourceName = 'story_type';
 
-    constructor (protected _http: Http, protected _alertService: AlertService) {
-        super(_http, _alertService);
+    constructor (protected _http: Http, protected _AlertService: AlertService) {
+        super(_http, _AlertService);
         this.objects$ = new Observable<iStoryType[]>((observer:any) => this._objectsObserver = observer).share();
     }
 

@@ -10,7 +10,7 @@ export const htmlTemplate = `
                 </div>
             </div>
             <div class="ui divided link items">
-                <div class="item" *ngFor="let contact of contacts | contactSearch : searchTerm.value" (click)="onSelect(contact)">
+                <div class="item" *ngFor="let contact of _contacts | contactSearch : searchTerm.value" (click)="onSelect(contact)">
                     <div class="ui tiny image">
                       <img src="http://semantic-ui.com/images/wireframe/image.png">
                     </div>
@@ -26,7 +26,7 @@ export const htmlTemplate = `
     </div>
     <div class="ten wide column">
         <div class="ui basic segment">
-            <contact-detail *ngIf="selectedContact" [contact]="selectedContact"></contact-detail>
+            <contact-detail *ngIf="_selectedContact" [contact]="_selectedContact"></contact-detail>
         </div>
     </div>
 </div>

@@ -25,67 +25,66 @@ import { Dragula, DragulaService }                      from 'ng2-dragula/ng2-dr
 
 export class StoryListComponent implements OnInit {
 
-    stories: iStory[];
-    states: iStoryState[];
-    tags: iTag[];
-    types: iStoryType[];
-    newBacklogStory: Story;
-    newBacklogOpened: boolean = false;
-    newIceboxStory: Story;
-    newIceboxOpened: boolean = false;
+    _stories: iStory[];
+    _states: iStoryState[];
+    _tags: iTag[];
+    _types: iStoryType[];
+    _newBacklogStory: Story;
+    _newBacklogOpened: boolean = false;
+    _newIceboxStory: Story;
+    _newIceboxOpened: boolean = false;
 
 
     constructor(
-        private storyService: StoryService,
-        private storyStateService: StoryStateService,
-        private storyTypeService: StoryTypeService,
-        private tagService: TagService,
-        private dragulaService: DragulaService
+        private _StoryService: StoryService,
+        private _StoryStateService: StoryStateService,
+        private _StoryTypeService: StoryTypeService,
+        private _TagService: TagService,
+        private _DragulaService: DragulaService
     ) {}
 
     ngOnInit() {
-        this.storyService.objects$.subscribe(objects => this.stories = objects);
-        this.storyStateService.objects$.subscribe(objects => this.states = objects);
-        this.storyTypeService.objects$.subscribe(objects => this.types = objects);
-        this.tagService.objects$.subscribe(objects => this.tags = objects);
-        this.storyService.loadAll();
-        this.storyStateService.loadAll();
-        this.storyTypeService.loadAll();
-        this.tagService.loadAll();
+        this._StoryService.objects$.subscribe(objects => this._stories = objects);
+        this._StoryStateService.objects$.subscribe(objects => this._states = objects);
+        this._StoryTypeService.objects$.subscribe(objects => this._types = objects);
+        this._TagService.objects$.subscribe(objects => this._tags = objects);
+        this._StoryService.loadAll();
+        this._StoryStateService.loadAll();
+        this._StoryTypeService.loadAll();
+        this._TagService.loadAll();
 
-        this.dragulaService.drop.subscribe((value:any) => {
-            console.log(value);
+        this._DragulaService.drop.subscribe((value:any) => {
             this.onDrop(value.slice(1));
         });
     }
 
     createNew = function (backlog: boolean) {
         if(backlog) {
-            this.newBacklogStory = new Story({
+            this._newBacklogStory = new Story({
                 icebox: false,
                 state: null,
                 title: 'New Story',
                 type: null
             });
-            this.newBacklogOpened = !this.newBacklogOpened;
+            this._newBacklogOpened = !this._newBacklogOpened;
         } else {
-            this.newIceboxStory = new Story({
+            this._newIceboxStory = new Story({
                 icebox: true,
                 state: null,
                 title: 'New Story',
                 type: null
             });
-            this.newIceboxOpened = !this.newIceboxOpened;
+            this._newIceboxOpened = !this._newIceboxOpened;
         }
     };
 
     private onDrop(args:any) {
         let [e, el] = args;
         let data_id = e.attributes['data-id'].value;
-        let story = this.stories.find(item => item.id == data_id);
+        let story = this._stories.find(item => item.id == data_id);
         let icebox = e.parentElement.attributes['data-list'].value == 'icebox';
         story.icebox = icebox;
-        this.storyService.update(story);
+        this._StoryService.update(story);
     }
 
     

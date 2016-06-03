@@ -17,19 +17,19 @@ export class SMSelectMultiple implements ControlValueAccessor, OnInit {
     @Input() textLabel: string;
     @Input() addedClass: string;
 
-    private selectedItems: any = [];
-    private onChange: Function;
-    private onTouched: Function;
-    private vm: NgModel;
+    private _selectedItems: any = [];
+    private _onChange: Function;
+    private _onTouched: Function;
+    private _vm: NgModel;
 
-    constructor(private elementRef: ElementRef, vm: NgModel) {
-        this.vm = vm;
-        vm.valueAccessor = this;
+    constructor(private _elementRef: ElementRef, _vm: NgModel) {
+        this._vm = _vm;
+        _vm.valueAccessor = this;
     }
 
     ngOnInit() {
         setTimeout(() => {
-            jQuery(this.elementRef.nativeElement).find('.ui.dropdown').dropdown({});
+            jQuery(this._elementRef.nativeElement).find('.ui.dropdown').dropdown({});
         }, 0);
     }
 
@@ -40,47 +40,47 @@ export class SMSelectMultiple implements ControlValueAccessor, OnInit {
     onSelect($event:any, choice:any) {
         $event.stopPropagation();
         let found = false;
-        for (var i = 0; i < this.selectedItems.length; i++) {
-            if(this.selectedItems[i].id === choice.id) {
+        for (var i = 0; i < this._selectedItems.length; i++) {
+            if(this._selectedItems[i].id === choice.id) {
                 found = true;
                 break;
             }
         }
         if (!found) {
-            this.selectedItems.push(choice);
-            this.vm.viewToModelUpdate(this.selectedItems);
+            this._selectedItems.push(choice);
+            this._vm.viewToModelUpdate(this._selectedItems);
         }
     }
 
     onRemove($event:any, choice:any) {
         $event.stopPropagation();
-        for (var i = 0; i < this.selectedItems.length; i++) {
-            if(this.selectedItems[i].id === choice.id) {
-                this.selectedItems.splice(i, 1);
-                this.vm.viewToModelUpdate(this.selectedItems);
+        for (var i = 0; i < this._selectedItems.length; i++) {
+            if(this._selectedItems[i].id === choice.id) {
+                this._selectedItems.splice(i, 1);
+                this._vm.viewToModelUpdate(this._selectedItems);
                 break;
             }
         }
     }
 
     isSelected(item:any) {
-        for (var i = 0; i < this.selectedItems.length; i++) {
-            if(this.selectedItems[i].id === item.id) {
+        for (var i = 0; i < this._selectedItems.length; i++) {
+            if(this._selectedItems[i].id === item.id) {
                 return true;
             }
         }
     }
 
     writeValue(value: any) {
-      this.selectedItems = value;
+      this._selectedItems = value;
     }
 
     public registerOnChange(fn: (_: any) => {}): void {
-        this.onChange = fn;
+        this._onChange = fn;
     }
 
     public registerOnTouched(fn: () => {}): void {
-        this.onTouched = fn;
+        this._onTouched = fn;
     }
 
 }

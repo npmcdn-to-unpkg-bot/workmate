@@ -23,9 +23,9 @@ export class BaseService {
 
     protected _postOptions = new ExRequestOptions();
 
-    constructor (protected _http: Http, protected _alertService: AlertService) {
-        this._dataStore = { objects: [], meta: {} };
+    constructor (protected _http: Http, protected _AlertService: AlertService) {
         this.meta$ = new Observable<Object>((observer:any) => this._metaObserver = observer).share();
+        this._dataStore = { objects: [], meta: {} };
         this._postOptions.appendHeaders('Content-Type', 'application/json');
     }
 
@@ -142,7 +142,7 @@ export class BaseService {
     }
 
     protected createAlert(type: string, message: string) {
-        this._alertService.createAlert(new Alert({type: type, message: message}));
+        this._AlertService.createAlert(new Alert({type: type, message: message}));
     }
 
 }

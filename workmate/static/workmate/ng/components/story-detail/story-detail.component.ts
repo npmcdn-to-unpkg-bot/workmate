@@ -26,15 +26,15 @@ import { htmlTemplate }                                                     from
 export class StoryDetailComponent implements OnInit {
     @Input() story: iStory;
 
-    states: iStoryState[];
-    tags: iTag[];
-    types: iStoryType[];
+    _states: iStoryState[];
+    _tags: iTag[];
+    _types: iStoryType[];
 
     constructor(
-        private storyService: StoryService,
-        private storyStateService: StoryStateService,
-        private storyTypeService: StoryTypeService,
-        private tagService: TagService
+        private _StoryService: StoryService,
+        private _StoryStateService: StoryStateService,
+        private _StoryTypeService: StoryTypeService,
+        private _TagService: TagService
     ) {}
 
     addTask() {
@@ -47,25 +47,25 @@ export class StoryDetailComponent implements OnInit {
 
     save() {
         if (this.story.id) {
-            this.storyService.update(this.story);
+            this._StoryService.update(this.story);
         } else {
-            this.storyService.create(this.story);
+            this._StoryService.create(this.story);
         }
     }
 
     delete() {
         if (this.story.id) {
-            this.storyService.delete(this.story.id);
+            this._StoryService.delete(this.story.id);
         }
     }
 
     ngOnInit() {
-        this.storyTypeService.objects$.subscribe(objects => this.types = objects);
-        this.storyStateService.objects$.subscribe(objects => this.states = objects);
-        this.tagService.objects$.subscribe(objects => this.tags = objects);
-        this.storyStateService.loadAll();
-        this.storyTypeService.loadAll();
-        this.tagService.loadAll();
+        this._StoryTypeService.objects$.subscribe(objects => this._types = objects);
+        this._StoryStateService.objects$.subscribe(objects => this._states = objects);
+        this._TagService.objects$.subscribe(objects => this._tags = objects);
+        this._StoryStateService.loadAll();
+        this._StoryTypeService.loadAll();
+        this._TagService.loadAll();
     }
 
 }

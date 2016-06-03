@@ -33,8 +33,8 @@ export class StoryService extends BaseService {
     protected _baseUrl = '/api/v1/story/';
     protected _resourceName = 'story';
 
-    constructor (protected _http: Http, protected _alertService: AlertService) {
-        super(_http, _alertService);
+    constructor (protected _http: Http, protected _AlertService: AlertService) {
+        super(_http, _AlertService);
         this.objects$ = new Observable<iStory[]>((observer:any) => this._objectsObserver = observer).share();
     }
 

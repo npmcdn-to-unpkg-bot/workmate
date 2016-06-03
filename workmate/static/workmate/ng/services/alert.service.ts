@@ -12,11 +12,11 @@ export class AlertService {
 
     private _dataObserver: Observer<iAlert[]>;
     private _dataStore: { alerts: iAlert[] };
-    private nextId: number = 1;
+    private _nextId: number = 1;
     
     constructor () {
-        this._dataStore = { alerts: [] };
         this.alerts$ = new Observable<iAlert[]>((observer:any) => this._dataObserver = observer).share();
+        this._dataStore = { alerts: [] };
     }
 
     createAlert(alert: iAlert) {
@@ -40,6 +40,6 @@ export class AlertService {
     }
 
     private getNextId() {
-        return this.nextId++;
+        return this._nextId++;
     }
 }

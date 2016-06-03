@@ -10,17 +10,17 @@ export const htmlTemplate = `
     </div>
     <div class="inline field" [ngClass]="{'error': story._validation_errors?.type}">
         <label>Type</label>
-        <div sm-select class="ui right floated small input" [(ngModel)]="story.type" [choices]="types" [textLabel]="'title'"></div>
+        <div sm-select class="ui right floated small input" [(ngModel)]="story.type" [choices]="_types" [textLabel]="'title'"></div>
     </div>
     <div class="ui hidden clearing divider"></div>
     <div class="inline field" [ngClass]="{'error': story._validation_errors?.effort}">
         <label>Effort</label>
-        <div sm-select class="ui right floated small input" [(ngModel)]="story.effort" [choices]="storyService.effortChoices" [textLabel]="'label'" [boundValueAttr]="'value'"></div>
+        <div sm-select class="ui right floated small input" [(ngModel)]="story.effort" [choices]="_StoryService.effortChoices" [textLabel]="'label'" [boundValueAttr]="'value'"></div>
     </div>
     <div class="ui hidden clearing divider"></div>
     <div class="inline field" [ngClass]="{'error': story._validation_errors?.state}">
         <label>State</label>
-        <div sm-select class="ui right floated small input" [(ngModel)]="story.state" [choices]="states" [textLabel]="'title'"></div>
+        <div sm-select class="ui right floated small input" [(ngModel)]="story.state" [choices]="_states" [textLabel]="'title'"></div>
     </div>
     <div class="ui hidden clearing divider"></div>  
     <div class="field" [ngClass]="{'error': story._validation_errors?.description}">
@@ -31,7 +31,7 @@ export const htmlTemplate = `
     </div>
     <div class="field" [ngClass]="{'error': story._validation_errors?.tags}">
         <label>Tags</label>
-        <div sm-select-multiple class="ui small input" [(ngModel)]="story.tags" [choices]="tags" [textLabel]="'title'" [addedClass]="'fluid'"></div>
+        <div sm-select-multiple class="ui small input" [(ngModel)]="story.tags" [choices]="_tags" [textLabel]="'title'" [addedClass]="'fluid'"></div>
     </div>
     <div class="field" [ngClass]="{'error': story._validation_errors?.tasks}">
         <label>Tasks</label>
