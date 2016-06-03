@@ -48,13 +48,14 @@
         transpiler: 'ts',
         typescriptOptions: {
             "target": "es5",
-            "module": "system",
-            "declaration": false,
-            "noImplicitAny": false,
-            "removeComments": true,
-            "noLib": false,
+            "module": "commonjs",
+            "moduleResolution": "node",
+            "sourceMap": true,
             "emitDecoratorMetadata": true,
-            "experimentalDecorators": true
+            "experimentalDecorators": true,
+            "removeComments": false,
+            "noImplicitAny": true,
+            "suppressImplicitAnyIndexErrors": true
         },
         meta: {
             'typescript': {

@@ -31,6 +31,6 @@ Add to bottom of page::
    <script src="https://npmcdn.com/systemjs@0.19.27/dist/system.src.js"></script>
    <script src="{% static 'workmate/ng/systemjs.config.js' %}"></script>
    <script>
-      System.import('app').catch(function(err){ console.error(err); });
+      System.import('app/agile').catch(function(err){ console.error(err); });
    </script>
 
