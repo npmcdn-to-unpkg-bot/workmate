@@ -6,6 +6,13 @@
         'app':                              '/static/workmate/ng',
 
         '@angular':                         'https://npmcdn.com/@angular',
+        'ng2-dragula':                      'https://npmcdn.com/ng2-dragula',
+        'dragula':                          'https://npmcdn.com/dragula',
+        'crossvent':                        'https://npmcdn.com/crossvent',
+        'custom-event':                     'https://npmcdn.com/custom-event',
+        'contra':                           'https://npmcdn.com/contra',
+        'ticky':                            'https://npmcdn.com/ticky',
+        'atoa':                             'https://npmcdn.com/atoa',
         'rxjs':                             'https://npmcdn.com/rxjs@5.0.0-beta.6',
         'ts':                               'https://npmcdn.com/plugin-typescript@4.0.10/lib/plugin.js',
         'typescript':                       'https://npmcdn.com/typescript@1.8.10/lib/typescript.js',

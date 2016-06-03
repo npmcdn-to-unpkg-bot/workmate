@@ -1,6 +1,6 @@
 export const htmlTemplate = `
 
-    <div class="field">
+    <div class="field" [ngClass]="{'error': story._validation_errors?.title}">
         <label>
             <div class="ui label">ID<div class="detail">{{ story.id }}</div></div>
         </label>
@@ -8,32 +8,32 @@ export const htmlTemplate = `
             <textarea [(ngModel)]="story.title" rows="2"></textarea>
         </div>
     </div>
-    <div class="inline field">
+    <div class="inline field" [ngClass]="{'error': story._validation_errors?.type}">
         <label>Type</label>
         <div sm-select class="ui right floated small input" [(ngModel)]="story.type" [choices]="types" [textLabel]="'title'"></div>
     </div>
     <div class="ui hidden clearing divider"></div>
-    <div class="inline field">
+    <div class="inline field" [ngClass]="{'error': story._validation_errors?.effort}">
         <label>Effort</label>
         <div sm-select class="ui right floated small input" [(ngModel)]="story.effort" [choices]="storyService.effortChoices" [textLabel]="'label'" [boundValueAttr]="'value'"></div>
     </div>
     <div class="ui hidden clearing divider"></div>
-    <div class="inline field">
+    <div class="inline field" [ngClass]="{'error': story._validation_errors?.state}">
         <label>State</label>
         <div sm-select class="ui right floated small input" [(ngModel)]="story.state" [choices]="states" [textLabel]="'title'"></div>
     </div>
     <div class="ui hidden clearing divider"></div>  
-    <div class="field">
+    <div class="field" [ngClass]="{'error': story._validation_errors?.description}">
         <label>Description</label>
         <div class="ui small input">
             <textarea [(ngModel)]="story.description" rows="3"></textarea>
         </div>
     </div>
-    <div class="field">
+    <div class="field" [ngClass]="{'error': story._validation_errors?.tags}">
         <label>Tags</label>
         <div sm-select-multiple class="ui small input" [(ngModel)]="story.tags" [choices]="tags" [textLabel]="'title'" [addedClass]="'fluid'"></div>
     </div>
-    <div class="field">
+    <div class="field" [ngClass]="{'error': story._validation_errors?.tasks}">
         <label>Tasks</label>
         <div class="field" *ngFor="let task of story.tasks">
             <div class="ui small fluid left icon input">

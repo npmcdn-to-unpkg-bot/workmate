@@ -22,6 +22,8 @@ export interface iContact {
     tags?: iTag[];
     website?: string;
     work_number?: string;
+
+    _validation_errors?: Object;
 }
 
 export class Contact implements iContact {

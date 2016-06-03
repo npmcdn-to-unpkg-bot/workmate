@@ -3,6 +3,8 @@ export interface iStoryTask {
     completed?: boolean;
     description: string;
     resource_uri?: string;
+
+    _validation_errors?: Object;
 }
 
 export class StoryTask implements iStoryTask {

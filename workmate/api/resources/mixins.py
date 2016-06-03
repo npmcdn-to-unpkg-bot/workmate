@@ -9,6 +9,6 @@ class DefaultResourceMixin(ModelResource):
         authentication = SessionAuthentication()
         authorization = Authorization()
         always_return_data = True
-        detail_allowed_methods = ['get', 'post', 'put', 'delete']
+        detail_allowed_methods = ['get', 'put', 'delete']
         list_allowed_methods = ['get', 'post']
         serializer = Serializer()

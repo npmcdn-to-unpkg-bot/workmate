@@ -17,6 +17,7 @@ export class StoryStateService extends BaseService {
     protected _objectsObserver: Observer<iStoryState[]>;
     protected _dataStore: { objects: iStoryState[], meta: Object };
     protected _baseUrl = '/api/v1/story_state/';
+    protected _resourceName = 'story_state';
 
     constructor (protected _http: Http, protected _alertService: AlertService) {
         super(_http, _alertService);

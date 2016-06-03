@@ -17,6 +17,7 @@ export class TagService extends BaseService {
     protected _objectsObserver: Observer<iTag[]>;
     protected _dataStore: { objects: iTag[], meta: Object };
     protected _baseUrl = '/api/v1/tag/';
+    protected _resourceName = 'tag';
 
     constructor (protected _http: Http, protected _alertService: AlertService) {
         super(_http, _alertService);

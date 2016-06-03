@@ -3,24 +3,24 @@ webpackJsonp([ 0 ], {
         "use strict";
         var i = this && this.__decorate || function(t, e, n, i) {
             var r, o = arguments.length, s = 3 > o ? e : null === i ? i = Object.getOwnPropertyDescriptor(e, n) : i;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) s = Reflect.decorate(t, e, n, i); else for (var c = t.length - 1; c >= 0; c--) (r = t[c]) && (s = (3 > o ? r(s) : o > 3 ? r(e, n, s) : r(e, n)) || s);
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) s = Reflect.decorate(t, e, n, i); else for (var a = t.length - 1; a >= 0; a--) (r = t[a]) && (s = (3 > o ? r(s) : o > 3 ? r(e, n, s) : r(e, n)) || s);
             return o > 3 && s && Object.defineProperty(e, n, s), s;
         }, r = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, o = n(1), s = n(97), c = n(118);
+        }, o = n(1), s = n(97), a = n(118);
         n(301);
-        var a = n(330), l = n(331), u = n(332), d = n(335), f = n(336), p = n(337), v = n(338), h = n(339), m = function() {
+        var c = n(330), l = n(331), u = n(332), d = n(335), f = n(336), p = n(337), v = n(338), h = n(339), m = function() {
             function t() {}
             return t = i([ o.Component({
                 selector: "agile-app",
                 template: '\n        <story-list></story-list>\n        <div class="wm-messages ui sticky bottom fixed"><alert></alert></div>\n    ',
                 directives: [ h.StoryListComponent, v.AlertComponent ],
                 providers: [ s.HTTP_PROVIDERS, o.provide(s.RequestOptions, {
-                    useClass: a.ExRequestOptions
+                    useClass: c.ExRequestOptions
                 }), l.AlertService, u.StoryService, d.StoryStateService, f.StoryTypeService, p.TagService ]
             }), r("design:paramtypes", []) ], t);
         }();
-        e.AgileComponent = m, c.bootstrap(m);
+        e.AgileComponent = m, a.bootstrap(m);
     },
     330: function(t, e, n) {
         "use strict";
@@ -32,11 +32,11 @@ webpackJsonp([ 0 ], {
             t.prototype = null === e ? Object.create(e) : (n.prototype = e.prototype, new n());
         }, r = this && this.__decorate || function(t, e, n, i) {
             var r, o = arguments.length, s = 3 > o ? e : null === i ? i = Object.getOwnPropertyDescriptor(e, n) : i;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) s = Reflect.decorate(t, e, n, i); else for (var c = t.length - 1; c >= 0; c--) (r = t[c]) && (s = (3 > o ? r(s) : o > 3 ? r(e, n, s) : r(e, n)) || s);
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) s = Reflect.decorate(t, e, n, i); else for (var a = t.length - 1; a >= 0; a--) (r = t[a]) && (s = (3 > o ? r(s) : o > 3 ? r(e, n, s) : r(e, n)) || s);
             return o > 3 && s && Object.defineProperty(e, n, s), s;
         }, o = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, s = n(1), c = n(97), a = function(t) {
+        }, s = n(1), a = n(97), c = function(t) {
             function e() {
                 t.call(this), this.headers.append("X-CSRFToken", this.getCookie("csrftoken"));
             }
@@ -46,18 +46,18 @@ webpackJsonp([ 0 ], {
             }, e.prototype.appendHeaders = function(t, e) {
                 this.headers.append(t, e);
             }, e = r([ s.Injectable(), o("design:paramtypes", []) ], e);
-        }(c.BaseRequestOptions);
-        e.ExRequestOptions = a;
+        }(a.BaseRequestOptions);
+        e.ExRequestOptions = c;
     },
     331: function(t, e, n) {
         "use strict";
         var i = this && this.__decorate || function(t, e, n, i) {
             var r, o = arguments.length, s = 3 > o ? e : null === i ? i = Object.getOwnPropertyDescriptor(e, n) : i;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) s = Reflect.decorate(t, e, n, i); else for (var c = t.length - 1; c >= 0; c--) (r = t[c]) && (s = (3 > o ? r(s) : o > 3 ? r(e, n, s) : r(e, n)) || s);
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) s = Reflect.decorate(t, e, n, i); else for (var a = t.length - 1; a >= 0; a--) (r = t[a]) && (s = (3 > o ? r(s) : o > 3 ? r(e, n, s) : r(e, n)) || s);
             return o > 3 && s && Object.defineProperty(e, n, s), s;
         }, r = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, o = n(1), s = n(35), c = function() {
+        }, o = n(1), s = n(35), a = function() {
             function t() {
                 var t = this;
                 this.nextId = 1, this._dataStore = {
@@ -83,7 +83,7 @@ webpackJsonp([ 0 ], {
                 return this.nextId++;
             }, t = i([ o.Injectable(), r("design:paramtypes", []) ], t);
         }();
-        e.AlertService = c;
+        e.AlertService = a;
     },
     332: function(t, e, n) {
         "use strict";
@@ -95,11 +95,11 @@ webpackJsonp([ 0 ], {
             t.prototype = null === e ? Object.create(e) : (n.prototype = e.prototype, new n());
         }, r = this && this.__decorate || function(t, e, n, i) {
             var r, o = arguments.length, s = 3 > o ? e : null === i ? i = Object.getOwnPropertyDescriptor(e, n) : i;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) s = Reflect.decorate(t, e, n, i); else for (var c = t.length - 1; c >= 0; c--) (r = t[c]) && (s = (3 > o ? r(s) : o > 3 ? r(e, n, s) : r(e, n)) || s);
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) s = Reflect.decorate(t, e, n, i); else for (var a = t.length - 1; a >= 0; a--) (r = t[a]) && (s = (3 > o ? r(s) : o > 3 ? r(e, n, s) : r(e, n)) || s);
             return o > 3 && s && Object.defineProperty(e, n, s), s;
         }, o = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, s = n(1), c = n(97), a = n(331), l = n(333), u = n(35), d = function(t) {
+        }, s = n(1), a = n(97), c = n(331), l = n(333), u = n(35), d = function(t) {
             function e(e, n) {
                 var i = this;
                 t.call(this, e, n), this._http = e, this._alertService = n, this.effortChoices = [ {
@@ -117,11 +117,11 @@ webpackJsonp([ 0 ], {
                 }, {
                     value: "5.0",
                     label: "5 Points"
-                } ], this._baseUrl = "/api/v1/story/", this.objects$ = new u.Observable(function(t) {
+                } ], this._baseUrl = "/api/v1/story/", this._resourceName = "story", this.objects$ = new u.Observable(function(t) {
                     return i._objectsObserver = t;
                 }).share();
             }
-            return i(e, t), e = r([ s.Injectable(), o("design:paramtypes", [ c.Http, a.AlertService ]) ], e);
+            return i(e, t), e = r([ s.Injectable(), o("design:paramtypes", [ a.Http, c.AlertService ]) ], e);
         }(l.BaseService);
         e.StoryService = d;
     },
@@ -130,8 +130,8 @@ webpackJsonp([ 0 ], {
         var i = n(330), r = n(334), o = n(35), s = function() {
             function t(t, e) {
                 var n = this;
-                this._http = t, this._alertService = e, this._baseUrl = "", this._postOptions = new i.ExRequestOptions(), 
-                this._dataStore = {
+                this._http = t, this._alertService = e, this._baseUrl = "", this._resourceName = "", 
+                this._postOptions = new i.ExRequestOptions(), this._dataStore = {
                     objects: [],
                     meta: {}
                 }, this.meta$ = new o.Observable(function(t) {
@@ -166,8 +166,8 @@ webpackJsonp([ 0 ], {
                 var e = this, n = JSON.stringify(t);
                 return this._http.post(this._baseUrl, n, this._postOptions).map(this.extractData).subscribe(function(t) {
                     e._dataStore.objects.push(t), e._objectsObserver.next(e._dataStore.objects);
-                }, function(t) {
-                    return e.handleError(t);
+                }, function(n) {
+                    return e.handleError(n, t);
                 }, function() {
                     return e.handleCompleted();
                 });
@@ -175,10 +175,10 @@ webpackJsonp([ 0 ], {
                 var e = this, n = JSON.stringify(t);
                 return this._http.put("" + this._baseUrl + t.id + "/", n, this._postOptions).map(this.extractData).subscribe(function(t) {
                     e._dataStore.objects.forEach(function(n, i) {
-                        n.id === t.id && (e._dataStore.objects[i] = t);
+                        n.id === t.id && (e._dataStore.objects[i] = t, e._dataStore.objects[i]._validation_errors = {});
                     }), e._objectsObserver.next(e._dataStore.objects);
-                }, function(t) {
-                    return e.handleError(t);
+                }, function(n) {
+                    return e.handleError(n, t);
                 }, function() {
                     return e.handleCompleted();
                 });
@@ -199,9 +199,11 @@ webpackJsonp([ 0 ], {
                 return e.object || e.objects || e || {};
             }, t.prototype.handleCompleted = function() {
                 this.createAlert("success", "Completed successfully");
-            }, t.prototype.handleError = function(t) {
-                var e = JSON.parse(t._body), n = e.error_message || "An unknown server error occurred.";
-                return this.createAlert("error", n), o.Observable.throw(n);
+            }, t.prototype.handleError = function(t, e) {
+                var n = JSON.parse(t._body), i = "";
+                return e && n.hasOwnProperty(this._resourceName) ? (e._validation_errors = n[this._resourceName], 
+                i = "The data failed validation, please fix any issues and re-submit.") : i = n.error_message || "An unknown server error occurred.", 
+                this.createAlert("error", i), o.Observable.throw(i);
             }, t.prototype.createAlert = function(t, e) {
                 this._alertService.createAlert(new r.Alert({
                     type: t,
@@ -232,19 +234,19 @@ webpackJsonp([ 0 ], {
             t.prototype = null === e ? Object.create(e) : (n.prototype = e.prototype, new n());
         }, r = this && this.__decorate || function(t, e, n, i) {
             var r, o = arguments.length, s = 3 > o ? e : null === i ? i = Object.getOwnPropertyDescriptor(e, n) : i;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) s = Reflect.decorate(t, e, n, i); else for (var c = t.length - 1; c >= 0; c--) (r = t[c]) && (s = (3 > o ? r(s) : o > 3 ? r(e, n, s) : r(e, n)) || s);
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) s = Reflect.decorate(t, e, n, i); else for (var a = t.length - 1; a >= 0; a--) (r = t[a]) && (s = (3 > o ? r(s) : o > 3 ? r(e, n, s) : r(e, n)) || s);
             return o > 3 && s && Object.defineProperty(e, n, s), s;
         }, o = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, s = n(1), c = n(97), a = n(331), l = n(333), u = n(35), d = function(t) {
+        }, s = n(1), a = n(97), c = n(331), l = n(333), u = n(35), d = function(t) {
             function e(e, n) {
                 var i = this;
                 t.call(this, e, n), this._http = e, this._alertService = n, this._baseUrl = "/api/v1/story_state/", 
-                this.objects$ = new u.Observable(function(t) {
+                this._resourceName = "story_state", this.objects$ = new u.Observable(function(t) {
                     return i._objectsObserver = t;
                 }).share();
             }
-            return i(e, t), e = r([ s.Injectable(), o("design:paramtypes", [ c.Http, a.AlertService ]) ], e);
+            return i(e, t), e = r([ s.Injectable(), o("design:paramtypes", [ a.Http, c.AlertService ]) ], e);
         }(l.BaseService);
         e.StoryStateService = d;
     },
@@ -258,19 +260,19 @@ webpackJsonp([ 0 ], {
             t.prototype = null === e ? Object.create(e) : (n.prototype = e.prototype, new n());
         }, r = this && this.__decorate || function(t, e, n, i) {
             var r, o = arguments.length, s = 3 > o ? e : null === i ? i = Object.getOwnPropertyDescriptor(e, n) : i;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) s = Reflect.decorate(t, e, n, i); else for (var c = t.length - 1; c >= 0; c--) (r = t[c]) && (s = (3 > o ? r(s) : o > 3 ? r(e, n, s) : r(e, n)) || s);
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) s = Reflect.decorate(t, e, n, i); else for (var a = t.length - 1; a >= 0; a--) (r = t[a]) && (s = (3 > o ? r(s) : o > 3 ? r(e, n, s) : r(e, n)) || s);
             return o > 3 && s && Object.defineProperty(e, n, s), s;
         }, o = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, s = n(1), c = n(97), a = n(331), l = n(333), u = n(35), d = function(t) {
+        }, s = n(1), a = n(97), c = n(331), l = n(333), u = n(35), d = function(t) {
             function e(e, n) {
                 var i = this;
                 t.call(this, e, n), this._http = e, this._alertService = n, this._baseUrl = "/api/v1/story_type/", 
-                this.objects$ = new u.Observable(function(t) {
+                this._resourceName = "story_type", this.objects$ = new u.Observable(function(t) {
                     return i._objectsObserver = t;
                 }).share();
             }
-            return i(e, t), e = r([ s.Injectable(), o("design:paramtypes", [ c.Http, a.AlertService ]) ], e);
+            return i(e, t), e = r([ s.Injectable(), o("design:paramtypes", [ a.Http, c.AlertService ]) ], e);
         }(l.BaseService);
         e.StoryTypeService = d;
     },
@@ -284,19 +286,19 @@ webpackJsonp([ 0 ], {
             t.prototype = null === e ? Object.create(e) : (n.prototype = e.prototype, new n());
         }, r = this && this.__decorate || function(t, e, n, i) {
             var r, o = arguments.length, s = 3 > o ? e : null === i ? i = Object.getOwnPropertyDescriptor(e, n) : i;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) s = Reflect.decorate(t, e, n, i); else for (var c = t.length - 1; c >= 0; c--) (r = t[c]) && (s = (3 > o ? r(s) : o > 3 ? r(e, n, s) : r(e, n)) || s);
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) s = Reflect.decorate(t, e, n, i); else for (var a = t.length - 1; a >= 0; a--) (r = t[a]) && (s = (3 > o ? r(s) : o > 3 ? r(e, n, s) : r(e, n)) || s);
             return o > 3 && s && Object.defineProperty(e, n, s), s;
         }, o = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, s = n(1), c = n(97), a = n(331), l = n(333), u = n(35), d = function(t) {
+        }, s = n(1), a = n(97), c = n(331), l = n(333), u = n(35), d = function(t) {
             function e(e, n) {
                 var i = this;
                 t.call(this, e, n), this._http = e, this._alertService = n, this._baseUrl = "/api/v1/tag/", 
-                this.objects$ = new u.Observable(function(t) {
+                this._resourceName = "tag", this.objects$ = new u.Observable(function(t) {
                     return i._objectsObserver = t;
                 }).share();
             }
-            return i(e, t), e = r([ s.Injectable(), o("design:paramtypes", [ c.Http, a.AlertService ]) ], e);
+            return i(e, t), e = r([ s.Injectable(), o("design:paramtypes", [ a.Http, c.AlertService ]) ], e);
         }(l.BaseService);
         e.TagService = d;
     },
@@ -304,11 +306,11 @@ webpackJsonp([ 0 ], {
         "use strict";
         var i = this && this.__decorate || function(t, e, n, i) {
             var r, o = arguments.length, s = 3 > o ? e : null === i ? i = Object.getOwnPropertyDescriptor(e, n) : i;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) s = Reflect.decorate(t, e, n, i); else for (var c = t.length - 1; c >= 0; c--) (r = t[c]) && (s = (3 > o ? r(s) : o > 3 ? r(e, n, s) : r(e, n)) || s);
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) s = Reflect.decorate(t, e, n, i); else for (var a = t.length - 1; a >= 0; a--) (r = t[a]) && (s = (3 > o ? r(s) : o > 3 ? r(e, n, s) : r(e, n)) || s);
             return o > 3 && s && Object.defineProperty(e, n, s), s;
         }, r = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, o = n(1), s = n(331), c = '\n    <div class="ui {{ alert.type }} message" *ngFor="let alert of alerts">\n        <i class="close icon" *ngIf="alert.dismissable"></i><div class="header capitalize">{{ alert.type }}</div>\n        <p>{{ alert.message }}</p>\n    </div>\n  ', a = function() {
+        }, o = n(1), s = n(331), a = '\n    <div class="ui {{ alert.type }} message" *ngFor="let alert of alerts">\n        <i class="close icon" *ngIf="alert.dismissable"></i><div class="header capitalize">{{ alert.type }}</div>\n        <p>{{ alert.message }}</p>\n    </div>\n  ', c = function() {
             function t(t) {
                 this.alertService = t;
             }
@@ -319,20 +321,20 @@ webpackJsonp([ 0 ], {
                 });
             }, t = i([ o.Component({
                 selector: "alert",
-                template: c
+                template: a
             }), r("design:paramtypes", [ s.AlertService ]) ], t);
         }();
-        e.AlertComponent = a;
+        e.AlertComponent = c;
     },
     339: function(t, e, n) {
         "use strict";
         var i = this && this.__decorate || function(t, e, n, i) {
             var r, o = arguments.length, s = 3 > o ? e : null === i ? i = Object.getOwnPropertyDescriptor(e, n) : i;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) s = Reflect.decorate(t, e, n, i); else for (var c = t.length - 1; c >= 0; c--) (r = t[c]) && (s = (3 > o ? r(s) : o > 3 ? r(e, n, s) : r(e, n)) || s);
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) s = Reflect.decorate(t, e, n, i); else for (var a = t.length - 1; a >= 0; a--) (r = t[a]) && (s = (3 > o ? r(s) : o > 3 ? r(e, n, s) : r(e, n)) || s);
             return o > 3 && s && Object.defineProperty(e, n, s), s;
         }, r = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, o = n(1), s = n(340), c = n(332), a = n(335), l = n(336), u = n(337), d = n(341), f = n(342), p = n(349), v = n(351), h = n(352), m = function() {
+        }, o = n(1), s = n(340), a = n(332), c = n(335), l = n(336), u = n(337), d = n(341), f = n(342), p = n(349), v = n(351), h = n(352), m = function() {
             function t(t, e, n, i, r) {
                 this.storyService = t, this.storyStateService = e, this.storyTypeService = n, this.tagService = i, 
                 this.dragulaService = r, this.newBacklogOpened = !1, this.newIceboxOpened = !1, 
@@ -375,7 +377,7 @@ webpackJsonp([ 0 ], {
                 directives: [ h.Dragula, f.StoryDetailComponent, p.StoryListItemComponent ],
                 viewProviders: [ h.DragulaService ],
                 pipes: [ d.FilterPipe ]
-            }), r("design:paramtypes", [ c.StoryService, a.StoryStateService, l.StoryTypeService, u.TagService, h.DragulaService ]) ], t);
+            }), r("design:paramtypes", [ a.StoryService, c.StoryStateService, l.StoryTypeService, u.TagService, h.DragulaService ]) ], t);
         }();
         e.StoryListComponent = m;
     },
@@ -394,7 +396,7 @@ webpackJsonp([ 0 ], {
         "use strict";
         var i = this && this.__decorate || function(t, e, n, i) {
             var r, o = arguments.length, s = 3 > o ? e : null === i ? i = Object.getOwnPropertyDescriptor(e, n) : i;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) s = Reflect.decorate(t, e, n, i); else for (var c = t.length - 1; c >= 0; c--) (r = t[c]) && (s = (3 > o ? r(s) : o > 3 ? r(e, n, s) : r(e, n)) || s);
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) s = Reflect.decorate(t, e, n, i); else for (var a = t.length - 1; a >= 0; a--) (r = t[a]) && (s = (3 > o ? r(s) : o > 3 ? r(e, n, s) : r(e, n)) || s);
             return o > 3 && s && Object.defineProperty(e, n, s), s;
         }, r = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
@@ -422,11 +424,11 @@ webpackJsonp([ 0 ], {
         "use strict";
         var i = this && this.__decorate || function(t, e, n, i) {
             var r, o = arguments.length, s = 3 > o ? e : null === i ? i = Object.getOwnPropertyDescriptor(e, n) : i;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) s = Reflect.decorate(t, e, n, i); else for (var c = t.length - 1; c >= 0; c--) (r = t[c]) && (s = (3 > o ? r(s) : o > 3 ? r(e, n, s) : r(e, n)) || s);
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) s = Reflect.decorate(t, e, n, i); else for (var a = t.length - 1; a >= 0; a--) (r = t[a]) && (s = (3 > o ? r(s) : o > 3 ? r(e, n, s) : r(e, n)) || s);
             return o > 3 && s && Object.defineProperty(e, n, s), s;
         }, r = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, o = n(1), s = n(343), c = n(344), a = n(346), l = n(332), u = n(335), d = n(336), f = n(337), p = n(348), v = function() {
+        }, o = n(1), s = n(343), a = n(344), c = n(346), l = n(332), u = n(335), d = n(336), f = n(337), p = n(348), v = function() {
             function t(t, e, n, i) {
                 this.storyService = t, this.storyStateService = e, this.storyTypeService = n, this.tagService = i;
             }
@@ -452,7 +454,7 @@ webpackJsonp([ 0 ], {
             }, i([ o.Input(), r("design:type", Object) ], t.prototype, "story", void 0), t = i([ o.Component({
                 selector: "[story-detail]",
                 template: p.htmlTemplate,
-                directives: [ c.SMSelect, a.SMSelectMultiple ]
+                directives: [ a.SMSelect, c.SMSelectMultiple ]
             }), r("design:paramtypes", [ l.StoryService, u.StoryStateService, d.StoryTypeService, f.TagService ]) ], t);
         }();
         e.StoryDetailComponent = v;
@@ -471,11 +473,11 @@ webpackJsonp([ 0 ], {
         "use strict";
         var i = this && this.__decorate || function(t, e, n, i) {
             var r, o = arguments.length, s = 3 > o ? e : null === i ? i = Object.getOwnPropertyDescriptor(e, n) : i;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) s = Reflect.decorate(t, e, n, i); else for (var c = t.length - 1; c >= 0; c--) (r = t[c]) && (s = (3 > o ? r(s) : o > 3 ? r(e, n, s) : r(e, n)) || s);
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) s = Reflect.decorate(t, e, n, i); else for (var a = t.length - 1; a >= 0; a--) (r = t[a]) && (s = (3 > o ? r(s) : o > 3 ? r(e, n, s) : r(e, n)) || s);
             return o > 3 && s && Object.defineProperty(e, n, s), s;
         }, r = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, o = n(1), s = n(202), c = n(345), a = function() {
+        }, o = n(1), s = n(202), a = n(345), c = function() {
             function t(t, e) {
                 this.elementRef = t, this.vm = e, e.valueAccessor = this;
             }
@@ -502,10 +504,10 @@ webpackJsonp([ 0 ], {
             i([ o.Input(), r("design:type", String) ], t.prototype, "boundValueAttr", void 0), 
             t = i([ o.Component({
                 selector: "[sm-select], sm-select",
-                template: c.htmlTemplate
+                template: a.htmlTemplate
             }), r("design:paramtypes", [ o.ElementRef, s.NgModel ]) ], t);
         }();
-        e.SMSelect = a;
+        e.SMSelect = c;
     },
     345: function(t, e) {
         "use strict";
@@ -515,11 +517,11 @@ webpackJsonp([ 0 ], {
         "use strict";
         var i = this && this.__decorate || function(t, e, n, i) {
             var r, o = arguments.length, s = 3 > o ? e : null === i ? i = Object.getOwnPropertyDescriptor(e, n) : i;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) s = Reflect.decorate(t, e, n, i); else for (var c = t.length - 1; c >= 0; c--) (r = t[c]) && (s = (3 > o ? r(s) : o > 3 ? r(e, n, s) : r(e, n)) || s);
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) s = Reflect.decorate(t, e, n, i); else for (var a = t.length - 1; a >= 0; a--) (r = t[a]) && (s = (3 > o ? r(s) : o > 3 ? r(e, n, s) : r(e, n)) || s);
             return o > 3 && s && Object.defineProperty(e, n, s), s;
         }, r = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, o = n(1), s = n(202), c = n(347), a = function() {
+        }, o = n(1), s = n(202), a = n(347), c = function() {
             function t(t, e) {
                 this.elementRef = t, this.selectedItems = [], this.vm = e, e.valueAccessor = this;
             }
@@ -554,10 +556,10 @@ webpackJsonp([ 0 ], {
             }, i([ o.Input(), r("design:type", Object) ], t.prototype, "choices", void 0), i([ o.Input(), r("design:type", String) ], t.prototype, "textLabel", void 0), 
             i([ o.Input(), r("design:type", String) ], t.prototype, "addedClass", void 0), t = i([ o.Component({
                 selector: "[sm-select-multiple], sm-select-multiple",
-                template: c.htmlTemplate
+                template: a.htmlTemplate
             }), r("design:paramtypes", [ o.ElementRef, s.NgModel ]) ], t);
         }();
-        e.SMSelectMultiple = a;
+        e.SMSelectMultiple = c;
     },
     347: function(t, e) {
         "use strict";
@@ -565,17 +567,17 @@ webpackJsonp([ 0 ], {
     },
     348: function(t, e) {
         "use strict";
-        e.htmlTemplate = '\n\n    <div class="field">\n        <label>\n            <div class="ui label">ID<div class="detail">{{ story.id }}</div></div>\n        </label>\n        <div class="ui small input">\n            <textarea [(ngModel)]="story.title" rows="2"></textarea>\n        </div>\n    </div>\n    <div class="inline field">\n        <label>Type</label>\n        <div sm-select class="ui right floated small input" [(ngModel)]="story.type" [choices]="types" [textLabel]="\'title\'"></div>\n    </div>\n    <div class="ui hidden clearing divider"></div>\n    <div class="inline field">\n        <label>Effort</label>\n        <div sm-select class="ui right floated small input" [(ngModel)]="story.effort" [choices]="storyService.effortChoices" [textLabel]="\'label\'" [boundValueAttr]="\'value\'"></div>\n    </div>\n    <div class="ui hidden clearing divider"></div>\n    <div class="inline field">\n        <label>State</label>\n        <div sm-select class="ui right floated small input" [(ngModel)]="story.state" [choices]="states" [textLabel]="\'title\'"></div>\n    </div>\n    <div class="ui hidden clearing divider"></div>  \n    <div class="field">\n        <label>Description</label>\n        <div class="ui small input">\n            <textarea [(ngModel)]="story.description" rows="3"></textarea>\n        </div>\n    </div>\n    <div class="field">\n        <label>Tags</label>\n        <div sm-select-multiple class="ui small input" [(ngModel)]="story.tags" [choices]="tags" [textLabel]="\'title\'" [addedClass]="\'fluid\'"></div>\n    </div>\n    <div class="field">\n        <label>Tasks</label>\n        <div class="field" *ngFor="let task of story.tasks">\n            <div class="ui small fluid left icon input">\n                <i class="inverted circular checkmark link icon" [ngClass]="{\'green\': task.completed}" (click)="task.completed = !task.completed"></i>\n                <input [(ngModel)]="task.description">\n            </div>\n        </div>\n    </div>\n    <button class="ui right floated mini button" (click)="addTask()">Add Task</button>\n    <div class="ui hidden clearing divider"></div>\n    <button *ngIf="story.id" class="ui secondary button" (click)="delete()">Delete</button>\n    <button class="ui right floated primary button" (click)="save()">Save</button>\n    <div class="ui hidden clearing divider"></div>\n';
+        e.htmlTemplate = '\n\n    <div class="field" [ngClass]="{\'error\': story._validation_errors?.title}">\n        <label>\n            <div class="ui label">ID<div class="detail">{{ story.id }}</div></div>\n        </label>\n        <div class="ui small input">\n            <textarea [(ngModel)]="story.title" rows="2"></textarea>\n        </div>\n    </div>\n    <div class="inline field" [ngClass]="{\'error\': story._validation_errors?.type}">\n        <label>Type</label>\n        <div sm-select class="ui right floated small input" [(ngModel)]="story.type" [choices]="types" [textLabel]="\'title\'"></div>\n    </div>\n    <div class="ui hidden clearing divider"></div>\n    <div class="inline field" [ngClass]="{\'error\': story._validation_errors?.effort}">\n        <label>Effort</label>\n        <div sm-select class="ui right floated small input" [(ngModel)]="story.effort" [choices]="storyService.effortChoices" [textLabel]="\'label\'" [boundValueAttr]="\'value\'"></div>\n    </div>\n    <div class="ui hidden clearing divider"></div>\n    <div class="inline field" [ngClass]="{\'error\': story._validation_errors?.state}">\n        <label>State</label>\n        <div sm-select class="ui right floated small input" [(ngModel)]="story.state" [choices]="states" [textLabel]="\'title\'"></div>\n    </div>\n    <div class="ui hidden clearing divider"></div>  \n    <div class="field" [ngClass]="{\'error\': story._validation_errors?.description}">\n        <label>Description</label>\n        <div class="ui small input">\n            <textarea [(ngModel)]="story.description" rows="3"></textarea>\n        </div>\n    </div>\n    <div class="field" [ngClass]="{\'error\': story._validation_errors?.tags}">\n        <label>Tags</label>\n        <div sm-select-multiple class="ui small input" [(ngModel)]="story.tags" [choices]="tags" [textLabel]="\'title\'" [addedClass]="\'fluid\'"></div>\n    </div>\n    <div class="field" [ngClass]="{\'error\': story._validation_errors?.tasks}">\n        <label>Tasks</label>\n        <div class="field" *ngFor="let task of story.tasks">\n            <div class="ui small fluid left icon input">\n                <i class="inverted circular checkmark link icon" [ngClass]="{\'green\': task.completed}" (click)="task.completed = !task.completed"></i>\n                <input [(ngModel)]="task.description">\n            </div>\n        </div>\n    </div>\n    <button class="ui right floated mini button" (click)="addTask()">Add Task</button>\n    <div class="ui hidden clearing divider"></div>\n    <button *ngIf="story.id" class="ui secondary button" (click)="delete()">Delete</button>\n    <button class="ui right floated primary button" (click)="save()">Save</button>\n    <div class="ui hidden clearing divider"></div>\n';
     },
     349: function(t, e, n) {
         "use strict";
         var i = this && this.__decorate || function(t, e, n, i) {
             var r, o = arguments.length, s = 3 > o ? e : null === i ? i = Object.getOwnPropertyDescriptor(e, n) : i;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) s = Reflect.decorate(t, e, n, i); else for (var c = t.length - 1; c >= 0; c--) (r = t[c]) && (s = (3 > o ? r(s) : o > 3 ? r(e, n, s) : r(e, n)) || s);
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) s = Reflect.decorate(t, e, n, i); else for (var a = t.length - 1; a >= 0; a--) (r = t[a]) && (s = (3 > o ? r(s) : o > 3 ? r(e, n, s) : r(e, n)) || s);
             return o > 3 && s && Object.defineProperty(e, n, s), s;
         }, r = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, o = n(1), s = n(342), c = n(350), a = function() {
+        }, o = n(1), s = n(342), a = n(350), c = function() {
             function t() {
                 this.opened = !1, this.toggle = function() {
                     this.opened = !this.opened;
@@ -584,11 +586,11 @@ webpackJsonp([ 0 ], {
             return i([ o.Input(), r("design:type", Object) ], t.prototype, "story", void 0), 
             t = i([ o.Component({
                 selector: "[story-list-item]",
-                template: c.htmlTemplate,
+                template: a.htmlTemplate,
                 directives: [ s.StoryDetailComponent ]
             }), r("design:paramtypes", []) ], t);
         }();
-        e.StoryListItemComponent = a;
+        e.StoryListItemComponent = c;
     },
     350: function(t, e) {
         "use strict";
@@ -615,11 +617,11 @@ webpackJsonp([ 0 ], {
         "use strict";
         var i = this && this.__decorate || function(t, e, n, i) {
             var r, o = arguments.length, s = 3 > o ? e : null === i ? i = Object.getOwnPropertyDescriptor(e, n) : i;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) s = Reflect.decorate(t, e, n, i); else for (var c = t.length - 1; c >= 0; c--) (r = t[c]) && (s = (3 > o ? r(s) : o > 3 ? r(e, n, s) : r(e, n)) || s);
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) s = Reflect.decorate(t, e, n, i); else for (var a = t.length - 1; a >= 0; a--) (r = t[a]) && (s = (3 > o ? r(s) : o > 3 ? r(e, n, s) : r(e, n)) || s);
             return o > 3 && s && Object.defineProperty(e, n, s), s;
         }, r = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, o = n(1), s = n(354), c = n(355), a = function() {
+        }, o = n(1), s = n(354), a = n(355), c = function() {
             function t(t, e) {
                 this.el = t, this.dragulaService = e, this.container = t.nativeElement;
             }
@@ -627,7 +629,7 @@ webpackJsonp([ 0 ], {
                 var t = this, e = this.dragulaService.find(this.bag), n = function() {
                     t.dragulaModel && (t.drake.models ? t.drake.models.push(t.dragulaModel) : t.drake.models = [ t.dragulaModel ]);
                 };
-                e ? (this.drake = e.drake, n(), this.drake.containers.push(this.container)) : (this.drake = c({
+                e ? (this.drake = e.drake, n(), this.drake.containers.push(this.container)) : (this.drake = a({
                     containers: [ this.container ]
                 }), n(), this.dragulaService.add(this.bag, this.drake));
             }, t.prototype.ngOnChanges = function(t) {
@@ -641,17 +643,17 @@ webpackJsonp([ 0 ], {
                 selector: "[dragula]"
             }), r("design:paramtypes", [ o.ElementRef, s.DragulaService ]) ], t);
         }();
-        e.Dragula = a;
+        e.Dragula = c;
     },
     354: function(t, e, n) {
         "use strict";
         var i = this && this.__decorate || function(t, e, n, i) {
             var r, o = arguments.length, s = 3 > o ? e : null === i ? i = Object.getOwnPropertyDescriptor(e, n) : i;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) s = Reflect.decorate(t, e, n, i); else for (var c = t.length - 1; c >= 0; c--) (r = t[c]) && (s = (3 > o ? r(s) : o > 3 ? r(e, n, s) : r(e, n)) || s);
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) s = Reflect.decorate(t, e, n, i); else for (var a = t.length - 1; a >= 0; a--) (r = t[a]) && (s = (3 > o ? r(s) : o > 3 ? r(e, n, s) : r(e, n)) || s);
             return o > 3 && s && Object.defineProperty(e, n, s), s;
         }, r = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, o = n(355), s = n(1), c = function() {
+        }, o = n(355), s = n(1), a = function() {
             function t() {
                 this.cancel = new s.EventEmitter(), this.cloned = new s.EventEmitter(), this.drag = new s.EventEmitter(), 
                 this.dragend = new s.EventEmitter(), this.drop = new s.EventEmitter(), this.out = new s.EventEmitter(), 
@@ -682,13 +684,13 @@ webpackJsonp([ 0 ], {
                     e.models && (o = e.models[e.containers.indexOf(r)], o.splice(i, 1), s.removeModel.emit([ t, n, r ]));
                 }), e.on("drag", function(t, e) {
                     n = t, i = s.domIndexOf(t, e);
-                }), e.on("drop", function(c, a, l) {
-                    if (e.models && a) {
-                        if (r = s.domIndexOf(c, a), o = e.models[e.containers.indexOf(l)], a === l) o.splice(r, 0, o.splice(i, 1)[0]); else {
-                            var u = n === c, d = e.models[e.containers.indexOf(a)], f = u ? o[i] : JSON.parse(JSON.stringify(o[i]));
-                            u && o.splice(i, 1), d.splice(r, 0, f), a.removeChild(c);
+                }), e.on("drop", function(a, c, l) {
+                    if (e.models && c) {
+                        if (r = s.domIndexOf(a, c), o = e.models[e.containers.indexOf(l)], c === l) o.splice(r, 0, o.splice(i, 1)[0]); else {
+                            var u = n === a, d = e.models[e.containers.indexOf(c)], f = u ? o[i] : JSON.parse(JSON.stringify(o[i]));
+                            u && o.splice(i, 1), d.splice(r, 0, f), c.removeChild(a);
                         }
-                        s.dropModel.emit([ t, c, a, l ]);
+                        s.dropModel.emit([ t, a, c, l ]);
                     }
                 });
             }, t.prototype.setupEvents = function(t) {
@@ -705,7 +707,7 @@ webpackJsonp([ 0 ], {
                 return Array.prototype.indexOf.call(e.children, t);
             }, t = i([ s.Injectable(), r("design:paramtypes", []) ], t);
         }();
-        e.DragulaService = c;
+        e.DragulaService = a;
     },
     355: function(t, e, n) {
         (function(e) {
@@ -718,40 +720,40 @@ webpackJsonp([ 0 ], {
                     var e = t ? "remove" : "add";
                     r(j, e, "mousedown", R), r(j, e, "mouseup", D);
                 }
-                function c(t) {
+                function a(t) {
                     var e = t ? "remove" : "add";
                     r(j, e, "mousemove", x);
                 }
                 function h(t) {
                     var e = t ? "remove" : "add";
-                    S[e](j, "selectstart", w), S[e](j, "click", w);
+                    _[e](j, "selectstart", w), _[e](j, "click", w);
                 }
                 function y() {
                     i(!0), D({});
                 }
                 function w(t) {
-                    ct && t.preventDefault();
+                    at && t.preventDefault();
                 }
                 function R(t) {
                     et = t.clientX, nt = t.clientY;
                     var e = 1 !== o(t) || t.metaKey || t.ctrlKey;
                     if (!e) {
                         var n = t.target, i = T(n);
-                        i && (ct = i, c(), "mousedown" === t.type && (v(n) ? n.focus() : t.preventDefault()));
+                        i && (at = i, a(), "mousedown" === t.type && (v(n) ? n.focus() : t.preventDefault()));
                     }
                 }
                 function x(t) {
-                    if (ct) {
+                    if (at) {
                         if (0 === o(t)) return void D({});
                         if (void 0 === t.clientX || t.clientX !== et || void 0 === t.clientY || t.clientY !== nt) {
                             if (lt.ignoreInputTextSelection) {
                                 var e = g("clientX", t), n = g("clientY", t), i = O.elementFromPoint(e, n);
                                 if (v(i)) return;
                             }
-                            var r = ct;
-                            c(!0), h(), P(), k(r);
-                            var a = s(W);
-                            Z = g("pageX", t) - a.left, tt = g("pageY", t) - a.top, _.add(ot || W, "gu-transit"), 
+                            var r = at;
+                            a(!0), h(), P(), C(r);
+                            var c = s(W);
+                            Z = g("pageX", t) - c.left, tt = g("pageY", t) - c.top, S.add(ot || W, "gu-transit"), 
                             Y(), U(t);
                         }
                     }
@@ -777,13 +779,13 @@ webpackJsonp([ 0 ], {
                 }
                 function I(t) {
                     var e = T(t);
-                    e && k(e);
+                    e && C(e);
                 }
-                function k(t) {
+                function C(t) {
                     z(t.item, t.source) && (ot = t.item.cloneNode(!0), ut.emit("cloned", ot, t.item, "copy")), 
                     G = t.source, W = t.item, it = rt = m(t.item), ut.dragging = !0, ut.emit("drag", W, G);
                 }
-                function C() {
+                function k() {
                     return !1;
                 }
                 function P() {
@@ -793,11 +795,11 @@ webpackJsonp([ 0 ], {
                     }
                 }
                 function A() {
-                    ct = !1, c(!0), h(!0);
+                    at = !1, a(!0), h(!0);
                 }
                 function D(t) {
                     if (A(), ut.dragging) {
-                        var e = ot || W, n = g("clientX", t), i = g("clientY", t), r = a(Q, n, i), o = F(r, n, i);
+                        var e = ot || W, n = g("clientX", t), i = g("clientY", t), r = c(Q, n, i), o = F(r, n, i);
                         o && (ot && lt.copySortSource || !ot || o !== G) ? M(e, o) : lt.removeOnSpill ? N() : L();
                     }
                 }
@@ -821,8 +823,8 @@ webpackJsonp([ 0 ], {
                 }
                 function B() {
                     var t = ot || W;
-                    A(), H(), t && _.rm(t, "gu-transit"), st && clearTimeout(st), ut.dragging = !1, 
-                    at && ut.emit("out", t, at, G), ut.emit("dragend", t), G = W = ot = it = rt = st = at = null;
+                    A(), H(), t && S.rm(t, "gu-transit"), st && clearTimeout(st), ut.dragging = !1, 
+                    ct && ut.emit("out", t, ct, G), ut.emit("dragend", t), G = W = ot = it = rt = st = ct = null;
                 }
                 function $(t, e) {
                     var n;
@@ -832,28 +834,28 @@ webpackJsonp([ 0 ], {
                     function r() {
                         var r = n(o);
                         if (r === !1) return !1;
-                        var s = q(o, t), c = J(o, s, e, i), a = $(o, c);
-                        return a ? !0 : lt.accepts(W, o, G, c);
+                        var s = q(o, t), a = J(o, s, e, i), c = $(o, a);
+                        return c ? !0 : lt.accepts(W, o, G, a);
                     }
                     for (var o = t; o && !r(); ) o = p(o);
                     return o;
                 }
                 function U(t) {
                     function e(t) {
-                        ut.emit(t, l, at, G);
+                        ut.emit(t, l, ct, G);
                     }
                     function n() {
                         f && e("over");
                     }
                     function i() {
-                        at && e("out");
+                        ct && e("out");
                     }
                     if (Q) {
                         t.preventDefault();
-                        var r = g("clientX", t), o = g("clientY", t), s = r - Z, c = o - tt;
-                        Q.style.left = s + "px", Q.style.top = c + "px";
-                        var l = ot || W, u = a(Q, r, o), d = F(u, r, o), f = null !== d && d !== at;
-                        (f || null === d) && (i(), at = d, n());
+                        var r = g("clientX", t), o = g("clientY", t), s = r - Z, a = o - tt;
+                        Q.style.left = s + "px", Q.style.top = a + "px";
+                        var l = ot || W, u = c(Q, r, o), d = F(u, r, o), f = null !== d && d !== ct;
+                        (f || null === d) && (i(), ct = d, n());
                         var v = p(l);
                         if (d === G && ot && !lt.copySortSource) return void (v && v.removeChild(l));
                         var h, y = q(d, u);
@@ -865,21 +867,21 @@ webpackJsonp([ 0 ], {
                     }
                 }
                 function V(t) {
-                    _.rm(t, "gu-hide");
+                    S.rm(t, "gu-hide");
                 }
                 function X(t) {
-                    ut.dragging && _.add(t, "gu-hide");
+                    ut.dragging && S.add(t, "gu-hide");
                 }
                 function Y() {
                     if (!Q) {
                         var t = W.getBoundingClientRect();
                         Q = W.cloneNode(!0), Q.style.width = d(t) + "px", Q.style.height = f(t) + "px", 
-                        _.rm(Q, "gu-transit"), _.add(Q, "gu-mirror"), lt.mirrorContainer.appendChild(Q), 
-                        r(j, "add", "mousemove", U), _.add(lt.mirrorContainer, "gu-unselectable"), ut.emit("cloned", Q, W, "mirror");
+                        S.rm(Q, "gu-transit"), S.add(Q, "gu-mirror"), lt.mirrorContainer.appendChild(Q), 
+                        r(j, "add", "mousemove", U), S.add(lt.mirrorContainer, "gu-unselectable"), ut.emit("cloned", Q, W, "mirror");
                     }
                 }
                 function H() {
-                    Q && (_.rm(lt.mirrorContainer, "gu-unselectable"), r(j, "remove", "mousemove", U), 
+                    Q && (S.rm(lt.mirrorContainer, "gu-unselectable"), r(j, "remove", "mousemove", U), 
                     p(Q).removeChild(Q), Q = null);
                 }
                 function q(t, e) {
@@ -890,29 +892,29 @@ webpackJsonp([ 0 ], {
                     function r() {
                         var e, r, o, s = t.children.length;
                         for (e = 0; s > e; e++) {
-                            if (r = t.children[e], o = r.getBoundingClientRect(), c && o.left + o.width / 2 > n) return r;
-                            if (!c && o.top + o.height / 2 > i) return r;
+                            if (r = t.children[e], o = r.getBoundingClientRect(), a && o.left + o.width / 2 > n) return r;
+                            if (!a && o.top + o.height / 2 > i) return r;
                         }
                         return null;
                     }
                     function o() {
                         var t = e.getBoundingClientRect();
-                        return s(c ? n > t.left + d(t) / 2 : i > t.top + f(t) / 2);
+                        return s(a ? n > t.left + d(t) / 2 : i > t.top + f(t) / 2);
                     }
                     function s(t) {
                         return t ? m(e) : e;
                     }
-                    var c = "horizontal" === lt.direction, a = e !== t ? o() : r();
-                    return a;
+                    var a = "horizontal" === lt.direction, c = e !== t ? o() : r();
+                    return c;
                 }
                 function z(t, e) {
                     return "boolean" == typeof lt.copy ? lt.copy : lt.copy(t, e);
                 }
                 var K = arguments.length;
                 1 === K && Array.isArray(t) === !1 && (e = t, t = []);
-                var Q, G, W, Z, tt, et, nt, it, rt, ot, st, ct, at = null, lt = e || {};
+                var Q, G, W, Z, tt, et, nt, it, rt, ot, st, at, ct = null, lt = e || {};
                 void 0 === lt.moves && (lt.moves = u), void 0 === lt.accepts && (lt.accepts = u), 
-                void 0 === lt.invalid && (lt.invalid = C), void 0 === lt.containers && (lt.containers = t || []), 
+                void 0 === lt.invalid && (lt.invalid = k), void 0 === lt.containers && (lt.containers = t || []), 
                 void 0 === lt.isContainer && (lt.isContainer = l), void 0 === lt.copy && (lt.copy = !1), 
                 void 0 === lt.copySortSource && (lt.copySortSource = !1), void 0 === lt.revertOnSpill && (lt.revertOnSpill = !1), 
                 void 0 === lt.removeOnSpill && (lt.removeOnSpill = !1), void 0 === lt.direction && (lt.direction = "vertical"), 
@@ -938,13 +940,13 @@ webpackJsonp([ 0 ], {
                     mouseup: "pointerup",
                     mousedown: "pointerdown",
                     mousemove: "pointermove"
-                }, c = {
+                }, a = {
                     mouseup: "MSPointerUp",
                     mousedown: "MSPointerDown",
                     mousemove: "MSPointerMove"
                 };
-                e.navigator.pointerEnabled ? S[n](t, s[i], r) : e.navigator.msPointerEnabled ? S[n](t, c[i], r) : (S[n](t, o[i], r), 
-                S[n](t, i, r));
+                e.navigator.pointerEnabled ? _[n](t, s[i], r) : e.navigator.msPointerEnabled ? _[n](t, a[i], r) : (_[n](t, o[i], r), 
+                _[n](t, i, r));
             }
             function o(t) {
                 if (void 0 !== t.touches) return t.touches.length;
@@ -956,14 +958,14 @@ webpackJsonp([ 0 ], {
             function s(t) {
                 var e = t.getBoundingClientRect();
                 return {
-                    left: e.left + c("scrollLeft", "pageXOffset"),
-                    top: e.top + c("scrollTop", "pageYOffset")
+                    left: e.left + a("scrollLeft", "pageXOffset"),
+                    top: e.top + a("scrollTop", "pageYOffset")
                 };
             }
-            function c(t, n) {
+            function a(t, n) {
                 return "undefined" != typeof e[n] ? e[n] : j.clientHeight ? j[t] : O.body[t];
             }
-            function a(t, e, n) {
+            function c(t, e, n) {
                 var i, r = t || {}, o = r.className;
                 return r.className += " gu-hide", i = O.elementFromPoint(e, n), r.className = o, 
                 i;
@@ -1007,7 +1009,7 @@ webpackJsonp([ 0 ], {
                 };
                 return t in i && !(t in n) && i[t] in n && (t = i[t]), n[t];
             }
-            var b = n(356), S = n(362), _ = n(365), O = document, j = O.documentElement;
+            var b = n(356), _ = n(362), S = n(365), O = document, j = O.documentElement;
             t.exports = i;
         }).call(e, function() {
             return this;
@@ -1036,10 +1038,10 @@ webpackJsonp([ 0 ], {
             }, t.emitterSnapshot = function(e) {
                 var s = (o[e] || []).slice(0);
                 return function() {
-                    var o = i(arguments), c = this || t;
+                    var o = i(arguments), a = this || t;
                     if ("error" === e && n.throws !== !1 && !s.length) throw 1 === o.length ? o[0] : o;
-                    return s.forEach(function a(i) {
-                        n.async ? r(i, o, c) : i.apply(c, o), i._once && t.off(e, i);
+                    return s.forEach(function c(i) {
+                        n.async ? r(i, o, a) : i.apply(a, o), i._once && t.off(e, i);
                     }), t;
                 };
             }, t;
@@ -1074,7 +1076,7 @@ webpackJsonp([ 0 ], {
             function r(t, e) {
                 this._id = t, this._clearFn = e;
             }
-            var o = n(361).nextTick, s = Function.prototype.apply, c = Array.prototype.slice, a = {}, l = 0;
+            var o = n(361).nextTick, s = Function.prototype.apply, a = Array.prototype.slice, c = {}, l = 0;
             e.setTimeout = function() {
                 return new r(s.call(setTimeout, window, arguments), clearTimeout);
             }, e.setInterval = function() {
@@ -1094,12 +1096,12 @@ webpackJsonp([ 0 ], {
                     t._onTimeout && t._onTimeout();
                 }, e));
             }, e.setImmediate = "function" == typeof t ? t : function(t) {
-                var n = l++, i = arguments.length < 2 ? !1 : c.call(arguments, 1);
-                return a[n] = !0, o(function r() {
-                    a[n] && (i ? t.apply(null, i) : t.call(null), e.clearImmediate(n));
+                var n = l++, i = arguments.length < 2 ? !1 : a.call(arguments, 1);
+                return c[n] = !0, o(function r() {
+                    c[n] && (i ? t.apply(null, i) : t.call(null), e.clearImmediate(n));
                 }), n;
             }, e.clearImmediate = "function" == typeof i ? i : function(t) {
-                delete a[t];
+                delete c[t];
             };
         }).call(e, n(360).setImmediate, n(360).clearImmediate);
     },
@@ -1119,7 +1121,7 @@ webpackJsonp([ 0 ], {
                 var i = u(t, e, n);
                 return i ? t.detachEvent("on" + e, i) : void 0;
             }
-            function c(t, e, n) {
+            function a(t, e, n) {
                 function i() {
                     var t;
                     return v.createEvent ? (t = v.createEvent("Event"), t.initEvent(e, !0, !0)) : v.createEventObject && (t = v.createEventObject()), 
@@ -1133,7 +1135,7 @@ webpackJsonp([ 0 ], {
                 var o = -1 === p.indexOf(e) ? r() : i();
                 t.dispatchEvent ? t.dispatchEvent(o) : t.fireEvent("on" + e, o);
             }
-            function a(t, n, i) {
+            function c(t, n, i) {
                 return function r(n) {
                     var r = n || e.event;
                     r.target = r.target || r.srcElement, r.preventDefault = r.preventDefault || function o() {
@@ -1144,7 +1146,7 @@ webpackJsonp([ 0 ], {
                 };
             }
             function l(t, e, n) {
-                var i = u(t, e, n) || a(t, e, n);
+                var i = u(t, e, n) || c(t, e, n);
                 return y.push({
                     wrapper: i,
                     element: t,
@@ -1167,7 +1169,7 @@ webpackJsonp([ 0 ], {
             e.addEventListener || (h = r, m = s), t.exports = {
                 add: h,
                 remove: m,
-                fabricate: c
+                fabricate: a
             };
         }).call(e, function() {
             return this;
@@ -1214,7 +1216,7 @@ webpackJsonp([ 0 ], {
         "use strict";
         function n(t) {
             var e = o[t];
-            return e ? e.lastIndex = 0 : o[t] = e = new RegExp(s + t + c, "g"), e;
+            return e ? e.lastIndex = 0 : o[t] = e = new RegExp(s + t + a, "g"), e;
         }
         function i(t, e) {
             var i = t.className;
@@ -1223,7 +1225,7 @@ webpackJsonp([ 0 ], {
         function r(t, e) {
             t.className = t.className.replace(n(e), " ").trim();
         }
-        var o = {}, s = "(?:^|\\s)", c = "(?:\\s|$)";
+        var o = {}, s = "(?:^|\\s)", a = "(?:\\s|$)";
         t.exports = {
             add: i,
             rm: r

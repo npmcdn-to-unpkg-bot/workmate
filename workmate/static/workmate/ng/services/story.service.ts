@@ -31,6 +31,7 @@ export class StoryService extends BaseService {
     protected _objectsObserver: Observer<iStory[]>;
     protected _dataStore: { objects: iStory[], meta: Object };
     protected _baseUrl = '/api/v1/story/';
+    protected _resourceName = 'story';
 
     constructor (protected _http: Http, protected _alertService: AlertService) {
         super(_http, _alertService);

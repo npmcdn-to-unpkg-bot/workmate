@@ -90,8 +90,8 @@ webpackJsonp([ 1 ], {
         var a = n(330), i = n(334), o = n(35), r = function() {
             function t(t, e) {
                 var n = this;
-                this._http = t, this._alertService = e, this._baseUrl = "", this._postOptions = new a.ExRequestOptions(), 
-                this._dataStore = {
+                this._http = t, this._alertService = e, this._baseUrl = "", this._resourceName = "", 
+                this._postOptions = new a.ExRequestOptions(), this._dataStore = {
                     objects: [],
                     meta: {}
                 }, this.meta$ = new o.Observable(function(t) {
@@ -126,8 +126,8 @@ webpackJsonp([ 1 ], {
                 var e = this, n = JSON.stringify(t);
                 return this._http.post(this._baseUrl, n, this._postOptions).map(this.extractData).subscribe(function(t) {
                     e._dataStore.objects.push(t), e._objectsObserver.next(e._dataStore.objects);
-                }, function(t) {
-                    return e.handleError(t);
+                }, function(n) {
+                    return e.handleError(n, t);
                 }, function() {
                     return e.handleCompleted();
                 });
@@ -135,10 +135,10 @@ webpackJsonp([ 1 ], {
                 var e = this, n = JSON.stringify(t);
                 return this._http.put("" + this._baseUrl + t.id + "/", n, this._postOptions).map(this.extractData).subscribe(function(t) {
                     e._dataStore.objects.forEach(function(n, a) {
-                        n.id === t.id && (e._dataStore.objects[a] = t);
+                        n.id === t.id && (e._dataStore.objects[a] = t, e._dataStore.objects[a]._validation_errors = {});
                     }), e._objectsObserver.next(e._dataStore.objects);
-                }, function(t) {
-                    return e.handleError(t);
+                }, function(n) {
+                    return e.handleError(n, t);
                 }, function() {
                     return e.handleCompleted();
                 });
@@ -159,9 +159,11 @@ webpackJsonp([ 1 ], {
                 return e.object || e.objects || e || {};
             }, t.prototype.handleCompleted = function() {
                 this.createAlert("success", "Completed successfully");
-            }, t.prototype.handleError = function(t) {
-                var e = JSON.parse(t._body), n = e.error_message || "An unknown server error occurred.";
-                return this.createAlert("error", n), o.Observable.throw(n);
+            }, t.prototype.handleError = function(t, e) {
+                var n = JSON.parse(t._body), a = "";
+                return e && n.hasOwnProperty(this._resourceName) ? (e._validation_errors = n[this._resourceName], 
+                a = "The data failed validation, please fix any issues and re-submit.") : a = n.error_message || "An unknown server error occurred.", 
+                this.createAlert("error", a), o.Observable.throw(a);
             }, t.prototype.createAlert = function(t, e) {
                 this._alertService.createAlert(new i.Alert({
                     type: t,
@@ -224,7 +226,7 @@ webpackJsonp([ 1 ], {
             function e(e, n) {
                 var a = this;
                 t.call(this, e, n), this._http = e, this._alertService = n, this._baseUrl = "/api/v1/contact/", 
-                this.objects$ = new d.Observable(function(t) {
+                this._resourceName = "contact", this.objects$ = new d.Observable(function(t) {
                     return a._objectsObserver = t;
                 }).share();
             }

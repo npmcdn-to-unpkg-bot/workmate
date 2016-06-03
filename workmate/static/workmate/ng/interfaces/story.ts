@@ -15,6 +15,8 @@ export interface iStory {
     title: string;
     type: iStoryType;
     resource_uri?: string;
+
+    _validation_errors?: Object;
 }
 
 export class Story implements iStory {

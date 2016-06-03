@@ -19,6 +19,7 @@ export class BaseService {
     protected _objectsObserver: Observer<any[]>;
     protected _dataStore: { objects: any[], meta: Object };
     protected _baseUrl = '';
+    protected _resourceName = '';
 
     protected _postOptions = new ExRequestOptions();
 
@@ -82,7 +83,7 @@ export class BaseService {
             .subscribe(data => {
                 this._dataStore.objects.push(data);
                 this._objectsObserver.next(this._dataStore.objects);
-            }, err => this.handleError(err), () => this.handleCompleted()
+            }, err => this.handleError(err, object), () => this.handleCompleted()
         );
     }
 
@@ -94,10 +95,11 @@ export class BaseService {
                 this._dataStore.objects.forEach((item, i) => {
                     if (item.id === data.id) {
                         this._dataStore.objects[i] = data;
+                        this._dataStore.objects[i]._validation_errors = {};
                     }
                 });
                 this._objectsObserver.next(this._dataStore.objects);
-            }, err => this.handleError(err), () => this.handleCompleted()
+            }, err => this.handleError(err, object), () => this.handleCompleted()
         );
     }
 
@@ -126,11 +128,17 @@ export class BaseService {
         this.createAlert('success', 'Completed successfully');
     }
 
-    protected handleError (error: any) {
+    protected handleError (error: any, object?: any) {
         let body = JSON.parse(error._body);
-        let errMsg = body['error_message'] || 'An unknown server error occurred.';
-        this.createAlert('error', errMsg);
-        return Observable.throw(errMsg);
+        let errorMesssage = '';
+        if (object && body.hasOwnProperty(this._resourceName)) {
+            object._validation_errors = body[this._resourceName];
+            errorMesssage = 'The data failed validation, please fix any issues and re-submit.'
+        } else {
+            errorMesssage = body['error_message'] || 'An unknown server error occurred.';
+        }
+        this.createAlert('error', errorMesssage);
+        return Observable.throw(errorMesssage);
     }
 
     protected createAlert(type: string, message: string) {
