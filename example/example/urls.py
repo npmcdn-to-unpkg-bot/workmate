@@ -15,7 +15,7 @@ from django.contrib.auth.views import (
 
 urlpatterns = [
 
-    url(r'^login/$', login, {'template_name': 'admin/login.html'}, name='login'),
+    url(r'^login/$', login, {'template_name': 'registration/login.html'}, name='login'),
     url(r'^logout/$', logout, {'next_page': '/'}, name='logout'),
     url(r'^password_change/$', password_change, name='password_change'),
     url(r'^password_change/done/$', password_change_done, name='password_change_done'),
@@ -25,6 +25,8 @@ urlpatterns = [
     url(r'^reset/done/$', password_reset_complete, name='password_reset_complete'),
 
     url(r'^admin/', include(admin.site.urls)),
+
+    url(r'^accounts/', include('allauth.urls')),
 
     url(r'^', include('workmate.urls')),
 
