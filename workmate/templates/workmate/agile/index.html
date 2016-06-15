@@ -1,24 +1,26 @@
-{% extends 'workmate/base.html' %}
+{% extends 'base.html' %}
 {% load i18n filter_tags staticfiles %}
 
-{% block page_title %}{{ block.super }} | Agile{% endblock %}
+{% block head_title %}{{ block.super }}Agile{% endblock %}
+{% block page_title %}Agile{% endblock %}
+{% block page_description %}Manage your agile projects{% endblock %}
 
-{% block extra_css %}{% endblock %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'dist/css/ng2-select.css' %}">
+{% endblock %}
 {% block extra_head %}{% endblock %}
 
 {% block left_nav_content %}
-    <a class="item" href="{% url 'agile-index' %}">{% trans 'Agile' %}</a>
+    <li><a class="item" href="{% url 'agile-index' %}">{% trans 'Agile' %}</a></li>
 {% endblock %}
 
 {% block right_nav_content %}{% endblock %}
 
-{% block content %}
-    <agile-app>
-        <div class="ui active centered medium text loader">{% trans 'Loading' %}</div>
-    </agile-app>
+{% block base_content %}
+    <agile-app></agile-app>
 {% endblock %}
 
 {% block extra_js %}
-    <script src="{% static 'workmate/dist/vendor.min.js' %}"></script>
-    <script src="{% static 'workmate/dist/agile.min.js' %}"></script>
+    <script src="{% static 'dist/js/ng-vendor.min.js' %}"></script>
+    <script src="{% static 'dist/js/ng-agile.min.js' %}"></script>
 {% endblock %}

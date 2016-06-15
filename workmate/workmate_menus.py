@@ -44,7 +44,7 @@ class AccountMenu(Menu):
     sort_order = 100
 
     def get_nodes(self, request):
-        node1 = NavigationNode(_('My Settings'), reverse('usersetting-update'), 1, icon='setting', sort_order=1)
+        node1 = NavigationNode(_('My Settings'), reverse('usersetting-update'), 1, icon='cog', sort_order=1)
         node2 = NavigationNode(_('Change Password'), reverse('password_change'), 2, icon='key', sort_order=2)
         node3 = NavigationNode(_('Logout'), settings.LOGOUT_URL, 3, icon='lock', sort_order=3)
         nodes = [node1, node2, node3]

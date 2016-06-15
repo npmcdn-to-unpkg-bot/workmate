@@ -3,13 +3,13 @@ var webpack = require("webpack");
 
 module.exports = {
     entry: {
-        'agile'     : './workmate/static/workmate/ng/agile',
-        'contacts'  : './workmate/static/workmate/ng/contacts',
-        'vendor'    : './workmate/static/workmate/ng/vendor'
+        'agile'     : './workmate/static/ng/agile',
+        'contacts'  : './workmate/static/ng/contacts',
+        'vendor'    : './workmate/static/ng/vendor'
     },
     output: {
-        path: './workmate/static/workmate/dist',
-        filename: '[name].js'
+        path: './workmate/static/dist/js',
+        filename: 'ng-[name].js'
     },
     resolve: {
         extensions: ['', '.ts', '.js']
@@ -29,7 +29,7 @@ module.exports = {
     plugins: [
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
-            filename: 'vendor.js',
+            filename: 'ng-vendor.js',
             minChunks: Infinity}),
         new webpack.optimize.DedupePlugin(),
         new webpack.optimize.UglifyJsPlugin({

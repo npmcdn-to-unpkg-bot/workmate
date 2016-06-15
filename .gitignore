@@ -4,6 +4,7 @@ htmlcov
 typings/**
 !typings/typings.d.ts
 node_modules/
+bower_components/
 *.egg-info
 __pycache__
 *.pyc

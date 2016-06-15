@@ -1,3 +1,5 @@
+import json
+
 from django.contrib.messages.views import SuccessMessageMixin
 from django.core.urlresolvers import reverse_lazy
 from django.views.generic import TemplateView, View
@@ -20,7 +22,12 @@ class ContactCall(LoginRequiredMixin, JSONResponseMixin, SingleObjectMixin, View
     model = Contact
 
     def post(self, request, *args, **kwargs):
-        type = request.POST.get('type')
+        try:
+            body_unicode = request.body.decode('utf-8')
+            body = json.loads(body_unicode)
+            type = body.get('type')
+        except ValueError:
+            type = request.POST.get('type')
         if not type:
             return self.render_to_bad_response({'message': 'Requires type parameter'})
         try:
