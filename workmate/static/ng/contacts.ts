@@ -14,7 +14,7 @@ import { ContactListComponent }             from './components/contact-list/cont
 @Component({
     selector: 'contacts-app',
     template: `
-        <alert-block></alert-block>
+        <div class="messages"><alert-block></alert-block></div>
         <contact-list></contact-list>
     `,
     directives: [

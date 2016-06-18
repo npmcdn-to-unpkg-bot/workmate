@@ -38,7 +38,7 @@
                     <!--<ol class="breadcrumb">{% block breadcrumb %}{% endblock %}</ol>-->
                 </section>
                 <section class="content">
-                    {% bootstrap_messages %}
+                    <div class="messages">{% bootstrap_messages %}</div>
                     {% block base_content %}{% endblock %}
                 </section>
             </div>
@@ -47,6 +47,7 @@
         <script src="{% static 'dist/js/jquery.min.js' %}"></script>
         <script src="{% static 'dist/js/bootstrap.min.js' %}"></script>
         <script src="{% static 'dist/js/adminlte.min.js' %}"></script>
+        <script src="{% static 'dist/js/workmate.min.js' %}"></script>
         {% block extra_js %}{% endblock %}
     </body>
 </html>

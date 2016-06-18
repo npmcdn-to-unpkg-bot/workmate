@@ -8,6 +8,7 @@ $icon-font-path: '../fonts/';
 // endbower
 
 @import "../../../../bower_components/admin-lte.scss/scss/admin-lte";
+@import "_modules/alerts";
 @import "_modules/box_comments";
 @import "_modules/dragula";
 @import "_modules/profile";

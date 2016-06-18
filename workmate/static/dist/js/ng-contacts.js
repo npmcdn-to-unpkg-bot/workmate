@@ -13,7 +13,7 @@ webpackJsonp([ 1 ], {
             function t() {}
             return t = o([ a.Component({
                 selector: "contacts-app",
-                template: "\n        <alert-block></alert-block>\n        <contact-list></contact-list>\n    ",
+                template: '\n        <div class="messages"><alert-block></alert-block></div>\n        <contact-list></contact-list>\n    ',
                 directives: [ u.AlertBlockComponent, d.ContactListComponent ],
                 providers: [ c.HTTP_PROVIDERS, a.provide(c.RequestOptions, {
                     useClass: i.ExRequestOptions

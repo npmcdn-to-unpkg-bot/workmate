@@ -13,7 +13,7 @@ webpackJsonp([ 0 ], {
             function t() {}
             return t = r([ i.Component({
                 selector: "agile-app",
-                template: "\n        <alert-block></alert-block>\n        <story-list></story-list>\n    ",
+                template: '\n        <div class="messages"><alert-block></alert-block></div>\n        <story-list></story-list>\n    ',
                 directives: [ v.StoryListComponent, h.AlertBlockComponent ],
                 providers: [ s.HTTP_PROVIDERS, i.provide(s.RequestOptions, {
                     useClass: c.ExRequestOptions

@@ -1,0 +1,16 @@
+/*
+ * Widget: Alerts
+ * -------------
+ */
+
+.messages {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 100;
+
+  .alert {
+    margin: 15px;
+  }
+
+}
