@@ -237,7 +237,7 @@ webpackJsonp([ 1 ], {
                 var n = this, o = JSON.stringify({
                     type: e
                 });
-                return this._http.post("/contacts/" + t.id + "/call/", o, this._postOptions).map(this.extractData).subscribe(function(t) {
+                return this._http.post("" + this._baseUrl + t.id + "/call/", o, this._postOptions).map(this.extractData).subscribe(function(t) {
                     return t;
                 }, function(t) {
                     return n.handleError(t);

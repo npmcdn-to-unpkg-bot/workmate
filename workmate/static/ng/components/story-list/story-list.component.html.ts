@@ -14,7 +14,7 @@ export const htmlTemplate = `
                 </div>
                 <div class="box-body">
                     <ul class="story-list" style="min-height: 50px;" [dragula]='"first-bag"' [attr.data-list]="'backlog'">
-                        <li class="handle" *ngFor="let story of _stories | filter : {icebox: false}" [attr.data-id]="story.id" story-list-item [story]="story"></li>
+                        <li class="story-list-item handle" *ngFor="let story of _stories | filter : {icebox: false}" [attr.data-id]="story.id" story-list-item [story]="story"></li>
                     </ul>
                 </div>
             </div>
@@ -32,7 +32,7 @@ export const htmlTemplate = `
                 </div>
                 <div class="box-body">
                     <ul class="story-list" style="min-height: 50px;" [dragula]='"first-bag"' [attr.data-list]="'icebox'">
-                        <li class="handle" *ngFor="let story of _stories | filter : {icebox: true}" [attr.data-id]="story.id" story-list-item [story]="story"></li>
+                        <li class="story-list-item handle" *ngFor="let story of _stories | filter : {icebox: true}" [attr.data-id]="story.id" story-list-item [story]="story"></li>
                     </ul>
                 </div>
             </div>

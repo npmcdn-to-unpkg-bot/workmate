@@ -26,7 +26,7 @@ export class ContactService extends BaseService {
 
     make_call(object: any, type: string) {
         let body = JSON.stringify({type:type});
-        return this._http.post(`/contacts/${object.id}/call/`, body, this._postOptions)
+        return this._http.post(`${this._baseUrl}${object.id}/call/`, body, this._postOptions)
             .map(this.extractData)
             .subscribe(
                 res => res,
