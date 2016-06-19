@@ -15,6 +15,7 @@ setup(
         'defusedxml>=0.4.1',
         'Django>=1.8,<1.10',
         'django-appconf>=1.0.2',
+        'django-bootstrap3>=7.0.1',
         'django-classy-tags>=0.7',
         'django-localflavor>=1.2',
         'django-phonenumber-field>=1.0.0',

@@ -1,27 +1,24 @@
-{% extends 'workmate/base.html' %}
+{% extends 'base.html' %}
 {% load i18n filter_tags staticfiles %}
 
-{% block page_title %}{{ block.super }} | Contacts{% endblock %}
+{% block head_title %}{{ block.super }}Contacts{% endblock %}
+{% block page_title %}Contacts{% endblock %}
+{% block page_description %}Search contacts{% endblock %}
 
 {% block extra_css %}{% endblock %}
 {% block extra_head %}{% endblock %}
 
 {% block left_nav_content %}
-    <a class="item" href="{% url 'contact-list' %}">{% trans 'Contacts' %}</a>
-    <a class="popup icon item" data-content="Add Contact" href="{% url 'contact-create' %}">
-        <i class="plus icon"></i>
-    </a>
+    <li><a href="{% url 'contact-create' %}">{% trans 'New Contact' %}</a></li>
 {% endblock %}
 
 {% block right_nav_content %}{% endblock %}
 
-{% block content %}
-    <contacts-app>
-        <div class="ui active centered medium text loader">{% trans 'Loading' %}</div>
-    </contacts-app>
+{% block base_content %}
+    <contacts-app></contacts-app>
 {% endblock %}
 
 {% block extra_js %}
-    <script src="{% static 'workmate/dist/vendor.min.js' %}"></script>
-    <script src="{% static 'workmate/dist/contacts.min.js' %}"></script>
+    <script src="{% static 'dist/js/ng-vendor.min.js' %}"></script>
+    <script src="{% static 'dist/js/ng-contacts.min.js' %}"></script>
 {% endblock %}

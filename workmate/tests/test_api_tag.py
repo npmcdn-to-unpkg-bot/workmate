@@ -91,7 +91,7 @@ class TagResourceTests(WorkmateAPITestCase):
         new_data['title'] = 'Updated: some tag'
 
         self.assertEqual(Tag.objects.count(), 1)
-        self.assertHttpAccepted(
+        self.assertHttpOK(
             self.api_client.put(
                 self.detail_url,
                 format='json',

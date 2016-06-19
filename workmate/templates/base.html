@@ -1,0 +1,53 @@
+{% load bootstrap3 i18n menu_tags staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block head_title %}Workmate | {% endblock %}</title>
+        <link rel="stylesheet" href="{% static 'dist/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'dist/css/font-awesome.min.css' %}">
+        {% block extra_css %}{% endblock %}
+        <link rel="stylesheet" href="{% static 'dist/css/adminlte.min.css' %}">
+        {% block extra_head %}{% endblock %}
+    </head>
+    <body class="hold-transition skin-blue sidebar-mini">
+        <div class="wrapper">
+            <header class="main-header">
+                <a href="/" class="logo">
+                    <span class="logo-mini"><i class="fa fa-paw"></i></span>
+                    <span class="logo-lg"><i class="fa fa-paw"></i> <b>Work</b>mate</span>
+                </a>
+                <nav class="navbar navbar-static-top" role="navigation">
+                    <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                        <span class="sr-only">Toggle navigation</span>
+                    </a>
+                    <div class="navbar-custom-menu">
+                        <ul class="nav navbar-nav">
+                            {% block left_nav_content %}{% endblock %}
+                            {% block right_nav_content %}{% endblock %}
+                            {% include 'workmate/partials/user_menu.html' %}
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+            {% include 'workmate/partials/sidebar.html' %}
+            <div class="content-wrapper">
+                <section class="content-header">
+                    <h1>{% block page_title %}{% endblock %}<small>{% block page_description %}{% endblock %}</small></h1>
+                    <!--<ol class="breadcrumb">{% block breadcrumb %}{% endblock %}</ol>-->
+                </section>
+                <section class="content">
+                    <div class="messages">{% bootstrap_messages %}</div>
+                    {% block base_content %}{% endblock %}
+                </section>
+            </div>
+            {% include 'workmate/partials/footer.html' %}
+        </div>
+        <script src="{% static 'dist/js/jquery.min.js' %}"></script>
+        <script src="{% static 'dist/js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'dist/js/adminlte.min.js' %}"></script>
+        <script src="{% static 'dist/js/workmate.min.js' %}"></script>
+        {% block extra_js %}{% endblock %}
+    </body>
+</html>

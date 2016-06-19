@@ -1,33 +1,37 @@
-{% extends 'workmate/base.html' %}
-{% load i18n staticfiles %}
+{% extends 'base.html' %}
+{% load bootstrap3 i18n staticfiles %}
 
-{% block page_title %}{{ block.super }} | Edit User Settings{% endblock %}
+{% block head_title %}{{ block.super }}Edit User Settings{% endblock %}
+{% block page_title %}Edit User Settings{% endblock %}
+{% block page_description %}Settings for your account{% endblock %}
 
 {% block extra_css %}{% endblock %}
 {% block extra_head %}{% endblock %}
 
-{% block left_nav_content %}
-    <li class="item">{% trans 'My Settings' %}</li>
-{% endblock %}
+{% block left_nav_content %}{% endblock %}
 
 {% block right_nav_content %}{% endblock %}
 
-{% block content %}
-    <form class="ui form" method="post" novalidate>
-        {% csrf_token %}
-        {% include 'workmate/partials/form_errors.html' %}
-        <h2 class="ui dividing header">{% trans 'Gradwell Authentication Settings' %}</h2>
-        <div class="ui info ignored message">
-            {% blocktrans %}These settings are required if you want to be able to use
-            the contact calling feature and can be obtained by the maintainer of your
-            voip telephony system.{% endblocktrans %}
+{% block base_content %}
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title">{% trans 'My Settings Form' %}</h3>
         </div>
-        {% include 'workmate/partials/form_field.html' with field=form.gradwell_token %}
-        {% include 'workmate/partials/form_field.html' with field=form.gradwell_extension %}
-        <div class="ui hidden divider"></div>
-        <a class="ui secondary button" href="/">{% trans 'Cancel' %}</a>
-        <button type="submit" class="ui primary button">{% trans 'Save' %}</button>
-    </form>
+        <form class="form-horizontal"  method="post" novalidate>
+            {% csrf_token %}
+            <div class="box-body">
+                {% bootstrap_form_errors form %}
+                {% for field in form %}
+                    {% bootstrap_field field layout='horizontal' %}
+                {% endfor %}
+                {% bootstrap_button button_type='submit' button_class='btn-primary btn-flat pull-right' content='Save' %}
+                <a class="btn btn-default btn-flat" href="/">{% trans 'Cancel' %}</a>
+            </div>
+        </form>
+        <div class="box-footer">
+            {% trans "Edit your settings." %}
+        </div>
+    </div>
 {% endblock %}
 
 {% block extra_js %}{% endblock %}

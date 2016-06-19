@@ -1,0 +1,10 @@
+/*
+ * Core CSS
+ * -------------
+ */
+
+// allow pointer events
+.clickable {
+  pointer-events: auto !important;
+  cursor: pointer;
+}

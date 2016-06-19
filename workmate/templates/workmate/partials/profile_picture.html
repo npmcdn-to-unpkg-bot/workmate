@@ -1,0 +1,6 @@
+{% load staticfiles %}
+{% if user.userprofile.picture %}
+    <img src="{{ user.userprofile.picture.url }}" class="{{ class }}" alt="User Image">
+{% else %}
+    <img src="{% static 'assets/images/user.png' %}" class="{{ class }}" alt="User Image">
+{% endif %}

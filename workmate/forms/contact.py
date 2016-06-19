@@ -13,8 +13,3 @@ class ContactForm(forms.ModelForm):
     class Meta:
         model = Contact
         fields = '__all__'
-
-    def __init__(self, *args, **kwargs):
-        super(ContactForm, self).__init__(*args, **kwargs)
-        self.fields['state'].widget.attrs['class'] = 'search dropdown'
-        self.fields['tags'].widget.attrs['class'] = 'search dropdown'

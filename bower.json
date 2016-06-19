@@ -1,0 +1,21 @@
+{
+  "name": "workmate",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Stuart George <stuart.bigmassa@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/bigmassa/workmate",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "admin-lte.scss": "^3.1.2"
+  }
+}

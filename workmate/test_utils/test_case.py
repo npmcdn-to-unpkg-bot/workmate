@@ -2,7 +2,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Permission
 from django.test import TestCase
 
-from tastypie.test import ResourceTestCaseMixin, TestApiClient
+from tastypie.test import ResourceTestCaseMixin
 
 from workmate.test_utils.helpers import create_site_settings, create_user_settings, get_context
 

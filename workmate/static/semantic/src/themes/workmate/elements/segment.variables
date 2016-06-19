@@ -1,6 +1,0 @@
-/*******************************
-            Variations
-*******************************/
-
-/* Inverted */
-@invertedBackground: @blue;

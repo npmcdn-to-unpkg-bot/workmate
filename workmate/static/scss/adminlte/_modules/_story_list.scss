@@ -1,0 +1,75 @@
+/*
+ * Widget: Story List
+ * -------------
+ */
+
+ul.story-list {
+  margin: 0;
+  padding: 0px 0px;
+  list-style: none;
+  overflow: auto;
+
+  .handle {
+    cursor: move;
+  }
+}
+
+// Story list element
+li.story-list-item {
+  padding: 10px;
+  background: #f4f4f4;
+  margin-bottom: 2px;
+  border-left: 2px solid #e6e7e8;
+  color: #444;
+  list-style: none;
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
+  // Color varaity
+  &.danger {
+    border-left-color: $red;
+  }
+  &.warning {
+    border-left-color: $yellow;
+  }
+  &.info {
+    border-left-color: $aqua;
+  }
+  &.success {
+    border-left-color: $green;
+  }
+  &.primary {
+    border-left-color: $light-blue;
+  }
+
+  .text {
+    display: inline-block;
+    margin-left: 5px;
+    margin-top: 5px;
+    font-weight: 600;
+  }
+
+  .description {
+    display: block;
+    margin-right: 20px;
+    margin-left: 5px;
+    font-weight: 600;
+  }
+
+  // Tools and options box
+  .tools {
+    display: none;
+    float: right;
+    // icons
+    > .fa, > .glyphicon, > .ion {
+      margin-right: 5px;
+      cursor: pointer;
+    }
+
+  }
+  &:hover .tools {
+    display: inline-block;
+  }
+
+}

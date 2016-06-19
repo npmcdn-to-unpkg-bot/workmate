@@ -1,3 +1,5 @@
+from django.test import override_settings
+
 from workmate.models import Contact
 from workmate.test_utils.test_case import WorkmateAPITestCase
 
@@ -83,32 +85,6 @@ class ContactResourceTests(WorkmateAPITestCase):
             format='xml',
             authentication=self.get_credentials())
         self.assertValidXMLResponse(resp)
-
-    def test_get_list_search_first_name(self):
-        resp = self.api_client.get(
-            self.list_url + '?query=mr',
-            format='json',
-            authentication=self.get_credentials())
-        self.assertValidJSONResponse(resp)
-        self.assertEqual(len(self.deserialize(resp)['objects']), 1)
-        self.assertEqual(self.deserialize(resp)['objects'][0]['id'], self.existing_object.pk)
-
-    def test_get_list_search_last_name(self):
-        resp = self.api_client.get(
-            self.list_url + '?query=smi',
-            format='json',
-            authentication=self.get_credentials())
-        self.assertValidJSONResponse(resp)
-        self.assertEqual(len(self.deserialize(resp)['objects']), 1)
-        self.assertEqual(self.deserialize(resp)['objects'][0]['id'], self.existing_object.pk)
-
-    def test_get_list_search_no_result(self):
-        resp = self.api_client.get(
-            self.list_url + '?query=foo',
-            format='json',
-            authentication=self.get_credentials())
-        self.assertValidJSONResponse(resp)
-        self.assertEqual(len(self.deserialize(resp)['objects']), 0)
 
     def test_get_detail_unauthenticated(self):
         self.assertHttpUnauthorized(self.api_client.get(self.detail_url, format='json'))
@@ -197,7 +173,7 @@ class ContactResourceTests(WorkmateAPITestCase):
         new_data['first_name'] = 'Updated: Mr'
 
         self.assertEqual(Contact.objects.count(), 1)
-        self.assertHttpAccepted(
+        self.assertHttpOK(
             self.api_client.put(
                 self.detail_url,
                 format='json',
@@ -217,3 +193,58 @@ class ContactResourceTests(WorkmateAPITestCase):
                 format='json',
                 authentication=self.get_credentials()))
         self.assertEqual(Contact.objects.count(), 0)
+
+
+class FakeCallGateway(object):
+
+    def make_call(self, user, number):
+        return True, 'We are calling you now'
+
+
+class FakeCallGatewayError(object):
+
+    def make_call(self, user, number):
+        return False, 'Oops! Something messed up'
+
+
+class ContactResourceCallEndpointTests(WorkmateAPITestCase):
+
+    def setUp(self):
+        super(ContactResourceCallEndpointTests, self).setUp()
+        self.contact = Contact.objects.create(first_name='Mr', last_name='Smith', mobile_number='+447917759123')
+
+    @override_settings(WORKMATE_CALL_GATEWAY='workmate.tests.test_api_contact.FakeCallGateway')
+    def test_success_response(self):
+        response = self.api_client.post(
+            '/api/v1/contact/%s/call/' % self.contact.id,
+            format='json',
+            data={'type': 'mobile_number'},
+            authentication=self.get_credentials())
+        self.assertValidJSONResponse(response)
+
+    @override_settings(WORKMATE_CALL_GATEWAY='workmate.tests.test_api_contact.FakeCallGateway')
+    def test_missing_type_response(self):
+        response = self.api_client.post(
+            '/api/v1/contact/%s/call/' % self.contact.id,
+            format='json',
+            data={},
+            authentication=self.get_credentials())
+        self.assertHttpBadRequest(response)
+
+    @override_settings(WORKMATE_CALL_GATEWAY='workmate.tests.test_api_contact.FakeCallGateway')
+    def test_invalid_contact_id_response(self):
+        response = self.api_client.post(
+            '/api/v1/contact/1000/call/',
+            format='json',
+            data={'type': 'mobile_number'},
+            authentication=self.get_credentials())
+        self.assertHttpNotFound(response)
+
+    @override_settings(WORKMATE_CALL_GATEWAY='workmate.tests.test_api_contact.FakeCallGatewayError')
+    def test_gateway_error_response(self):
+        response = self.api_client.post(
+            '/api/v1/contact/%s/call/' % self.contact.id,
+            format='json',
+            data={'type': 'mobile_number'},
+            authentication=self.get_credentials())
+        self.assertHttpBadRequest(response)

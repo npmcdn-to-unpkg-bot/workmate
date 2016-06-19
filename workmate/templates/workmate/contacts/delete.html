@@ -1,26 +1,36 @@
-{% extends 'workmate/base.html' %}
-{% load i18n %}
+{% extends 'base.html' %}
+{% load bootstrap3 i18n %}
 
-{% block page_title %}{{ block.super }} | Delete Contact{% endblock %}
+{% block head_title %}{{ block.super }}Delete Contact{% endblock %}
+{% block page_title %}Delete Contact{% endblock %}
+{% block page_description %}{{ object }}{% endblock %}
 
 {% block extra_css %}{% endblock %}
 {% block extra_head %}{% endblock %}
 
 {% block left_nav_content %}
-    <a class="item" href="{% url 'contact-list' %}">{% trans 'Contacts' %}</a>
-    <a class="popup icon item" data-content="Edit Contact" href="{% url 'contact-update' object.pk %}">
-        <i class="edit icon"></i>
-    </a>
+    <li><a href="{% url 'contact-list' %}">{% trans 'Contacts' %}</a></li>
+    <li><a href="{% url 'contact-update' object.pk %}">{% trans 'Edit Contact' %}</a></li>
 {% endblock %}
 
 {% block right_nav_content %}{% endblock %}
 
-{% block content %}
-    <form class="ui form" method="post" novalidate>
-        {% csrf_token %}
-        <a class="ui secondary button" href="{{ object.get_absolute_url }}">Cancel</a>
-        <button type="submit" class="ui primary button">Confirm</button>
-    </form>
+{% block base_content %}
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title">{% trans 'Delete Contact Form' %}</h3>
+        </div>
+        <form class="form-horizontal"  method="post" novalidate>
+            {% csrf_token %}
+            <div class="box-body">
+                {% bootstrap_button button_type='submit' button_class='btn-primary btn-flat pull-right' content='Confirm' %}
+                <a class="btn btn-default btn-flat" href="{{ object.get_absolute_url }}">{% trans 'Cancel' %}</a>
+            </div>
+        </form>
+        <div class="box-footer">
+            {% trans "Delete an existing contact." %}
+        </div>
+    </div>
 {% endblock %}
 
 {% block extra_js %}{% endblock %}

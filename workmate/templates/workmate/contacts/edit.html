@@ -1,47 +1,40 @@
-{% extends 'workmate/base.html' %}
-{% load i18n staticfiles %}
+{% extends 'base.html' %}
+{% load bootstrap3 i18n staticfiles %}
 
-{% block page_title %}{{ block.super }} | Edit Contact{% endblock %}
+{% block head_title %}{{ block.super }}Edit Contact{% endblock %}
+{% block page_title %}Edit Contact{% endblock %}
+{% block page_description %}{{ object }}{% endblock %}
 
 {% block extra_css %}{% endblock %}
 {% block extra_head %}{% endblock %}
 
 {% block left_nav_content %}
-    <a class="item" href="{% url 'contact-list' %}">{% trans 'Contacts' %}</a>
-    <a class="popup icon item" data-content="Delete Contact" href="{% url 'contact-delete' object.pk %}">
-        <i class="trash icon"></i>
-    </a>
+    <li><a href="{% url 'contact-list' %}">{% trans 'Contacts' %}</a></li>
+    <li><a href="{% url 'contact-delete' object.pk %}">{% trans 'Delete Contact' %}</a></li>
 {% endblock %}
 
 {% block right_nav_content %}{% endblock %}
 
-{% block content %}
-    <form class="ui form" method="post" novalidate>
-        {% csrf_token %}
-        {% include 'workmate/partials/form_errors.html' %}
-        <h2 class="ui dividing header">{% trans 'Personal Information' %}</h2>
-        {% include 'workmate/partials/form_field.html' with field=form.first_name %}
-        {% include 'workmate/partials/form_field.html' with field=form.last_name %}
-        {% include 'workmate/partials/form_field.html' with field=form.email_address %}
-        {% include 'workmate/partials/form_field.html' with field=form.mobile_number %}
-        {% include 'workmate/partials/form_field.html' with field=form.work_number %}
-        {% include 'workmate/partials/form_field.html' with field=form.home_number %}
-        {% include 'workmate/partials/form_field.html' with field=form.website %}
-        <div class="ui hidden divider"></div>
-        <h2 class="ui dividing header">{% trans 'Address Details' %}</h2>
-        {% include 'workmate/partials/form_field.html' with field=form.address_line_1 %}
-        {% include 'workmate/partials/form_field.html' with field=form.address_line_2 %}
-        {% include 'workmate/partials/form_field.html' with field=form.city %}
-        {% include 'workmate/partials/form_field.html' with field=form.state %}
-        {% include 'workmate/partials/form_field.html' with field=form.code %}
-        <div class="ui hidden divider"></div>
-        <h2 class="ui dividing header">{% trans 'Miscellaneous' %}</h2>
-        {% include 'workmate/partials/form_field.html' with field=form.notes %}
-        {% include 'workmate/partials/form_field.html' with field=form.tags %}
-        <div class="ui hidden divider"></div>
-        <a class="ui secondary button" href="{% url 'contact-list' %}">{% trans 'Cancel' %}</a>
-        <button type="submit" class="ui primary button">{% trans 'Save' %}</button>
-    </form>
+{% block base_content %}
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title">{% trans 'Contact Form' %}</h3>
+        </div>
+        <form class="form-horizontal"  method="post" novalidate>
+            {% csrf_token %}
+            <div class="box-body">
+                {% bootstrap_form_errors form %}
+                {% for field in form %}
+                    {% bootstrap_field field layout='horizontal' %}
+                {% endfor %}
+                {% bootstrap_button button_type='submit' button_class='btn-primary btn-flat pull-right' content='Save' %}
+                <a class="btn btn-default btn-flat" href="{% url 'contact-list' %}">{% trans 'Cancel' %}</a>
+            </div>
+        </form>
+        <div class="box-footer">
+            {% trans "Edit an existing contact." %}
+        </div>
+    </div>
 {% endblock %}
 
 {% block extra_js %}{% endblock %}

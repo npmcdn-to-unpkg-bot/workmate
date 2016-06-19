@@ -2,12 +2,10 @@
 
 {% regroup nodes by menu_title as menu_list %}
 {% for menu in menu_list %}
-	<div class="item">
-		<div class="header">{{ menu.grouper }}</div>
-		<div class="menu">
-		{% for node in menu.list %}
-			<a href="{{ node.get_absolute_url }}" class="item">{{ node.get_node_title }}</a>
-		{% endfor %}
-		</div>
-	</div>
+	<li class="header text-uppercase">{{ menu.grouper }}</li>
+	{% for node in menu.list %}
+	<li {% if child.selected %}class="active"{% endif %}>
+		<a href="{{ node.get_absolute_url }}"><i class="fa fa-{{ node.icon }}"></i> <span>{{ node.get_node_title }}</span></a>
+	</li>
+	{% endfor %}
 {% endfor %}
