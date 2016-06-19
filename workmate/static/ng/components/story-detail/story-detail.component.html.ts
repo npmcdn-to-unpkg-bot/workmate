@@ -24,14 +24,14 @@ export const htmlTemplate = `
         <label>Tags</label>
         <bs-select-multiple [(ngModel)]="story.tags" [choices]="_tags" [textLabel]="'title'"></bs-select-multiple>
     </div>
-    <div class="form-group" [ngClass]="{'has-error': story._validation_errors?.tasks}">
-        <label>Tasks</label>
-        <div class="form-group" *ngFor="let task of story.tasks">
-            <i class="fa fa-checkmark" [ngClass]="{'green': task.completed}" (click)="task.completed = !task.completed"></i>
+    <div [ngClass]="{'has-error': story._validation_errors?.tasks}">
+        <a class="pull-right" href="javascript:void(0);" (click)="addTask()">Add Task</a>
+        <label>Tasks </label>
+        <div class="form-group has-feedback" *ngFor="let task of story.tasks">
+            <i class="glyphicon glyphicon-ok form-control-feedback clickable" [ngClass]="{'text-green': task.completed, 'text-gray': !task.completed}" (click)="task.completed = !task.completed"></i>
             <input class="form-control" [(ngModel)]="task.description">
         </div>
     </div>
-    <button class="btn btn-flat" (click)="addTask()">Add Task</button>
     <button *ngIf="story.id" class="btn btn-flat" (click)="delete()">Delete</button>
-    <button class="btn btn-primary btn-flat" (click)="save()">Save</button>
+    <button class="btn btn-primary btn-flat pull-right" (click)="save()">Save</button>
 `

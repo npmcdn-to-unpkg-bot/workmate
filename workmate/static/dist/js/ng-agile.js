@@ -9,7 +9,7 @@ webpackJsonp([ 0 ], {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
         }, i = n(1), s = n(97), a = n(118);
         n(301);
-        var c = n(330), l = n(331), u = n(332), d = n(335), f = n(336), p = n(337), h = n(338), v = n(502), m = function() {
+        var c = n(330), l = n(331), u = n(332), d = n(335), f = n(336), p = n(337), h = n(338), v = n(502), y = function() {
             function t() {}
             return t = r([ i.Component({
                 selector: "agile-app",
@@ -20,7 +20,7 @@ webpackJsonp([ 0 ], {
                 }), l.AlertService, u.StoryService, d.StoryStateService, f.StoryTypeService, p.TagService ]
             }), o("design:paramtypes", []) ], t);
         }();
-        e.AgileComponent = m, a.bootstrap(m);
+        e.AgileComponent = y, a.bootstrap(y);
     },
     330: function(t, e, n) {
         "use strict";
@@ -337,7 +337,7 @@ webpackJsonp([ 0 ], {
             return i > 3 && s && Object.defineProperty(e, n, s), s;
         }, o = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, i = n(1), s = n(503), a = n(332), c = n(335), l = n(336), u = n(337), d = n(504), f = n(505), p = n(519), h = n(521), v = n(522), m = function() {
+        }, i = n(1), s = n(503), a = n(332), c = n(335), l = n(336), u = n(337), d = n(504), f = n(505), p = n(519), h = n(521), v = n(522), y = function() {
             function t(t, e, n, r, o) {
                 this._StoryService = t, this._StoryStateService = e, this._StoryTypeService = n, 
                 this._TagService = r, this._DragulaService = o, this._newBacklogOpened = !1, this._newIceboxOpened = !1, 
@@ -382,7 +382,7 @@ webpackJsonp([ 0 ], {
                 pipes: [ d.FilterPipe ]
             }), o("design:paramtypes", [ a.StoryService, c.StoryStateService, l.StoryTypeService, u.TagService, v.DragulaService ]) ], t);
         }();
-        e.StoryListComponent = m;
+        e.StoryListComponent = y;
     },
     503: function(t, e) {
         "use strict";
@@ -580,7 +580,7 @@ webpackJsonp([ 0 ], {
     },
     518: function(t, e) {
         "use strict";
-        e.htmlTemplate = '\n\n    <hr/>\n    <div class="form-group" [ngClass]="{\'has-error\': story._validation_errors?.title}">\n        <textarea class="form-control" [(ngModel)]="story.title" rows="2"></textarea>\n    </div>\n    <div class="form-group" [ngClass]="{\'has-error\': story._validation_errors?.type}">\n        <label>Type</label>\n        <bs-select [(ngModel)]="story.type" [choices]="_types" [textLabel]="\'title\'"></bs-select>\n    </div>\n    <div class="form-group" [ngClass]="{\'has-error\': story._validation_errors?.effort}">\n        <label>Effort</label>\n        <bs-select [(ngModel)]="story.effort" [choices]="_StoryService.effortChoices" [textLabel]="\'text\'" [boundValueAttr]="\'id\'"></bs-select>\n    </div>\n    <div class="form-group" [ngClass]="{\'has-error\': story._validation_errors?.state}">\n        <label>State</label>\n        <bs-select [(ngModel)]="story.state" [choices]="_states" [textLabel]="\'title\'"></bs-select>\n    </div>\n    <div class="form-group" [ngClass]="{\'has-error\': story._validation_errors?.description}">\n        <label>Description</label>\n        <textarea class="form-control" [(ngModel)]="story.description" rows="3"></textarea>\n    </div>\n    <div class="form-group" [ngClass]="{\'has-error\': story._validation_errors?.tags}">\n        <label>Tags</label>\n        <bs-select-multiple [(ngModel)]="story.tags" [choices]="_tags" [textLabel]="\'title\'"></bs-select-multiple>\n    </div>\n    <div class="form-group" [ngClass]="{\'has-error\': story._validation_errors?.tasks}">\n        <label>Tasks</label>\n        <div class="form-group" *ngFor="let task of story.tasks">\n            <i class="fa fa-checkmark" [ngClass]="{\'green\': task.completed}" (click)="task.completed = !task.completed"></i>\n            <input class="form-control" [(ngModel)]="task.description">\n        </div>\n    </div>\n    <button class="btn btn-flat" (click)="addTask()">Add Task</button>\n    <button *ngIf="story.id" class="btn btn-flat" (click)="delete()">Delete</button>\n    <button class="btn btn-primary btn-flat" (click)="save()">Save</button>\n';
+        e.htmlTemplate = '\n\n    <hr/>\n    <div class="form-group" [ngClass]="{\'has-error\': story._validation_errors?.title}">\n        <textarea class="form-control" [(ngModel)]="story.title" rows="2"></textarea>\n    </div>\n    <div class="form-group" [ngClass]="{\'has-error\': story._validation_errors?.type}">\n        <label>Type</label>\n        <bs-select [(ngModel)]="story.type" [choices]="_types" [textLabel]="\'title\'"></bs-select>\n    </div>\n    <div class="form-group" [ngClass]="{\'has-error\': story._validation_errors?.effort}">\n        <label>Effort</label>\n        <bs-select [(ngModel)]="story.effort" [choices]="_StoryService.effortChoices" [textLabel]="\'text\'" [boundValueAttr]="\'id\'"></bs-select>\n    </div>\n    <div class="form-group" [ngClass]="{\'has-error\': story._validation_errors?.state}">\n        <label>State</label>\n        <bs-select [(ngModel)]="story.state" [choices]="_states" [textLabel]="\'title\'"></bs-select>\n    </div>\n    <div class="form-group" [ngClass]="{\'has-error\': story._validation_errors?.description}">\n        <label>Description</label>\n        <textarea class="form-control" [(ngModel)]="story.description" rows="3"></textarea>\n    </div>\n    <div class="form-group" [ngClass]="{\'has-error\': story._validation_errors?.tags}">\n        <label>Tags</label>\n        <bs-select-multiple [(ngModel)]="story.tags" [choices]="_tags" [textLabel]="\'title\'"></bs-select-multiple>\n    </div>\n    <div [ngClass]="{\'has-error\': story._validation_errors?.tasks}">\n        <a class="pull-right" href="javascript:void(0);" (click)="addTask()">Add Task</a>\n        <label>Tasks </label>\n        <div class="form-group has-feedback" *ngFor="let task of story.tasks">\n            <i class="glyphicon glyphicon-ok form-control-feedback clickable" [ngClass]="{\'text-green\': task.completed, \'text-gray\': !task.completed}" (click)="task.completed = !task.completed"></i>\n            <input class="form-control" [(ngModel)]="task.description">\n        </div>\n    </div>\n    <button *ngIf="story.id" class="btn btn-flat" (click)="delete()">Delete</button>\n    <button class="btn btn-primary btn-flat pull-right" (click)="save()">Save</button>\n';
     },
     519: function(t, e, n) {
         "use strict";
@@ -731,7 +731,7 @@ webpackJsonp([ 0 ], {
                 }
                 function r(t) {
                     var e = t ? "remove" : "add";
-                    o(j, e, "mousedown", x), o(j, e, "mouseup", D);
+                    o(j, e, "mousedown", w), o(j, e, "mouseup", D);
                 }
                 function a(t) {
                     var e = t ? "remove" : "add";
@@ -739,15 +739,15 @@ webpackJsonp([ 0 ], {
                 }
                 function v(t) {
                     var e = t ? "remove" : "add";
-                    _[e](j, "selectstart", w), _[e](j, "click", w);
+                    _[e](j, "selectstart", x), _[e](j, "click", x);
                 }
-                function y() {
+                function m() {
                     r(!0), D({});
                 }
-                function w(t) {
+                function x(t) {
                     at && t.preventDefault();
                 }
-                function x(t) {
+                function w(t) {
                     et = t.clientX, nt = t.clientY;
                     var e = 1 !== i(t) || t.metaKey || t.ctrlKey;
                     if (!e) {
@@ -779,7 +779,7 @@ webpackJsonp([ 0 ], {
                         }
                         var r = p(t);
                         if (r && !lt.invalid(t, e)) {
-                            var o = lt.moves(t, r, e, m(t));
+                            var o = lt.moves(t, r, e, y(t));
                             if (o) return {
                                 item: t,
                                 source: r
@@ -796,7 +796,7 @@ webpackJsonp([ 0 ], {
                 }
                 function C(t) {
                     K(t.item, t.source) && (it = t.item.cloneNode(!0), ut.emit("cloned", it, t.item, "copy")), 
-                    Q = t.source, W = t.item, rt = ot = m(t.item), ut.dragging = !0, ut.emit("drag", W, Q);
+                    Q = t.source, W = t.item, rt = ot = y(t.item), ut.dragging = !0, ut.emit("drag", W, Q);
                 }
                 function k() {
                     return !1;
@@ -841,7 +841,7 @@ webpackJsonp([ 0 ], {
                 }
                 function L(t, e) {
                     var n;
-                    return n = void 0 !== e ? e : G ? ot : m(it || W), t === Q && n === rt;
+                    return n = void 0 !== e ? e : G ? ot : y(it || W), t === Q && n === rt;
                 }
                 function V(t, e, r) {
                     function o() {
@@ -871,12 +871,12 @@ webpackJsonp([ 0 ], {
                         (f || null === d) && (r(), ct = d, n());
                         var h = p(l);
                         if (d === Q && it && !lt.copySortSource) return void (h && h.removeChild(l));
-                        var v, y = J(d, u);
-                        if (null !== y) v = q(d, y, o, i); else {
+                        var v, m = J(d, u);
+                        if (null !== m) v = q(d, m, o, i); else {
                             if (lt.revertOnSpill !== !0 || it) return void (it && h && h.removeChild(l));
                             v = rt, d = Q;
                         }
-                        (null === v && f || v !== l && v !== m(l)) && (ot = v, d.insertBefore(l, v), ut.emit("shadow", l, d, Q));
+                        (null === v && f || v !== l && v !== y(l)) && (ot = v, d.insertBefore(l, v), ut.emit("shadow", l, d, Q));
                     }
                 }
                 function F(t) {
@@ -915,7 +915,7 @@ webpackJsonp([ 0 ], {
                         return s(a ? n > t.left + d(t) / 2 : r > t.top + f(t) / 2);
                     }
                     function s(t) {
-                        return t ? m(e) : e;
+                        return t ? y(e) : e;
                     }
                     var a = "horizontal" === lt.direction, c = e !== t ? i() : o();
                     return c;
@@ -938,7 +938,7 @@ webpackJsonp([ 0 ], {
                     end: P,
                     cancel: B,
                     remove: N,
-                    destroy: y,
+                    destroy: m,
                     canMove: E,
                     dragging: !1
                 });
@@ -1004,7 +1004,7 @@ webpackJsonp([ 0 ], {
             function v(t) {
                 return t ? "false" === t.contentEditable ? !1 : "true" === t.contentEditable ? !0 : v(p(t)) : !1;
             }
-            function m(t) {
+            function y(t) {
                 function e() {
                     var e = t;
                     do e = e.nextSibling; while (e && 1 !== e.nodeType);
@@ -1012,11 +1012,11 @@ webpackJsonp([ 0 ], {
                 }
                 return t.nextElementSibling || e();
             }
-            function y(t) {
+            function m(t) {
                 return t.targetTouches && t.targetTouches.length ? t.targetTouches[0] : t.changedTouches && t.changedTouches.length ? t.changedTouches[0] : t;
             }
             function b(t, e) {
-                var n = y(e), r = {
+                var n = m(e), r = {
                     pageX: "clientX",
                     pageY: "clientY"
                 };
@@ -1160,7 +1160,7 @@ webpackJsonp([ 0 ], {
             }
             function l(t, e, n) {
                 var r = u(t, e, n) || c(t, e, n);
-                return y.push({
+                return m.push({
                     wrapper: r,
                     element: t,
                     type: e,
@@ -1170,18 +1170,18 @@ webpackJsonp([ 0 ], {
             function u(t, e, n) {
                 var r = d(t, e, n);
                 if (r) {
-                    var o = y[r].wrapper;
-                    return y.splice(r, 1), o;
+                    var o = m[r].wrapper;
+                    return m.splice(r, 1), o;
                 }
             }
             function d(t, e, n) {
                 var r, o;
-                for (r = 0; r < y.length; r++) if (o = y[r], o.element === t && o.type === e && o.fn === n) return r;
+                for (r = 0; r < m.length; r++) if (o = m[r], o.element === t && o.type === e && o.fn === n) return r;
             }
-            var f = n(533), p = n(534), h = e.document, v = r, m = i, y = [];
-            e.addEventListener || (v = o, m = s), t.exports = {
+            var f = n(533), p = n(534), h = e.document, v = r, y = i, m = [];
+            e.addEventListener || (v = o, y = s), t.exports = {
                 add: v,
-                remove: m,
+                remove: y,
                 fabricate: a
             };
         }).call(e, function() {
