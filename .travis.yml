@@ -9,10 +9,7 @@ env:
   - TOX_ENV=py27-dj19
   # Django 1.8
   - TOX_ENV=py34-dj18
-  - TOX_ENV=py34-dj18
   - TOX_ENV=py33-dj18
-  - TOX_ENV=py33-dj18
-  - TOX_ENV=py27-dj18
   - TOX_ENV=py27-dj18
 
 
