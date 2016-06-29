@@ -27,7 +27,8 @@ class StoryResourceTests(WorkmateAPITestCase):
             state=self.state,
             effort='1.0',
             description='Description',
-            icebox=True
+            icebox=True,
+            order='100.00000000'
         )
 
         self.list_url = '/api/v1/story/'.format(self.existing_object.pk)
@@ -37,7 +38,8 @@ class StoryResourceTests(WorkmateAPITestCase):
             'type': self.serialized_type,
             'state': self.serialized_state,
             'effort': '1.0',
-            'description': 'Description'
+            'description': 'Description',
+            'order': '100.00000000'
         }
 
     def test_get_list_unauthenticated(self):
@@ -56,6 +58,7 @@ class StoryResourceTests(WorkmateAPITestCase):
             'effort': self.existing_object.effort,
             'icebox': self.existing_object.icebox,
             'id': self.existing_object.pk,
+            'order': self.existing_object.order,
             'resource_uri': '/api/v1/story/{0}/'.format(self.existing_object.pk),
             'state': self.serialized_state,
             'tags': [],
@@ -86,6 +89,7 @@ class StoryResourceTests(WorkmateAPITestCase):
                 'effort',
                 'icebox',
                 'id',
+                'order',
                 'resource_uri',
                 'state',
                 'tags',
@@ -95,6 +99,7 @@ class StoryResourceTests(WorkmateAPITestCase):
         self.assertEqual(self.deserialize(resp)['icebox'], self.existing_object.icebox)
         self.assertEqual(self.deserialize(resp)['description'], self.existing_object.description)
         self.assertEqual(self.deserialize(resp)['effort'], self.existing_object.effort)
+        self.assertEqual(self.deserialize(resp)['order'], self.existing_object.order)
         self.assertEqual(self.deserialize(resp)['title'], self.existing_object.title)
         self.assertEqual(self.deserialize(resp)['state'], self.serialized_state)
         self.assertEqual(self.deserialize(resp)['tags'], [])

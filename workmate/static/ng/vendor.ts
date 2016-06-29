@@ -14,6 +14,9 @@ import './imports/angular.ts';
 // RxJS
 import './imports/rxjs.ts';
 
+// DND
+import 'ng2-dnd/ng2-dnd'
+
 // Bootstrap
 import 'ng2-bootstrap/ng2-bootstrap';
 import 'ng2-select';

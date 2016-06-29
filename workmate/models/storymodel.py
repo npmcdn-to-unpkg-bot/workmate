@@ -49,9 +49,10 @@ class Story(SiteAbstract):
     description = models.TextField(null=True, blank=True)
     tags = models.ManyToManyField(Tag, blank=True)
     icebox = models.BooleanField(default=True)
+    order = models.DecimalField(decimal_places=8, max_digits=16)
 
     class Meta:
-        ordering = ('title',)
+        ordering = ('order',)
 
     def __str__(self):
         return self.title

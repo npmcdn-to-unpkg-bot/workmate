@@ -7,9 +7,8 @@
 
         '@angular':                         'https://npmcdn.com/@angular',
         'ng2-bootstrap':                    'https://npmcdn.com/ng2-bootstrap',
-        'ng2-dragula':                      'https://npmcdn.com/ng2-dragula',
+        'ng2-dnd':                          'https://npmcdn.com/ng2-dnd',
         'ng2-select':                       'https://npmcdn.com/ng2-select',
-        'dragula':                          'https://npmcdn.com/dragula',
         'crossvent':                        'https://npmcdn.com/crossvent',
         'custom-event':                     'https://npmcdn.com/custom-event',
         'contra':                           'https://npmcdn.com/contra',

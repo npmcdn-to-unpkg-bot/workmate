@@ -8,24 +8,27 @@ import { StoryService }                                 from '../../services/sto
 import { StoryStateService }                            from '../../services/story-state.service';
 import { StoryTypeService }                             from '../../services/story-type.service';
 import { TagService }                                   from '../../services/tag.service';
-import { FilterPipe }                                   from '../../pipes/filter-pipe';
+import { OrderBy }                                      from '../../pipes/orderby-pipe';
 import { StoryDetailComponent }                         from '../story-detail/story-detail.component'
 import { StoryListItemComponent }                       from '../story-list-item/story-list-item.component'
 import { htmlTemplate }                                 from './story-list.component.html';
 
-import { Dragula, DragulaService }                      from 'ng2-dragula/ng2-dragula';
+import { DND_PROVIDERS, DND_DIRECTIVES }                from 'ng2-dnd/ng2-dnd';
+
 
 @Component({
     selector: 'story-list',
     template: htmlTemplate,
-    directives: [Dragula, StoryDetailComponent, StoryListItemComponent],
-    viewProviders: [DragulaService],
-    pipes: [FilterPipe]
+    directives: [DND_DIRECTIVES, StoryDetailComponent, StoryListItemComponent],
+    viewProviders: [DND_PROVIDERS],
+    pipes: [OrderBy]
 })
 
 export class StoryListComponent implements OnInit {
 
-    _stories: iStory[];
+    _stories: iStory[] = [];
+    _backlog: iStory[] = [];
+    _icebox: iStory[] = [];
     _states: iStoryState[];
     _tags: iTag[];
     _types: iStoryType[];
@@ -34,17 +37,19 @@ export class StoryListComponent implements OnInit {
     _newIceboxStory: Story;
     _newIceboxOpened: boolean = false;
 
-
     constructor(
         private _StoryService: StoryService,
         private _StoryStateService: StoryStateService,
         private _StoryTypeService: StoryTypeService,
-        private _TagService: TagService,
-        private _DragulaService: DragulaService
+        private _TagService: TagService
     ) {}
 
     ngOnInit() {
-        this._StoryService.objects$.subscribe(objects => this._stories = objects);
+        this._StoryService.objects$.subscribe(objects => {
+            this._stories = objects;
+            this._backlog = new OrderBy().transform(this._stories.filter(story => story.icebox == false), ['order']);
+            this._icebox = new OrderBy().transform(this._stories.filter(story => story.icebox == true), ['order']);
+        });
         this._StoryStateService.objects$.subscribe(objects => this._states = objects);
         this._StoryTypeService.objects$.subscribe(objects => this._types = objects);
         this._TagService.objects$.subscribe(objects => this._tags = objects);
@@ -52,10 +57,6 @@ export class StoryListComponent implements OnInit {
         this._StoryStateService.loadAll();
         this._StoryTypeService.loadAll();
         this._TagService.loadAll();
-
-        this._DragulaService.drop.subscribe((value:any) => {
-            this.onDrop(value.slice(1));
-        });
     }
 
     createNew = function (backlog: boolean) {
@@ -66,6 +67,7 @@ export class StoryListComponent implements OnInit {
                 title: 'New Story',
                 type: null
             });
+            this.setStoryOrder(this._newBacklogStory, -1, this._backlog);
             this._newBacklogOpened = !this._newBacklogOpened;
         } else {
             this._newIceboxStory = new Story({
@@ -74,18 +76,45 @@ export class StoryListComponent implements OnInit {
                 title: 'New Story',
                 type: null
             });
+            this.setStoryOrder(this._newIceboxStory, -1, this._icebox);
             this._newIceboxOpened = !this._newIceboxOpened;
         }
     };
 
-    private onDrop(args:any) {
-        let [e, el] = args;
-        let data_id = e.attributes['data-id'].value;
-        let story = this._stories.find(item => item.id == data_id);
-        let icebox = e.parentElement.attributes['data-list'].value == 'icebox';
-        story.icebox = icebox;
+    private moveStory(story:iStory, index:number, destination:string, stories:iStory[]) {
+        story.icebox = destination == 'icebox';
+        this.setStoryOrder(story, index, stories);
         this._StoryService.update(story);
     }
 
+    private setStoryOrder(story:iStory, index:number, stories:iStory[]) {
+        let itemCount = stories.length;
+        let min = 0;
+        let max = 100;
+        if (index == -1) {
+            if (itemCount >= 1) {
+                max = parseFloat(stories[0].order.toString());
+                min = max - 1;
+            }
+        } else {
+            if (itemCount == 1) {
+                // do nothing
+            } else if (index == 0) {
+                max = parseFloat(stories[index+1].order.toString());
+                min = max - 1;
+            } else if (index == itemCount-1) {
+                min = parseFloat(stories[index-1].order.toString());
+                max = min + 1
+            } else {
+                min = parseFloat(stories[index-1].order.toString());
+                max = parseFloat(stories[index+1].order.toString());
+            }
+        }
+        story.order = this.getRandomNumber(min, max);
+    }
+
+    private getRandomNumber(min:number, max:number) {
+        return parseFloat((Math.random() * (max - min) + min).toFixed(8));
+    }
     
 }

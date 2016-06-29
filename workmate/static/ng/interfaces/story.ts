@@ -9,6 +9,7 @@ export interface iStory {
     description?: string;
     effort?: number;
     icebox?: boolean;
+    order?: number;
     state: iStoryState;
     tags?: iTag[];
     tasks?: iStoryTask[];
@@ -23,6 +24,7 @@ export class Story implements iStory {
     description: string;
     effort: number;
     icebox: boolean;
+    order: number;
     state: iStoryState;
     tags: iTag[];
     tasks: iStoryTask[];

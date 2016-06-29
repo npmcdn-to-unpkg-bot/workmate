@@ -13,8 +13,8 @@ export const htmlTemplate = `
                     <div class="box-comment" story-detail [story]="_newBacklogStory"></div>
                 </div>
                 <div class="box-body">
-                    <ul class="story-list" style="min-height: 50px;" [dragula]='"first-bag"' [attr.data-list]="'backlog'">
-                        <li class="story-list-item handle" *ngFor="let story of _stories | filter : {icebox: false}" [attr.data-id]="story.id" story-list-item [story]="story"></li>
+                    <ul class="story-list" style="min-height: 50px;" dnd-sortable-container [dropZones]="['story-zone']" [sortableData]="_backlog" >
+                        <li class="story-list-item handle" *ngFor="let story of _backlog; let i = index" dnd-sortable [sortableIndex]="i" (onDropSuccess)="moveStory(story, i, 'backlog', _backlog)" [attr.data-id]="story.id" story-list-item [story]="story"></li>
                     </ul>
                 </div>
             </div>
@@ -31,8 +31,8 @@ export const htmlTemplate = `
                     <div class="box-comment" story-detail [story]="_newIceboxStory"></div>
                 </div>
                 <div class="box-body">
-                    <ul class="story-list" style="min-height: 50px;" [dragula]='"first-bag"' [attr.data-list]="'icebox'">
-                        <li class="story-list-item handle" *ngFor="let story of _stories | filter : {icebox: true}" [attr.data-id]="story.id" story-list-item [story]="story"></li>
+                    <ul class="story-list" style="min-height: 50px;" dnd-sortable-container [dropZones]="['story-zone']" [sortableData]="_icebox">
+                        <li class="story-list-item handle" *ngFor="let story of _icebox; let i = index" dnd-sortable [sortableIndex]="i" (onDropSuccess)="moveStory(story, i, 'icebox', _icebox)" [attr.data-id]="story.id" story-list-item [story]="story"></li>
                     </ul>
                 </div>
             </div>
