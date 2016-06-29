@@ -7,9 +7,10 @@ from .tagsmodel import Tag
 
 class StoryState(SiteAbstract):
     title = models.CharField(max_length=100)
+    order = models.PositiveIntegerField(default=0, editable=False, db_index=True)
 
     class Meta:
-        ordering = ('title',)
+        ordering = ('order',)
 
     def __str__(self):
         return self.title

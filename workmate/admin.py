@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from django.contrib import admin
 from django.contrib.sites.models import Site
+
+from adminsortable2.admin import SortableAdminMixin
 from reversion.admin import VersionAdmin
 
 from workmate.models import *
@@ -22,11 +24,15 @@ class SiteAdmin(VersionAdmin):
     inlines = (SiteInline,)
 
 
+class SortableVersionAdmin(SortableAdminMixin, VersionAdmin):
+    pass
+
+
 admin.site.register(Contact, ContactAdmin)
 admin.site.unregister(Site)
 admin.site.register(Site, SiteAdmin)
 admin.site.register(Story, VersionAdmin)
-admin.site.register(StoryState, VersionAdmin)
+admin.site.register(StoryState, SortableVersionAdmin)
 admin.site.register(StoryTask, VersionAdmin)
 admin.site.register(StoryType, VersionAdmin)
 admin.site.register(Tag, VersionAdmin)

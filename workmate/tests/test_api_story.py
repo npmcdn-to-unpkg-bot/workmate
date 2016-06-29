@@ -17,6 +17,7 @@ class StoryResourceTests(WorkmateAPITestCase):
         self.state = StoryState.onsite.create(title='Done')
         self.serialized_state = {
             'id': self.state.pk,
+            'order': self.state.order,
             'resource_uri': '/api/v1/story_state/{}/'.format(self.state.pk),
             'title': 'Done'
         }
