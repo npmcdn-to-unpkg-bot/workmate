@@ -36,6 +36,7 @@ INSTALLED_APPS = (
 
     'example',
 
+    'adminsortable2',
     'bootstrap3',
     'reversion',
     'tastypie',

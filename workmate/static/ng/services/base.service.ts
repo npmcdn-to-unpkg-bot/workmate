@@ -7,8 +7,6 @@ import { AlertService }                                     from './alert.servic
 import { Observable }                                       from 'rxjs/Observable';
 import { Observer }                                         from 'rxjs/Observer';
 
-declare var jQuery: any;
-
 
 export class BaseService {
 

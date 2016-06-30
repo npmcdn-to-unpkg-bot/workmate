@@ -14,6 +14,7 @@ setup(
     install_requires=[
         'defusedxml>=0.4.1',
         'Django>=1.8,<1.10',
+        'django-admin-sortable2>=0.6.4',
         'django-appconf>=1.0.2',
         'django-bootstrap3>=7.0.1',
         'django-classy-tags>=0.7',

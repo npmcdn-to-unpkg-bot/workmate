@@ -6,7 +6,7 @@
 .ui-select-bootstrap {
 
   .dropdown-menu {
-    border-radius: 0;
+    @include border-radius(0)
   }
 
   .ui-select-choices-row>a {

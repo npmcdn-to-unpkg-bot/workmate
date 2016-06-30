@@ -1,5 +1,6 @@
 export interface iStoryState {
     id?: number;
+    order?: number;
     title: string;
     resource_uri?: string;
 
