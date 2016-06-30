@@ -9,7 +9,7 @@ webpackJsonp([ 0 ], {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
         }, i = r(1), n = r(97), a = r(118);
         r(301);
-        var c = r(330), l = r(331), d = r(332), p = r(335), u = r(336), f = r(337), h = r(338), y = r(502), v = function() {
+        var c = r(330), l = r(331), p = r(332), f = r(335), u = r(336), d = r(337), h = r(338), y = r(502), v = function() {
             function t() {}
             return t = o([ i.Component({
                 selector: "agile-app",
@@ -17,7 +17,7 @@ webpackJsonp([ 0 ], {
                 directives: [ y.StoryListComponent, h.AlertBlockComponent ],
                 providers: [ n.HTTP_PROVIDERS, i.provide(n.RequestOptions, {
                     useClass: c.ExRequestOptions
-                }), l.AlertService, d.StoryService, p.StoryStateService, u.StoryTypeService, f.TagService ]
+                }), l.AlertService, p.StoryService, f.StoryStateService, u.StoryTypeService, d.TagService ]
             }), s("design:paramtypes", []) ], t);
         }();
         e.AgileComponent = v, a.bootstrap(v);
@@ -99,7 +99,7 @@ webpackJsonp([ 0 ], {
             return i > 3 && n && Object.defineProperty(e, r, n), n;
         }, i = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, n = r(1), a = r(97), c = r(331), l = r(333), d = r(35), p = function(t) {
+        }, n = r(1), a = r(97), c = r(331), l = r(333), p = r(35), f = function(t) {
             function e(e, r) {
                 var o = this;
                 t.call(this, e, r), this._http = e, this._AlertService = r, this.effortChoices = [ {
@@ -117,13 +117,13 @@ webpackJsonp([ 0 ], {
                 }, {
                     id: "5.0",
                     text: "5 Points"
-                } ], this._baseUrl = "/api/v1/story/", this._resourceName = "story", this.objects$ = new d.Observable(function(t) {
+                } ], this._baseUrl = "/api/v1/story/", this._resourceName = "story", this.objects$ = new p.Observable(function(t) {
                     return o._objectsObserver = t;
                 }).share();
             }
             return o(e, t), e = s([ n.Injectable(), i("design:paramtypes", [ a.Http, c.AlertService ]) ], e);
         }(l.BaseService);
-        e.StoryService = p;
+        e.StoryService = f;
     },
     333: function(t, e, r) {
         "use strict";
@@ -238,17 +238,17 @@ webpackJsonp([ 0 ], {
             return i > 3 && n && Object.defineProperty(e, r, n), n;
         }, i = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, n = r(1), a = r(97), c = r(331), l = r(333), d = r(35), p = function(t) {
+        }, n = r(1), a = r(97), c = r(331), l = r(333), p = r(35), f = function(t) {
             function e(e, r) {
                 var o = this;
                 t.call(this, e, r), this._http = e, this._AlertService = r, this._baseUrl = "/api/v1/story_state/", 
-                this._resourceName = "story_state", this.objects$ = new d.Observable(function(t) {
+                this._resourceName = "story_state", this.objects$ = new p.Observable(function(t) {
                     return o._objectsObserver = t;
                 }).share();
             }
             return o(e, t), e = s([ n.Injectable(), i("design:paramtypes", [ a.Http, c.AlertService ]) ], e);
         }(l.BaseService);
-        e.StoryStateService = p;
+        e.StoryStateService = f;
     },
     336: function(t, e, r) {
         "use strict";
@@ -264,17 +264,17 @@ webpackJsonp([ 0 ], {
             return i > 3 && n && Object.defineProperty(e, r, n), n;
         }, i = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, n = r(1), a = r(97), c = r(331), l = r(333), d = r(35), p = function(t) {
+        }, n = r(1), a = r(97), c = r(331), l = r(333), p = r(35), f = function(t) {
             function e(e, r) {
                 var o = this;
                 t.call(this, e, r), this._http = e, this._AlertService = r, this._baseUrl = "/api/v1/story_type/", 
-                this._resourceName = "story_type", this.objects$ = new d.Observable(function(t) {
+                this._resourceName = "story_type", this.objects$ = new p.Observable(function(t) {
                     return o._objectsObserver = t;
                 }).share();
             }
             return o(e, t), e = s([ n.Injectable(), i("design:paramtypes", [ a.Http, c.AlertService ]) ], e);
         }(l.BaseService);
-        e.StoryTypeService = p;
+        e.StoryTypeService = f;
     },
     337: function(t, e, r) {
         "use strict";
@@ -290,17 +290,17 @@ webpackJsonp([ 0 ], {
             return i > 3 && n && Object.defineProperty(e, r, n), n;
         }, i = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, n = r(1), a = r(97), c = r(331), l = r(333), d = r(35), p = function(t) {
+        }, n = r(1), a = r(97), c = r(331), l = r(333), p = r(35), f = function(t) {
             function e(e, r) {
                 var o = this;
                 t.call(this, e, r), this._http = e, this._AlertService = r, this._baseUrl = "/api/v1/tag/", 
-                this._resourceName = "tag", this.objects$ = new d.Observable(function(t) {
+                this._resourceName = "tag", this.objects$ = new p.Observable(function(t) {
                     return o._objectsObserver = t;
                 }).share();
             }
             return o(e, t), e = s([ n.Injectable(), i("design:paramtypes", [ a.Http, c.AlertService ]) ], e);
         }(l.BaseService);
-        e.TagService = p;
+        e.TagService = f;
     },
     338: function(t, e, r) {
         "use strict";
@@ -310,7 +310,7 @@ webpackJsonp([ 0 ], {
             return i > 3 && n && Object.defineProperty(e, r, n), n;
         }, s = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, i = r(1), n = r(202), a = r(339), c = r(331), l = '\n    <alert *ngFor="let alert of _alerts; let i = index" [type]="alert.type" dismissible="alert.dismissable" (close)="closeAlert(i)">\n        {{ alert.message }}\n    </alert>\n  ', d = function() {
+        }, i = r(1), n = r(202), a = r(339), c = r(331), l = '\n    <alert *ngFor="let alert of _alerts; let i = index" [type]="alert.type" dismissible="alert.dismissable" (close)="closeAlert(i)">\n        {{ alert.message }}\n    </alert>\n  ', p = function() {
             function t(t) {
                 this._AlertService = t;
             }
@@ -327,7 +327,7 @@ webpackJsonp([ 0 ], {
                 template: l
             }), s("design:paramtypes", [ c.AlertService ]) ], t);
         }();
-        e.AlertBlockComponent = d;
+        e.AlertBlockComponent = p;
     },
     502: function(t, e, r) {
         "use strict";
@@ -337,42 +337,39 @@ webpackJsonp([ 0 ], {
             return i > 3 && n && Object.defineProperty(e, r, n), n;
         }, s = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, i = r(1), n = r(503), a = r(332), c = r(335), l = r(336), d = r(337), p = r(504), u = r(505), f = r(519), h = r(521), y = r(522), v = function() {
+        }, i = r(1), n = r(503), a = r(332), c = r(335), l = r(336), p = r(337), f = r(504), u = r(505), d = r(506), h = r(520), y = r(522), v = r(523), _ = function() {
             function t(t, e, r, o) {
                 this._StoryService = t, this._StoryStateService = e, this._StoryTypeService = r, 
-                this._TagService = o, this._stories = [], this._backlog = [], this._icebox = [], 
-                this._newBacklogOpened = !1, this._newIceboxOpened = !1, this.createNew = function(t) {
-                    t ? (this._newBacklogStory = new n.Story({
-                        icebox: !1,
-                        state: null,
-                        title: "New Story",
-                        type: null
-                    }), this.setStoryOrder(this._newBacklogStory, -1, this._backlog), this._newBacklogOpened = !this._newBacklogOpened) : (this._newIceboxStory = new n.Story({
-                        icebox: !0,
-                        state: null,
-                        title: "New Story",
-                        type: null
-                    }), this.setStoryOrder(this._newIceboxStory, -1, this._icebox), this._newIceboxOpened = !this._newIceboxOpened);
+                this._TagService = o, this._stories = [], this._storiesByState = [], this.createNew = function(t) {
+                    if (this._newStory) this._newStory = null; else {
+                        var e = this._storiesByState[t.id];
+                        this._newStory = new n.Story({
+                            icebox: !1,
+                            state: t,
+                            title: "New Story",
+                            type: null
+                        }), this.setStoryOrder(this._newStory, -1, e);
+                    }
                 };
             }
             return t.prototype.ngOnInit = function() {
                 var t = this;
                 this._StoryService.objects$.subscribe(function(e) {
-                    t._stories = e, t._backlog = new p.OrderBy().transform(t._stories.filter(function(t) {
-                        return 0 == t.icebox;
-                    }), [ "order" ]), t._icebox = new p.OrderBy().transform(t._stories.filter(function(t) {
-                        return 1 == t.icebox;
-                    }), [ "order" ]);
-                }), this._StoryStateService.objects$.subscribe(function(e) {
-                    return t._states = e;
+                    t._stories = e, t._StoryStateService.objects$.subscribe(function(e) {
+                        t._states = e, t._states.forEach(function(e, r) {
+                            t._storiesByState[e.id] = new u.OrderBy().transform(t._stories.filter(function(t) {
+                                return t.state.id == e.id;
+                            }), [ "order" ]);
+                        });
+                    }), t._StoryStateService.loadAll();
                 }), this._StoryTypeService.objects$.subscribe(function(e) {
                     return t._types = e;
                 }), this._TagService.objects$.subscribe(function(e) {
                     return t._tags = e;
-                }), this._StoryService.loadAll(), this._StoryStateService.loadAll(), this._StoryTypeService.loadAll(), 
-                this._TagService.loadAll();
-            }, t.prototype.moveStory = function(t, e, r, o) {
-                t.icebox = "icebox" == r, this.setStoryOrder(t, e, o), this._StoryService.update(t);
+                }), this._StoryService.loadAll(), this._StoryTypeService.loadAll(), this._TagService.loadAll();
+            }, t.prototype.moveStory = function(t, e, r) {
+                var o = this._storiesByState[r.id];
+                this.setStoryOrder(t, e, o), t.state = r, this._StoryService.update(t);
             }, t.prototype.setStoryOrder = function(t, e, r) {
                 var o = r.length, s = 0, i = 100;
                 -1 == e ? o >= 1 && (i = parseFloat(r[0].order.toString()), s = i - 1) : 1 == o || (0 == e ? (i = parseFloat(r[e + 1].order.toString()), 
@@ -382,13 +379,13 @@ webpackJsonp([ 0 ], {
                 return parseFloat((Math.random() * (e - t) + t).toFixed(8));
             }, t = o([ i.Component({
                 selector: "story-list",
-                template: h.htmlTemplate,
-                directives: [ y.DND_DIRECTIVES, u.StoryDetailComponent, f.StoryListItemComponent ],
-                viewProviders: [ y.DND_PROVIDERS ],
-                pipes: [ p.OrderBy ]
-            }), s("design:paramtypes", [ a.StoryService, c.StoryStateService, l.StoryTypeService, d.TagService ]) ], t);
+                template: y.htmlTemplate,
+                directives: [ v.DND_DIRECTIVES, d.StoryDetailComponent, h.StoryListItemComponent ],
+                viewProviders: [ v.DND_PROVIDERS ],
+                pipes: [ f.FilterPipe, u.OrderBy ]
+            }), s("design:paramtypes", [ a.StoryService, c.StoryStateService, l.StoryTypeService, p.TagService ]) ], t);
         }();
-        e.StoryListComponent = v;
+        e.StoryListComponent = _;
     },
     503: function(t, e) {
         "use strict";
@@ -402,6 +399,34 @@ webpackJsonp([ 0 ], {
         e.Story = r;
     },
     504: function(t, e, r) {
+        "use strict";
+        var o = this && this.__decorate || function(t, e, r, o) {
+            var s, i = arguments.length, n = 3 > i ? e : null === o ? o = Object.getOwnPropertyDescriptor(e, r) : o;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) n = Reflect.decorate(t, e, r, o); else for (var a = t.length - 1; a >= 0; a--) (s = t[a]) && (n = (3 > i ? s(n) : i > 3 ? s(e, r, n) : s(e, r)) || n);
+            return i > 3 && n && Object.defineProperty(e, r, n), n;
+        }, s = this && this.__metadata || function(t, e) {
+            return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
+        }, i = r(1), n = function() {
+            function t() {}
+            return t.prototype.transform = function(t, e) {
+                var r = e;
+                if (r && Array.isArray(t)) {
+                    var o = Object.keys(r);
+                    return t.filter(function(t) {
+                        return o.reduce(function(e, o) {
+                            return e && t[o] === r[o];
+                        }, !0);
+                    });
+                }
+                return t;
+            }, t = o([ i.Pipe({
+                name: "filter",
+                pure: !1
+            }), s("design:paramtypes", []) ], t);
+        }();
+        e.FilterPipe = n;
+    },
+    505: function(t, e, r) {
         "use strict";
         var o = this && this.__decorate || function(t, e, r, o) {
             var s, i = arguments.length, n = 3 > i ? e : null === o ? o = Object.getOwnPropertyDescriptor(e, r) : o;
@@ -447,7 +472,7 @@ webpackJsonp([ 0 ], {
         }();
         e.OrderBy = n;
     },
-    505: function(t, e, r) {
+    506: function(t, e, r) {
         "use strict";
         var o = this && this.__decorate || function(t, e, r, o) {
             var s, i = arguments.length, n = 3 > i ? e : null === o ? o = Object.getOwnPropertyDescriptor(e, r) : o;
@@ -455,7 +480,7 @@ webpackJsonp([ 0 ], {
             return i > 3 && n && Object.defineProperty(e, r, n), n;
         }, s = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, i = r(1), n = r(506), a = r(507), c = r(516), l = r(332), d = r(335), p = r(336), u = r(337), f = r(518), h = function() {
+        }, i = r(1), n = r(507), a = r(508), c = r(517), l = r(332), p = r(335), f = r(336), u = r(337), d = r(519), h = function() {
             function t(t, e, r, o) {
                 this._StoryService = t, this._StoryStateService = e, this._StoryTypeService = r, 
                 this._TagService = o;
@@ -481,13 +506,13 @@ webpackJsonp([ 0 ], {
                 }), this._StoryStateService.loadAll(), this._StoryTypeService.loadAll(), this._TagService.loadAll();
             }, o([ i.Input(), s("design:type", Object) ], t.prototype, "story", void 0), t = o([ i.Component({
                 selector: "[story-detail]",
-                template: f.htmlTemplate,
+                template: d.htmlTemplate,
                 directives: [ a.BSSelect, c.BSSelectMultiple ]
-            }), s("design:paramtypes", [ l.StoryService, d.StoryStateService, p.StoryTypeService, u.TagService ]) ], t);
+            }), s("design:paramtypes", [ l.StoryService, p.StoryStateService, f.StoryTypeService, u.TagService ]) ], t);
         }();
         e.StoryDetailComponent = h;
     },
-    506: function(t, e) {
+    507: function(t, e) {
         "use strict";
         var r = function() {
             function t(t) {
@@ -497,7 +522,7 @@ webpackJsonp([ 0 ], {
         }();
         e.StoryTask = r;
     },
-    507: function(t, e, r) {
+    508: function(t, e, r) {
         "use strict";
         var o = this && this.__decorate || function(t, e, r, o) {
             var s, i = arguments.length, n = 3 > i ? e : null === o ? o = Object.getOwnPropertyDescriptor(e, r) : o;
@@ -505,7 +530,7 @@ webpackJsonp([ 0 ], {
             return i > 3 && n && Object.defineProperty(e, r, n), n;
         }, s = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, i = r(1), n = r(202), a = r(508), c = r(515), l = function() {
+        }, i = r(1), n = r(202), a = r(509), c = r(516), l = function() {
             function t(t) {
                 this._items = [], this.value = [], this._vm = t, t.valueAccessor = this;
             }
@@ -543,11 +568,11 @@ webpackJsonp([ 0 ], {
         }();
         e.BSSelect = l;
     },
-    515: function(t, e) {
+    516: function(t, e) {
         "use strict";
         e.htmlTemplate = '\n    \n    <ng-select \n        [allowClear]="false"\n        [items]="_items"\n        [initData]="value" \n        (data)="refreshValue($event)"\n        (selected)="selected($event)"\n        (removed)="removed($event)"\n        (typed)="typed($event)"\n        placeholder="">\n    </ng-select>\n    \n';
     },
-    516: function(t, e, r) {
+    517: function(t, e, r) {
         "use strict";
         var o = this && this.__decorate || function(t, e, r, o) {
             var s, i = arguments.length, n = 3 > i ? e : null === o ? o = Object.getOwnPropertyDescriptor(e, r) : o;
@@ -555,7 +580,7 @@ webpackJsonp([ 0 ], {
             return i > 3 && n && Object.defineProperty(e, r, n), n;
         }, s = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, i = r(1), n = r(202), a = r(508), c = r(517), l = function() {
+        }, i = r(1), n = r(202), a = r(509), c = r(518), l = function() {
             function t(t) {
                 this._selectedItems = [], this._items = [], this.value = [], this._vm = t, t.valueAccessor = this;
             }
@@ -598,15 +623,15 @@ webpackJsonp([ 0 ], {
         }();
         e.BSSelectMultiple = l;
     },
-    517: function(t, e) {
+    518: function(t, e) {
         "use strict";
         e.htmlTemplate = '\n    \n    <ng-select \n        [allowClear]="false"\n        [multiple]="true"\n        [items]="_items"\n        [initData]="value" \n        (data)="refreshValue($event)"\n        (selected)="selected($event)"\n        (removed)="removed($event)"\n        (typed)="typed($event)"\n        placeholder="">\n    </ng-select>\n    \n';
     },
-    518: function(t, e) {
+    519: function(t, e) {
         "use strict";
         e.htmlTemplate = '\n\n    <hr/>\n    <div class="form-group" [ngClass]="{\'has-error\': story._validation_errors?.title}">\n        <textarea class="form-control" [(ngModel)]="story.title" rows="2"></textarea>\n    </div>\n    <div class="form-group" [ngClass]="{\'has-error\': story._validation_errors?.type}">\n        <label>Type</label>\n        <bs-select [(ngModel)]="story.type" [choices]="_types" [textLabel]="\'title\'"></bs-select>\n    </div>\n    <div class="form-group" [ngClass]="{\'has-error\': story._validation_errors?.effort}">\n        <label>Effort</label>\n        <bs-select [(ngModel)]="story.effort" [choices]="_StoryService.effortChoices" [textLabel]="\'text\'" [boundValueAttr]="\'id\'"></bs-select>\n    </div>\n    <div class="form-group" [ngClass]="{\'has-error\': story._validation_errors?.state}">\n        <label>State</label>\n        <bs-select [(ngModel)]="story.state" [choices]="_states" [textLabel]="\'title\'"></bs-select>\n    </div>\n    <div class="form-group" [ngClass]="{\'has-error\': story._validation_errors?.description}">\n        <label>Description</label>\n        <textarea class="form-control" [(ngModel)]="story.description" rows="3"></textarea>\n    </div>\n    <div class="form-group" [ngClass]="{\'has-error\': story._validation_errors?.tags}">\n        <label>Tags</label>\n        <bs-select-multiple [(ngModel)]="story.tags" [choices]="_tags" [textLabel]="\'title\'"></bs-select-multiple>\n    </div>\n    <div [ngClass]="{\'has-error\': story._validation_errors?.tasks}">\n        <a class="pull-right" href="javascript:void(0);" (click)="addTask()">Add Task</a>\n        <label>Tasks </label>\n        <div class="form-group has-feedback" *ngFor="let task of story.tasks">\n            <i class="glyphicon glyphicon-ok form-control-feedback clickable" [ngClass]="{\'text-green\': task.completed, \'text-gray\': !task.completed}" (click)="task.completed = !task.completed"></i>\n            <input class="form-control" [(ngModel)]="task.description">\n        </div>\n    </div>\n    <button *ngIf="story.id" class="btn btn-flat" (click)="delete()">Delete</button>\n    <button class="btn btn-primary btn-flat pull-right" (click)="save()">Save</button>\n';
     },
-    519: function(t, e, r) {
+    520: function(t, e, r) {
         "use strict";
         var o = this && this.__decorate || function(t, e, r, o) {
             var s, i = arguments.length, n = 3 > i ? e : null === o ? o = Object.getOwnPropertyDescriptor(e, r) : o;
@@ -614,7 +639,7 @@ webpackJsonp([ 0 ], {
             return i > 3 && n && Object.defineProperty(e, r, n), n;
         }, s = this && this.__metadata || function(t, e) {
             return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, i = r(1), n = r(505), a = r(520), c = function() {
+        }, i = r(1), n = r(506), a = r(521), c = function() {
             function t() {
                 this._opened = !1, this.toggle = function() {
                     this._opened = !this._opened;
@@ -629,12 +654,12 @@ webpackJsonp([ 0 ], {
         }();
         e.StoryListItemComponent = c;
     },
-    520: function(t, e) {
+    521: function(t, e) {
         "use strict";
         e.htmlTemplate = '\n\n    <div class="tools">\n        <i class="fa fa-edit" (click)="toggle()"></i>\n    </div>\n    <span class="description">{{ story.title }}</span>\n    <div class="text text-muted" *ngIf="story.effort">Effort: {{ story.effort }}</div>\n    <div class="form" *ngIf="_opened" story-detail [story]="story"></div>\n    \n';
     },
-    521: function(t, e) {
+    522: function(t, e) {
         "use strict";
-        e.htmlTemplate = '\n\n    <div class="row">\n        <div class="col-sm-6">\n            <div class="box">\n                <div class="box-header with-border">\n                    <h3 class="box-title">Backlog</h3>\n                    <div class="box-tools pull-right">\n                        <a class="btn btn-box-tool" (click)="createNew(true)"><i class="fa fa-plus"></i></a>\n                    </div>\n                </div>\n                <div class="box-body box-comments" *ngIf="_newBacklogOpened" >\n                    <div class="box-comment" story-detail [story]="_newBacklogStory"></div>\n                </div>\n                <div class="box-body">\n                    <ul class="story-list" style="min-height: 50px;" dnd-sortable-container [dropZones]="[\'story-zone\']" [sortableData]="_backlog" >\n                        <li class="story-list-item handle" *ngFor="let story of _backlog; let i = index" dnd-sortable [sortableIndex]="i" (onDropSuccess)="moveStory(story, i, \'backlog\', _backlog)" [attr.data-id]="story.id" story-list-item [story]="story"></li>\n                    </ul>\n                </div>\n            </div>\n        </div>\n        <div class="col-sm-6">\n            <div class="box">\n                <div class="box-header with-border">\n                    <h3 class="box-title">Icebox</h3>\n                    <div class="box-tools pull-right">\n                        <a class="btn btn-box-tool" (click)="createNew(false)"><i class="fa fa-plus"></i></a>\n                    </div>\n                </div>\n                <div class="box-body box-comments" *ngIf="_newIceboxOpened">\n                    <div class="box-comment" story-detail [story]="_newIceboxStory"></div>\n                </div>\n                <div class="box-body">\n                    <ul class="story-list" style="min-height: 50px;" dnd-sortable-container [dropZones]="[\'story-zone\']" [sortableData]="_icebox">\n                        <li class="story-list-item handle" *ngFor="let story of _icebox; let i = index" dnd-sortable [sortableIndex]="i" (onDropSuccess)="moveStory(story, i, \'icebox\', _icebox)" [attr.data-id]="story.id" story-list-item [story]="story"></li>\n                    </ul>\n                </div>\n            </div>\n        </div>\n    </div>\n\n';
+        e.htmlTemplate = '\n\n    <div class="row">\n        <div class="col-sm-3" *ngFor="let state of _states">\n            <div class="box">\n                <div class="box-header with-border">\n                    <h3 class="box-title">{{state.title}}</h3>\n                    <div class="box-tools pull-right">\n                        <a class="btn btn-box-tool" (click)="createNew(state)"><i class="fa fa-plus"></i></a>\n                    </div>\n                </div>\n                <div class="box-body box-comments" *ngIf="_newStory?.state == state">\n                    <div class="box-comment" story-detail [story]="_newStory"></div>\n                </div>\n                <div class="box-body">\n                    <ul class="story-list" style="min-height: 50px;" dnd-sortable-container [dropZones]="[\'story-zone\']" [sortableData]="_storiesByState[state.id]">\n                        <li class="story-list-item handle" *ngFor="let story of _storiesByState[state.id]; let i = index" dnd-sortable [sortableIndex]="i" (onDropSuccess)="moveStory(story, i, state)" story-list-item [story]="story"></li>\n                    </ul>\n                </div>\n            </div>\n        </div>\n    </div>\n\n';
     }
 });

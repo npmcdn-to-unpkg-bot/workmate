@@ -8,6 +8,7 @@ import { StoryService }                                 from '../../services/sto
 import { StoryStateService }                            from '../../services/story-state.service';
 import { StoryTypeService }                             from '../../services/story-type.service';
 import { TagService }                                   from '../../services/tag.service';
+import { FilterPipe }                                   from '../../pipes/filter-pipe';
 import { OrderBy }                                      from '../../pipes/orderby-pipe';
 import { StoryDetailComponent }                         from '../story-detail/story-detail.component'
 import { StoryListItemComponent }                       from '../story-list-item/story-list-item.component'
@@ -15,27 +16,22 @@ import { htmlTemplate }                                 from './story-list.compo
 
 import { DND_PROVIDERS, DND_DIRECTIVES }                from 'ng2-dnd/ng2-dnd';
 
-
 @Component({
     selector: 'story-list',
     template: htmlTemplate,
     directives: [DND_DIRECTIVES, StoryDetailComponent, StoryListItemComponent],
     viewProviders: [DND_PROVIDERS],
-    pipes: [OrderBy]
+    pipes: [FilterPipe, OrderBy]
 })
 
 export class StoryListComponent implements OnInit {
 
     _stories: iStory[] = [];
-    _backlog: iStory[] = [];
-    _icebox: iStory[] = [];
+    _storiesByState: Array<iStory[]> = [];
     _states: iStoryState[];
     _tags: iTag[];
     _types: iStoryType[];
-    _newBacklogStory: Story;
-    _newBacklogOpened: boolean = false;
-    _newIceboxStory: Story;
-    _newIceboxOpened: boolean = false;
+    _newStory: Story;
 
     constructor(
         private _StoryService: StoryService,
@@ -47,43 +43,40 @@ export class StoryListComponent implements OnInit {
     ngOnInit() {
         this._StoryService.objects$.subscribe(objects => {
             this._stories = objects;
-            this._backlog = new OrderBy().transform(this._stories.filter(story => story.icebox == false), ['order']);
-            this._icebox = new OrderBy().transform(this._stories.filter(story => story.icebox == true), ['order']);
+            this._StoryStateService.objects$.subscribe(objects => {
+                this._states = objects;
+                this._states.forEach((item, i) => {
+                    this._storiesByState[item.id] = new OrderBy().transform(this._stories.filter(story => story.state.id == item.id), ['order']);
+                });
+            });
+            this._StoryStateService.loadAll();
         });
-        this._StoryStateService.objects$.subscribe(objects => this._states = objects);
         this._StoryTypeService.objects$.subscribe(objects => this._types = objects);
         this._TagService.objects$.subscribe(objects => this._tags = objects);
         this._StoryService.loadAll();
-        this._StoryStateService.loadAll();
         this._StoryTypeService.loadAll();
         this._TagService.loadAll();
     }
 
-    createNew = function (backlog: boolean) {
-        if(backlog) {
-            this._newBacklogStory = new Story({
-                icebox: false,
-                state: null,
-                title: 'New Story',
-                type: null
-            });
-            this.setStoryOrder(this._newBacklogStory, -1, this._backlog);
-            this._newBacklogOpened = !this._newBacklogOpened;
+    private createNew = function (state: iStoryState) {
+        if (this._newStory) {
+            this._newStory = null;
         } else {
-            this._newIceboxStory = new Story({
-                icebox: true,
-                state: null,
+            let stories = this._storiesByState[state.id];
+            this._newStory = new Story({
+                icebox: false,
+                state: state,
                 title: 'New Story',
                 type: null
             });
-            this.setStoryOrder(this._newIceboxStory, -1, this._icebox);
-            this._newIceboxOpened = !this._newIceboxOpened;
+            this.setStoryOrder(this._newStory, -1, stories);
         }
     };
 
-    private moveStory(story:iStory, index:number, destination:string, stories:iStory[]) {
-        story.icebox = destination == 'icebox';
+    private moveStory(story:iStory, index:number, state: iStoryState) {
+        let stories = this._storiesByState[state.id];
         this.setStoryOrder(story, index, stories);
+        story.state = state;
         this._StoryService.update(story);
     }
 
