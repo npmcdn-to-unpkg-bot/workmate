@@ -53,7 +53,8 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'reversion.middleware.RevisionMiddleware',
-    'workmate.middleware.sitesetup.SiteSettingMiddleware',
+    'workmate.middleware.current_user.CurrentUserMiddleware',
+    'workmate.middleware.site_setup.SiteSettingMiddleware',
 )
 
 ROOT_URLCONF = 'example.urls'

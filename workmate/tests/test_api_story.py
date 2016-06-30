@@ -55,10 +55,14 @@ class StoryResourceTests(WorkmateAPITestCase):
         self.assertValidJSONResponse(resp)
         self.assertEqual(len(self.deserialize(resp)['objects']), 1)
         self.assertEqual(self.deserialize(resp)['objects'][0], {
+            'created_by': self.existing_object.created_by_string(),
+            'created_on': self.existing_object.created_on.isoformat(),
             'description': self.existing_object.description,
             'effort': self.existing_object.effort,
             'icebox': self.existing_object.icebox,
             'id': self.existing_object.pk,
+            'last_modified_by': self.existing_object.last_modified_by_string(),
+            'last_modified_on': self.existing_object.last_modified_on.isoformat(),
             'order': self.existing_object.order,
             'resource_uri': '/api/v1/story/{0}/'.format(self.existing_object.pk),
             'state': self.serialized_state,
@@ -86,10 +90,14 @@ class StoryResourceTests(WorkmateAPITestCase):
         self.assertValidJSONResponse(resp)
         self.assertKeys(
             self.deserialize(resp), [
+                'created_by',
+                'created_on',
                 'description',
                 'effort',
                 'icebox',
                 'id',
+                'last_modified_by',
+                'last_modified_on',
                 'order',
                 'resource_uri',
                 'state',
@@ -98,8 +106,12 @@ class StoryResourceTests(WorkmateAPITestCase):
                 'title',
                 'type'])
         self.assertEqual(self.deserialize(resp)['icebox'], self.existing_object.icebox)
+        self.assertEqual(self.deserialize(resp)['created_by'], self.existing_object.created_by_string())
+        self.assertEqual(self.deserialize(resp)['created_on'], self.existing_object.created_on.isoformat())
         self.assertEqual(self.deserialize(resp)['description'], self.existing_object.description)
         self.assertEqual(self.deserialize(resp)['effort'], self.existing_object.effort)
+        self.assertEqual(self.deserialize(resp)['last_modified_by'], self.existing_object.last_modified_by_string())
+        self.assertEqual(self.deserialize(resp)['last_modified_on'], self.existing_object.last_modified_on.isoformat())
         self.assertEqual(self.deserialize(resp)['order'], self.existing_object.order)
         self.assertEqual(self.deserialize(resp)['title'], self.existing_object.title)
         self.assertEqual(self.deserialize(resp)['state'], self.serialized_state)
