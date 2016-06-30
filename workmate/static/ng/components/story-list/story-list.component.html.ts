@@ -1,7 +1,7 @@
 export const htmlTemplate = `
 
-    <div class="row">
-        <div class="col-sm-3" *ngFor="let state of _states">
+    <div class="flex-container">
+        <div class="flex-1 margin-lr-2" *ngFor="let state of _states">
             <div class="box">
                 <div class="box-header with-border">
                     <h3 class="box-title">{{state.title}}</h3>

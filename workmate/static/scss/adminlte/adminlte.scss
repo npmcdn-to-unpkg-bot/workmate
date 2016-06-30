@@ -1,18 +1,18 @@
-$icon-font-path: '../fonts/';
-
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic);
 
-// bower:scss
 @import "../bootstrap/_variables.scss";
 @import "../../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/mixins";
-// endbower
 
 @import "../../../../bower_components/admin-lte.scss/scss/admin-lte";
+
+// Site styles
+@import "_modules/mixins";
 @import "_modules/alerts";
 @import "_modules/box_comments";
 @import "_modules/core";
-@import "_modules/profile";
+@import "_modules/flex";
 @import "_modules/selects";
 @import "_modules/sortable";
 @import "_modules/story_list";
+
 @import "../../../../bower_components/admin-lte.scss/scss/skins/all-skins";
