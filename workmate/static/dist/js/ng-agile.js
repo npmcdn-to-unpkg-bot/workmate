@@ -662,7 +662,7 @@ webpackJsonp([ 0 ], {
     },
     521: function(t, e) {
         "use strict";
-        e.htmlTemplate = '\n\n    <div class="tools">\n        <i class="fa fa-edit" (click)="toggle()"></i>\n    </div>\n    <span class="description">{{ story.title }}</span>\n    <div class="text text-muted" *ngIf="story.effort">Effort: {{ story.effort }}</div>\n    <div class="form" *ngIf="_opened" story-detail [story]="story"></div>\n    \n';
+        e.htmlTemplate = '\n\n    <div class="tools">\n        <i class="fa fa-edit" (click)="toggle()"></i>\n    </div>\n    <span class="{{story.type.icon}}"></span>\n    <span class="description">{{ story.title }}</span>\n    <div class="text text-muted" *ngIf="story.effort">Effort: {{ story.effort }}</div>\n    <div class="form" *ngIf="_opened" story-detail [story]="story"></div>\n    \n';
     },
     522: function(t, e) {
         "use strict";

@@ -7,9 +7,14 @@ class StoryResourceTests(WorkmateAPITestCase):
     def setUp(self):
         super(StoryResourceTests, self).setUp()
 
-        self.type = StoryType.onsite.create(title='Type')
+        self.type = StoryType.onsite.create(
+            title='Type',
+            icon='fa fa-bug',
+            order=1)
         self.serialized_type = {
             'id': self.type.pk,
+            'icon': self.type.icon,
+            'order': self.type.order,
             'resource_uri': '/api/v1/story_type/{}/'.format(self.type.pk),
             'title': 'Type'
         }

@@ -154,6 +154,17 @@ class StoryTypeModelTests(WorkmateTestCase):
         field = StoryType._meta.get_field("title")
         self.assertFalse(field.null)
 
+    def test_icon(self):
+        field = StoryType._meta.get_field("icon")
+        self.assertTrue(field.null)
+        self.assertTrue(field.blank)
+
+    def test_order(self):
+        field = StoryType._meta.get_field("order")
+        self.assertEqual(field.default, 0)
+        self.assertFalse(field.editable)
+        self.assertTrue(field.db_index)
+
     def test_str_method(self):
         story = StoryType(title='Some Story')
         self.assertEqual(story.__str__(), 'Some Story')
