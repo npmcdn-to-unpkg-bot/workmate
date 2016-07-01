@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.conf import settings
 from django.db import models
+from django.utils.safestring import mark_safe
 
 from .abstract import SiteAbstract
 from .tagsmodel import Tag
@@ -32,9 +33,16 @@ class StoryTask(models.Model):
 
 class StoryType(SiteAbstract):
     title = models.CharField(max_length=100)
+    icon = models.CharField(
+        max_length=50, null=True, blank=True, help_text=mark_safe(
+            'Accepts either a <a href="http://getbootstrap.com/components/">bootstrap glyphicon</a> or '
+            '<a href="http://fontawesome.io/icons/">fontawesome</a> icon class.'
+            'ie "fa fa-bug" or "glyphicon glyphicon-tags" etc.')
+    )
+    order = models.PositiveIntegerField(default=0, editable=False, db_index=True)
 
     class Meta:
-        ordering = ('title',)
+        ordering = ('order',)
 
     def __str__(self):
         return self.title
