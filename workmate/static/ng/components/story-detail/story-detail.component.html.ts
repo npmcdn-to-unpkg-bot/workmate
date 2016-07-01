@@ -32,6 +32,10 @@ export const htmlTemplate = `
             <input class="form-control" [(ngModel)]="task.description">
         </div>
     </div>
+    <hr/>
+    <p><small *ngIf="story.created_on">Created {{ story.created_on | date:"dd/MM/yyyy HH:mm" }} by {{ story.created_by }}</small></p>
+    <p><small *ngIf="story.last_modified_on">Last modified {{ story.last_modified_on | date:"dd/MM/yyyy HH:mm" }} by {{ story.last_modified_by }}</small></p>
+    <hr/>
     <button *ngIf="story.id" class="btn btn-flat" (click)="delete()">Delete</button>
     <button class="btn btn-primary btn-flat pull-right" (click)="save()">Save</button>
 `

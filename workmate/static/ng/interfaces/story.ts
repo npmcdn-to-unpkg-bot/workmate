@@ -6,9 +6,13 @@ import { iTag }                         from './tag';
 
 export interface iStory {
     id?: number;
+    created_by?: string;
+    created_on?: string;
     description?: string;
     effort?: number;
     icebox?: boolean;
+    last_modified_by?: string;
+    last_modified_on?: string;
     order?: number;
     state: iStoryState;
     tags?: iTag[];
