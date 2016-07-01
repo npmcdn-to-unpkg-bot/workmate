@@ -28,7 +28,6 @@ class StoryResourceTests(WorkmateAPITestCase):
             state=self.state,
             effort='1.0',
             description='Description',
-            icebox=True,
             order='100.00000000'
         )
 
@@ -59,7 +58,6 @@ class StoryResourceTests(WorkmateAPITestCase):
             'created_on': self.existing_object.created_on.isoformat(),
             'description': self.existing_object.description,
             'effort': self.existing_object.effort,
-            'icebox': self.existing_object.icebox,
             'id': self.existing_object.pk,
             'last_modified_by': self.existing_object.last_modified_by_string(),
             'last_modified_on': self.existing_object.last_modified_on.isoformat(),
@@ -94,7 +92,6 @@ class StoryResourceTests(WorkmateAPITestCase):
                 'created_on',
                 'description',
                 'effort',
-                'icebox',
                 'id',
                 'last_modified_by',
                 'last_modified_on',
@@ -105,7 +102,6 @@ class StoryResourceTests(WorkmateAPITestCase):
                 'tasks',
                 'title',
                 'type'])
-        self.assertEqual(self.deserialize(resp)['icebox'], self.existing_object.icebox)
         self.assertEqual(self.deserialize(resp)['created_by'], self.existing_object.created_by_string())
         self.assertEqual(self.deserialize(resp)['created_on'], self.existing_object.created_on.isoformat())
         self.assertEqual(self.deserialize(resp)['description'], self.existing_object.description)

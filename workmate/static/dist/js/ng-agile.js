@@ -351,7 +351,6 @@ webpackJsonp([ 0 ], {
                     if (this._newStory) this._newStory = null; else {
                         var e = this._storiesByState[t.id];
                         this._newStory = new n.Story({
-                            icebox: !1,
                             state: t,
                             title: "New Story",
                             type: null
@@ -398,8 +397,8 @@ webpackJsonp([ 0 ], {
         "use strict";
         var r = function() {
             function t(t) {
-                this.description = t.description, this.icebox = t.icebox, this.title = t.title, 
-                this.state = t.state, this.tags = t.tags || [], this.tasks = t.tasks || [], this.type = t.type;
+                this.description = t.description, this.title = t.title, this.state = t.state, this.tags = t.tags || [], 
+                this.tasks = t.tasks || [], this.type = t.type;
             }
             return t;
         }();

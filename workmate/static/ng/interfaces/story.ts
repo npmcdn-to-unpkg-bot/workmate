@@ -10,7 +10,6 @@ export interface iStory {
     created_on?: string;
     description?: string;
     effort?: number;
-    icebox?: boolean;
     last_modified_by?: string;
     last_modified_on?: string;
     order?: number;
@@ -27,7 +26,6 @@ export interface iStory {
 export class Story implements iStory {
     description: string;
     effort: number;
-    icebox: boolean;
     order: number;
     state: iStoryState;
     tags: iTag[];
@@ -37,7 +35,6 @@ export class Story implements iStory {
 
     constructor(options: iStory) {
         this.description = options.description;
-        this.icebox = options.icebox;
         this.title = options.title;
         this.state = options.state;
         this.tags = options.tags || [];

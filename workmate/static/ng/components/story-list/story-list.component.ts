@@ -64,7 +64,6 @@ export class StoryListComponent implements OnInit {
         } else {
             let stories = this._storiesByState[state.id];
             this._newStory = new Story({
-                icebox: false,
                 state: state,
                 title: 'New Story',
                 type: null
