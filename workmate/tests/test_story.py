@@ -1,3 +1,5 @@
+from mock import patch
+
 from workmate.models import Story, StoryState, StoryTask, StoryType
 from workmate.models.abstract import SiteAbstract
 from workmate.test_utils.test_case import WorkmateTestCase
@@ -38,14 +40,89 @@ class StoryModelTests(WorkmateTestCase):
         field = Story._meta.get_field("tags")
         self.assertTrue(field.blank)
 
-    def test_icebox(self):
-        field = Story._meta.get_field("icebox")
+    def test_created_by(self):
+        field = Story._meta.get_field("created_by")
         self.assertTrue(field.blank)
         self.assertTrue(field.default)
+        self.assertFalse(field.editable)
+
+    def test_created_on(self):
+        field = Story._meta.get_field("created_on")
+        self.assertTrue(field.auto_now_add)
+        self.assertTrue(field.blank)
+        self.assertTrue(field.default)
+        self.assertFalse(field.editable)
+
+    def test_last_modified_by(self):
+        field = Story._meta.get_field("last_modified_by")
+        self.assertTrue(field.blank)
+        self.assertTrue(field.default)
+        self.assertFalse(field.editable)
+
+    def test_last_modified_on(self):
+        field = Story._meta.get_field("last_modified_on")
+        self.assertTrue(field.auto_now)
+        self.assertTrue(field.blank)
+        self.assertTrue(field.default)
+        self.assertFalse(field.editable)
 
     def test_str_method(self):
-        tag = Story(title='Some Story')
-        self.assertEqual(tag.__str__(), 'Some Story')
+        story = Story(title='Some Story')
+        self.assertEqual(story.__str__(), 'Some Story')
+
+    def test_created_by_string_method(self):
+        user = self.create_user()
+        story = Story(title='Some Story', created_by=user)
+        self.assertEqual(story.created_by_string(), user.__str__())
+
+    def test_last_modified_by_string_method(self):
+        user = self.create_user()
+        story = Story(title='Some Story', last_modified_by=user)
+        self.assertEqual(story.last_modified_by_string(), user.__str__())
+
+    ################################################
+    # overridden save method tests                 #
+    ################################################
+
+    @patch('workmate.models.storymodel.get_current_user')
+    def test_save_method_saves_created_by_when_new(self, fn_mock):
+        user = self.create_user()
+        fn_mock.return_value = user
+        story = Story.objects.create(title='story', order=1)
+        self.assertEqual(story.created_by, user)
+
+    @patch('workmate.models.storymodel.get_current_user')
+    def test_save_method_does_not_update_created_by_when_updating(self, fn_mock):
+        user1 = self.create_user(username='foouser')
+        user2 = self.create_user(username='baruser')
+
+        fn_mock.return_value = user1
+        story = Story.objects.create(title='story', order=1)
+
+        fn_mock.return_value = user2
+        story.save()
+
+        self.assertEqual(story.created_by, user1)
+
+    @patch('workmate.models.storymodel.get_current_user')
+    def test_save_method_saves_last_modified_by_when_new(self, fn_mock):
+        user = self.create_user()
+        fn_mock.return_value = user
+        story = Story.objects.create(title='story', order=1)
+        self.assertEqual(story.last_modified_by, user)
+
+    @patch('workmate.models.storymodel.get_current_user')
+    def test_save_method_updates_last_modified_by_when_updating(self, fn_mock):
+        user1 = self.create_user(username='foouser')
+        user2 = self.create_user(username='baruser')
+
+        fn_mock.return_value = user1
+        story = Story.objects.create(title='story', order=1)
+        self.assertEqual(story.last_modified_by, user1)
+
+        fn_mock.return_value = user2
+        story.save()
+        self.assertEqual(story.last_modified_by, user2)
 
 
 class StoryStateModelTests(WorkmateTestCase):

@@ -1,5 +1,5 @@
 import { Injectable }                                       from '@angular/core';
-import { Http }                                             from '@angular/http';
+import { Http, Response }                                   from '@angular/http';
 
 import { iStory }                                           from '../interfaces/story';
 import { AlertService }                                     from './alert.service';
@@ -36,6 +36,24 @@ export class StoryService extends BaseService {
     constructor (protected _http: Http, protected _AlertService: AlertService) {
         super(_http, _AlertService);
         this.objects$ = new Observable<iStory[]>((observer:any) => this._objectsObserver = observer).share();
+    }
+
+    protected extractData(res: Response) {
+        if (res.status < 200 || res.status >= 300) {
+            throw new Error('Bad response status: ' + res.status);
+        }
+        let body = res.json();
+        let data:any = body.object || body.objects || body || { };
+        if (data instanceof Array) {
+            data.forEach((d:any) => {
+                if (d.created_on) d.created_on = new Date(d.created_on.toString());
+                if (d.last_modified_on) d.last_modified_on = new Date(d.last_modified_on.toString());
+            });
+        } else {
+            if (data.created_on) data.created_on = new Date(data.created_on.toString());
+            if (data.last_modified_on) data.last_modified_on = new Date(data.last_modified_on.toString());
+        }
+        return data;
     }
 
 }

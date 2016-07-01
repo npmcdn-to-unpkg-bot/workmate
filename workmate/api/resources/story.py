@@ -31,6 +31,8 @@ class StoryStateResource(ModelResource):
 
 
 class StoryResource(ModelResource):
+    created_by = fields.CharField(attribute='created_by_string', readonly=True, default='')
+    last_modified_by = fields.CharField(attribute='last_modified_by_string', readonly=True, default='')
     tags = fields.ToManyField(TagResource, 'tags', null=True, full=True)
     tasks = fields.ToManyField(StoryTaskResource, 'tasks', related_name='story', null=True, full=True)
     type = fields.ForeignKey(StoryTypeResource, 'type', full=True)
