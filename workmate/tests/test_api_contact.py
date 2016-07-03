@@ -14,6 +14,8 @@ class ContactResourceTests(WorkmateAPITestCase):
             last_name='Smith',
             email_address='mrsmith@example.com',
             home_number='+441603123456',
+            latitude='11111',
+            longitude='11111',
             mobile_number='+447123123456',
             work_number='+441603123456',
             website='www.example.com',
@@ -69,6 +71,8 @@ class ContactResourceTests(WorkmateAPITestCase):
             'home_number': self.existing_object.home_number,
             'id': self.existing_object.pk,
             'last_name': self.existing_object.last_name,
+            'latitude': self.existing_object.latitude,
+            'longitude': self.existing_object.longitude,
             'mobile_number': self.existing_object.mobile_number,
             'name': self.existing_object.name,
             'notes': self.existing_object.notes,
@@ -109,6 +113,8 @@ class ContactResourceTests(WorkmateAPITestCase):
                 'home_number',
                 'id',
                 'last_name',
+                'latitude',
+                'longitude',
                 'mobile_number',
                 'name',
                 'notes',
@@ -128,6 +134,8 @@ class ContactResourceTests(WorkmateAPITestCase):
         self.assertEqual(self.deserialize(resp)['first_name'], self.existing_object.first_name)
         self.assertEqual(self.deserialize(resp)['home_number'], self.existing_object.home_number)
         self.assertEqual(self.deserialize(resp)['last_name'], self.existing_object.last_name)
+        self.assertEqual(self.deserialize(resp)['latitude'], self.existing_object.latitude)
+        self.assertEqual(self.deserialize(resp)['longitude'], self.existing_object.longitude)
         self.assertEqual(self.deserialize(resp)['mobile_number'], self.existing_object.mobile_number)
         self.assertEqual(self.deserialize(resp)['name'], self.existing_object.name)
         self.assertEqual(self.deserialize(resp)['notes'], self.existing_object.notes)

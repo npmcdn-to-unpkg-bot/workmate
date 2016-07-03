@@ -27,6 +27,7 @@ export class ContactListComponent implements OnInit {
     }
 
     onSelect(contact: iContact) {
+        this._selectedContact = null;
         this._selectedContact = contact;
     }
 

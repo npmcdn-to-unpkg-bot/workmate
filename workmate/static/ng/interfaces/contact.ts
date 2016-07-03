@@ -14,6 +14,8 @@ export interface iContact {
     home_number?: string;
     id?: number;
     last_name: string;
+    latitude?: number;
+    longitude?: number;
     mobile_number?: string;
     name?: string;
     notes?: string;

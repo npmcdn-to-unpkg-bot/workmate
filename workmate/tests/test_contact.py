@@ -103,6 +103,20 @@ class ModelTests(WorkmateTestCase):
         self.assertTrue(field.blank)
         self.assertEqual(field.max_length, 10)
 
+    def test_latitude(self):
+        field = Contact._meta.get_field("latitude")
+        self.assertTrue(field.null)
+        self.assertTrue(field.blank)
+        self.assertEqual(field.max_length, 50)
+        self.assertFalse(field.editable)
+
+    def test_longitude(self):
+        field = Contact._meta.get_field("longitude")
+        self.assertTrue(field.null)
+        self.assertTrue(field.blank)
+        self.assertEqual(field.max_length, 50)
+        self.assertFalse(field.editable)
+
     def test_str_method(self):
         contact = Contact(first_name='Some', last_name='One')
         self.assertEqual(contact.__str__(), 'Some One')

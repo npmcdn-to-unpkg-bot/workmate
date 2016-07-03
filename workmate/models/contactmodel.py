@@ -9,6 +9,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 from .abstract import SiteAbstract
 from .tagsmodel import Tag
 from workmate.utils.color_generator import generate_new_color
+from workmate.utils.google import get_lat_lng_from_address
 from workmate.utils.misc import xstr
 
 
@@ -29,6 +30,8 @@ class Contact(SiteAbstract):
     city = models.CharField(_('Town'), null=True, blank=True, max_length=100)
     state = models.CharField(_('County'), null=True, blank=True, max_length=100, choices=GB_REGION_CHOICES)
     code = models.CharField(_('Postcode'), null=True, blank=True, max_length=10)
+    latitude = models.CharField(null=True, blank=True, max_length=50, editable=False)
+    longitude = models.CharField(null=True, blank=True, max_length=50, editable=False)
 
     class Meta:
         ordering = ('first_name', 'last_name')
@@ -39,6 +42,10 @@ class Contact(SiteAbstract):
     def save(self, *args, **kwargs):
         if not self.color:
             self.color = generate_new_color()
+        if self.address:
+            latitude, longitude = get_lat_lng_from_address(self.address)
+            self.latitude = latitude
+            self.longitude = longitude
         super(Contact, self).save(*args, **kwargs)
 
     @property

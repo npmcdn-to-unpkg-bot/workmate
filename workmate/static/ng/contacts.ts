@@ -10,6 +10,8 @@ import { ContactService }                   from './services/contact.service';
 import { AlertBlockComponent }              from './components/alert/alert.component';
 import { ContactListComponent }             from './components/contact-list/contact-list.component';
 
+import { GOOGLE_MAPS_PROVIDERS }            from 'angular2-google-maps/core';
+
 
 @Component({
     selector: 'contacts-app',
@@ -23,6 +25,7 @@ import { ContactListComponent }             from './components/contact-list/cont
     ],
     providers: [
         HTTP_PROVIDERS,
+        GOOGLE_MAPS_PROVIDERS,
         provide(RequestOptions, {useClass: ExRequestOptions}),
         AlertService,
         ContactService

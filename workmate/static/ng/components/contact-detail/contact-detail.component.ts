@@ -1,12 +1,14 @@
 import { Component, Input }                 from '@angular/core';
 
+import { GoogleMap }                        from '../map/map.component';
 import { iContact }                         from '../../interfaces/contact';
 import { ContactService }                   from '../../services/contact.service';
 import { htmlTemplate }                     from './contact-detail.component.html';
 
 @Component({
     selector: 'contact-detail',
-    template: htmlTemplate
+    template: htmlTemplate,
+    directives:[GoogleMap]
 })
 
 export class ContactDetailComponent {

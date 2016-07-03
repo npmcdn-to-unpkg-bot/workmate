@@ -14,6 +14,9 @@ import './imports/angular.ts';
 // RxJS
 import './imports/rxjs.ts';
 
+// angular2-google-maps
+import 'angular2-google-maps/core';
+
 // DND
 import 'ng2-dnd/ng2-dnd'
 

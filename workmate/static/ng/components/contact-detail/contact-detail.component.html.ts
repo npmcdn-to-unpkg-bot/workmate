@@ -36,4 +36,13 @@ export const htmlTemplate = `
         </div>
     </div>
     
+    <div class="box box box-widget" *ngIf="contact.latitude && contact.longitude">
+        <div class="box-header with-border">
+            <h3 class="box-title">{{ contact.address }}</h3>
+        </div>
+        <div class="box-body">
+            <google-map [lat]="contact.latitude" [lng]="contact.longitude" [zoom]="10"></google-map>
+        </div>    
+    </div>
+    
 `

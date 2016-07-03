@@ -1,5 +1,5 @@
 import { Injectable }                                       from '@angular/core';
-import { Http, URLSearchParams }                            from '@angular/http';
+import { Http, Response }                                   from '@angular/http';
 
 import { iContact }                                         from '../interfaces/contact';
 import { AlertService }                                     from './alert.service';
@@ -34,6 +34,24 @@ export class ContactService extends BaseService {
                 () => this.handleCompleted('We are calling you now.')
             );
 
+    }
+
+    protected extractData(res: Response) {
+        if (res.status < 200 || res.status >= 300) {
+            throw new Error('Bad response status: ' + res.status);
+        }
+        let body = res.json();
+        let data:any = body.object || body.objects || body || { };
+        if (data instanceof Array) {
+            data.forEach((d:any) => {
+                if (d.latitude) d.latitude = Number(d.latitude);
+                if (d.longitude) d.longitude = Number(d.longitude);
+            });
+        } else {
+            if (data.latitude) data.latitude = Number(data.latitude);
+            if (data.longitude) data.longitude = Number(data.longitude);
+        }
+        return data;
     }
 
 }
