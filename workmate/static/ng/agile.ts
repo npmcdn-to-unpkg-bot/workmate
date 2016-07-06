@@ -2,8 +2,6 @@ import { Component, provide }               from '@angular/core';
 import { HTTP_PROVIDERS, RequestOptions }   from '@angular/http';
 import { bootstrap }                        from '@angular/platform-browser-dynamic';
 
-import './imports/rxjs.ts';
-
 import { ExRequestOptions }                 from './transportBoxes/exRequestOptions';
 import { AlertService }                     from './services/alert.service';
 import { StoryService }                     from './services/story.service';

@@ -29,8 +29,8 @@ module.exports = {
     plugins: [
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
-            filename: 'ng-vendor.js',
-            minChunks: Infinity}),
+            minChunks: Infinity
+        }),
         new webpack.optimize.DedupePlugin(),
         new webpack.optimize.UglifyJsPlugin({
             sourceMap: false,

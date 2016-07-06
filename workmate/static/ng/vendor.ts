@@ -1,22 +1,25 @@
-// es6
 import 'es6-shim/es6-shim.js';
 import 'es6-promise/dist/es6-promise.js';
 
-// Zone js
 import 'zone.js/dist/zone';
 
-// Reflect
 import 'reflect-metadata';
 
-// Angular 2
-import './imports/angular.ts';
+import '@angular/platform-browser';
+import '@angular/platform-browser-dynamic';
+import '@angular/core';
+import '@angular/common';
+import '@angular/http';
 
-// RxJS
-import './imports/rxjs.ts';
+import 'rxjs/add/observable/throw';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/share';
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/toPromise';
 
-// DND
 import 'ng2-dnd/ng2-dnd'
-
-// Bootstrap
 import 'ng2-bootstrap/ng2-bootstrap';
 import 'ng2-select';
