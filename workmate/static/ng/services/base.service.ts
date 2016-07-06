@@ -5,26 +5,38 @@ import { Alert }                                            from '../interfaces/
 import { AlertService }                                     from './alert.service';
 
 import { Observable }                                       from 'rxjs/Observable';
-import { Observer }                                         from 'rxjs/Observer';
+import { Subject }                                          from 'rxjs/Subject';
 
 
 export class BaseService {
 
-    meta$: Observable<Object>;
-    objects$: Observable<any[]>;
+    protected _objects$: Subject<any[]>;
+    protected _meta$: Subject<Object>;
 
-    protected _metaObserver: Observer<Object>;
-    protected _objectsObserver: Observer<any[]>;
-    protected _dataStore: { objects: any[], meta: Object };
-    protected _baseUrl = '';
-    protected _resourceName = '';
+    protected _dataStore: {
+        meta: Object,
+        objects: any[]
+    };
+    protected _baseUrl: string;
+    protected _resourceName: string;
 
     protected _postOptions = new ExRequestOptions();
 
     constructor (protected _http: Http, protected _AlertService: AlertService) {
-        this.meta$ = new Observable<Object>((observer:any) => this._metaObserver = observer).share();
-        this._dataStore = { objects: [], meta: {} };
+        this._meta$ = <Subject<Object>>new Subject();
+        this._dataStore = {
+            meta: {},
+            objects: []
+        };
         this._postOptions.appendHeaders('Content-Type', 'application/json');
+    }
+
+    get meta$() {
+        return this._meta$.asObservable();
+    }
+
+    get objects$() {
+        return this._objects$.asObservable();
     }
 
     loadMeta() {
@@ -33,11 +45,11 @@ export class BaseService {
                 .map(this.extractData)
                 .subscribe(data => {
                     this._dataStore.meta = data;
-                    this._metaObserver.next(this._dataStore.meta);
+                    this._meta$.next(this._dataStore.meta);
                 }, err => this.handleError(err)
             );
         } else {
-            this._metaObserver.next(this._dataStore.meta);
+            this._meta$.next(this._dataStore.meta);
         }
     }
 
@@ -47,11 +59,11 @@ export class BaseService {
                 .map(this.extractData)
                 .subscribe(data => {
                     this._dataStore.objects = data;
-                    this._objectsObserver.next(this._dataStore.objects);
+                    this._objects$.next(this._dataStore.objects);
                 }, err => this.handleError(err)
             );
         } else {
-            this._objectsObserver.next(this._dataStore.objects);
+            this._objects$.next(this._dataStore.objects);
         }
     }
 
@@ -69,7 +81,7 @@ export class BaseService {
                 if (!found) {
                     this._dataStore.objects.push(data);
                 }
-                this._objectsObserver.next(this._dataStore.objects);
+                this._objects$.next(this._dataStore.objects);
             }, err => this.handleError(err)
         );
     }
@@ -80,7 +92,7 @@ export class BaseService {
             .map(this.extractData)
             .subscribe(data => {
                 this._dataStore.objects.push(data);
-                this._objectsObserver.next(this._dataStore.objects);
+                this._objects$.next(this._dataStore.objects);
             }, err => this.handleError(err, object), () => this.handleCompleted()
         );
     }
@@ -96,7 +108,7 @@ export class BaseService {
                         this._dataStore.objects[i]._validation_errors = {};
                     }
                 });
-                this._objectsObserver.next(this._dataStore.objects);
+                this._objects$.next(this._dataStore.objects);
             }, err => this.handleError(err, object), () => this.handleCompleted()
         );
     }
@@ -109,7 +121,7 @@ export class BaseService {
                         this._dataStore.objects.splice(i, 1);
                     }
                 });
-                this._objectsObserver.next(this._dataStore.objects);
+                this._objects$.next(this._dataStore.objects);
             }, err => this.handleError(err), () => this.handleCompleted()
         );
     }

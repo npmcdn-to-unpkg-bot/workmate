@@ -37,6 +37,15 @@ export class StoryDetailComponent implements OnInit {
         private _TagService: TagService
     ) {}
 
+    ngOnInit() {
+        this._StoryTypeService.objects$.subscribe(objects => this._types = objects);
+        this._StoryStateService.objects$.subscribe(objects => this._states = objects);
+        this._TagService.objects$.subscribe(objects => this._tags = objects);
+        this._StoryStateService.loadAll();
+        this._StoryTypeService.loadAll();
+        this._TagService.loadAll();
+    }
+
     addTask() {
         let newTask = new StoryTask({
             completed: false,
@@ -57,15 +66,6 @@ export class StoryDetailComponent implements OnInit {
         if (this.story.id) {
             this._StoryService.delete(this.story.id);
         }
-    }
-
-    ngOnInit() {
-        this._StoryTypeService.objects$.subscribe(objects => this._types = objects);
-        this._StoryStateService.objects$.subscribe(objects => this._states = objects);
-        this._TagService.objects$.subscribe(objects => this._tags = objects);
-        this._StoryStateService.loadAll();
-        this._StoryTypeService.loadAll();
-        this._TagService.loadAll();
     }
 
 }

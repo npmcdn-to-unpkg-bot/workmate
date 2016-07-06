@@ -5,8 +5,7 @@ import { iStory }                                           from '../interfaces/
 import { AlertService }                                     from './alert.service';
 import { BaseService }                                      from './base.service';
 
-import { Observable }                                       from 'rxjs/Observable';
-import { Observer }                                         from 'rxjs/Observer';
+import { Subject }                                          from 'rxjs/Subject';
 
 
 interface EffortChoice {
@@ -18,7 +17,14 @@ interface EffortChoice {
 @Injectable()
 export class StoryService extends BaseService {
 
-    objects$: Observable<iStory[]>;
+    protected _objects$: Subject<iStory[]>;
+
+    protected _dataStore: {
+        meta: Object,
+        objects: iStory[]
+    };
+    protected _baseUrl = '/api/v1/story/';
+    protected _resourceName = 'story';
 
     effortChoices: EffortChoice[] = [
         {id: '0.5', text: '0.5 Points'},
@@ -28,14 +34,9 @@ export class StoryService extends BaseService {
         {id: '5.0', text: '5 Points'}
     ];
 
-    protected _objectsObserver: Observer<iStory[]>;
-    protected _dataStore: { objects: iStory[], meta: Object };
-    protected _baseUrl = '/api/v1/story/';
-    protected _resourceName = 'story';
-
     constructor (protected _http: Http, protected _AlertService: AlertService) {
         super(_http, _AlertService);
-        this.objects$ = new Observable<iStory[]>((observer:any) => this._objectsObserver = observer).share();
+        this._objects$ = <Subject<iStory[]>>new Subject();
     }
 
     protected extractData(res: Response) {

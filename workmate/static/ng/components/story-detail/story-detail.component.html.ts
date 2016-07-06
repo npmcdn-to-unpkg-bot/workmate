@@ -1,10 +1,9 @@
 export const htmlTemplate = `
-
     <hr/>
     <div class="form-group" [ngClass]="{'has-error': story._validation_errors?.title}">
         <textarea class="form-control" [(ngModel)]="story.title" rows="2"></textarea>
     </div>
-    <div class="form-group" [ngClass]="{'has-error': story._validation_errors?.type}">
+    <div class="form-group" [ngClass]="{'has-error': story._validation_errors?.type}" *ngIf="_types">
         <label>Type</label>
         <bs-select [(ngModel)]="story.type" [choices]="_types" [textLabel]="'title'"></bs-select>
     </div>
@@ -20,7 +19,7 @@ export const htmlTemplate = `
         <label>Description</label>
         <textarea class="form-control" [(ngModel)]="story.description" rows="3"></textarea>
     </div>
-    <div class="form-group" [ngClass]="{'has-error': story._validation_errors?.tags}">
+    <div class="form-group" [ngClass]="{'has-error': story._validation_errors?.tags}" *ngIf="_tags">
         <label>Tags</label>
         <bs-select-multiple [(ngModel)]="story.tags" [choices]="_tags" [textLabel]="'title'"></bs-select-multiple>
     </div>

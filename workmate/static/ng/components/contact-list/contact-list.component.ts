@@ -6,6 +6,8 @@ import { ContactDetailComponent }       from '../contact-detail/contact-detail.c
 import { htmlTemplate }                 from './contact-list.component.html';
 import { ContactSearchPipe }            from '../../pipes/contact-search-pipe.ts';
 
+import { Observable }                   from 'rxjs/Observable';
+
 
 @Component({
     selector: 'contact-list',
@@ -18,16 +20,17 @@ export class ContactListComponent implements OnInit {
 
     constructor(private _ContactService: ContactService) {}
 
-    _contacts: iContact[];
-    _selectedContact: iContact;
+    _contacts: Observable<iContact[]>;
+    _selectedContact: Observable<iContact>;
 
     ngOnInit() {
-        this._ContactService.objects$.subscribe(objects => this._contacts = objects);
+        this._contacts = this._ContactService.objects$;
         this._ContactService.loadAll();
     }
 
-    onSelect(contact: iContact) {
-        this._selectedContact = contact;
+    selectContact(contact: iContact) {
+        this._selectedContact = this._ContactService.objects$.map(objects => objects.find(item => item.id === contact.id));
+        this._ContactService.load(contact.id);
     }
 
 }

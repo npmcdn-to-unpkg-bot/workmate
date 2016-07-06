@@ -5,23 +5,24 @@ import { iStoryType }                                       from '../interfaces/
 import { AlertService }                                     from './alert.service';
 import { BaseService }                                      from './base.service';
 
-import { Observable }                                       from 'rxjs/Observable';
-import { Observer }                                         from 'rxjs/Observer';
+import { Subject }                                          from 'rxjs/Subject';
 
 
 @Injectable()
 export class StoryTypeService extends BaseService {
 
-    objects$: Observable<iStoryType[]>;
+    protected _objects$: Subject<iStoryType[]>;
 
-    protected _objectsObserver: Observer<iStoryType[]>;
-    protected _dataStore: { objects: iStoryType[], meta: Object };
+    protected _dataStore: {
+        meta: Object,
+        objects: iStoryType[]
+    };
     protected _baseUrl = '/api/v1/story_type/';
     protected _resourceName = 'story_type';
 
     constructor (protected _http: Http, protected _AlertService: AlertService) {
         super(_http, _AlertService);
-        this.objects$ = new Observable<iStoryType[]>((observer:any) => this._objectsObserver = observer).share();
+        this._objects$ = <Subject<iStoryType[]>>new Subject();
     }
 
 }

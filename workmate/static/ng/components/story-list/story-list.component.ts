@@ -2,12 +2,8 @@ import { Component, OnInit }                            from '@angular/core';
 
 import { iStory, Story }                                from '../../interfaces/story';
 import { iStoryState }                                  from '../../interfaces/story_state';
-import { iStoryType }                                   from '../../interfaces/story_type';
-import { iTag }                                         from '../../interfaces/tag';
 import { StoryService }                                 from '../../services/story.service';
 import { StoryStateService }                            from '../../services/story-state.service';
-import { StoryTypeService }                             from '../../services/story-type.service';
-import { TagService }                                   from '../../services/tag.service';
 import { FilterPipe }                                   from '../../pipes/filter-pipe';
 import { OrderBy }                                      from '../../pipes/orderby-pipe';
 import { StoryDetailComponent }                         from '../story-detail/story-detail.component'
@@ -15,6 +11,8 @@ import { StoryListItemComponent }                       from '../story-list-item
 import { htmlTemplate }                                 from './story-list.component.html';
 
 import { DND_PROVIDERS, DND_DIRECTIVES }                from 'ng2-dnd/ng2-dnd';
+import { Observable }                                   from 'rxjs/Observable';
+
 
 @Component({
     selector: 'story-list',
@@ -26,36 +24,26 @@ import { DND_PROVIDERS, DND_DIRECTIVES }                from 'ng2-dnd/ng2-dnd';
 
 export class StoryListComponent implements OnInit {
 
-    _stories: iStory[] = [];
     _storiesByState: Array<iStory[]> = [];
-    _states: iStoryState[];
-    _tags: iTag[];
-    _types: iStoryType[];
+    _states: Observable<iStoryState[]>;
     _newStory: Story;
 
     constructor(
         private _StoryService: StoryService,
-        private _StoryStateService: StoryStateService,
-        private _StoryTypeService: StoryTypeService,
-        private _TagService: TagService
+        private _StoryStateService: StoryStateService
     ) {}
 
     ngOnInit() {
-        this._StoryService.objects$.subscribe(objects => {
-            this._stories = objects;
-            this._StoryStateService.objects$.subscribe(objects => {
-                this._states = objects;
-                this._states.forEach((item, i) => {
-                    this._storiesByState[item.id] = new OrderBy().transform(this._stories.filter(story => story.state.id == item.id), ['order']);
+        this._states = this._StoryStateService.objects$;
+        this._states.subscribe(objects => {
+            objects.forEach((item, i) => {
+                this._StoryService.objects$.subscribe(objects => {
+                    this._storiesByState[item.id] = new OrderBy().transform(objects.filter(object => object.state.id === item.id), ['order']);
                 });
             });
-            this._StoryStateService.loadAll();
         });
-        this._StoryTypeService.objects$.subscribe(objects => this._types = objects);
-        this._TagService.objects$.subscribe(objects => this._tags = objects);
+        this._StoryStateService.loadAll();
         this._StoryService.loadAll();
-        this._StoryTypeService.loadAll();
-        this._TagService.loadAll();
     }
 
     private createNew = function (state: iStoryState) {
@@ -108,5 +96,5 @@ export class StoryListComponent implements OnInit {
     private getRandomNumber(min:number, max:number) {
         return parseFloat((Math.random() * (max - min) + min).toFixed(8));
     }
-    
+
 }

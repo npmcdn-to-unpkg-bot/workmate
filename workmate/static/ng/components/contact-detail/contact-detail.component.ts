@@ -4,6 +4,9 @@ import { iContact }                         from '../../interfaces/contact';
 import { ContactService }                   from '../../services/contact.service';
 import { htmlTemplate }                     from './contact-detail.component.html';
 
+import { Observable }                       from 'rxjs/Observable';
+
+
 @Component({
     selector: 'contact-detail',
     template: htmlTemplate
@@ -11,7 +14,7 @@ import { htmlTemplate }                     from './contact-detail.component.htm
 
 export class ContactDetailComponent {
 
-    @Input() contact: iContact;
+    @Input() contact: Observable<iContact>;
 
     constructor(private _ContactService: ContactService) {}
 
