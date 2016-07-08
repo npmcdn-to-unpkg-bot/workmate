@@ -369,6 +369,7 @@ webpackJsonp([ 0 ], {
                 var o = this._storiesByState[r.id];
                 this.setStoryOrder(t, e, o), t.state = r, this._StoryService.update(t);
             }, t.prototype.setStoryOrder = function(t, e, r) {
+                void 0 === r && (r = []);
                 var o = r.length, s = 0, i = 100;
                 -1 == e ? o >= 1 && (i = parseFloat(r[0].order.toString()), s = i - 1) : 1 == o || (0 == e ? (i = parseFloat(r[e + 1].order.toString()), 
                 s = i - 1) : e == o - 1 ? (s = parseFloat(r[e - 1].order.toString()), i = s + 1) : (s = parseFloat(r[e - 1].order.toString()), 

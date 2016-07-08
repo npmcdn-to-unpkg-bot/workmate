@@ -67,7 +67,7 @@ export class StoryListComponent implements OnInit {
         this._StoryService.update(story);
     }
 
-    private setStoryOrder(story:iStory, index:number, stories:iStory[]) {
+    private setStoryOrder(story:iStory, index:number, stories:iStory[] = []) {
         let itemCount = stories.length;
         let min = 0;
         let max = 100;
