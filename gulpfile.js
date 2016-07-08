@@ -21,7 +21,7 @@ var config = {
 gulp.task('css_adminlte', function() {
     return gulp.src(config.scssDir + '/adminlte/*.scss')
     .pipe($.sourcemaps.init())
-    .pipe(sass({}))
+    .pipe(sass({outputStyle: 'compact'}))
     .pipe($.postcss([
         require('autoprefixer-core')({browsers: ['last 1 version']})
     ]))

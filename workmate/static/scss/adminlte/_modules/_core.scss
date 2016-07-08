@@ -3,6 +3,10 @@
  * -------------
  */
 
+.layout-boxed {
+  background: none;
+}
+
 // allow pointer events
 .clickable {
   pointer-events: auto !important;
