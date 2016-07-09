@@ -12,7 +12,6 @@ setup(
     license='MIT',
     packages=find_packages(exclude=('example', 'tests')),
     install_requires=[
-        'defusedxml>=0.4.1',
         'Django>=1.8,<1.10',
         'django-admin-sortable2>=0.6.4',
         'django-appconf>=1.0.2',
@@ -22,7 +21,6 @@ setup(
         'django-phonenumber-field>=1.0.0',
         'django-reversion>=1.10.0',
         'django-tastypie>=0.13.3',
-        'lxml>=3.6.0',
         'requests>=2.9.1'
     ],
     include_package_data=True,

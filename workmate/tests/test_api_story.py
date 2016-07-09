@@ -75,13 +75,6 @@ class StoryResourceTests(WorkmateAPITestCase):
             'type': self.serialized_type
         })
 
-    def test_get_list_xml(self):
-        resp = self.api_client.get(
-            self.list_url,
-            format='xml',
-            authentication=self.get_credentials())
-        self.assertValidXMLResponse(resp)
-
     def test_get_detail_unauthenticated(self):
         self.assertHttpUnauthorized(self.api_client.get(self.detail_url, format='json'))
 
@@ -118,13 +111,6 @@ class StoryResourceTests(WorkmateAPITestCase):
         self.assertEqual(self.deserialize(resp)['state'], self.serialized_state)
         self.assertEqual(self.deserialize(resp)['tags'], [])
         self.assertEqual(self.deserialize(resp)['type'], self.serialized_type)
-
-    def test_get_detail_xml(self):
-        resp = self.api_client.get(
-            self.detail_url,
-            format='xml',
-            authentication=self.get_credentials())
-        self.assertValidXMLResponse(resp)
 
     def test_post_list_unauthenticated(self):
         self.assertHttpUnauthorized(

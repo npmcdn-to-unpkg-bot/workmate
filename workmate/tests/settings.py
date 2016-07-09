@@ -99,3 +99,6 @@ TEMPLATES = [
 
 
 AUTH_USER_MODEL = os.environ.get('AUTH_USER_MODEL', 'auth.User')
+
+
+TASTYPIE_DEFAULT_FORMATS = ['json']

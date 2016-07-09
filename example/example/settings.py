@@ -130,6 +130,9 @@ TEMPLATES = [
     },
 ]
 
+# Tastypie
+TASTYPIE_DEFAULT_FORMATS = ['json']
+
 
 # Logging
 LOGGING = {

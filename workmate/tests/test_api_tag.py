@@ -31,13 +31,6 @@ class TagResourceTests(WorkmateAPITestCase):
             'resource_uri': '/api/v1/tag/{0}/'.format(self.existing_object.pk)
         })
 
-    def test_get_list_xml(self):
-        resp = self.api_client.get(
-            self.list_url,
-            format='xml',
-            authentication=self.get_credentials())
-        self.assertValidXMLResponse(resp)
-
     def test_get_detail_unauthenticated(self):
         self.assertHttpUnauthorized(self.api_client.get(self.detail_url, format='json'))
 
@@ -52,13 +45,6 @@ class TagResourceTests(WorkmateAPITestCase):
             'resource_uri',
             'title'])
         self.assertEqual(self.deserialize(resp)['title'], 'some tag')
-
-    def test_get_detail_xml(self):
-        resp = self.api_client.get(
-            self.detail_url,
-            format='xml',
-            authentication=self.get_credentials())
-        self.assertValidXMLResponse(resp)
 
     def test_post_list_unauthenticated(self):
         self.assertHttpUnauthorized(

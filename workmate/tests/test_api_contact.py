@@ -79,13 +79,6 @@ class ContactResourceTests(WorkmateAPITestCase):
             'work_number': self.existing_object.work_number
         })
 
-    def test_get_list_xml(self):
-        resp = self.api_client.get(
-            self.list_url,
-            format='xml',
-            authentication=self.get_credentials())
-        self.assertValidXMLResponse(resp)
-
     def test_get_detail_unauthenticated(self):
         self.assertHttpUnauthorized(self.api_client.get(self.detail_url, format='json'))
 
@@ -134,13 +127,6 @@ class ContactResourceTests(WorkmateAPITestCase):
         self.assertEqual(self.deserialize(resp)['state'], self.existing_object.state)
         self.assertEqual(self.deserialize(resp)['website'], self.existing_object.website)
         self.assertEqual(self.deserialize(resp)['work_number'], self.existing_object.work_number)
-
-    def test_get_detail_xml(self):
-        resp = self.api_client.get(
-            self.detail_url,
-            format='xml',
-            authentication=self.get_credentials())
-        self.assertValidXMLResponse(resp)
 
     def test_post_list_unauthenticated(self):
         self.assertHttpUnauthorized(

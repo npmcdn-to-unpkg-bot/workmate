@@ -50,6 +50,11 @@ Add the context processors::
         },
     ]
 
+Workmate does not install or use packages that tastypie requires for xml, good practice says disable it via
+the appropriate setting:
+
+    TASTYPIE_DEFAULT_FORMATS = ['json']
+
 This project requires all the auth urls, the below is from the example project and uses the admin templates for ease.
 Customize as you feel fit.
 
