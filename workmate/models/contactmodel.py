@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.core.urlresolvers import reverse
 from django.db import models
+from django.db.models.signals import post_delete, post_save
 from django.utils.translation import ugettext_lazy as _
 
 from localflavor.gb.gb_regions import GB_REGION_CHOICES
@@ -8,6 +9,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 from .abstract import SiteAbstract
 from .tagsmodel import Tag
+from workmate.signals.notifications import post_delete_notification, post_save_notification
 from workmate.utils.color_generator import generate_new_color
 from workmate.utils.misc import xstr
 
@@ -57,3 +59,7 @@ class Contact(SiteAbstract):
 
     def get_absolute_url(self):
         return reverse('contact-update', kwargs={'pk': self.pk})
+
+
+post_save.connect(post_save_notification, sender=Contact)
+post_delete.connect(post_delete_notification, sender=Contact)

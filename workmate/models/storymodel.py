@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 from django.conf import settings
 from django.db import models
+from django.db.models.signals import post_delete, post_save
 from django.utils.safestring import mark_safe
 
 from .abstract import SiteAbstract
 from .tagsmodel import Tag
+from workmate.signals.notifications import post_delete_notification, post_save_notification
 from workmate.utils.threadlocal import get_current_user
 
 
@@ -88,3 +90,11 @@ class Story(SiteAbstract):
             if not self.pk:
                 self.created_by = user
         super(Story, self).save(*args, **kwargs)
+
+
+post_delete.connect(post_delete_notification, sender=Story)
+post_save.connect(post_save_notification, sender=Story)
+post_delete.connect(post_delete_notification, sender=StoryState)
+post_save.connect(post_save_notification, sender=StoryState)
+post_delete.connect(post_delete_notification, sender=StoryType)
+post_save.connect(post_save_notification, sender=StoryType)

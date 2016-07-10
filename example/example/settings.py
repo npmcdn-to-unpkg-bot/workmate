@@ -38,6 +38,7 @@ INSTALLED_APPS = (
 
     'adminsortable2',
     'bootstrap3',
+    'channels',
     'reversion',
     'tastypie',
     'workmate',
@@ -60,6 +61,15 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'example.urls'
 
 WSGI_APPLICATION = 'example.wsgi.application'
+
+
+# Channels
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "asgiref.inmemory.ChannelLayer",
+        "ROUTING": "workmate.routing.websocket_routing",
+    },
+}
 
 
 # Database

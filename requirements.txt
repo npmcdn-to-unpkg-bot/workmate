@@ -6,3 +6,7 @@
 # Runtime dependencies
 
 Django>=1.8,<1.10
+asgi_redis>=0.9
+
+# tastypie latest for channels fix
+-e git://github.com/django-tastypie/django-tastypie.git#egg=tastypie

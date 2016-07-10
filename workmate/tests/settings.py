@@ -30,6 +30,7 @@ INSTALLED_APPS = [
 
     'adminsortable2',
     'bootstrap3',
+    'channels',
     'reversion',
     'tastypie',
     'workmate',
@@ -102,3 +103,11 @@ AUTH_USER_MODEL = os.environ.get('AUTH_USER_MODEL', 'auth.User')
 
 
 TASTYPIE_DEFAULT_FORMATS = ['json']
+
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "asgiref.inmemory.ChannelLayer",
+        "ROUTING": "workmate.routing.websocket_routing",
+    },
+}

@@ -12,6 +12,7 @@ setup(
     license='MIT',
     packages=find_packages(exclude=('example', 'tests')),
     install_requires=[
+        'channels>=0.16.0',
         'Django>=1.8,<1.10',
         'django-admin-sortable2>=0.6.4',
         'django-appconf>=1.0.2',
