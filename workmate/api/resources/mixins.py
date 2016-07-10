@@ -11,4 +11,5 @@ class DefaultResourceMixin(ModelResource):
         always_return_data = True
         detail_allowed_methods = ['get', 'put', 'delete']
         list_allowed_methods = ['get', 'post']
+        object_class = None
         serializer = Serializer()
