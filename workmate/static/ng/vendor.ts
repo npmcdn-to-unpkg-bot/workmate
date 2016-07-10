@@ -20,6 +20,8 @@ import 'rxjs/add/operator/share';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/toPromise';
 
+import 'angular2-websocket/angular2-websocket';
+
 import 'ng2-dnd/ng2-dnd'
 import 'ng2-bootstrap/ng2-bootstrap';
 import 'ng2-select';

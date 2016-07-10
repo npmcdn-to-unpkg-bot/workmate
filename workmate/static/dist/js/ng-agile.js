@@ -2,12 +2,12 @@ webpackJsonp([ 0 ], {
     0: function(t, e, r) {
         "use strict";
         var o = this && this.__decorate || function(t, e, r, o) {
-            var s, i = arguments.length, n = 3 > i ? e : null === o ? o = Object.getOwnPropertyDescriptor(e, r) : o;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) n = Reflect.decorate(t, e, r, o); else for (var a = t.length - 1; a >= 0; a--) (s = t[a]) && (n = (3 > i ? s(n) : i > 3 ? s(e, r, n) : s(e, r)) || n);
+            var s, i = arguments.length, n = i < 3 ? e : null === o ? o = Object.getOwnPropertyDescriptor(e, r) : o;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) n = Reflect.decorate(t, e, r, o); else for (var a = t.length - 1; a >= 0; a--) (s = t[a]) && (n = (i < 3 ? s(n) : i > 3 ? s(e, r, n) : s(e, r)) || n);
             return i > 3 && n && Object.defineProperty(e, r, n), n;
         }, s = this && this.__metadata || function(t, e) {
-            return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, i = r(1), n = r(109), a = r(252), c = r(344), l = r(345), f = r(346), d = r(349), p = r(350), u = r(351), h = r(352), y = r(516), _ = function() {
+            if ("object" == typeof Reflect && "function" == typeof Reflect.metadata) return Reflect.metadata(t, e);
+        }, i = r(1), n = r(111), a = r(255), c = r(349), l = r(350), f = r(351), p = r(354), d = r(355), u = r(356), h = r(357), y = r(521), _ = function() {
             function t() {}
             return t = o([ i.Component({
                 selector: "agile-app",
@@ -15,12 +15,12 @@ webpackJsonp([ 0 ], {
                 directives: [ y.StoryListComponent, h.AlertBlockComponent ],
                 providers: [ n.HTTP_PROVIDERS, i.provide(n.RequestOptions, {
                     useClass: c.ExRequestOptions
-                }), l.AlertService, f.StoryService, d.StoryStateService, p.StoryTypeService, u.TagService ]
+                }), l.AlertService, f.StoryService, p.StoryStateService, d.StoryTypeService, u.TagService ]
             }), s("design:paramtypes", []) ], t);
         }();
         e.AgileComponent = _, a.bootstrap(_);
     },
-    344: function(t, e, r) {
+    349: function(t, e, r) {
         "use strict";
         var o = this && this.__extends || function(t, e) {
             function r() {
@@ -29,32 +29,32 @@ webpackJsonp([ 0 ], {
             for (var o in e) e.hasOwnProperty(o) && (t[o] = e[o]);
             t.prototype = null === e ? Object.create(e) : (r.prototype = e.prototype, new r());
         }, s = this && this.__decorate || function(t, e, r, o) {
-            var s, i = arguments.length, n = 3 > i ? e : null === o ? o = Object.getOwnPropertyDescriptor(e, r) : o;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) n = Reflect.decorate(t, e, r, o); else for (var a = t.length - 1; a >= 0; a--) (s = t[a]) && (n = (3 > i ? s(n) : i > 3 ? s(e, r, n) : s(e, r)) || n);
+            var s, i = arguments.length, n = i < 3 ? e : null === o ? o = Object.getOwnPropertyDescriptor(e, r) : o;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) n = Reflect.decorate(t, e, r, o); else for (var a = t.length - 1; a >= 0; a--) (s = t[a]) && (n = (i < 3 ? s(n) : i > 3 ? s(e, r, n) : s(e, r)) || n);
             return i > 3 && n && Object.defineProperty(e, r, n), n;
         }, i = this && this.__metadata || function(t, e) {
-            return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, n = r(1), a = r(109), c = function(t) {
+            if ("object" == typeof Reflect && "function" == typeof Reflect.metadata) return Reflect.metadata(t, e);
+        }, n = r(1), a = r(111), c = function(t) {
             function e() {
                 t.call(this), this.headers.append("X-CSRFToken", this.getCookie("csrftoken"));
             }
             return o(e, t), e.prototype.getCookie = function(t) {
                 var e = "; " + document.cookie, r = e.split("; " + t + "=");
-                return 2 == r.length ? r.pop().split(";").shift() : void 0;
+                if (2 == r.length) return r.pop().split(";").shift();
             }, e.prototype.appendHeaders = function(t, e) {
                 this.headers.append(t, e);
             }, e = s([ n.Injectable(), i("design:paramtypes", []) ], e);
         }(a.BaseRequestOptions);
         e.ExRequestOptions = c;
     },
-    345: function(t, e, r) {
+    350: function(t, e, r) {
         "use strict";
         var o = this && this.__decorate || function(t, e, r, o) {
-            var s, i = arguments.length, n = 3 > i ? e : null === o ? o = Object.getOwnPropertyDescriptor(e, r) : o;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) n = Reflect.decorate(t, e, r, o); else for (var a = t.length - 1; a >= 0; a--) (s = t[a]) && (n = (3 > i ? s(n) : i > 3 ? s(e, r, n) : s(e, r)) || n);
+            var s, i = arguments.length, n = i < 3 ? e : null === o ? o = Object.getOwnPropertyDescriptor(e, r) : o;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) n = Reflect.decorate(t, e, r, o); else for (var a = t.length - 1; a >= 0; a--) (s = t[a]) && (n = (i < 3 ? s(n) : i > 3 ? s(e, r, n) : s(e, r)) || n);
             return i > 3 && n && Object.defineProperty(e, r, n), n;
         }, s = this && this.__metadata || function(t, e) {
-            return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.metadata) return Reflect.metadata(t, e);
         }, i = r(1), n = r(34), a = function() {
             function t() {
                 var t = this;
@@ -83,7 +83,7 @@ webpackJsonp([ 0 ], {
         }();
         e.AlertService = a;
     },
-    346: function(t, e, r) {
+    351: function(t, e, r) {
         "use strict";
         var o = this && this.__extends || function(t, e) {
             function r() {
@@ -92,15 +92,15 @@ webpackJsonp([ 0 ], {
             for (var o in e) e.hasOwnProperty(o) && (t[o] = e[o]);
             t.prototype = null === e ? Object.create(e) : (r.prototype = e.prototype, new r());
         }, s = this && this.__decorate || function(t, e, r, o) {
-            var s, i = arguments.length, n = 3 > i ? e : null === o ? o = Object.getOwnPropertyDescriptor(e, r) : o;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) n = Reflect.decorate(t, e, r, o); else for (var a = t.length - 1; a >= 0; a--) (s = t[a]) && (n = (3 > i ? s(n) : i > 3 ? s(e, r, n) : s(e, r)) || n);
+            var s, i = arguments.length, n = i < 3 ? e : null === o ? o = Object.getOwnPropertyDescriptor(e, r) : o;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) n = Reflect.decorate(t, e, r, o); else for (var a = t.length - 1; a >= 0; a--) (s = t[a]) && (n = (i < 3 ? s(n) : i > 3 ? s(e, r, n) : s(e, r)) || n);
             return i > 3 && n && Object.defineProperty(e, r, n), n;
         }, i = this && this.__metadata || function(t, e) {
-            return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, n = r(1), a = r(109), c = r(345), l = r(347), f = r(33), d = function(t) {
+            if ("object" == typeof Reflect && "function" == typeof Reflect.metadata) return Reflect.metadata(t, e);
+        }, n = r(1), a = r(111), c = r(350), l = r(352), f = r(33), p = function(t) {
             function e(e, r) {
                 t.call(this, e, r), this._http = e, this._AlertService = r, this._baseUrl = "/api/v1/story/", 
-                this._resourceName = "story", this.effortChoices = [ {
+                this._resourceName = "story", this._modelClass = "Story", this.effortChoices = [ {
                     id: "0.5",
                     text: "0.5 Points"
                 }, {
@@ -126,17 +126,22 @@ webpackJsonp([ 0 ], {
                 r;
             }, e = s([ n.Injectable(), i("design:paramtypes", [ a.Http, c.AlertService ]) ], e);
         }(l.BaseService);
-        e.StoryService = d;
+        e.StoryService = p;
     },
-    347: function(t, e, r) {
+    352: function(t, e, r) {
         "use strict";
-        var o = r(344), s = r(348), i = r(34), n = r(33), a = function() {
+        var o = r(349), s = r(353), i = r(34), n = r(33), a = r(617), c = function() {
             function t(t, e) {
+                var r = this;
                 this._http = t, this._AlertService = e, this._postOptions = new o.ExRequestOptions(), 
-                this._meta$ = new n.Subject(), this._dataStore = {
+                this._ws = new a.$WebSocket(socket_url + "/data_notifications/"), this._meta$ = new n.Subject(), 
+                this._dataStore = {
                     meta: {},
                     objects: []
-                }, this._postOptions.appendHeaders("Content-Type", "application/json");
+                }, this._postOptions.appendHeaders("Content-Type", "application/json"), this._ws.connect(), 
+                this._ws.onMessage(function(t) {
+                    return r.handleDataNotification(t);
+                }, {});
             }
             return Object.defineProperty(t.prototype, "meta$", {
                 get: function() {
@@ -197,14 +202,20 @@ webpackJsonp([ 0 ], {
             }, t.prototype.delete = function(t) {
                 var e = this;
                 this._http.delete("" + this._baseUrl + t + "/").subscribe(function(r) {
-                    e._dataStore.objects.forEach(function(r, o) {
-                        r.id === t && e._dataStore.objects.splice(o, 1);
-                    }), e._objects$.next(e._dataStore.objects);
+                    e.removeObject(t);
                 }, function(t) {
                     return e.handleError(t);
                 }, function() {
                     return e.handleCompleted();
                 });
+            }, t.prototype.handleDataNotification = function(t) {
+                var e = JSON.parse(t.data);
+                e.model === this._modelClass && ("post_save" === e.type && this.load(e.pk), "post_delete" === e.type && this.removeObject(e.pk));
+            }, t.prototype.removeObject = function(t) {
+                var e = this;
+                this._dataStore.objects.forEach(function(r, o) {
+                    r.id === t && e._dataStore.objects.splice(o, 1);
+                }), this._objects$.next(this._dataStore.objects);
             }, t.prototype.extractData = function(t) {
                 if (t.status < 200 || t.status >= 300) throw new Error("Bad response status: " + t.status);
                 var e = t.json();
@@ -223,20 +234,20 @@ webpackJsonp([ 0 ], {
                 }));
             }, t;
         }();
-        e.BaseService = a;
+        e.BaseService = c;
     },
-    348: function(t, e) {
+    353: function(t, e) {
         "use strict";
         var r = function() {
             function t(t) {
-                this.type = t.type, this.message = t.message, this.dismissable = null == t.dismissable ? !0 : t.dismissable, 
+                this.type = t.type, this.message = t.message, this.dismissable = null == t.dismissable || t.dismissable, 
                 this.dismissDefaultTimeout = t.dismissDefaultTimeout || 5e3, this.dismissErrorTimeout = t.dismissErrorTimeout || 1e4;
             }
             return t;
         }();
         e.Alert = r;
     },
-    349: function(t, e, r) {
+    354: function(t, e, r) {
         "use strict";
         var o = this && this.__extends || function(t, e) {
             function r() {
@@ -245,21 +256,21 @@ webpackJsonp([ 0 ], {
             for (var o in e) e.hasOwnProperty(o) && (t[o] = e[o]);
             t.prototype = null === e ? Object.create(e) : (r.prototype = e.prototype, new r());
         }, s = this && this.__decorate || function(t, e, r, o) {
-            var s, i = arguments.length, n = 3 > i ? e : null === o ? o = Object.getOwnPropertyDescriptor(e, r) : o;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) n = Reflect.decorate(t, e, r, o); else for (var a = t.length - 1; a >= 0; a--) (s = t[a]) && (n = (3 > i ? s(n) : i > 3 ? s(e, r, n) : s(e, r)) || n);
+            var s, i = arguments.length, n = i < 3 ? e : null === o ? o = Object.getOwnPropertyDescriptor(e, r) : o;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) n = Reflect.decorate(t, e, r, o); else for (var a = t.length - 1; a >= 0; a--) (s = t[a]) && (n = (i < 3 ? s(n) : i > 3 ? s(e, r, n) : s(e, r)) || n);
             return i > 3 && n && Object.defineProperty(e, r, n), n;
         }, i = this && this.__metadata || function(t, e) {
-            return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, n = r(1), a = r(109), c = r(345), l = r(347), f = r(33), d = function(t) {
+            if ("object" == typeof Reflect && "function" == typeof Reflect.metadata) return Reflect.metadata(t, e);
+        }, n = r(1), a = r(111), c = r(350), l = r(352), f = r(33), p = function(t) {
             function e(e, r) {
                 t.call(this, e, r), this._http = e, this._AlertService = r, this._baseUrl = "/api/v1/story_state/", 
-                this._resourceName = "story_state", this._objects$ = new f.Subject();
+                this._resourceName = "story_state", this._modelClass = "StoryState", this._objects$ = new f.Subject();
             }
             return o(e, t), e = s([ n.Injectable(), i("design:paramtypes", [ a.Http, c.AlertService ]) ], e);
         }(l.BaseService);
-        e.StoryStateService = d;
+        e.StoryStateService = p;
     },
-    350: function(t, e, r) {
+    355: function(t, e, r) {
         "use strict";
         var o = this && this.__extends || function(t, e) {
             function r() {
@@ -268,21 +279,21 @@ webpackJsonp([ 0 ], {
             for (var o in e) e.hasOwnProperty(o) && (t[o] = e[o]);
             t.prototype = null === e ? Object.create(e) : (r.prototype = e.prototype, new r());
         }, s = this && this.__decorate || function(t, e, r, o) {
-            var s, i = arguments.length, n = 3 > i ? e : null === o ? o = Object.getOwnPropertyDescriptor(e, r) : o;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) n = Reflect.decorate(t, e, r, o); else for (var a = t.length - 1; a >= 0; a--) (s = t[a]) && (n = (3 > i ? s(n) : i > 3 ? s(e, r, n) : s(e, r)) || n);
+            var s, i = arguments.length, n = i < 3 ? e : null === o ? o = Object.getOwnPropertyDescriptor(e, r) : o;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) n = Reflect.decorate(t, e, r, o); else for (var a = t.length - 1; a >= 0; a--) (s = t[a]) && (n = (i < 3 ? s(n) : i > 3 ? s(e, r, n) : s(e, r)) || n);
             return i > 3 && n && Object.defineProperty(e, r, n), n;
         }, i = this && this.__metadata || function(t, e) {
-            return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, n = r(1), a = r(109), c = r(345), l = r(347), f = r(33), d = function(t) {
+            if ("object" == typeof Reflect && "function" == typeof Reflect.metadata) return Reflect.metadata(t, e);
+        }, n = r(1), a = r(111), c = r(350), l = r(352), f = r(33), p = function(t) {
             function e(e, r) {
                 t.call(this, e, r), this._http = e, this._AlertService = r, this._baseUrl = "/api/v1/story_type/", 
-                this._resourceName = "story_type", this._objects$ = new f.Subject();
+                this._resourceName = "story_type", this._modelClass = "StoryType", this._objects$ = new f.Subject();
             }
             return o(e, t), e = s([ n.Injectable(), i("design:paramtypes", [ a.Http, c.AlertService ]) ], e);
         }(l.BaseService);
-        e.StoryTypeService = d;
+        e.StoryTypeService = p;
     },
-    351: function(t, e, r) {
+    356: function(t, e, r) {
         "use strict";
         var o = this && this.__extends || function(t, e) {
             function r() {
@@ -291,29 +302,29 @@ webpackJsonp([ 0 ], {
             for (var o in e) e.hasOwnProperty(o) && (t[o] = e[o]);
             t.prototype = null === e ? Object.create(e) : (r.prototype = e.prototype, new r());
         }, s = this && this.__decorate || function(t, e, r, o) {
-            var s, i = arguments.length, n = 3 > i ? e : null === o ? o = Object.getOwnPropertyDescriptor(e, r) : o;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) n = Reflect.decorate(t, e, r, o); else for (var a = t.length - 1; a >= 0; a--) (s = t[a]) && (n = (3 > i ? s(n) : i > 3 ? s(e, r, n) : s(e, r)) || n);
+            var s, i = arguments.length, n = i < 3 ? e : null === o ? o = Object.getOwnPropertyDescriptor(e, r) : o;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) n = Reflect.decorate(t, e, r, o); else for (var a = t.length - 1; a >= 0; a--) (s = t[a]) && (n = (i < 3 ? s(n) : i > 3 ? s(e, r, n) : s(e, r)) || n);
             return i > 3 && n && Object.defineProperty(e, r, n), n;
         }, i = this && this.__metadata || function(t, e) {
-            return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, n = r(1), a = r(109), c = r(345), l = r(347), f = r(33), d = function(t) {
+            if ("object" == typeof Reflect && "function" == typeof Reflect.metadata) return Reflect.metadata(t, e);
+        }, n = r(1), a = r(111), c = r(350), l = r(352), f = r(33), p = function(t) {
             function e(e, r) {
                 t.call(this, e, r), this._http = e, this._AlertService = r, this._baseUrl = "/api/v1/tag/", 
-                this._resourceName = "tag", this._objects$ = new f.Subject();
+                this._resourceName = "tag", this._modelClass = "Tag", this._objects$ = new f.Subject();
             }
             return o(e, t), e = s([ n.Injectable(), i("design:paramtypes", [ a.Http, c.AlertService ]) ], e);
         }(l.BaseService);
-        e.TagService = d;
+        e.TagService = p;
     },
-    352: function(t, e, r) {
+    357: function(t, e, r) {
         "use strict";
         var o = this && this.__decorate || function(t, e, r, o) {
-            var s, i = arguments.length, n = 3 > i ? e : null === o ? o = Object.getOwnPropertyDescriptor(e, r) : o;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) n = Reflect.decorate(t, e, r, o); else for (var a = t.length - 1; a >= 0; a--) (s = t[a]) && (n = (3 > i ? s(n) : i > 3 ? s(e, r, n) : s(e, r)) || n);
+            var s, i = arguments.length, n = i < 3 ? e : null === o ? o = Object.getOwnPropertyDescriptor(e, r) : o;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) n = Reflect.decorate(t, e, r, o); else for (var a = t.length - 1; a >= 0; a--) (s = t[a]) && (n = (i < 3 ? s(n) : i > 3 ? s(e, r, n) : s(e, r)) || n);
             return i > 3 && n && Object.defineProperty(e, r, n), n;
         }, s = this && this.__metadata || function(t, e) {
-            return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, i = r(1), n = r(128), a = r(353), c = r(345), l = '\n    <alert *ngFor="let alert of _alerts; let i = index" [type]="alert.type" dismissible="alert.dismissable" (close)="closeAlert(i)">\n        {{ alert.message }}\n    </alert>\n  ', f = function() {
+            if ("object" == typeof Reflect && "function" == typeof Reflect.metadata) return Reflect.metadata(t, e);
+        }, i = r(1), n = r(130), a = r(358), c = r(350), l = '\n    <alert *ngFor="let alert of _alerts; let i = index" [type]="alert.type" dismissible="alert.dismissable" (close)="closeAlert(i)">\n        {{ alert.message }}\n    </alert>\n  ', f = function() {
             function t(t) {
                 this._AlertService = t;
             }
@@ -332,15 +343,15 @@ webpackJsonp([ 0 ], {
         }();
         e.AlertBlockComponent = f;
     },
-    516: function(t, e, r) {
+    521: function(t, e, r) {
         "use strict";
         var o = this && this.__decorate || function(t, e, r, o) {
-            var s, i = arguments.length, n = 3 > i ? e : null === o ? o = Object.getOwnPropertyDescriptor(e, r) : o;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) n = Reflect.decorate(t, e, r, o); else for (var a = t.length - 1; a >= 0; a--) (s = t[a]) && (n = (3 > i ? s(n) : i > 3 ? s(e, r, n) : s(e, r)) || n);
+            var s, i = arguments.length, n = i < 3 ? e : null === o ? o = Object.getOwnPropertyDescriptor(e, r) : o;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) n = Reflect.decorate(t, e, r, o); else for (var a = t.length - 1; a >= 0; a--) (s = t[a]) && (n = (i < 3 ? s(n) : i > 3 ? s(e, r, n) : s(e, r)) || n);
             return i > 3 && n && Object.defineProperty(e, r, n), n;
         }, s = this && this.__metadata || function(t, e) {
-            return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, i = r(1), n = r(517), a = r(346), c = r(349), l = r(518), f = r(519), d = r(520), p = r(534), u = r(536), h = r(537), y = function() {
+            if ("object" == typeof Reflect && "function" == typeof Reflect.metadata) return Reflect.metadata(t, e);
+        }, i = r(1), n = r(522), a = r(351), c = r(354), l = r(523), f = r(524), p = r(525), d = r(539), u = r(541), h = r(542), y = function() {
             function t(t, e) {
                 this._StoryService = t, this._StoryStateService = e, this._storiesByState = [], 
                 this.createNew = function(t) {
@@ -371,7 +382,7 @@ webpackJsonp([ 0 ], {
             }, t.prototype.setStoryOrder = function(t, e, r) {
                 void 0 === r && (r = []);
                 var o = r.length, s = 0, i = 100;
-                -1 == e ? o >= 1 && (i = parseFloat(r[0].order.toString()), s = i - 1) : 1 == o || (0 == e ? (i = parseFloat(r[e + 1].order.toString()), 
+                e == -1 ? o >= 1 && (i = parseFloat(r[0].order.toString()), s = i - 1) : 1 == o || (0 == e ? (i = parseFloat(r[e + 1].order.toString()), 
                 s = i - 1) : e == o - 1 ? (s = parseFloat(r[e - 1].order.toString()), i = s + 1) : (s = parseFloat(r[e - 1].order.toString()), 
                 i = parseFloat(r[e + 1].order.toString()))), t.order = this.getRandomNumber(s, i);
             }, t.prototype.getRandomNumber = function(t, e) {
@@ -379,14 +390,14 @@ webpackJsonp([ 0 ], {
             }, t = o([ i.Component({
                 selector: "story-list",
                 template: u.htmlTemplate,
-                directives: [ h.DND_DIRECTIVES, d.StoryDetailComponent, p.StoryListItemComponent ],
+                directives: [ h.DND_DIRECTIVES, p.StoryDetailComponent, d.StoryListItemComponent ],
                 viewProviders: [ h.DND_PROVIDERS ],
                 pipes: [ l.FilterPipe, f.OrderBy ]
             }), s("design:paramtypes", [ a.StoryService, c.StoryStateService ]) ], t);
         }();
         e.StoryListComponent = y;
     },
-    517: function(t, e) {
+    522: function(t, e) {
         "use strict";
         var r = function() {
             function t(t) {
@@ -397,14 +408,14 @@ webpackJsonp([ 0 ], {
         }();
         e.Story = r;
     },
-    518: function(t, e, r) {
+    523: function(t, e, r) {
         "use strict";
         var o = this && this.__decorate || function(t, e, r, o) {
-            var s, i = arguments.length, n = 3 > i ? e : null === o ? o = Object.getOwnPropertyDescriptor(e, r) : o;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) n = Reflect.decorate(t, e, r, o); else for (var a = t.length - 1; a >= 0; a--) (s = t[a]) && (n = (3 > i ? s(n) : i > 3 ? s(e, r, n) : s(e, r)) || n);
+            var s, i = arguments.length, n = i < 3 ? e : null === o ? o = Object.getOwnPropertyDescriptor(e, r) : o;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) n = Reflect.decorate(t, e, r, o); else for (var a = t.length - 1; a >= 0; a--) (s = t[a]) && (n = (i < 3 ? s(n) : i > 3 ? s(e, r, n) : s(e, r)) || n);
             return i > 3 && n && Object.defineProperty(e, r, n), n;
         }, s = this && this.__metadata || function(t, e) {
-            return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.metadata) return Reflect.metadata(t, e);
         }, i = r(1), n = function() {
             function t() {}
             return t.prototype.transform = function(t, e) {
@@ -425,14 +436,14 @@ webpackJsonp([ 0 ], {
         }();
         e.FilterPipe = n;
     },
-    519: function(t, e, r) {
+    524: function(t, e, r) {
         "use strict";
         var o = this && this.__decorate || function(t, e, r, o) {
-            var s, i = arguments.length, n = 3 > i ? e : null === o ? o = Object.getOwnPropertyDescriptor(e, r) : o;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) n = Reflect.decorate(t, e, r, o); else for (var a = t.length - 1; a >= 0; a--) (s = t[a]) && (n = (3 > i ? s(n) : i > 3 ? s(e, r, n) : s(e, r)) || n);
+            var s, i = arguments.length, n = i < 3 ? e : null === o ? o = Object.getOwnPropertyDescriptor(e, r) : o;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) n = Reflect.decorate(t, e, r, o); else for (var a = t.length - 1; a >= 0; a--) (s = t[a]) && (n = (i < 3 ? s(n) : i > 3 ? s(e, r, n) : s(e, r)) || n);
             return i > 3 && n && Object.defineProperty(e, r, n), n;
         }, s = this && this.__metadata || function(t, e) {
-            return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.metadata) return Reflect.metadata(t, e);
         }, i = r(1), n = function() {
             function t() {}
             return t._orderByComparator = function(t, e) {
@@ -471,15 +482,15 @@ webpackJsonp([ 0 ], {
         }();
         e.OrderBy = n;
     },
-    520: function(t, e, r) {
+    525: function(t, e, r) {
         "use strict";
         var o = this && this.__decorate || function(t, e, r, o) {
-            var s, i = arguments.length, n = 3 > i ? e : null === o ? o = Object.getOwnPropertyDescriptor(e, r) : o;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) n = Reflect.decorate(t, e, r, o); else for (var a = t.length - 1; a >= 0; a--) (s = t[a]) && (n = (3 > i ? s(n) : i > 3 ? s(e, r, n) : s(e, r)) || n);
+            var s, i = arguments.length, n = i < 3 ? e : null === o ? o = Object.getOwnPropertyDescriptor(e, r) : o;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) n = Reflect.decorate(t, e, r, o); else for (var a = t.length - 1; a >= 0; a--) (s = t[a]) && (n = (i < 3 ? s(n) : i > 3 ? s(e, r, n) : s(e, r)) || n);
             return i > 3 && n && Object.defineProperty(e, r, n), n;
         }, s = this && this.__metadata || function(t, e) {
-            return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, i = r(1), n = r(521), a = r(522), c = r(531), l = r(346), f = r(349), d = r(350), p = r(351), u = r(533), h = function() {
+            if ("object" == typeof Reflect && "function" == typeof Reflect.metadata) return Reflect.metadata(t, e);
+        }, i = r(1), n = r(526), a = r(527), c = r(536), l = r(351), f = r(354), p = r(355), d = r(356), u = r(538), h = function() {
             function t(t, e, r, o) {
                 this._StoryService = t, this._StoryStateService = e, this._StoryTypeService = r, 
                 this._TagService = o;
@@ -507,11 +518,11 @@ webpackJsonp([ 0 ], {
                 selector: "[story-detail]",
                 template: u.htmlTemplate,
                 directives: [ a.BSSelect, c.BSSelectMultiple ]
-            }), s("design:paramtypes", [ l.StoryService, f.StoryStateService, d.StoryTypeService, p.TagService ]) ], t);
+            }), s("design:paramtypes", [ l.StoryService, f.StoryStateService, p.StoryTypeService, d.TagService ]) ], t);
         }();
         e.StoryDetailComponent = h;
     },
-    521: function(t, e) {
+    526: function(t, e) {
         "use strict";
         var r = function() {
             function t(t) {
@@ -521,15 +532,15 @@ webpackJsonp([ 0 ], {
         }();
         e.StoryTask = r;
     },
-    522: function(t, e, r) {
+    527: function(t, e, r) {
         "use strict";
         var o = this && this.__decorate || function(t, e, r, o) {
-            var s, i = arguments.length, n = 3 > i ? e : null === o ? o = Object.getOwnPropertyDescriptor(e, r) : o;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) n = Reflect.decorate(t, e, r, o); else for (var a = t.length - 1; a >= 0; a--) (s = t[a]) && (n = (3 > i ? s(n) : i > 3 ? s(e, r, n) : s(e, r)) || n);
+            var s, i = arguments.length, n = i < 3 ? e : null === o ? o = Object.getOwnPropertyDescriptor(e, r) : o;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) n = Reflect.decorate(t, e, r, o); else for (var a = t.length - 1; a >= 0; a--) (s = t[a]) && (n = (i < 3 ? s(n) : i > 3 ? s(e, r, n) : s(e, r)) || n);
             return i > 3 && n && Object.defineProperty(e, r, n), n;
         }, s = this && this.__metadata || function(t, e) {
-            return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, i = r(1), n = r(128), a = r(523), c = r(530), l = function() {
+            if ("object" == typeof Reflect && "function" == typeof Reflect.metadata) return Reflect.metadata(t, e);
+        }, i = r(1), n = r(130), a = r(528), c = r(535), l = function() {
             function t(t) {
                 this._items = [], this.value = [], this._vm = t, t.valueAccessor = this;
             }
@@ -567,19 +578,19 @@ webpackJsonp([ 0 ], {
         }();
         e.BSSelect = l;
     },
-    530: function(t, e) {
+    535: function(t, e) {
         "use strict";
         e.htmlTemplate = '\n    \n    <ng-select \n        [allowClear]="false"\n        [items]="_items"\n        [initData]="value" \n        (data)="refreshValue($event)"\n        (selected)="selected($event)"\n        (removed)="removed($event)"\n        (typed)="typed($event)"\n        placeholder="">\n    </ng-select>\n    \n';
     },
-    531: function(t, e, r) {
+    536: function(t, e, r) {
         "use strict";
         var o = this && this.__decorate || function(t, e, r, o) {
-            var s, i = arguments.length, n = 3 > i ? e : null === o ? o = Object.getOwnPropertyDescriptor(e, r) : o;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) n = Reflect.decorate(t, e, r, o); else for (var a = t.length - 1; a >= 0; a--) (s = t[a]) && (n = (3 > i ? s(n) : i > 3 ? s(e, r, n) : s(e, r)) || n);
+            var s, i = arguments.length, n = i < 3 ? e : null === o ? o = Object.getOwnPropertyDescriptor(e, r) : o;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) n = Reflect.decorate(t, e, r, o); else for (var a = t.length - 1; a >= 0; a--) (s = t[a]) && (n = (i < 3 ? s(n) : i > 3 ? s(e, r, n) : s(e, r)) || n);
             return i > 3 && n && Object.defineProperty(e, r, n), n;
         }, s = this && this.__metadata || function(t, e) {
-            return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, i = r(1), n = r(128), a = r(523), c = r(532), l = function() {
+            if ("object" == typeof Reflect && "function" == typeof Reflect.metadata) return Reflect.metadata(t, e);
+        }, i = r(1), n = r(130), a = r(528), c = r(537), l = function() {
             function t(t) {
                 this._selectedItems = [], this._items = [], this.value = [], this._vm = t, t.valueAccessor = this;
             }
@@ -622,23 +633,23 @@ webpackJsonp([ 0 ], {
         }();
         e.BSSelectMultiple = l;
     },
-    532: function(t, e) {
+    537: function(t, e) {
         "use strict";
         e.htmlTemplate = '\n    \n    <ng-select \n        [allowClear]="false"\n        [multiple]="true"\n        [items]="_items"\n        [initData]="value" \n        (data)="refreshValue($event)"\n        (selected)="selected($event)"\n        (removed)="removed($event)"\n        (typed)="typed($event)"\n        placeholder="">\n    </ng-select>\n    \n';
     },
-    533: function(t, e) {
+    538: function(t, e) {
         "use strict";
         e.htmlTemplate = '\n    <hr/>\n    <div class="form-group" [ngClass]="{\'has-error\': story._validation_errors?.title}">\n        <textarea class="form-control" [(ngModel)]="story.title" rows="2"></textarea>\n    </div>\n    <div class="form-group" [ngClass]="{\'has-error\': story._validation_errors?.type}" *ngIf="_types">\n        <label>Type</label>\n        <bs-select [(ngModel)]="story.type" [choices]="_types" [textLabel]="\'title\'"></bs-select>\n    </div>\n    <div class="form-group" [ngClass]="{\'has-error\': story._validation_errors?.effort}">\n        <label>Effort</label>\n        <bs-select [(ngModel)]="story.effort" [choices]="_StoryService.effortChoices" [textLabel]="\'text\'" [boundValueAttr]="\'id\'"></bs-select>\n    </div>\n    <div class="form-group" [ngClass]="{\'has-error\': story._validation_errors?.state}">\n        <label>State</label>\n        <bs-select [(ngModel)]="story.state" [choices]="_states" [textLabel]="\'title\'"></bs-select>\n    </div>\n    <div class="form-group" [ngClass]="{\'has-error\': story._validation_errors?.description}">\n        <label>Description</label>\n        <textarea class="form-control" [(ngModel)]="story.description" rows="3"></textarea>\n    </div>\n    <div class="form-group" [ngClass]="{\'has-error\': story._validation_errors?.tags}" *ngIf="_tags">\n        <label>Tags</label>\n        <bs-select-multiple [(ngModel)]="story.tags" [choices]="_tags" [textLabel]="\'title\'"></bs-select-multiple>\n    </div>\n    <div [ngClass]="{\'has-error\': story._validation_errors?.tasks}">\n        <a class="pull-right" href="javascript:void(0);" (click)="addTask()">Add Task</a>\n        <label>Tasks </label>\n        <div class="form-group has-feedback" *ngFor="let task of story.tasks">\n            <i class="glyphicon glyphicon-ok form-control-feedback clickable" [ngClass]="{\'text-green\': task.completed, \'text-gray\': !task.completed}" (click)="task.completed = !task.completed"></i>\n            <input class="form-control" [(ngModel)]="task.description">\n        </div>\n    </div>\n    <hr/>\n    <p><small *ngIf="story.created_on">Created {{ story.created_on | date:"dd/MM/yyyy HH:mm" }} by {{ story.created_by }}</small></p>\n    <p><small *ngIf="story.last_modified_on">Last modified {{ story.last_modified_on | date:"dd/MM/yyyy HH:mm" }} by {{ story.last_modified_by }}</small></p>\n    <hr/>\n    <button *ngIf="story.id" class="btn btn-flat" (click)="delete()">Delete</button>\n    <button class="btn btn-primary btn-flat pull-right" (click)="save()">Save</button>\n';
     },
-    534: function(t, e, r) {
+    539: function(t, e, r) {
         "use strict";
         var o = this && this.__decorate || function(t, e, r, o) {
-            var s, i = arguments.length, n = 3 > i ? e : null === o ? o = Object.getOwnPropertyDescriptor(e, r) : o;
-            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) n = Reflect.decorate(t, e, r, o); else for (var a = t.length - 1; a >= 0; a--) (s = t[a]) && (n = (3 > i ? s(n) : i > 3 ? s(e, r, n) : s(e, r)) || n);
+            var s, i = arguments.length, n = i < 3 ? e : null === o ? o = Object.getOwnPropertyDescriptor(e, r) : o;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) n = Reflect.decorate(t, e, r, o); else for (var a = t.length - 1; a >= 0; a--) (s = t[a]) && (n = (i < 3 ? s(n) : i > 3 ? s(e, r, n) : s(e, r)) || n);
             return i > 3 && n && Object.defineProperty(e, r, n), n;
         }, s = this && this.__metadata || function(t, e) {
-            return "object" == typeof Reflect && "function" == typeof Reflect.metadata ? Reflect.metadata(t, e) : void 0;
-        }, i = r(1), n = r(520), a = r(535), c = function() {
+            if ("object" == typeof Reflect && "function" == typeof Reflect.metadata) return Reflect.metadata(t, e);
+        }, i = r(1), n = r(525), a = r(540), c = function() {
             function t() {
                 this._opened = !1, this.toggle = function() {
                     this._opened = !this._opened;
@@ -653,11 +664,11 @@ webpackJsonp([ 0 ], {
         }();
         e.StoryListItemComponent = c;
     },
-    535: function(t, e) {
+    540: function(t, e) {
         "use strict";
         e.htmlTemplate = '\n\n    <div class="tools">\n        <i class="fa fa-edit" (click)="toggle()"></i>\n    </div>\n    <span class="{{story.type.icon}}"></span>\n    <span class="description">{{ story.title }}</span>\n    <div class="text text-muted" *ngIf="story.effort">Effort: {{ story.effort }}</div>\n    <div class="form" *ngIf="_opened" story-detail [story]="story"></div>\n    \n';
     },
-    536: function(t, e) {
+    541: function(t, e) {
         "use strict";
         e.htmlTemplate = '\n    <div class="flex-container" *ngIf="_states">\n        <div class="flex-1 margin-lr-2" *ngFor="let state of _states | async">\n            <div class="box">\n                <div class="box-header with-border">\n                    <h3 class="box-title">{{state.title}}</h3>\n                    <div class="box-tools pull-right">\n                        <a class="btn btn-box-tool" (click)="createNew(state)"><i class="fa fa-plus"></i></a>\n                    </div>\n                </div>\n                <div class="box-body box-comments" *ngIf="_newStory?.state == state">\n                    <div class="box-comment" story-detail [story]="_newStory"></div>\n                </div>\n                <div class="box-body" *ngIf="_storiesByState[state.id]">\n                    <ul class="story-list" style="min-height: 50px;" dnd-sortable-container [dropZones]="[\'story-zone\']" [sortableData]="_storiesByState[state.id]">\n                        <li class="story-list-item handle" *ngFor="let story of _storiesByState[state.id]; let i = index" dnd-sortable [sortableIndex]="i" (onDropSuccess)="moveStory(story, i, state)" story-list-item [story]="story"></li>\n                    </ul>\n                </div>\n            </div>\n        </div>\n    </div>\n';
     }

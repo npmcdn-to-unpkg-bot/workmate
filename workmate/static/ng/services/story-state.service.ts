@@ -19,6 +19,7 @@ export class StoryStateService extends BaseService {
     };
     protected _baseUrl = '/api/v1/story_state/';
     protected _resourceName = 'story_state';
+    protected _modelClass = 'StoryState';
 
     constructor (protected _http: Http, protected _AlertService: AlertService) {
         super(_http, _AlertService);

@@ -19,7 +19,8 @@ export class ContactService extends BaseService {
     };
     protected _baseUrl = '/api/v1/contact/';
     protected _resourceName = 'contact';
-
+    protected _modelClass = 'Contact';
+    
     constructor (protected _http: Http, protected _AlertService: AlertService) {
         super(_http, _AlertService);
         this._objects$ = <Subject<iContact[]>>new Subject();

@@ -70,7 +70,7 @@ CHANNEL_LAYERS = {
         "ROUTING": "workmate.routing.websocket_routing",
     },
 }
-
+SOCKET_URL = 'ws://127.0.0.1:8000'
 
 # Database
 DATABASES = {

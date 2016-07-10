@@ -6,21 +6,25 @@ import { AlertService }                                     from './alert.servic
 
 import { Observable }                                       from 'rxjs/Observable';
 import { Subject }                                          from 'rxjs/Subject';
+import { $WebSocket }                                       from 'angular2-websocket/angular2-websocket';
+
+
+declare var socket_url:any;
 
 
 export class BaseService {
 
     protected _objects$: Subject<any[]>;
     protected _meta$: Subject<Object>;
-
     protected _dataStore: {
         meta: Object,
         objects: any[]
     };
     protected _baseUrl: string;
     protected _resourceName: string;
-
+    protected _modelClass: string;
     protected _postOptions = new ExRequestOptions();
+    protected _ws = new $WebSocket(`${socket_url}/data_notifications/`);
 
     constructor (protected _http: Http, protected _AlertService: AlertService) {
         this._meta$ = <Subject<Object>>new Subject();
@@ -29,6 +33,8 @@ export class BaseService {
             objects: []
         };
         this._postOptions.appendHeaders('Content-Type', 'application/json');
+        this._ws.connect();
+        this._ws.onMessage((message:any) => this.handleDataNotification(message), {});
     }
 
     get meta$() {
@@ -116,14 +122,26 @@ export class BaseService {
     delete(id: number) {
         this._http.delete(`${this._baseUrl}${id}/`)
             .subscribe(res => {
-                this._dataStore.objects.forEach((item, i) => {
-                    if (item.id === id) {
-                        this._dataStore.objects.splice(i, 1);
-                    }
-                });
-                this._objects$.next(this._dataStore.objects);
+                this.removeObject(id);
             }, err => this.handleError(err), () => this.handleCompleted()
         );
+    }
+
+    protected handleDataNotification(message: any) {
+        let data = JSON.parse(message.data);
+        if (data.model === this._modelClass) {
+            if (data.type === 'post_save') this.load(data.pk);
+            if (data.type === 'post_delete') this.removeObject(data.pk);
+        }
+    }
+
+    protected removeObject(id: number) {
+        this._dataStore.objects.forEach((item, i) => {
+            if (item.id === id) {
+                this._dataStore.objects.splice(i, 1);
+            }
+        });
+        this._objects$.next(this._dataStore.objects);
     }
 
     protected extractData(res: Response) {

@@ -25,6 +25,7 @@ export class StoryService extends BaseService {
     };
     protected _baseUrl = '/api/v1/story/';
     protected _resourceName = 'story';
+    protected _modelClass = 'Story';
 
     effortChoices: EffortChoice[] = [
         {id: '0.5', text: '0.5 Points'},

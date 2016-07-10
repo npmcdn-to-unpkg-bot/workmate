@@ -19,6 +19,7 @@ export class TagService extends BaseService {
     };
     protected _baseUrl = '/api/v1/tag/';
     protected _resourceName = 'tag';
+    protected _modelClass = 'Tag';
 
     constructor (protected _http: Http, protected _AlertService: AlertService) {
         super(_http, _AlertService);
