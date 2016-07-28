@@ -1,0 +1,152 @@
+{% load i18n admin_static bootstrap3 bootstrapped_goodies_tags %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+{% get_current_language as LANGUAGE_CODE %}{% get_current_language_bidi as LANGUAGE_BIDI %}
+<html xmlns="http://www.w3.org/1999/xhtml" lang="{{ LANGUAGE_CODE|default:"en-us" }}" {% if LANGUAGE_BIDI %}dir="rtl"{% endif %}>
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    {% block extrastyle %}{% endblock %}
+
+    <link href="{% static 'dist/css/bootstrap.min.css' %}" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/overrides.css' %}" />
+    <link rel="stylesheet" href="{% static 'dist/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'dist/css/adminlte.min.css' %}">
+    {% if LANGUAGE_BIDI %}
+    <link href="{% static 'bootstrap-rtl/css/bootstrap-rtl.min.css' %}" rel="stylesheet"/>
+    <link href="{% static 'bootstrap-rtl/css/bootstrap-flipped.min.css' %}" rel="stylesheet"/>
+    {% endif %}
+
+    <!--- admin css overrides --->
+    <style>
+        body {
+            padding: 0;
+        }
+        .navbar {
+            border-top: 0;
+            border-radius: 3px;
+            box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+        }
+        .navbar.navbar-default {
+            background-color: #fff;
+            border-color: #fff;
+        }
+        .box .navbar {
+            border-radius: 0;
+            box-shadow: none;
+        }
+        .box .well {
+            border: 0;
+            background-color: #f9fafc;
+            border-radius: 0;
+            box-shadow: none;
+        }
+        .popup .content-wrapper,
+        .popup .main-footer,
+        .popup .right-side {
+            transition: none;
+            margin-left: 0;
+        }
+        .selector {
+            width: 100%;
+        }
+    </style>
+    <script type="text/javascript">
+    //<![CDATA[
+        window.__admin_media_prefix__ = "{% filter escapejs %}{% static 'admin/' %}{% endfilter %}";
+        window.__admin_utc_offset__ = "{% filter escapejs %}{% now 'Z' %}{% endfilter %}";
+    //]]>
+    </script>
+    <script src="{% static 'admin/js/jquery-1.9.1.min.js' %}"></script>
+    <script src="{% static 'admin/js/jquery-migrate-1.2.1.min.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'dist/js/adminlte.min.js' %}"></script>
+
+    {% block extrahead %}{% endblock %}
+
+    {% block blockbots %}<meta name="robots" content="NONE,NOARCHIVE" />{% endblock %}
+    <script type="text/javascript">
+    //<![CDATA[
+            (function($) {
+                $(document).ready(function() {
+                    $('input[type="submit"]').addClass('btn');
+                    $('.btn').addClass('btn-flat');
+                    $('.breadcrumbs').addClass('breadcrumb');
+                    $('.breadcrumbs').removeClass('breadcrumbs');
+                    $('.table').removeClass('table-bordered');
+                    $('[title]').tooltip();
+                });
+            }(jQuery));
+    //]]>
+    </script>
+</head>
+{% load i18n %}
+
+<body class="{% if is_popup %}popup {% endif %}{% block bodyclass %}{% endblock %} skin-blue sidebar-mini">
+
+<!-- Container -->
+<div class="wrapper">
+
+    {% if not is_popup %}
+
+        <!-- Header -->
+        <header class="main-header">
+            <a href="/" class="logo">
+                <span class="logo-mini"><i class="fa fa-paw"></i></span>
+                <span class="logo-lg"><i class="fa fa-paw"></i> <b>Work</b>mate</span>
+            </a>
+            <nav class="navbar navbar-static-top" role="navigation">
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        {% block left_nav_content %}{% endblock %}
+                        {% block right_nav_content %}{% endblock %}
+                        {% include 'workmate/partials/user_menu.html' %}
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        {% include 'workmate/partials/sidebar.html' %}
+        <!-- END Header -->
+
+    {% endif %}
+
+    <!-- Content -->
+    <div class="content-wrapper">
+        <section class="content-header">
+            {% if title %}
+                <h1>{% render_with_template_if_exist title|lower|add:"/admin_app_name.html" title %}</h1>
+            {% endif %}
+            {% if not is_popup %}{% block breadcrumbs %}{% endblock %}{% endif %}
+        </section>
+        <section class="content">
+            {% block navbar %}
+                <div class="navbar navbar-default">
+                    <div class="navbar-inner">
+                        {% block object-tools %}{% endblock %}
+                    </div>
+                </div>
+            {% endblock navbar %}
+            <div class="box">
+                <div class="box-body">
+                    {% block content %}{{ content }}{% endblock %}
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- END Content -->
+
+    <div class="messages">{% bootstrap_messages %}</div>
+
+    {% if not is_popup %}
+        {% include 'workmate/partials/footer.html' %}
+    {% endif %}
+
+</div>
+<!-- END Container -->
+
+</body>
+</html>

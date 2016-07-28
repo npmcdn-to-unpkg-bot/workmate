@@ -26,6 +26,7 @@ LOGIN_REDIRECT_URL = '/'
 LOGOUT_URL = '/logout/'
 
 INSTALLED_APPS = (
+    'django_admin_bootstrapped',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.sites',
@@ -60,6 +61,8 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'example.urls'
 
 WSGI_APPLICATION = 'example.wsgi.application'
+
+DAB_FIELD_RENDERER = 'django_admin_bootstrapped.renderers.BootstrapFieldRenderer'
 
 
 # Database
