@@ -5,18 +5,18 @@
     var  map = {
         'app':                              '/static/ng',
 
-        '@angular':                         'https://npmcdn.com/@angular',
-        'ng2-bootstrap':                    'https://npmcdn.com/ng2-bootstrap',
-        'ng2-dnd':                          'https://npmcdn.com/ng2-dnd',
-        'ng2-select':                       'https://npmcdn.com/ng2-select',
-        'crossvent':                        'https://npmcdn.com/crossvent',
-        'custom-event':                     'https://npmcdn.com/custom-event',
-        'contra':                           'https://npmcdn.com/contra',
-        'ticky':                            'https://npmcdn.com/ticky',
-        'atoa':                             'https://npmcdn.com/atoa',
-        'rxjs':                             'https://npmcdn.com/rxjs@5.0.0-beta.6',
-        'ts':                               'https://npmcdn.com/plugin-typescript@4.0.10/lib/plugin.js',
-        'typescript':                       'https://npmcdn.com/typescript@1.8.10/lib/typescript.js'
+        '@angular':                         'https://unpkg.com/@angular',
+        'ng2-bootstrap':                    'https://unpkg.com/ng2-bootstrap',
+        'ng2-dnd':                          'https://unpkg.com/ng2-dnd',
+        'ng2-select':                       'https://unpkg.com/ng2-select',
+        'crossvent':                        'https://unpkg.com/crossvent',
+        'custom-event':                     'https://unpkg.com/custom-event',
+        'contra':                           'https://unpkg.com/contra',
+        'ticky':                            'https://unpkg.com/ticky',
+        'atoa':                             'https://unpkg.com/atoa',
+        'rxjs':                             'https://unpkg.com/rxjs@5.0.0-beta.6',
+        'ts':                               'https://unpkg.com/plugin-typescript@4.0.10/lib/plugin.js',
+        'typescript':                       'https://unpkg.com/typescript@1.8.10/lib/typescript.js'
     };
 
     var packages = {
@@ -38,7 +38,7 @@
 
 
     ngPackageNames.forEach(function(pkgName) {
-        map['@angular/'+pkgName] = 'https://npmcdn.com/@angular/' + pkgName + ngVer;
+        map['@angular/'+pkgName] = 'https://unpkg.com/@angular/' + pkgName + ngVer;
     });
 
     ngPackageNames.forEach(function(pkgName) {
